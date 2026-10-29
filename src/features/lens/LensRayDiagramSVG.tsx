@@ -471,9 +471,9 @@ export function LensRayDiagramSVG({
                 fill={imageNature === 'virtual_erect' ? '#7c3aed' : '#b91c1c'}
               />
               <rect
-                x={imgX - 58}
+                x={Math.min(imgX + 14, SVG_W - 138) }
                 y={imageHeightCm < 0 ? imgTipY + 8 : imgTipY - 34}
-                width="116"
+                width="124"
                 height="24"
                 rx="5"
                 fill="#fffbeb"
@@ -481,7 +481,7 @@ export function LensRayDiagramSVG({
                 strokeWidth="1.2"
               />
               <text
-                x={imgX}
+                x={Math.min(imgX + 14, SVG_W - 138) + 62}
                 y={imageHeightCm < 0 ? imgTipY + 24 : imgTipY - 18}
                 textAnchor="middle"
                 fill={imageNature === 'virtual_erect' ? '#5b21b6' : '#991b1b'}
@@ -685,7 +685,7 @@ export function LensRayDiagramSVG({
 
         {/* Top-Left Legend for the 3 Principal Rays (Color + Pattern) */}
         <g transform="translate(22, 48)">
-          <rect x="0" y="0" width="256" height="64" rx="6" fill="rgba(255, 251, 235, 0.92)" stroke="#d6cba8" strokeWidth="1" />
+          <rect x="0" y="0" width="318" height="64" rx="6" fill="rgba(255, 251, 235, 0.92)" stroke="#d6cba8" strokeWidth="1" />
           <line x1="10" y1="15" x2="34" y2="15" stroke="#b85b14" strokeWidth="2.4" />
           <text x="42" y="18.5" fill="#1e293b" fontSize="10.5" fontWeight="600">
             Ray 1 (Solid Amber): Parallel ➔ through F₂
@@ -701,11 +701,11 @@ export function LensRayDiagramSVG({
         </g>
 
         {/* Top-Right Inset: Live View on the Paper Screen */}
-        <g transform={`translate(${SVG_W - 242}, 48)`}>
+        <g transform={`translate(${SVG_W - 282}, 48)`}>
           <rect
             x="0"
             y="0"
-            width="220"
+            width="260"
             height="86"
             rx="8"
             fill="#ffffff"
@@ -736,7 +736,7 @@ export function LensRayDiagramSVG({
               </text>
               {/* Mini preview of inverted arrow on screen card */}
               <g
-                transform="translate(190, 48)"
+                transform="translate(232, 48)"
                 opacity={isSharpOnScreen ? 1 : Math.max(0.25, 1 - screenBlurFraction * 0.75)}
               >
                 <rect x="-18" y="-22" width="36" height="44" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
@@ -773,6 +773,31 @@ export function LensRayDiagramSVG({
               </text>
             </g>
           )}
+        </g>
+
+        {/* Focal-point labels repeated on top with a halo so the screen never hides them */}
+        <g aria-hidden="true" pointerEvents="none">
+          {[
+            { x: twoF1X, label: '2F₁' },
+            { x: f1X, label: 'F₁' },
+            { x: f2X, label: 'F₂' },
+            { x: twoF2X, label: '2F₂' },
+          ].map((pt) => (
+            <text
+              key={`halo-${pt.label}`}
+              x={pt.x}
+              y={ORIGIN_Y + 16}
+              textAnchor="middle"
+              fill="#7c2d12"
+              fontSize="12"
+              fontWeight="700"
+              stroke="#fffbeb"
+              strokeWidth="4"
+              paintOrder="stroke"
+            >
+              {pt.label}
+            </text>
+          ))}
         </g>
 
         {/* Bottom Interaction Hint */}
