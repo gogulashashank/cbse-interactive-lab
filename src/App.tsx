@@ -1,116 +1,102 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState, type ComponentType } from 'react'
 import './App.css'
-import { AlternativeConvexLensLesson } from './features/lens/AlternativeConvexLensLesson'
-import { ElectricityLesson } from './features/electricity/ElectricityLesson'
-import { SeriesParallelLesson } from './features/seriesParallel/SeriesParallelLesson'
-import { ResistivityLesson } from './features/resistivity/ResistivityLesson'
-import { PowerHeatingLesson } from './features/powerHeating/PowerHeatingLesson'
-import { BillingLesson } from './features/billing/BillingLesson'
-import { SafetyLesson } from './features/safety/SafetyLesson'
-import { ConvexLensLesson } from './features/lens/ConvexLensLesson'
-import { RampExperiment } from './features/ramp/RampExperiment'
+import {
+  resolveStandaloneRoute,
+  STANDALONE_ROUTES,
+  type StandaloneRouteId,
+} from './platform/routeRegistry'
+
+/*
+ * Every lesson is lazy-loaded into its own chunk (Phase 0 performance budget).
+ * The 3D book lessons pull in three.js, so they are only fetched on "/".
+ */
+const ConvexLensLesson = lazy(() =>
+  import('./features/lens/ConvexLensLesson').then((m) => ({ default: m.ConvexLensLesson }))
+)
+const RampExperiment = lazy(() =>
+  import('./features/ramp/RampExperiment').then((m) => ({ default: m.RampExperiment }))
+)
+
+const STANDALONE_COMPONENTS: Record<StandaloneRouteId, ComponentType> = {
+  learn: lazy(() => import('./concepts/ConceptHub').then((m) => ({ default: m.ConceptHub }))),
+  alternative: lazy(() =>
+    import('./features/lens/AlternativeConvexLensLesson').then((m) => ({
+      default: m.AlternativeConvexLensLesson,
+    }))
+  ),
+  electricity: lazy(() =>
+    import('./features/electricity/ElectricityLesson').then((m) => ({ default: m.ElectricityLesson }))
+  ),
+  'series-parallel': lazy(() =>
+    import('./features/seriesParallel/SeriesParallelLesson').then((m) => ({
+      default: m.SeriesParallelLesson,
+    }))
+  ),
+  resistivity: lazy(() =>
+    import('./features/resistivity/ResistivityLesson').then((m) => ({ default: m.ResistivityLesson }))
+  ),
+  'power-heating': lazy(() =>
+    import('./features/powerHeating/PowerHeatingLesson').then((m) => ({ default: m.PowerHeatingLesson }))
+  ),
+  billing: lazy(() =>
+    import('./features/billing/BillingLesson').then((m) => ({ default: m.BillingLesson }))
+  ),
+  safety: lazy(() =>
+    import('./features/safety/SafetyLesson').then((m) => ({ default: m.SafetyLesson }))
+  ),
+}
 
 export type ActiveLessonId = 'convex-lens' | 'inclined-ramp'
-export type AppRoutePath =
-  | '/'
-  | '/alternative'
-  | '/electricity'
-  | '/series-parallel'
-  | '/resistivity'
-  | '/power-heating'
-  | '/heating'
-  | '/billing'
-  | '/electricity-bill'
-  | '/safety'
-  | '/domestic-circuits'
-  | '/fuses'
 
-function resolveRouteFromPathname(pathname: string): AppRoutePath {
-  const normalized = pathname.replace(/\/+$/, '') || '/'
-  if (normalized === '/alternative') return '/alternative'
-  if (normalized === '/electricity') return '/electricity'
-  if (normalized === '/series-parallel') return '/series-parallel'
-  if (normalized === '/resistivity') return '/resistivity'
-  if (normalized === '/power-heating' || normalized === '/heating') return '/power-heating'
-  if (normalized === '/billing' || normalized === '/electricity-bill') return '/billing'
-  if (normalized === '/safety' || normalized === '/domestic-circuits' || normalized === '/fuses') return '/safety'
-  return '/'
+function currentPathname(): string {
+  return typeof window !== 'undefined' ? window.location.pathname : '/'
+}
+
+function LoadingFallback() {
+  return (
+    <div className="platform-loading" role="status" aria-live="polite">
+      Loading lesson… / पाठ लोड हो रहा है…
+    </div>
+  )
 }
 
 function App() {
-  const [routePath, setRoutePath] = useState<AppRoutePath>(() =>
-    typeof window !== 'undefined'
-      ? resolveRouteFromPathname(window.location.pathname)
-      : '/'
-  )
+  const [pathname, setPathname] = useState<string>(currentPathname)
   const [activeLesson, setActiveLesson] = useState<ActiveLessonId>('convex-lens')
   const [lensStartSpread, setLensStartSpread] = useState<number>(2)
   const [rampStartSpread, setRampStartSpread] = useState<number>(2)
   const [navKey, setNavKey] = useState<number>(0)
 
+  const standalone = resolveStandaloneRoute(pathname)
+  const isBook = standalone === null
+
   useEffect(() => {
     function handlePopState() {
-      setRoutePath(resolveRouteFromPathname(window.location.pathname))
+      setPathname(window.location.pathname)
     }
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  function navigateToRoute(nextRoute: AppRoutePath) {
-    if (typeof window !== 'undefined' && window.location.pathname !== nextRoute) {
-      window.history.pushState({}, '', nextRoute)
+  function navigateTo(nextPath: string) {
+    if (typeof window !== 'undefined' && window.location.pathname !== nextPath) {
+      window.history.pushState({}, '', nextPath)
     }
-    setRoutePath(nextRoute)
+    setPathname(nextPath)
   }
 
-  function handleOpenContents() {
-    navigateToRoute('/')
-    setActiveLesson('convex-lens')
-    setLensStartSpread(1)
+  function openBook(lesson: ActiveLessonId, spread: number) {
+    navigateTo('/')
+    setActiveLesson(lesson)
+    if (lesson === 'convex-lens') setLensStartSpread(spread)
+    else setRampStartSpread(spread)
     setNavKey((k) => k + 1)
   }
 
-  function handleOpenLensLesson() {
-    navigateToRoute('/')
-    setActiveLesson('convex-lens')
-    setLensStartSpread(2)
-    setNavKey((k) => k + 1)
-  }
+  const handleOpenLensLesson = () => openBook('convex-lens', 2)
+  const handleOpenRampLesson = () => openBook('inclined-ramp', 2)
 
-  function handleOpenRampLesson() {
-    navigateToRoute('/')
-    setActiveLesson('inclined-ramp')
-    setRampStartSpread(2)
-    setNavKey((k) => k + 1)
-  }
-
-  function handleOpenAlternativeLesson() {
-    navigateToRoute('/alternative')
-  }
-
-  function handleOpenElectricityLesson() {
-    navigateToRoute('/electricity')
-  }
-
-  function handleOpenSeriesParallelLesson() {
-    navigateToRoute('/series-parallel')
-  }
-
-  function handleOpenResistivityLesson() {
-    navigateToRoute('/resistivity')
-  }
-
-  function handleOpenPowerHeatingLesson() {
-    navigateToRoute('/power-heating')
-  }
-
-  function handleOpenBillingLesson() {
-    navigateToRoute('/billing')
-  }
-
-  function handleOpenSafetyLesson() {
-    navigateToRoute('/safety')
-  }
+  const StandaloneComponent = standalone ? STANDALONE_COMPONENTS[standalone.id] : null
 
   return (
     <div className="platform-shell">
@@ -129,104 +115,42 @@ function App() {
           <button
             type="button"
             className={`platform-lesson-btn ${
-              routePath === '/' && activeLesson === 'convex-lens' && lensStartSpread === 1
-                ? 'is-active'
-                : ''
+              isBook && activeLesson === 'convex-lens' && lensStartSpread === 1 ? 'is-active' : ''
             }`}
-            onClick={handleOpenContents}
+            onClick={() => openBook('convex-lens', 1)}
           >
             Book Contents
           </button>
           <button
             type="button"
             className={`platform-lesson-btn ${
-              routePath === '/' && activeLesson === 'convex-lens' && lensStartSpread === 2
-                ? 'is-active'
-                : ''
+              isBook && activeLesson === 'convex-lens' && lensStartSpread === 2 ? 'is-active' : ''
             }`}
-            aria-pressed={
-              routePath === '/' && activeLesson === 'convex-lens' && lensStartSpread === 2
-            }
+            aria-pressed={isBook && activeLesson === 'convex-lens' && lensStartSpread === 2}
             onClick={handleOpenLensLesson}
           >
             Lesson II: How a convex lens forms an image.
           </button>
+          {STANDALONE_ROUTES.map((route) => {
+            const active = standalone?.id === route.id
+            return (
+              <button
+                key={route.id}
+                type="button"
+                className={`platform-lesson-btn ${active ? 'is-active' : ''}`}
+                aria-pressed={active}
+                onClick={() => navigateTo(route.path)}
+              >
+                {route.navLabel}
+              </button>
+            )
+          })}
           <button
             type="button"
             className={`platform-lesson-btn ${
-              routePath === '/alternative' ? 'is-active' : ''
+              isBook && activeLesson === 'inclined-ramp' ? 'is-active' : ''
             }`}
-            aria-pressed={routePath === '/alternative'}
-            onClick={handleOpenAlternativeLesson}
-          >
-            Lesson II (/alternative): Reading &amp; Immersive Bench
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/electricity' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/electricity'}
-            onClick={handleOpenElectricityLesson}
-          >
-            Electricity: What makes current change?
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/series-parallel' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/series-parallel'}
-            onClick={handleOpenSeriesParallelLesson}
-          >
-            Series &amp; Parallel: One Path or Two?
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/resistivity' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/resistivity'}
-            onClick={handleOpenResistivityLesson}
-          >
-            Resistivity: Why Do Wires Differ?
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/power-heating' || routePath === '/heating' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/power-heating' || routePath === '/heating'}
-            onClick={handleOpenPowerHeatingLesson}
-          >
-            Power &amp; Heating: Where Does Energy Go?
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/billing' || routePath === '/electricity-bill' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/billing' || routePath === '/electricity-bill'}
-            onClick={handleOpenBillingLesson}
-          >
-            Electricity Bill: Watts, kWh &amp; Cost
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/safety' || routePath === '/domestic-circuits' || routePath === '/fuses' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/safety' || routePath === '/domestic-circuits' || routePath === '/fuses'}
-            onClick={handleOpenSafetyLesson}
-          >
-            Domestic Safety: Fuses &amp; Earthing
-          </button>
-          <button
-            type="button"
-            className={`platform-lesson-btn ${
-              routePath === '/' && activeLesson === 'inclined-ramp' ? 'is-active' : ''
-            }`}
-            aria-pressed={routePath === '/' && activeLesson === 'inclined-ramp'}
+            aria-pressed={isBook && activeLesson === 'inclined-ramp'}
             onClick={handleOpenRampLesson}
           >
             Lesson I: Why does a ramp make lifting easier?
@@ -236,33 +160,23 @@ function App() {
 
       {/* Active Lesson Content */}
       <div className="platform-content-area">
-        {routePath === '/safety' || routePath === '/domestic-circuits' || routePath === '/fuses' ? (
-          <SafetyLesson />
-        ) : routePath === '/billing' || routePath === '/electricity-bill' ? (
-          <BillingLesson />
-        ) : routePath === '/power-heating' || routePath === '/heating' ? (
-          <PowerHeatingLesson />
-        ) : routePath === '/resistivity' ? (
-          <ResistivityLesson />
-        ) : routePath === '/series-parallel' ? (
-          <SeriesParallelLesson />
-        ) : routePath === '/electricity' ? (
-          <ElectricityLesson />
-        ) : routePath === '/alternative' ? (
-          <AlternativeConvexLensLesson />
-        ) : activeLesson === 'convex-lens' ? (
-          <ConvexLensLesson
-            key={`lens-${navKey}`}
-            initialSpreadIndex={lensStartSpread}
-            onOpenRampLesson={handleOpenRampLesson}
-          />
-        ) : (
-          <RampExperiment
-            key={`ramp-${navKey}`}
-            initialSpreadIndex={rampStartSpread}
-            onOpenLensLesson={handleOpenLensLesson}
-          />
-        )}
+        <Suspense fallback={<LoadingFallback />}>
+          {StandaloneComponent ? (
+            <StandaloneComponent />
+          ) : activeLesson === 'convex-lens' ? (
+            <ConvexLensLesson
+              key={`lens-${navKey}`}
+              initialSpreadIndex={lensStartSpread}
+              onOpenRampLesson={handleOpenRampLesson}
+            />
+          ) : (
+            <RampExperiment
+              key={`ramp-${navKey}`}
+              initialSpreadIndex={rampStartSpread}
+              onOpenLensLesson={handleOpenLensLesson}
+            />
+          )}
+        </Suspense>
       </div>
     </div>
   )

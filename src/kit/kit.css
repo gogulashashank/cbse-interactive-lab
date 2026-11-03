@@ -1,0 +1,255 @@
+/* Base kit variables and accessibility styles */
+:root {
+  --kit-radius: 8px;
+  --kit-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --kit-focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.4);
+}
+
+.kit-slider-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.75rem 0;
+  font-family: var(--kit-font-sans);
+}
+
+.kit-slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.kit-slider-value-pill {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0369a1;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+}
+
+.kit-slider-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.kit-slider-range {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  accent-color: #0284c7;
+  cursor: pointer;
+  min-height: 44px; /* touch target */
+}
+
+.kit-slider-number {
+  width: 5.5rem;
+  padding: 0.45rem 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #0f172a;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.kit-slider-number:focus,
+.kit-slider-range:focus-visible {
+  outline: none;
+  box-shadow: var(--kit-focus-ring);
+  border-color: #0284c7;
+}
+
+.kit-slider-error {
+  color: #b91c1c;
+  font-size: 0.82rem;
+  margin: 0.2rem 0 0;
+}
+
+/* Predict card */
+.kit-predict-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.kit-predict-q {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 1rem;
+  line-height: 1.45;
+}
+
+.kit-predict-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.kit-predict-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  min-height: 44px;
+  transition: all 0.15s ease-in-out;
+  background: #f8fafc;
+}
+
+.kit-predict-opt:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.kit-predict-opt.is-selected {
+  border-color: #0284c7;
+  background: #f0f9ff;
+  font-weight: 600;
+}
+
+.kit-predict-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.kit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 44px;
+  border: none;
+  transition: background 0.15s ease;
+}
+
+.kit-btn-primary {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.kit-btn-primary:hover {
+  background: #0369a1;
+}
+
+.kit-btn-primary:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.kit-btn-secondary {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.kit-btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.kit-feedback-banner {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.kit-feedback-banner.correct {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.kit-feedback-banner.review {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+
+/* Exam question */
+.kit-exam-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-inline-start: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin: 1rem 0;
+}
+
+.kit-exam-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.kit-exam-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.kit-exam-marks {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.kit-solution-box {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.kit-step-item {
+  margin-bottom: 0.4rem;
+}
+
+/* Projector Mode Overrides */
+body.cil-projector {
+  font-size: 1.15rem;
+}
+
+body.cil-projector .kit-predict-q {
+  font-size: 1.35rem;
+}
+
+body.cil-projector .kit-slider-label-row {
+  font-size: 1.15rem;
+}
+
+body.cil-projector .kit-btn {
+  font-size: 1.15rem;
+  padding: 0.8rem 1.6rem;
+}

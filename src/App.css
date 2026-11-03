@@ -4234,3 +4234,11 @@ summary:focus-visible,
   color: #334155;
   line-height: 1.5;
 }
+
+/* Phase 0: lazy-route loading fallback */
+.platform-loading {
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: var(--sans, system-ui, sans-serif);
+  color: #475569;
+}
