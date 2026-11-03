@@ -48,7 +48,7 @@ describe('Concept Registry Integrity', () => {
     })
 
     const pilot = getPilotConcepts()
-    expect(pilot.length).toBe(12)
+    expect(pilot.length).toBe(16)
 
     pilot.forEach((c) => {
       const missing = findMissingTranslations(c)

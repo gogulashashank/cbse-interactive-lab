@@ -21,6 +21,10 @@ export type ConceptId =
   | 'stretching-vs-comparing'
   | 'constant-temp-ohmic'
   | 'series-parallel-failure'
+  | 'electrical-energy-transfer'
+  | 'charge-conservation-junction'
+  | 'circuit-power-balance'
+  | 'mechanical-ramp-conservation'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -72,6 +76,14 @@ export const THREADS: readonly ThreadRecord[] = [
     tagline: {
       en: 'The #1 source of board mistakes: pick the right formula based on what is kept constant (fixed V vs fixed I, stretching vs cutting).',
       hi: 'बोर्ड परीक्षा की सबसे बड़ी भूल से बचें: देखें क्या स्थिर है (समानांतर में V या श्रेणीक्रम में I; खींचने पर आयतन या तार बदलना)।',
+    },
+  },
+  {
+    id: 'energy-conservation',
+    title: { en: 'Conservation of Energy & Charge', hi: 'ऊर्जा एवं आवेश संरक्षण (Conservation)' },
+    tagline: {
+      en: 'Energy cannot vanish: see how electrical work becomes heat, charges never disappear at junctions, and battery power balances the loads.',
+      hi: 'ऊर्जा कभी नष्ट नहीं होती: देखें विद्युत कार्य कैसे ऊष्मा बनता है, जोड़ पर आवेश सुरक्षित रहता है और बैटरी शक्ति लोड को संतुलित करती है।',
     },
   },
 ]
@@ -258,6 +270,68 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     contexts: [{ en: 'Diwali fairy lights vs domestic kitchen and bedroom lighting', hi: 'दीपावली की लड़ियाँ बनाम घर के कमरे की लाइट' }],
     boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.6)' }],
     deepDiveRoute: '/series-parallel',
+    status: 'pilot',
+  },
+
+  // Thread 4: Conservation of Energy & Charge
+  {
+    id: 'electrical-energy-transfer',
+    thread: 'energy-conservation',
+    title: { en: 'Electrical Energy into Heat (E = VIt)', hi: 'विद्युत ऊर्जा का ऊष्मा में रूपांतरण (E = VIt)' },
+    oneLine: {
+      en: 'Electrical work done on charges transfers completely into internal thermal energy: E = V·I·t = I²Rt.',
+      hi: 'आवेशों पर किया गया कुल विद्युत कार्य पूर्णतः आंतरिक तापीय ऊर्जा में बदल जाता है: E = V·I·t = I²Rt।',
+    },
+    prerequisites: ['power-vs-energy'],
+    misconceptionIds: ['energy-disappears-in-resistors'],
+    contexts: [{ en: 'Water immersion heater and electric geyser', hi: 'पानी का हीटर और गीज़र' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.7)' }],
+    deepDiveRoute: '/power-heating',
+    status: 'pilot',
+  },
+  {
+    id: 'charge-conservation-junction',
+    thread: 'energy-conservation',
+    title: { en: 'Charge Conservation at Junctions (Σ I_in = Σ I_out)', hi: 'जोड़ पर आवेश संरक्षण (Σ I_in = Σ I_out)' },
+    oneLine: {
+      en: 'Electric charge cannot pool or vanish at wire joints: incoming currents strictly equal outgoing currents.',
+      hi: 'तार के जोड़ पर आवेश न तो जमा हो सकता है न गायब: आने वाली धाराओं का योग जाने वाली धाराओं के ठीक बराबर होता है।',
+    },
+    prerequisites: ['current-vs-charge', 'mapped-series-parallel'],
+    misconceptionIds: ['current-consumed-at-junctions', 'charges-get-lost'],
+    contexts: [{ en: 'T-junction in household circuit wiring', hi: 'घरेलू वायरिंग में टी-जंक्शन' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.6)' }],
+    deepDiveRoute: '/series-parallel',
+    status: 'pilot',
+  },
+  {
+    id: 'circuit-power-balance',
+    thread: 'energy-conservation',
+    title: { en: 'Circuit Power Balance (P_source = Σ P_loads)', hi: 'परिपथ शक्ति संतुलन (P_स्रोत = Σ P_लोड)' },
+    oneLine: {
+      en: 'Total power delivered by the electrical source always matches the sum of powers dissipated by every load.',
+      hi: 'बैटरी या मेन्स द्वारा दी गई कुल शक्ति परिपथ के सभी उपकरणों द्वारा खर्च की गई शक्तियों के योग के बराबर होती है।',
+    },
+    prerequisites: ['fixed-voltage-vs-current', 'power-vs-energy'],
+    misconceptionIds: ['power-created-or-lost-in-branching'],
+    contexts: [{ en: 'Parallel lamps in domestic 220 V supply', hi: '220 V मेन्स पर समानांतर लैम्प' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.8)' }],
+    deepDiveRoute: '/power-heating',
+    status: 'pilot',
+  },
+  {
+    id: 'mechanical-ramp-conservation',
+    thread: 'energy-conservation',
+    title: { en: 'Mechanical Energy on a Ramp (PE + KE = Const)', hi: 'आनत तल पर यांत्रिक ऊर्जा (PE + KE = स्थिर)' },
+    oneLine: {
+      en: 'As an object descends a frictionless incline, potential energy transfers smoothly into kinetic energy.',
+      hi: 'घर्षणहीन आनत तल पर वस्तु के नीचे आते समय स्थितिज ऊर्जा गतिज ऊर्जा में बदलती है, कुल योग स्थिर रहता है।',
+    },
+    prerequisites: [],
+    misconceptionIds: ['energy-lost-sliding-down'],
+    contexts: [{ en: 'Roller coaster descent and ramp experiment', hi: 'रोलर कोस्टर और रैंप प्रयोग' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 11: Work and Energy' }],
+    deepDiveRoute: '/ramp',
     status: 'pilot',
   },
 

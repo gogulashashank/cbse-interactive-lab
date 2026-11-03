@@ -3,6 +3,7 @@ import { CONCEPTS, getConceptById, getPilotConcepts, THREADS, type ThreadId } fr
 import { RATE_VS_TOTAL_CONTENT } from './rateVsTotal/content'
 import { SQUARES_AND_INVERSES_CONTENT } from './squaresAndInverses/content'
 import { CONTROLLED_EXPERIMENTS_CONTENT } from './controlledExperiments/content'
+import { ENERGY_CONSERVATION_CONTENT } from './energyConservation/content'
 import { BucketInteractive } from './rateVsTotal/BucketInteractive'
 import { ChargeInteractive } from './rateVsTotal/ChargeInteractive'
 import { EnergyInteractive } from './rateVsTotal/EnergyInteractive'
@@ -15,6 +16,10 @@ import { FixedPowerInteractive } from './controlledExperiments/FixedPowerInterac
 import { StretchingInteractive } from './controlledExperiments/StretchingInteractive'
 import { ConstantTempInteractive } from './controlledExperiments/ConstantTempInteractive'
 import { CircuitFailureInteractive } from './controlledExperiments/CircuitFailureInteractive'
+import { ElectricalEnergyInteractive } from './energyConservation/ElectricalEnergyInteractive'
+import { ChargeConservationInteractive } from './energyConservation/ChargeConservationInteractive'
+import { CircuitPowerBalanceInteractive } from './energyConservation/CircuitPowerBalanceInteractive'
+import { MechanicalRampConservationInteractive } from './energyConservation/MechanicalRampConservationInteractive'
 import { PredictCard } from '../kit/PredictCard'
 import { ExamQuestion } from '../kit/ExamQuestion'
 import { ShareButton } from '../kit/ShareButton'
@@ -29,6 +34,7 @@ const ALL_CONTENT = {
   ...RATE_VS_TOTAL_CONTENT,
   ...SQUARES_AND_INVERSES_CONTENT,
   ...CONTROLLED_EXPERIMENTS_CONTENT,
+  ...ENERGY_CONSERVATION_CONTENT,
 }
 
 export function ConceptHub() {
@@ -203,6 +209,10 @@ export function ConceptHub() {
           {activeConcept.id === 'stretching-vs-comparing' && <StretchingInteractive lang={lang} />}
           {activeConcept.id === 'constant-temp-ohmic' && <ConstantTempInteractive lang={lang} />}
           {activeConcept.id === 'series-parallel-failure' && <CircuitFailureInteractive lang={lang} />}
+          {activeConcept.id === 'electrical-energy-transfer' && <ElectricalEnergyInteractive lang={lang} />}
+          {activeConcept.id === 'charge-conservation-junction' && <ChargeConservationInteractive lang={lang} />}
+          {activeConcept.id === 'circuit-power-balance' && <CircuitPowerBalanceInteractive lang={lang} />}
+          {activeConcept.id === 'mechanical-ramp-conservation' && <MechanicalRampConservationInteractive lang={lang} />}
 
           {/* Core Insight Callout */}
           <div style={{ background: '#f0fdf4', border: '1.5px solid #86efac', borderRadius: '8px', padding: '1rem', margin: '1.25rem 0' }}>
