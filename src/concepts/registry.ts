@@ -17,6 +17,10 @@ export type ConceptId =
   | 'diameter-trap'
   | 'voltage-squared-power'
   | 'gravity-inverse-square'
+  | 'fixed-voltage-vs-current'
+  | 'stretching-vs-comparing'
+  | 'constant-temp-ohmic'
+  | 'series-parallel-failure'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -60,6 +64,14 @@ export const THREADS: readonly ThreadRecord[] = [
     tagline: {
       en: 'Conquer the biggest board-exam trap: when quantities scale by squares (4×, 9×) or invert (1/2, 1/4).',
       hi: 'बोर्ड परीक्षा का सबसे बड़ा जाल समझें: जब चीजें वर्ग (4×, 9×) या व्युत्क्रम (1/2, 1/4) में बदलती हैं।',
+    },
+  },
+  {
+    id: 'controlled-experiments',
+    title: { en: 'What is Held Fixed?', hi: 'क्या स्थिर रखा गया है? (Controlled Experiments)' },
+    tagline: {
+      en: 'The #1 source of board mistakes: pick the right formula based on what is kept constant (fixed V vs fixed I, stretching vs cutting).',
+      hi: 'बोर्ड परीक्षा की सबसे बड़ी भूल से बचें: देखें क्या स्थिर है (समानांतर में V या श्रेणीक्रम में I; खींचने पर आयतन या तार बदलना)।',
     },
   },
 ]
@@ -184,6 +196,68 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     contexts: [{ en: 'Space satellite orbiting Earth at high altitude', hi: 'पृथ्वी की कक्षा में उपग्रह की दूरी' }],
     boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 10: Gravitation' }],
     deepDiveRoute: '/',
+    status: 'pilot',
+  },
+
+  // Thread 3: Controlled Experiments ("What is Held Fixed?")
+  {
+    id: 'fixed-voltage-vs-current',
+    thread: 'controlled-experiments',
+    title: { en: 'Fixed V vs Fixed I: The Power Paradox', hi: 'स्थिर वोल्टेज बनाम स्थिर धारा: शक्ति का द्वंद्व' },
+    oneLine: {
+      en: 'In parallel (fixed V), lower R draws MORE power (P = V²/R). In series (fixed I), higher R consumes MORE power (P = I²R)!',
+      hi: 'समानांतर (स्थिर V) में कम प्रतिरोध अधिक शक्ति खींचता है (P = V²/R)। श्रेणीक्रम (स्थिर I) में अधिक प्रतिरोध अधिक शक्ति लेता है (P = I²R)!',
+    },
+    prerequisites: ['power-vs-energy', 'voltage-squared-power'],
+    misconceptionIds: ['higher-r-always-more-heat', 'same-formula-fits-all'],
+    contexts: [{ en: '60 W vs 100 W bulb in house wiring vs Diwali series string', hi: 'घर में 60W व 100W बल्ब बनाम दिवाली की लड़ियाँ' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.8)' }],
+    deepDiveRoute: '/power-heating',
+    status: 'pilot',
+  },
+  {
+    id: 'stretching-vs-comparing',
+    thread: 'controlled-experiments',
+    title: { en: 'Stretching vs Comparing Wires (n² vs n)', hi: 'तार खींचना बनाम अलग तार: आयतन संरक्षण (n² बनाम n)' },
+    oneLine: {
+      en: 'Doubling length by taking a longer wire doubles R (2×). Stretching the SAME wire doubles L but halves A, quadrupling R (4×)!',
+      hi: 'दूसरा लंबा तार लेने पर R 2 गुना होता है। लेकिन उसी तार को खींचने पर लंबाई 2× और क्षेत्रफल आधा होने से R 4 गुना (n²) हो जाता है!',
+    },
+    prerequisites: ['inverse-area-scaling', 'diameter-trap'],
+    misconceptionIds: ['stretching-only-changes-length', 'volume-changes-on-stretching'],
+    contexts: [{ en: 'Drawing copper wire into a thinner gauge in industry', hi: 'फैक्ट्री में तांबे के तार को खींचकर पतला करना' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.5)' }],
+    deepDiveRoute: '/resistivity',
+    status: 'pilot',
+  },
+  {
+    id: 'constant-temp-ohmic',
+    thread: 'controlled-experiments',
+    title: { en: 'Ohm’s Law Condition: "Constant Temperature"', hi: 'ओम के नियम की शर्त: "स्थिर तापमान"' },
+    oneLine: {
+      en: 'V ∝ I holds ONLY when temperature is constant. Real incandescent bulbs heat up, increasing R and bending the V-I curve!',
+      hi: 'V ∝ I केवल तभी लागू होता है जब तापमान स्थिर रहे। बल्ब गर्म होने पर उसका प्रतिरोध बढ़ जाता है और V-I वक्र मुड़ जाता है!',
+    },
+    prerequisites: ['mapped-ohms-law'],
+    misconceptionIds: ['ohms-law-always-linear', 'temperature-has-no-effect'],
+    contexts: [{ en: 'Tungsten filament bulb V-I characteristic vs nichrome wire', hi: 'टंगस्टन बल्ब का V-I ग्राफ बनाम नाइक्रोम तार' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.2)' }],
+    deepDiveRoute: '/electricity',
+    status: 'pilot',
+  },
+  {
+    id: 'series-parallel-failure',
+    thread: 'controlled-experiments',
+    title: { en: 'Failure Modes: Series vs Parallel', hi: 'खराबी का प्रभाव: श्रेणीक्रम बनाम पार्श्वक्रम' },
+    oneLine: {
+      en: 'In series, 1 blown bulb breaks the only circuit loop and kills all bulbs. In parallel, each appliance has its own path.',
+      hi: 'श्रेणीक्रम में 1 बल्ब फ्यूज होने से पूरा परिपथ टूट जाता है। समानांतर में प्रत्येक उपकरण का स्वतंत्र परिपथ रहता है।',
+    },
+    prerequisites: ['mapped-series-parallel'],
+    misconceptionIds: ['parallel-failure-affects-all', 'series-is-more-reliable'],
+    contexts: [{ en: 'Diwali fairy lights vs domestic kitchen and bedroom lighting', hi: 'दीपावली की लड़ियाँ बनाम घर के कमरे की लाइट' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Electricity (12.6)' }],
+    deepDiveRoute: '/series-parallel',
     status: 'pilot',
   },
 

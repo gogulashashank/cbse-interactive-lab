@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { CONCEPTS, getConceptById, getPilotConcepts, THREADS, type ThreadId } from './registry'
 import { RATE_VS_TOTAL_CONTENT } from './rateVsTotal/content'
 import { SQUARES_AND_INVERSES_CONTENT } from './squaresAndInverses/content'
+import { CONTROLLED_EXPERIMENTS_CONTENT } from './controlledExperiments/content'
 import { BucketInteractive } from './rateVsTotal/BucketInteractive'
 import { ChargeInteractive } from './rateVsTotal/ChargeInteractive'
 import { EnergyInteractive } from './rateVsTotal/EnergyInteractive'
@@ -10,6 +11,10 @@ import { InverseAreaInteractive } from './squaresAndInverses/InverseAreaInteract
 import { DiameterTrapInteractive } from './squaresAndInverses/DiameterTrapInteractive'
 import { VoltageSquaredInteractive } from './squaresAndInverses/VoltageSquaredInteractive'
 import { GravityInverseInteractive } from './squaresAndInverses/GravityInverseInteractive'
+import { FixedPowerInteractive } from './controlledExperiments/FixedPowerInteractive'
+import { StretchingInteractive } from './controlledExperiments/StretchingInteractive'
+import { ConstantTempInteractive } from './controlledExperiments/ConstantTempInteractive'
+import { CircuitFailureInteractive } from './controlledExperiments/CircuitFailureInteractive'
 import { PredictCard } from '../kit/PredictCard'
 import { ExamQuestion } from '../kit/ExamQuestion'
 import { ShareButton } from '../kit/ShareButton'
@@ -23,6 +28,7 @@ const PROGRESS_KEY = 'cil.progress'
 const ALL_CONTENT = {
   ...RATE_VS_TOTAL_CONTENT,
   ...SQUARES_AND_INVERSES_CONTENT,
+  ...CONTROLLED_EXPERIMENTS_CONTENT,
 }
 
 export function ConceptHub() {
@@ -193,6 +199,10 @@ export function ConceptHub() {
           {activeConcept.id === 'diameter-trap' && <DiameterTrapInteractive lang={lang} />}
           {activeConcept.id === 'voltage-squared-power' && <VoltageSquaredInteractive lang={lang} />}
           {activeConcept.id === 'gravity-inverse-square' && <GravityInverseInteractive lang={lang} />}
+          {activeConcept.id === 'fixed-voltage-vs-current' && <FixedPowerInteractive lang={lang} />}
+          {activeConcept.id === 'stretching-vs-comparing' && <StretchingInteractive lang={lang} />}
+          {activeConcept.id === 'constant-temp-ohmic' && <ConstantTempInteractive lang={lang} />}
+          {activeConcept.id === 'series-parallel-failure' && <CircuitFailureInteractive lang={lang} />}
 
           {/* Core Insight Callout */}
           <div style={{ background: '#f0fdf4', border: '1.5px solid #86efac', borderRadius: '8px', padding: '1rem', margin: '1.25rem 0' }}>
