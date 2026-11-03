@@ -3458,3 +3458,779 @@ summary:focus-visible,
   margin-top: 0.75rem;
 }
 
+/* -------------------------------------------------------------
+ * Commercial Electrical Energy & Utility Bills Styling (.bill-*)
+ * ------------------------------------------------------------- */
+
+.bill-meter-svg-wrap {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.bill-meter-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.bill-joules-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.bill-joules-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bill-joules-val {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #0f172a;
+  font-family: var(--font-mono, monospace);
+  margin-top: 0.15rem;
+}
+
+.bill-joules-sub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0284c7;
+  margin-top: 0.1rem;
+}
+
+.bill-appliances-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.bill-app-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.55rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.bill-app-card.is-disabled {
+  background: #f8fafc;
+  opacity: 0.65;
+  border-style: dashed;
+}
+
+.bill-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bill-app-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bill-app-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.bill-app-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  display: block;
+}
+
+.bill-app-meta {
+  font-size: 0.78rem;
+  color: #64748b;
+  display: block;
+}
+
+.bill-toggle-btn {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.35rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.bill-toggle-btn.is-on {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+.bill-toggle-btn.is-off {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+.bill-app-body {
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.bill-app-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.45rem;
+  padding: 0.35rem 0.5rem;
+  background: #f8fafc;
+  border-radius: 0.35rem;
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+.bill-breakdown-svg-wrap {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.bill-breakdown-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+/* ==========================================================================
+   Domestic Electric Circuits & Safety (.safe-*)
+   ========================================================================== */
+
+.safe-diagram-wrapper {
+  background: #0f172a;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.safe-diagram-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  color: #f8fafc;
+  font-size: 0.85rem;
+}
+
+.safe-diagram-badge {
+  background: #1e293b;
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.35rem;
+  font-weight: 700;
+  border: 1px solid #334155;
+  color: #38bdf8;
+}
+
+.safe-diagram-indicator {
+  color: #94a3b8;
+}
+
+.safe-diagram-indicator strong {
+  color: #f8fafc;
+}
+
+.safe-circuit-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+.safe-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.safe-control-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.65rem;
+  padding: 1.15rem;
+}
+
+.safe-appliances-card {
+  grid-column: 1 / -1;
+}
+
+.safe-control-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.safe-control-desc {
+  margin: 0 0 0.85rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.safe-fuse-selector,
+.safe-fault-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.safe-pill-btn {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0.35rem;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.safe-pill-btn:hover {
+  background: #e2e8f0;
+}
+
+.safe-pill-btn.is-active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.safe-pill-btn.is-danger.is-active {
+  background: #dc2626;
+  border-color: #b91c1c;
+  color: #ffffff;
+}
+
+.safe-pill-btn.is-warning.is-active {
+  background: #d97706;
+  border-color: #b45309;
+  color: #ffffff;
+}
+
+.safe-fuse-status-box {
+  padding: 0.65rem 0.75rem;
+  background: #f8fafc;
+  border-radius: 0.35rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.safe-text-danger {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.safe-text-warning {
+  color: #d97706;
+  font-weight: 700;
+}
+
+.safe-text-success {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.safe-reset-btn {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.safe-reset-btn:hover {
+  background: #f1f5f9;
+}
+
+.safe-earthing-toggle-row {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.safe-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.safe-appliances-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.85rem;
+}
+
+.safe-appliance-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: #f8fafc;
+  transition: all 0.15s ease;
+}
+
+.safe-appliance-item.is-on {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
+.safe-app-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.45rem;
+}
+
+.safe-app-icon {
+  font-size: 1.25rem;
+}
+
+.safe-app-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.safe-app-specs {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 0.65rem;
+}
+
+.safe-switch-btn {
+  width: 100%;
+  padding: 0.35rem 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.3rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.safe-switch-btn.is-on {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+.safe-switch-btn.is-off {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+.safe-metrics-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.85rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.65rem;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.safe-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.safe-metric-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.safe-metric-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.safe-summary-alert {
+  padding: 0.85rem 1.15rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.safe-summary-alert.is-normal {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.safe-summary-alert.is-tripped {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.safe-summary-alert.is-danger {
+  background: #fff1f2;
+  border: 1px solid #fda4af;
+  color: #9f1239;
+}
+
+.safe-discovery-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.safe-tab-btn {
+  padding: 0.55rem 0.95rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 0.4rem;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.safe-tab-btn.is-active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+.safe-discovery-card {
+  padding: 1.5rem;
+}
+
+.safe-discovery-obj {
+  font-size: 0.92rem;
+  color: #475569;
+  margin-bottom: 0.85rem;
+}
+
+.safe-preset-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.35rem;
+  font-size: 0.82rem;
+  color: #334155;
+  margin-bottom: 1rem;
+}
+
+.safe-reload-preset-btn {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.safe-discovery-q {
+  font-size: 1rem;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.safe-key-takeaway {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  font-size: 0.88rem;
+  color: #1e293b;
+}
+
+.safe-misc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.safe-misc-myth,
+.safe-misc-reality {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.safe-misc-myth p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #dc2626;
+  font-style: italic;
+}
+
+.safe-misc-reality p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #15803d;
+  font-weight: 600;
+}
+
+.safe-misc-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.safe-misc-badge.myth {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.safe-misc-badge.reality {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.safe-misc-exp {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.safe-ncert-ref {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.safe-theory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.safe-theory-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: #0f172a;
+}
+
+.safe-theory-item p {
+  margin: 0 0 0.5rem;
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.safe-theory-item code {
+  display: block;
+  background: #f1f5f9;
+  padding: 0.45rem 0.65rem;
+  border-radius: 0.35rem;
+  font-size: 0.85rem;
+  color: #0f172a;
+  margin-bottom: 0.65rem;
+}
+
+.safe-ncert-tag {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.safe-problem-stmt {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+.safe-given-data {
+  background: #f8fafc;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.35rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.safe-given-data ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.safe-steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.safe-step-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.35rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.safe-step-title {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.safe-step-formula,
+.safe-step-calc,
+.safe-step-result {
+  margin-top: 0.2rem;
+  color: #334155;
+}
+
+.safe-conclusion-box {
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  color: #1e3a8a;
+  border-radius: 0 0.35rem 0.35rem 0;
+}
+
+.safe-practice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.safe-practice-card {
+  padding: 1.25rem;
+}
+
+.safe-practice-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.safe-level-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.safe-level-badge.level-foundation {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.safe-level-badge.level-standard {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.safe-level-badge.level-advanced {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.safe-level-badge.level-exemplar {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.safe-level-badge.level-challenge {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.safe-practice-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.safe-practice-question {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.safe-practice-actions {
+  margin-top: 1rem;
+}
+
+.safe-trap-box {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: #b45309;
+}
+
+.safe-solution-steps {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: #1e293b;
+}
+
+.safe-solution-steps ol {
+  margin: 0.35rem 0 0;
+  padding-left: 1.25rem;
+  line-height: 1.5;
+}
+
+.safe-summary-bullets {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.5;
+}

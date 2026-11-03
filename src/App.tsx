@@ -5,6 +5,8 @@ import { ElectricityLesson } from './features/electricity/ElectricityLesson'
 import { SeriesParallelLesson } from './features/seriesParallel/SeriesParallelLesson'
 import { ResistivityLesson } from './features/resistivity/ResistivityLesson'
 import { PowerHeatingLesson } from './features/powerHeating/PowerHeatingLesson'
+import { BillingLesson } from './features/billing/BillingLesson'
+import { SafetyLesson } from './features/safety/SafetyLesson'
 import { ConvexLensLesson } from './features/lens/ConvexLensLesson'
 import { RampExperiment } from './features/ramp/RampExperiment'
 
@@ -17,6 +19,11 @@ export type AppRoutePath =
   | '/resistivity'
   | '/power-heating'
   | '/heating'
+  | '/billing'
+  | '/electricity-bill'
+  | '/safety'
+  | '/domestic-circuits'
+  | '/fuses'
 
 function resolveRouteFromPathname(pathname: string): AppRoutePath {
   const normalized = pathname.replace(/\/+$/, '') || '/'
@@ -25,6 +32,8 @@ function resolveRouteFromPathname(pathname: string): AppRoutePath {
   if (normalized === '/series-parallel') return '/series-parallel'
   if (normalized === '/resistivity') return '/resistivity'
   if (normalized === '/power-heating' || normalized === '/heating') return '/power-heating'
+  if (normalized === '/billing' || normalized === '/electricity-bill') return '/billing'
+  if (normalized === '/safety' || normalized === '/domestic-circuits' || normalized === '/fuses') return '/safety'
   return '/'
 }
 
@@ -93,6 +102,14 @@ function App() {
 
   function handleOpenPowerHeatingLesson() {
     navigateToRoute('/power-heating')
+  }
+
+  function handleOpenBillingLesson() {
+    navigateToRoute('/billing')
+  }
+
+  function handleOpenSafetyLesson() {
+    navigateToRoute('/safety')
   }
 
   return (
@@ -187,6 +204,26 @@ function App() {
           <button
             type="button"
             className={`platform-lesson-btn ${
+              routePath === '/billing' || routePath === '/electricity-bill' ? 'is-active' : ''
+            }`}
+            aria-pressed={routePath === '/billing' || routePath === '/electricity-bill'}
+            onClick={handleOpenBillingLesson}
+          >
+            Electricity Bill: Watts, kWh &amp; Cost
+          </button>
+          <button
+            type="button"
+            className={`platform-lesson-btn ${
+              routePath === '/safety' || routePath === '/domestic-circuits' || routePath === '/fuses' ? 'is-active' : ''
+            }`}
+            aria-pressed={routePath === '/safety' || routePath === '/domestic-circuits' || routePath === '/fuses'}
+            onClick={handleOpenSafetyLesson}
+          >
+            Domestic Safety: Fuses &amp; Earthing
+          </button>
+          <button
+            type="button"
+            className={`platform-lesson-btn ${
               routePath === '/' && activeLesson === 'inclined-ramp' ? 'is-active' : ''
             }`}
             aria-pressed={routePath === '/' && activeLesson === 'inclined-ramp'}
@@ -199,7 +236,11 @@ function App() {
 
       {/* Active Lesson Content */}
       <div className="platform-content-area">
-        {routePath === '/power-heating' || routePath === '/heating' ? (
+        {routePath === '/safety' || routePath === '/domestic-circuits' || routePath === '/fuses' ? (
+          <SafetyLesson />
+        ) : routePath === '/billing' || routePath === '/electricity-bill' ? (
+          <BillingLesson />
+        ) : routePath === '/power-heating' || routePath === '/heating' ? (
           <PowerHeatingLesson />
         ) : routePath === '/resistivity' ? (
           <ResistivityLesson />
