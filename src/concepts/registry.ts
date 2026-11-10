@@ -1,6 +1,11 @@
 import type { Localized } from '../kit/i18n'
 
-export type ThreadId = 'rate-vs-total' | 'squares-and-inverses' | 'energy-conservation' | 'controlled-experiments'
+export type ThreadId =
+  | 'rate-vs-total'
+  | 'squares-and-inverses'
+  | 'energy-conservation'
+  | 'controlled-experiments'
+  | 'conventions-and-inversions'
 
 export interface ThreadRecord {
   id: ThreadId
@@ -25,6 +30,10 @@ export type ConceptId =
   | 'charge-conservation-junction'
   | 'circuit-power-balance'
   | 'mechanical-ramp-conservation'
+  | 'cartesian-sign-trap'
+  | 'real-vs-virtual-switch'
+  | 'magnification-code'
+  | 'lens-power-dioptre'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -84,6 +93,14 @@ export const THREADS: readonly ThreadRecord[] = [
     tagline: {
       en: 'Energy cannot vanish: see how electrical work becomes heat, charges never disappear at junctions, and battery power balances the loads.',
       hi: 'ऊर्जा कभी नष्ट नहीं होती: देखें विद्युत कार्य कैसे ऊष्मा बनता है, जोड़ पर आवेश सुरक्षित रहता है और बैटरी शक्ति लोड को संतुलित करती है।',
+    },
+  },
+  {
+    id: 'conventions-and-inversions',
+    title: { en: 'Optics: Signs & Inversions', hi: 'प्रकाशिकी: चिह्न एवं प्रतिबिंब (Optics & Signs)' },
+    tagline: {
+      en: 'Master Class 10 Light numericals without memorization: Cartesian +/- signs, the focal crossover point, magnification decoding, and Dioptres.',
+      hi: 'बिना रटे कक्षा 10 प्रकाशिकी के सवाल हल करें: कार्तीय चिह्न (+/-), फोकस संक्रमण बिंदु, आवर्धन डिकोडिंग और लेंस की क्षमता (डाइऑप्टर)।',
     },
   },
 ]
@@ -331,7 +348,69 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     misconceptionIds: ['energy-lost-sliding-down'],
     contexts: [{ en: 'Roller coaster descent and ramp experiment', hi: 'रोलर कोस्टर और रैंप प्रयोग' }],
     boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 11: Work and Energy' }],
-    deepDiveRoute: '/ramp',
+    deepDiveRoute: '/',
+    status: 'pilot',
+  },
+
+  // Thread 5: Optics — Conventions & Inversions
+  {
+    id: 'cartesian-sign-trap',
+    thread: 'conventions-and-inversions',
+    title: { en: 'New Cartesian Sign Trap (u, v, f)', hi: 'नई कार्तीय चिह्न परिपाटी (u, v, f)' },
+    oneLine: {
+      en: 'Object distance u is ALWAYS negative (-). Convex has positive focus (+f); Concave has negative focus (-f).',
+      hi: 'बिंब दूरी u सदैव ऋणात्मक (-) होती है। उत्तल की फोकस दूरी धनात्मक (+f) और अवतल की ऋणात्मक (-f) होती है।',
+    },
+    prerequisites: [],
+    misconceptionIds: ['positive-object-distance', 'concave-positive-focus'],
+    contexts: [{ en: 'Optical bench ray measurements', hi: 'प्रकाशिक बेंच पर दूरियां मापना' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 9: Light (9.2.3 & 9.3.4)' }],
+    deepDiveRoute: '/alternative',
+    status: 'pilot',
+  },
+  {
+    id: 'real-vs-virtual-switch',
+    thread: 'conventions-and-inversions',
+    title: { en: 'The Focal Crossover: Real vs Virtual', hi: 'फोकस संक्रमण: वास्तविक बनाम आभासी' },
+    oneLine: {
+      en: 'Outside F (|u| > f), a convex lens forms a Real & Inverted image. Inside F (|u| < f), it flips to Virtual, Erect & Magnified!',
+      hi: 'फोकस F के बाहर (|u| > f) उत्तल लेंस वास्तविक व उल्टा प्रतिबिंब बनाता है। F के भीतर (|u| < f) यह आभासी, सीधा व बड़ा हो जाता है!',
+    },
+    prerequisites: ['cartesian-sign-trap'],
+    misconceptionIds: ['convex-always-real', 'magnifying-glass-outside-focus'],
+    contexts: [{ en: 'Cinema projector vs reading magnifying glass', hi: 'सिनेमा प्रोजेक्टर बनाम पढ़ने का आवर्धक लेंस' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 9: Light (9.3.3)' }],
+    deepDiveRoute: '/alternative',
+    status: 'pilot',
+  },
+  {
+    id: 'magnification-code',
+    thread: 'conventions-and-inversions',
+    title: { en: 'Decoding Magnification (m = ±|m|)', hi: 'आवर्धन का दोहरा संकेत (m = ±|m|)' },
+    oneLine: {
+      en: 'Sign of m reveals orientation (- = Real/Inverted, + = Virtual/Erect); magnitude |m| reveals relative size (<1 smaller, >1 larger).',
+      hi: 'm का चिह्न प्रकृति बताता है (- = वास्तविक/उल्टा, + = आभासी/सीधा); परिमाण |m| आकार बताता है (<1 छोटा, >1 बड़ा)।',
+    },
+    prerequisites: ['cartesian-sign-trap', 'real-vs-virtual-switch'],
+    misconceptionIds: ['negative-magnification-means-diminished'],
+    contexts: [{ en: 'Rear-view convex mirror (+0.3) vs projector (-3.0)', hi: 'वाहन का उत्तल दर्पण (+0.3) बनाम प्रोजेक्टर (-3.0)' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 9: Light (9.2.4 & 9.3.5)' }],
+    deepDiveRoute: '/alternative',
+    status: 'pilot',
+  },
+  {
+    id: 'lens-power-dioptre',
+    thread: 'conventions-and-inversions',
+    title: { en: 'Lens Power & The Centimetre Trap (P = 100/f_cm)', hi: 'लेंस की क्षमता और सेमी का जाल (P = 100/f_cm)' },
+    oneLine: {
+      en: 'Dioptre is defined per METRE (P = 1/f_m = 100/f_cm). Shorter focal length means sharper ray bending and higher power!',
+      hi: 'डाइऑप्टर मीटर में परिभाषित है (P = 1/f_m = 100/f_cm)। कम फोकस दूरी का अर्थ है अधिक मोड़ और अधिक क्षमता!',
+    },
+    prerequisites: ['cartesian-sign-trap', 'inverse-area-scaling'],
+    misconceptionIds: ['dioptre-uses-centimetres'],
+    contexts: [{ en: 'Optometrist eye prescription (+2.0 D vs -1.5 D)', hi: 'चश्मे का नंबर (+2.0 D बनाम -1.5 D)' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 9: Light (9.3.6)' }],
+    deepDiveRoute: '/alternative',
     status: 'pilot',
   },
 

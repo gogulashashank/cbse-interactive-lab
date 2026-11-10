@@ -4,6 +4,7 @@ import { RATE_VS_TOTAL_CONTENT } from './rateVsTotal/content'
 import { SQUARES_AND_INVERSES_CONTENT } from './squaresAndInverses/content'
 import { CONTROLLED_EXPERIMENTS_CONTENT } from './controlledExperiments/content'
 import { ENERGY_CONSERVATION_CONTENT } from './energyConservation/content'
+import { CONVENTIONS_AND_INVERSIONS_CONTENT } from './conventionsAndInversions/content'
 import { BucketInteractive } from './rateVsTotal/BucketInteractive'
 import { ChargeInteractive } from './rateVsTotal/ChargeInteractive'
 import { EnergyInteractive } from './rateVsTotal/EnergyInteractive'
@@ -20,6 +21,10 @@ import { ElectricalEnergyInteractive } from './energyConservation/ElectricalEner
 import { ChargeConservationInteractive } from './energyConservation/ChargeConservationInteractive'
 import { CircuitPowerBalanceInteractive } from './energyConservation/CircuitPowerBalanceInteractive'
 import { MechanicalRampConservationInteractive } from './energyConservation/MechanicalRampConservationInteractive'
+import { CartesianSignInteractive } from './conventionsAndInversions/CartesianSignInteractive'
+import { RealVirtualCrossoverInteractive } from './conventionsAndInversions/RealVirtualCrossoverInteractive'
+import { MagnificationDecoderInteractive } from './conventionsAndInversions/MagnificationDecoderInteractive'
+import { LensPowerInteractive } from './conventionsAndInversions/LensPowerInteractive'
 import { PredictCard } from '../kit/PredictCard'
 import { ExamQuestion } from '../kit/ExamQuestion'
 import { ShareButton } from '../kit/ShareButton'
@@ -35,6 +40,7 @@ const ALL_CONTENT = {
   ...SQUARES_AND_INVERSES_CONTENT,
   ...CONTROLLED_EXPERIMENTS_CONTENT,
   ...ENERGY_CONSERVATION_CONTENT,
+  ...CONVENTIONS_AND_INVERSIONS_CONTENT,
 }
 
 export function ConceptHub() {
@@ -213,6 +219,10 @@ export function ConceptHub() {
           {activeConcept.id === 'charge-conservation-junction' && <ChargeConservationInteractive lang={lang} />}
           {activeConcept.id === 'circuit-power-balance' && <CircuitPowerBalanceInteractive lang={lang} />}
           {activeConcept.id === 'mechanical-ramp-conservation' && <MechanicalRampConservationInteractive lang={lang} />}
+          {activeConcept.id === 'cartesian-sign-trap' && <CartesianSignInteractive lang={lang} />}
+          {activeConcept.id === 'real-vs-virtual-switch' && <RealVirtualCrossoverInteractive lang={lang} />}
+          {activeConcept.id === 'magnification-code' && <MagnificationDecoderInteractive lang={lang} />}
+          {activeConcept.id === 'lens-power-dioptre' && <LensPowerInteractive lang={lang} />}
 
           {/* Core Insight Callout */}
           <div style={{ background: '#f0fdf4', border: '1.5px solid #86efac', borderRadius: '8px', padding: '1rem', margin: '1.25rem 0' }}>
