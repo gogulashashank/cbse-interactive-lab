@@ -45,7 +45,18 @@ const ALL_CONTENT = {
 
 export function ConceptHub() {
   const { lang, projector } = usePrefs()
-  const [selectedThread, setSelectedThread] = useState<ThreadId>('rate-vs-total')
+  const [selectedThread, setSelectedThread] = useState<ThreadId>(() => {
+    if (typeof window === 'undefined') return 'rate-vs-total'
+    const parts = window.location.pathname.split('/').filter(Boolean)
+    const initialId = parts[1]
+    if (initialId) {
+      const c = getConceptById(initialId)
+      if (c) return c.thread
+    }
+    return 'rate-vs-total'
+  })
+  const [searchQuery, setSearchQuery] = useState('')
+  const [classFilter, setClassFilter] = useState<'all' | 9 | 10>('all')
   const [completed, setCompleted] = useState<string[]>(() => {
     const raw = safeGetItem(PROGRESS_KEY)
     return raw ? JSON.parse(raw) : []
@@ -96,8 +107,32 @@ export function ConceptHub() {
   const pilotConcepts = getPilotConcepts()
   const activeConcept = activeConceptId ? getConceptById(activeConceptId) : null
   const content = activeConceptId ? ALL_CONTENT[activeConceptId] : null
-  const threadConcepts = pilotConcepts.filter((c) => c.thread === selectedThread)
   const currentThread = THREADS.find((t) => t.id === selectedThread) || THREADS[0]
+
+  const isFiltering = searchQuery.trim().length > 0 || classFilter !== 'all'
+  const displayedConcepts = pilotConcepts.filter((c) => {
+    if (!isFiltering && c.thread !== selectedThread) return false
+    if (classFilter !== 'all' && !c.boardMapping.some((b) => b.classLevel === classFilter)) return false
+    if (searchQuery.trim().length > 0) {
+      const q = searchQuery.trim().toLowerCase()
+      const itemContent = ALL_CONTENT[c.id]
+      const hay = [
+        c.title.en,
+        c.title.hi,
+        c.oneLine.en,
+        c.oneLine.hi,
+        c.boardMapping.map((b) => b.chapterRef).join(' '),
+        c.misconceptionIds.join(' '),
+        itemContent?.insightFormula || '',
+        itemContent?.insightTerm.en || '',
+        itemContent?.insightTerm.hi || '',
+      ]
+        .join(' ')
+        .toLowerCase()
+      if (!hay.includes(q)) return false
+    }
+    return true
+  })
 
   return (
     <main
@@ -131,20 +166,67 @@ export function ConceptHub() {
         </div>
       </header>
 
-      {/* Thread Switcher Tabs when on Hub overview */}
+      {/* Search & Class Filter + Thread Switcher Tabs when on Hub overview */}
       {!activeConceptId && (
-        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.25rem', overflowX: 'auto', paddingBottom: '0.25rem' }}>
-          {THREADS.map((thread) => (
-            <button
-              key={thread.id}
-              type="button"
-              className={`kit-btn ${selectedThread === thread.id ? 'kit-btn-primary' : 'kit-btn-secondary'}`}
-              style={{ fontSize: '0.9rem', whiteSpace: 'nowrap' }}
-              onClick={() => setSelectedThread(thread.id)}
-            >
-              {thread.title[lang]}
-            </button>
-          ))}
+        <div style={{ marginBottom: '1.25rem' }}>
+          {/* Search and Class Level Filter Row */}
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={
+                lang === 'hi'
+                  ? 'सूत्र, अध्याय या अवधारणा खोजें (जैसे: ओम, लेंस, kWh, V²/R)...'
+                  : 'Search formula, chapter, or trap (e.g. Ohm, lens, kWh, V²/R)...'
+              }
+              aria-label={lang === 'hi' ? 'अवधारणा खोजें' : 'Search concepts'}
+              style={{
+                flex: '1 1 240px',
+                padding: '0.55rem 0.85rem',
+                borderRadius: '6px',
+                border: '1.5px solid #cbd5e1',
+                fontSize: '0.9rem',
+                fontFamily: 'inherit',
+              }}
+            />
+            <div style={{ display: 'flex', gap: '0.35rem' }}>
+              {(
+                [
+                  { id: 'all', en: 'All Classes', hi: 'सभी कक्षाएं' },
+                  { id: 10, en: 'Class 10', hi: 'कक्षा 10' },
+                  { id: 9, en: 'Class 9', hi: 'कक्षा 9' },
+                ] as const
+              ).map((tab) => (
+                <button
+                  key={String(tab.id)}
+                  type="button"
+                  className={`kit-btn ${classFilter === tab.id ? 'kit-btn-primary' : 'kit-btn-secondary'}`}
+                  style={{ fontSize: '0.82rem', padding: '6px 10px' }}
+                  onClick={() => setClassFilter(tab.id)}
+                >
+                  {lang === 'hi' ? tab.hi : tab.en}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Thread Switcher Tabs (shown when not actively searching across all threads) */}
+          {!isFiltering && (
+            <div style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto', paddingBottom: '0.25rem' }}>
+              {THREADS.map((thread) => (
+                <button
+                  key={thread.id}
+                  type="button"
+                  className={`kit-btn ${selectedThread === thread.id ? 'kit-btn-primary' : 'kit-btn-secondary'}`}
+                  style={{ fontSize: '0.9rem', whiteSpace: 'nowrap' }}
+                  onClick={() => setSelectedThread(thread.id)}
+                >
+                  {thread.title[lang]}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -296,16 +378,20 @@ export function ConceptHub() {
           </footer>
         </article>
       ) : (
-        /* Thread Overview: Cards in selected thread */
+        /* Thread Overview: Cards in selected thread or search results */
         <section>
           <div style={{ marginBottom: '1rem' }}>
             <p style={{ margin: 0, fontSize: '0.95rem', color: '#475569' }}>
-              {currentThread.tagline[lang]}
+              {isFiltering
+                ? lang === 'hi'
+                  ? `${displayedConcepts.length} मिलान मिले (सभी अध्यायों में से)`
+                  : `Showing ${displayedConcepts.length} matching concept cards across all threads`
+                : currentThread.tagline[lang]}
             </p>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-            {threadConcepts.map((concept, idx) => {
+            {displayedConcepts.map((concept, idx) => {
               const isDone = completed.includes(concept.id)
               return (
                 <div

@@ -2,6 +2,19 @@ import { describe, expect, it } from 'vitest'
 import { findMissingTranslations } from '../kit/i18n'
 import { resolveStandaloneRoute } from '../platform/routeRegistry'
 import { CONCEPTS, getConceptById, getPilotConcepts, THREADS } from './registry'
+import { RATE_VS_TOTAL_CONTENT } from './rateVsTotal/content'
+import { SQUARES_AND_INVERSES_CONTENT } from './squaresAndInverses/content'
+import { CONTROLLED_EXPERIMENTS_CONTENT } from './controlledExperiments/content'
+import { ENERGY_CONSERVATION_CONTENT } from './energyConservation/content'
+import { CONVENTIONS_AND_INVERSIONS_CONTENT } from './conventionsAndInversions/content'
+
+const ALL_CONTENT = {
+  ...RATE_VS_TOTAL_CONTENT,
+  ...SQUARES_AND_INVERSES_CONTENT,
+  ...CONTROLLED_EXPERIMENTS_CONTENT,
+  ...ENERGY_CONSERVATION_CONTENT,
+  ...CONVENTIONS_AND_INVERSIONS_CONTENT,
+}
 
 describe('Concept Registry Integrity', () => {
   it('has unique concept ids and valid thread associations', () => {
@@ -53,6 +66,11 @@ describe('Concept Registry Integrity', () => {
     pilot.forEach((c) => {
       const missing = findMissingTranslations(c)
       expect(missing).toEqual([])
+      const content = ALL_CONTENT[c.id]
+      expect(content).toBeDefined()
+      expect(findMissingTranslations(content)).toEqual([])
+      expect(content.predictOptions.length).toBeGreaterThanOrEqual(2)
+      expect(content.examQuestions.length).toBeGreaterThanOrEqual(1)
     })
   })
 
