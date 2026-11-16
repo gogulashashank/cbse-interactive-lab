@@ -4,7 +4,7 @@
  * Every standalone page is listed once here with its canonical path, aliases
  * and a lazy loader, so each lesson ships as its own JS chunk. Students on
  * low-end phones then only download the lesson they open — the heavy
- * three.js 3D book is fetched only when the book route ("/") is visited.
+ * three.js 3D book is fetched only when the "/book" route is visited.
  */
 
 export type StandaloneRouteId =
@@ -31,7 +31,7 @@ export const STANDALONE_ROUTES: readonly StandaloneRoute[] = [
   {
     id: 'learn',
     path: '/learn',
-    aliases: ['/concepts'],
+    aliases: ['/', '/concepts'],
     navLabel: 'Notebook Shelf (20 Labs)',
     group: 'hub',
   },
@@ -90,7 +90,7 @@ export function normalizePathname(pathname: string): string {
   return pathname.replace(/\/+$/, '') || '/'
 }
 
-/** Returns the standalone route for a pathname, or null for the book ("/"). */
+/** Returns the standalone route for a pathname, or null for the 3D book ("/book"). */
 export function resolveStandaloneRoute(pathname: string): StandaloneRoute | null {
   const normalized = normalizePathname(pathname)
   // Concept deep links such as /learn/rate-vs-total belong to the learn route.
@@ -100,7 +100,9 @@ export function resolveStandaloneRoute(pathname: string): StandaloneRoute | null
       (r) =>
         r.path === normalized ||
         r.aliases.includes(normalized) ||
-        (r.id === 'learn' && (firstSegment === r.path || r.aliases.includes(firstSegment)))
+        (r.id === 'learn' &&
+          firstSegment !== '/' &&
+          (firstSegment === r.path || r.aliases.includes(firstSegment)))
     ) ?? null
   )
 }

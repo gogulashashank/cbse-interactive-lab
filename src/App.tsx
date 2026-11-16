@@ -88,7 +88,7 @@ function App() {
   }
 
   function openBook(lesson: ActiveLessonId, spread: number) {
-    navigateTo('/')
+    navigateTo('/book')
     setActiveLesson(lesson)
     if (lesson === 'convex-lens') setLensStartSpread(spread)
     else setRampStartSpread(spread)

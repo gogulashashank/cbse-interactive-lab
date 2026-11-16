@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { STANDALONE_ROUTES } from '../platform/routeRegistry'
+import { resolveStandaloneRoute, STANDALONE_ROUTES } from '../platform/routeRegistry'
 import { getRelatedNotebooksForRoute } from './relatedNotebooks'
 
 describe('Notebook Cross-Navigation & Route Mapping', () => {
@@ -14,5 +14,12 @@ describe('Notebook Cross-Navigation & Route Mapping', () => {
         expect(concept.status).toBe('pilot')
       }
     }
+  })
+
+  it('routes "/" and "/learn/*" to the Illustrated Science Notebook Shelf and "/book" to the 3D Book Studio', () => {
+    expect(resolveStandaloneRoute('/')?.id).toBe('learn')
+    expect(resolveStandaloneRoute('/learn')?.id).toBe('learn')
+    expect(resolveStandaloneRoute('/learn/lens-power-dioptre')?.id).toBe('learn')
+    expect(resolveStandaloneRoute('/book')).toBeNull()
   })
 })
