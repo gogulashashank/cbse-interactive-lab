@@ -144,8 +144,8 @@ export const UtilityEnergyMeterSVG: React.FC<UtilityEnergyMeterSVGProps> = ({ re
         {/* Units Label beside counter */}
         <text
           x="365"
-          y="152"
-          fontSize="24"
+          y="148"
+          fontSize="22"
           fontWeight="800"
           fill="#0f172a"
           fontFamily="system-ui, -apple-system, sans-serif"
@@ -153,11 +153,12 @@ export const UtilityEnergyMeterSVG: React.FC<UtilityEnergyMeterSVGProps> = ({ re
           kW·h
         </text>
         <text
-          x="365"
-          y="172"
-          fontSize="12"
+          x="210"
+          y="195"
+          textAnchor="middle"
+          fontSize="11.5"
           fontWeight="700"
-          fill="#d97706"
+          fill="#b45309"
           fontFamily="system-ui, -apple-system, sans-serif"
         >
           1 UNIT = 1 kWh = 3.6 × 10⁶ J

@@ -281,7 +281,8 @@ export const BillingLesson: React.FC = () => {
                   <p>
                     The rate at which electrical energy is consumed or converted per unit time:
                     <br />
-                    <span className="math-display">{'P = \\frac{E}{t} = V \\times I'}</span>
+                    <span className="math-display">P = E / t = V × I</span>
+                    <br />
                     Measured in <strong>Watts (W)</strong> or <strong>kilowatts (kW)</strong> (1 kW = 1000 W).
                   </p>
                 </div>
@@ -291,7 +292,8 @@ export const BillingLesson: React.FC = () => {
                   <p>
                     The total work done by the electric current over an elapsed duration:
                     <br />
-                    <span className="math-display">{'E = P \\times t'}</span>
+                    <span className="math-display">E = P × t</span>
+                    <br />
                     In SI units, 1 Watt × 1 second = <strong>1 Joule (J)</strong>.
                   </p>
                 </div>
@@ -301,7 +303,8 @@ export const BillingLesson: React.FC = () => {
                   <p>
                     The practical unit for power billing:
                     <br />
-                    <span className="math-display">{'1\\text{ kWh} = 1000\\text{ W} \\times 3600\\text{ s} = 3.6 \\times 10^6\\text{ J}'}</span>
+                    <span className="math-display">1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ J</span>
+                    <br />
                     Often termed 1 <em>Board of Trade Unit (B.O.T.U.)</em>.
                   </p>
                 </div>
@@ -313,7 +316,7 @@ export const BillingLesson: React.FC = () => {
                   State electricity boards and distribution utilities bill consumers based on total kilowatt-hours used:
                 </p>
                 <div className="alt-formula-box">
-                  <span className="math-display">{'\\text{Total Cost (₹)} = \\text{Total Energy (kWh)} \\times \\text{Tariff Rate (₹/unit)}'}</span>
+                  <span className="math-display">Total Cost (₹) = Total Energy (kWh) × Tariff Rate (₹ / unit)</span>
                 </div>
               </div>
             </div>
@@ -606,28 +609,28 @@ export const BillingLesson: React.FC = () => {
                     <td><em>P</em></td>
                     <td>Watt (W) / Joule per second</td>
                     <td>Kilowatt (kW)</td>
-                    <td><span className="math-inline">{'P = V \\times I = I^2 R = \\frac{V^2}{R}'}</span></td>
+                    <td><span className="math-inline">P = V × I = I²R = V² / R</span></td>
                   </tr>
                   <tr>
                     <td>Electrical Energy</td>
                     <td><em>E</em></td>
                     <td>Joule (J)</td>
                     <td>Kilowatt-Hour (kWh) / "Unit"</td>
-                    <td><span className="math-inline">{'E = P \\times t'}</span></td>
+                    <td><span className="math-inline">E = P × t</span></td>
                   </tr>
                   <tr>
                     <td>Energy Conversion</td>
                     <td>—</td>
                     <td>1 J = 1 W·s</td>
                     <td>1 kWh = 3.6 × 10⁶ J</td>
-                    <td><span className="math-inline">{'E\\text{ (kWh)} = \\frac{P\\text{ (W)} \\times t\\text{ (h)}}{1000}'}</span></td>
+                    <td><span className="math-inline">E (kWh) = [P (W) × t (h)] / 1000</span></td>
                   </tr>
                   <tr>
                     <td>Utility Bill Cost</td>
                     <td>Cost</td>
                     <td>—</td>
                     <td>Rupees (₹)</td>
-                    <td><span className="math-inline">{'\\text{Cost} = E\\text{ (kWh)} \\times \\text{Tariff Rate (₹/kWh)}'}</span></td>
+                    <td><span className="math-inline">Cost = E (kWh) × Tariff Rate (₹/kWh)</span></td>
                   </tr>
                 </tbody>
               </table>

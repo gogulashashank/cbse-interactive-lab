@@ -115,7 +115,7 @@ export const SafetyLesson: React.FC = () => {
   }
 
   return (
-    <div className="alt-container" data-testid="safety-lesson">
+    <div className={`alt-container mode-${mode}`} data-testid="safety-lesson">
       {/* Screen Reader Announcements */}
       <div className="sr-only" role="status" aria-live="polite">
         {announcement}
