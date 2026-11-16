@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Lang } from '../../kit/i18n'
 import { SliderField } from '../../kit/SliderField'
+import { NotebookPipeline } from '../../notebook/NotebookSpread'
 import { calculateElectricalEnergy } from './models'
 
 interface Props {
@@ -14,19 +15,89 @@ export function ElectricalEnergyInteractive({ lang }: Props) {
 
   const seconds = minutes * 60
   const model = calculateElectricalEnergy(voltage, current, seconds)
+  const kJ = (model.energyJoules / 1000).toFixed(1)
+
+  const pipelineSteps = [
+    {
+      kicker: lang === 'hi' ? '1. विद्युत शक्ति (P = V × I)' : '1. Power Rate (P = V × I)',
+      math: `${voltage} V × ${current} A = ${model.powerWatts.toFixed(0)} W`,
+    },
+    {
+      kicker: lang === 'hi' ? '2. सेकंड रूपांतरण (SI Trap)' : '2. Time in Seconds (SI Trap)',
+      math: `t = ${minutes} min × 60 = ${seconds} s`,
+    },
+    {
+      kicker: lang === 'hi' ? '3. विद्युत कार्य (W = P × t)' : '3. Electrical Work (W = VIt)',
+      math: `W = ${kJ} kJ (${model.energyKWh.toFixed(3)} kWh)`,
+    },
+    {
+      kicker: lang === 'hi' ? '4. उत्पन्न ऊष्मा (H = W)' : '4. Thermal Heat Output (100%)',
+      math: `H = ${kJ} kJ (Zero Energy Lost)`,
+    },
+  ]
 
   return (
-    <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem', margin: '1rem 0' }}>
-      <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1rem' }}>
-        {lang === 'hi' ? '🔬 प्रयोग: विद्युत ऊर्जा का ऊष्मा में रूपांतरण (E = V·I·t)' : '🔬 Experiment: Electrical Energy to Heat Transfer (E = V·I·t)'}
-      </h4>
-      <p style={{ fontSize: '0.86rem', color: '#64748b', margin: '0 0 1rem 0' }}>
-        {lang === 'hi'
-          ? 'वोल्टेज, धारा और समय बदलकर देखें कि कितनी विद्युत ऊर्जा ऊष्मा में परिवर्तित होती है।'
-          : 'Adjust voltage, current, and runtime to observe how electrical energy converts into thermal energy.'}
-      </p>
+    <div className="nb-optics-bench-wrap">
+      <div className="nb-optics-svg-frame">
+        <svg
+          viewBox="0 0 760 200"
+          className="nb-optics-svg"
+          role="img"
+          aria-label={`Electrical work to thermal heat energy balance: ${kJ} kJ`}
+        >
+          <defs>
+            <pattern id="nb-ee-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#e5dcc8" strokeWidth="0.75" />
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="760" height="200" fill="#fcf8ef" />
+          <rect x="0" y="0" width="760" height="200" fill="url(#nb-ee-grid)" />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+          {/* Left: Electrical Input Box */}
+          <g transform="translate(55, 42)">
+            <rect x="0" y="0" width="215" height="116" rx="8" fill="#dbeafe" stroke="#2563eb" strokeWidth="2" />
+            <text x="107" y="28" textAnchor="middle" fontSize="11" fontWeight="800" fill="#1e3a8a" fontFamily="ui-monospace, monospace">
+              ELECTRICAL WORK INPUT
+            </text>
+            <text x="107" y="58" textAnchor="middle" fontSize="16" fontWeight="900" fill="#1d4ed8" fontFamily="ui-monospace, monospace">
+              {`${kJ} kJ`}
+            </text>
+            <text x="107" y="84" textAnchor="middle" fontSize="11" fontWeight="700" fill="#1e40af" fontFamily="ui-monospace, monospace">
+              {`P = ${model.powerWatts.toFixed(0)} W × ${seconds} s`}
+            </text>
+            <text x="107" y="103" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#3b82f6" fontFamily="ui-monospace, monospace">
+              {`(${model.energyKWh.toFixed(3)} kWh)`}
+            </text>
+          </g>
+
+          {/* Center Conservation Flow Pipe */}
+          <g transform="translate(270, 74)">
+            <rect x="0" y="12" width="220" height="28" fill="#fed7aa" stroke="#ea580c" strokeWidth="1.8" />
+            <text x="110" y="30" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#9a3412" fontFamily="ui-monospace, monospace">
+              100% CONSERVED ⟶
+            </text>
+          </g>
+
+          {/* Right: Thermal Heat Output Box */}
+          <g transform="translate(490, 42)">
+            <rect x="0" y="0" width="215" height="116" rx="8" fill="#fee2e2" stroke="#dc2626" strokeWidth="2" />
+            <text x="107" y="28" textAnchor="middle" fontSize="11" fontWeight="800" fill="#991b1b" fontFamily="ui-monospace, monospace">
+              THERMAL HEAT DISSIPATED
+            </text>
+            <text x="107" y="58" textAnchor="middle" fontSize="16" fontWeight="900" fill="#b91c1c" fontFamily="ui-monospace, monospace">
+              {`H = ${kJ} kJ`}
+            </text>
+            <text x="107" y="84" textAnchor="middle" fontSize="11" fontWeight="700" fill="#991b1b" fontFamily="ui-monospace, monospace">
+              H = V · I · t = I²Rt
+            </text>
+            <text x="107" y="103" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#dc2626" fontFamily="ui-monospace, monospace">
+              ΔE_loss = 0.0 J
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '0.85rem' }}>
         <SliderField
           id="ee-voltage-slider"
           label={lang === 'hi' ? 'वोल्टेज (V)' : 'Voltage (V)'}
@@ -51,7 +122,7 @@ export function ElectricalEnergyInteractive({ lang }: Props) {
         />
         <SliderField
           id="ee-runtime-slider"
-          label={lang === 'hi' ? 'समय (t)' : 'Runtime (t)'}
+          label={lang === 'hi' ? 'समय (t मिनट में)' : 'Runtime (t in mins)'}
           value={minutes}
           min={1}
           max={60}
@@ -62,50 +133,7 @@ export function ElectricalEnergyInteractive({ lang }: Props) {
         />
       </div>
 
-      {/* Visual meter comparison */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '1rem' }}>
-        <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '8px', padding: '0.75rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#1e40af', fontWeight: 700 }}>
-            {lang === 'hi' ? 'तात्कालिक शक्ति (Power)' : 'Instantaneous Power'}
-          </div>
-          <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#1e3a8a', margin: '0.2rem 0' }}>
-            {model.powerWatts >= 1000 ? `${(model.powerWatts / 1000).toFixed(2)} kW` : `${model.powerWatts.toFixed(0)} W`}
-          </div>
-          <div style={{ fontSize: '0.78rem', color: '#3b82f6' }}>
-            P = V × I = {voltage} V × {current} A
-          </div>
-        </div>
-
-        <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '0.75rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#991b1b', fontWeight: 700 }}>
-            {lang === 'hi' ? 'कुल तापीय ऊर्जा (Heat Energy)' : 'Total Thermal Energy'}
-          </div>
-          <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#7f1d1d', margin: '0.2rem 0' }}>
-            {model.energyJoules >= 1_000_000
-              ? `${(model.energyJoules / 1_000_000).toFixed(2)} MJ`
-              : `${(model.energyJoules / 1000).toFixed(1)} kJ`}
-          </div>
-          <div style={{ fontSize: '0.78rem', color: '#dc2626' }}>
-            E = P × t ({model.energyKWh.toFixed(3)} kWh)
-          </div>
-        </div>
-      </div>
-
-      {/* Energy conservation bar visual */}
-      <div style={{ background: '#fff', border: '1px solid #cbd5e1', borderRadius: '8px', padding: '0.75rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#475569', marginBottom: '0.35rem' }}>
-          <span>{lang === 'hi' ? 'विद्युत ऊर्जा इनपुट' : 'Electrical Energy Input'}</span>
-          <span>100% → {lang === 'hi' ? 'ऊष्मा आउटपुट' : 'Heat Output'} (100%)</span>
-        </div>
-        <div style={{ height: '14px', background: '#e2e8f0', borderRadius: '7px', overflow: 'hidden', display: 'flex' }}>
-          <div style={{ width: '100%', background: 'linear-gradient(90deg, #3b82f6 0%, #ef4444 100%)' }} />
-        </div>
-        <div style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '0.35rem', textAlign: 'center' }}>
-          {lang === 'hi'
-            ? 'ऊर्जा न तो उत्पन्न होती है न नष्ट: समस्त विद्युत कार्य आंतरिक तापीय ऊर्जा में परिणत हुआ।'
-            : 'Conservation confirmed: All electrical work converted into internal thermal energy.'}
-        </div>
-      </div>
+      <NotebookPipeline steps={pipelineSteps} ariaLabel="Electrical energy conservation pipeline" />
     </div>
   )
 }

@@ -1,37 +1,112 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { CONCEPTS, getConceptById, getPilotConcepts, THREADS, type ThreadId } from './registry'
 import { RATE_VS_TOTAL_CONTENT } from './rateVsTotal/content'
 import { SQUARES_AND_INVERSES_CONTENT } from './squaresAndInverses/content'
 import { CONTROLLED_EXPERIMENTS_CONTENT } from './controlledExperiments/content'
 import { ENERGY_CONSERVATION_CONTENT } from './energyConservation/content'
 import { CONVENTIONS_AND_INVERSIONS_CONTENT } from './conventionsAndInversions/content'
-import { BucketInteractive } from './rateVsTotal/BucketInteractive'
-import { ChargeInteractive } from './rateVsTotal/ChargeInteractive'
-import { EnergyInteractive } from './rateVsTotal/EnergyInteractive'
-import { BillInteractive } from './rateVsTotal/BillInteractive'
-import { InverseAreaInteractive } from './squaresAndInverses/InverseAreaInteractive'
-import { DiameterTrapInteractive } from './squaresAndInverses/DiameterTrapInteractive'
-import { VoltageSquaredInteractive } from './squaresAndInverses/VoltageSquaredInteractive'
-import { GravityInverseInteractive } from './squaresAndInverses/GravityInverseInteractive'
-import { FixedPowerInteractive } from './controlledExperiments/FixedPowerInteractive'
-import { StretchingInteractive } from './controlledExperiments/StretchingInteractive'
-import { ConstantTempInteractive } from './controlledExperiments/ConstantTempInteractive'
-import { CircuitFailureInteractive } from './controlledExperiments/CircuitFailureInteractive'
-import { ElectricalEnergyInteractive } from './energyConservation/ElectricalEnergyInteractive'
-import { ChargeConservationInteractive } from './energyConservation/ChargeConservationInteractive'
-import { CircuitPowerBalanceInteractive } from './energyConservation/CircuitPowerBalanceInteractive'
-import { MechanicalRampConservationInteractive } from './energyConservation/MechanicalRampConservationInteractive'
-import { CartesianSignInteractive } from './conventionsAndInversions/CartesianSignInteractive'
-import { RealVirtualCrossoverInteractive } from './conventionsAndInversions/RealVirtualCrossoverInteractive'
-import { MagnificationDecoderInteractive } from './conventionsAndInversions/MagnificationDecoderInteractive'
-import { LensPowerInteractive } from './conventionsAndInversions/LensPowerInteractive'
 import { PredictCard } from '../kit/PredictCard'
 import { ExamQuestion } from '../kit/ExamQuestion'
 import { ShareButton } from '../kit/ShareButton'
 import { LanguageToggle, ProjectorToggle } from '../kit/Toggles'
 import { usePrefs } from '../kit/prefs'
 import { safeGetItem, safeSetItem } from '../kit/storage'
+import { NotebookHeader, NotebookSpread } from '../notebook/NotebookSpread'
 import '../kit/kit.css'
+import '../notebook/notebook.css'
+
+const BucketInteractive = lazy(() =>
+  import('./rateVsTotal/BucketInteractive').then((m) => ({ default: m.BucketInteractive }))
+)
+const ChargeInteractive = lazy(() =>
+  import('./rateVsTotal/ChargeInteractive').then((m) => ({ default: m.ChargeInteractive }))
+)
+const EnergyInteractive = lazy(() =>
+  import('./rateVsTotal/EnergyInteractive').then((m) => ({ default: m.EnergyInteractive }))
+)
+const BillInteractive = lazy(() =>
+  import('./rateVsTotal/BillInteractive').then((m) => ({ default: m.BillInteractive }))
+)
+const InverseAreaInteractive = lazy(() =>
+  import('./squaresAndInverses/InverseAreaInteractive').then((m) => ({
+    default: m.InverseAreaInteractive,
+  }))
+)
+const DiameterTrapInteractive = lazy(() =>
+  import('./squaresAndInverses/DiameterTrapInteractive').then((m) => ({
+    default: m.DiameterTrapInteractive,
+  }))
+)
+const VoltageSquaredInteractive = lazy(() =>
+  import('./squaresAndInverses/VoltageSquaredInteractive').then((m) => ({
+    default: m.VoltageSquaredInteractive,
+  }))
+)
+const GravityInverseInteractive = lazy(() =>
+  import('./squaresAndInverses/GravityInverseInteractive').then((m) => ({
+    default: m.GravityInverseInteractive,
+  }))
+)
+const FixedPowerInteractive = lazy(() =>
+  import('./controlledExperiments/FixedPowerInteractive').then((m) => ({
+    default: m.FixedPowerInteractive,
+  }))
+)
+const StretchingInteractive = lazy(() =>
+  import('./controlledExperiments/StretchingInteractive').then((m) => ({
+    default: m.StretchingInteractive,
+  }))
+)
+const ConstantTempInteractive = lazy(() =>
+  import('./controlledExperiments/ConstantTempInteractive').then((m) => ({
+    default: m.ConstantTempInteractive,
+  }))
+)
+const CircuitFailureInteractive = lazy(() =>
+  import('./controlledExperiments/CircuitFailureInteractive').then((m) => ({
+    default: m.CircuitFailureInteractive,
+  }))
+)
+const ElectricalEnergyInteractive = lazy(() =>
+  import('./energyConservation/ElectricalEnergyInteractive').then((m) => ({
+    default: m.ElectricalEnergyInteractive,
+  }))
+)
+const ChargeConservationInteractive = lazy(() =>
+  import('./energyConservation/ChargeConservationInteractive').then((m) => ({
+    default: m.ChargeConservationInteractive,
+  }))
+)
+const CircuitPowerBalanceInteractive = lazy(() =>
+  import('./energyConservation/CircuitPowerBalanceInteractive').then((m) => ({
+    default: m.CircuitPowerBalanceInteractive,
+  }))
+)
+const MechanicalRampConservationInteractive = lazy(() =>
+  import('./energyConservation/MechanicalRampConservationInteractive').then((m) => ({
+    default: m.MechanicalRampConservationInteractive,
+  }))
+)
+const CartesianSignInteractive = lazy(() =>
+  import('./conventionsAndInversions/CartesianSignInteractive').then((m) => ({
+    default: m.CartesianSignInteractive,
+  }))
+)
+const RealVirtualCrossoverInteractive = lazy(() =>
+  import('./conventionsAndInversions/RealVirtualCrossoverInteractive').then((m) => ({
+    default: m.RealVirtualCrossoverInteractive,
+  }))
+)
+const MagnificationDecoderInteractive = lazy(() =>
+  import('./conventionsAndInversions/MagnificationDecoderInteractive').then((m) => ({
+    default: m.MagnificationDecoderInteractive,
+  }))
+)
+const LensPowerNotebookLesson = lazy(() =>
+  import('./conventionsAndInversions/LensPowerNotebookLesson').then((m) => ({
+    default: m.LensPowerNotebookLesson,
+  }))
+)
 
 const PROGRESS_KEY = 'cil.progress'
 
@@ -43,17 +118,69 @@ const ALL_CONTENT = {
   ...CONVENTIONS_AND_INVERSIONS_CONTENT,
 }
 
+export type BrowseMode = 'threads' | 'chapters'
+export type ChapterFilterId = 'light-10' | 'electricity-10' | 'mechanics-9'
+
+const SYLLABUS_CHAPTERS: readonly {
+  id: ChapterFilterId
+  title: { en: string; hi: string }
+  tagline: { en: string; hi: string }
+  matchChapter: (ref: string) => boolean
+}[] = [
+  {
+    id: 'light-10',
+    title: {
+      en: 'Class 10 Ch 9: Light — Reflection & Refraction',
+      hi: 'कक्षा 10 अध्याय 9: प्रकाश — परावर्तन तथा अपवर्तन',
+    },
+    tagline: {
+      en: 'New Cartesian Sign Convention (+/-), real-to-virtual focal crossover, magnification dual-code, and lens power in Dioptres.',
+      hi: 'नई कार्तीय चिह्न परिपाटी (+/-), वास्तविक से आभासी फोकस संक्रमण, आवर्धन डिकोडिंग और लेंस की क्षमता (डाइऑप्टर)।',
+    },
+    matchChapter: (ref) => ref.toLowerCase().includes('light'),
+  },
+  {
+    id: 'electricity-10',
+    title: {
+      en: 'Class 10 Ch 11: Electricity & Circuits',
+      hi: 'कक्षा 10 अध्याय 11: विद्युत एवं परिपथ',
+    },
+    tagline: {
+      en: 'Current vs charge, Ohm’s law, wire diameter scaling, series vs parallel power traps, Joule heating, and kWh billing.',
+      hi: 'धारा बनाम आवेश, ओम का नियम, तार व्यास प्रभाव, श्रेणी बनाम समानांतर शक्ति, जूल तापन और बिजली बिल (kWh)।',
+    },
+    matchChapter: (ref) => ref.toLowerCase().includes('electricity'),
+  },
+  {
+    id: 'mechanics-9',
+    title: {
+      en: 'Class 9 Ch 7–10: Motion, Gravitation & Work-Energy',
+      hi: 'कक्षा 9 अध्याय 7–10: गति, गुरुत्वाकर्षण तथा कार्य और ऊर्जा',
+    },
+    tagline: {
+      en: 'Rate vs total flow, pressure & contact area, inverse-square gravitation, and mechanical energy conservation on ramps.',
+      hi: 'दर बनाम कुल मात्रा, दाब और क्षेत्रफल, गुरुत्वाकर्षण का व्युत्क्रम वर्ग नियम और नत समतल पर यांत्रिक ऊर्जा संरक्षण।',
+    },
+    matchChapter: (ref) =>
+      ref.toLowerCase().includes('motion') ||
+      ref.toLowerCase().includes('gravitation') ||
+      ref.toLowerCase().includes('work'),
+  },
+]
+
 export function ConceptHub() {
   const { lang, projector } = usePrefs()
+  const [browseMode, setBrowseMode] = useState<BrowseMode>('threads')
+  const [selectedChapter, setSelectedChapter] = useState<ChapterFilterId>('light-10')
   const [selectedThread, setSelectedThread] = useState<ThreadId>(() => {
-    if (typeof window === 'undefined') return 'rate-vs-total'
+    if (typeof window === 'undefined') return 'conventions-and-inversions'
     const parts = window.location.pathname.split('/').filter(Boolean)
     const initialId = parts[1]
     if (initialId) {
       const c = getConceptById(initialId)
       if (c) return c.thread
     }
-    return 'rate-vs-total'
+    return 'conventions-and-inversions'
   })
   const [searchQuery, setSearchQuery] = useState('')
   const [classFilter, setClassFilter] = useState<'all' | 9 | 10>('all')
@@ -108,11 +235,22 @@ export function ConceptHub() {
   const activeConcept = activeConceptId ? getConceptById(activeConceptId) : null
   const content = activeConceptId ? ALL_CONTENT[activeConceptId] : null
   const currentThread = THREADS.find((t) => t.id === selectedThread) || THREADS[0]
+  const currentChapter =
+    SYLLABUS_CHAPTERS.find((ch) => ch.id === selectedChapter) || SYLLABUS_CHAPTERS[0]
 
   const isFiltering = searchQuery.trim().length > 0 || classFilter !== 'all'
   const displayedConcepts = pilotConcepts.filter((c) => {
-    if (!isFiltering && c.thread !== selectedThread) return false
-    if (classFilter !== 'all' && !c.boardMapping.some((b) => b.classLevel === classFilter)) return false
+    if (!isFiltering) {
+      if (browseMode === 'threads' && c.thread !== selectedThread) return false
+      if (
+        browseMode === 'chapters' &&
+        !c.boardMapping.some((b) => currentChapter.matchChapter(b.chapterRef))
+      ) {
+        return false
+      }
+    }
+    if (classFilter !== 'all' && !c.boardMapping.some((b) => b.classLevel === classFilter))
+      return false
     if (searchQuery.trim().length > 0) {
       const q = searchQuery.trim().toLowerCase()
       const itemContent = ALL_CONTENT[c.id]
@@ -134,323 +272,361 @@ export function ConceptHub() {
     return true
   })
 
+  if (activeConceptId === 'lens-power-dioptre') {
+    return (
+      <Suspense fallback={<div className="platform-loading">Loading notebook…</div>}>
+        <LensPowerNotebookLesson onBackToConceptHub={() => navigateToConcept(null)} />
+      </Suspense>
+    )
+  }
+
+  const completedPilotCount = completed.filter((c) => pilotConcepts.some((p) => p.id === c)).length
+
   return (
-    <main
-      className={`alt-lens-page ${projector ? 'cil-projector' : ''}`}
-      style={{ maxWidth: '840px', margin: '0 auto', padding: '1rem', fontFamily: 'var(--kit-font-sans)' }}
-    >
-      {/* Top action bar: Language and Projector toggles */}
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '0.75rem',
-          paddingBottom: '0.75rem',
-          borderBottom: '1px solid #e2e8f0',
-          marginBottom: '1rem',
-        }}
-      >
-        <div>
-          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0369a1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            {lang === 'hi' ? 'अवधारणा कार्ड (Concept Cards)' : 'Core Concept Threads'}
-          </span>
-          <h1 style={{ margin: '0.2rem 0 0', fontSize: '1.4rem', color: '#0f172a' }}>
-            {activeConcept ? activeConcept.title[lang] : currentThread.title[lang]}
-          </h1>
-        </div>
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-          <LanguageToggle />
-          <ProjectorToggle />
-        </div>
-      </header>
+    <main className={`nb-page ${projector ? 'cil-projector' : ''}`}>
+      <NotebookHeader
+        eyebrow={
+          activeConcept
+            ? `${currentThread.title[lang]} · ${activeConcept.boardMapping[0]?.chapterRef || ''}`
+            : lang === 'hi'
+              ? 'सीबीएसई इंटरैक्टिव विज्ञान नोटबुक (Illustrated Science Notebook Shelf)'
+              : 'Illustrated Science Notebook · Interactive Concept Shelf'
+        }
+        title={
+          activeConcept
+            ? activeConcept.title[lang]
+            : browseMode === 'threads'
+              ? currentThread.title[lang]
+              : currentChapter.title[lang]
+        }
+        subtitle={
+          activeConcept
+            ? activeConcept.oneLine[lang]
+            : isFiltering
+              ? lang === 'hi'
+                ? `${displayedConcepts.length} मिलान मिले (सभी अध्यायों में से)`
+                : `Showing ${displayedConcepts.length} matching interactive notebook lessons`
+              : browseMode === 'threads'
+                ? currentThread.tagline[lang]
+                : currentChapter.tagline[lang]
+        }
+        chapterBadge={activeConcept?.boardMapping[0]?.chapterRef}
+        statusBadge={
+          lang === 'hi'
+            ? `प्रगति: ${completedPilotCount}/${pilotConcepts.length} पूर्ण`
+            : `Notebook Progress: ${completedPilotCount}/${pilotConcepts.length}`
+        }
+        isCompleted={activeConcept ? completed.includes(activeConcept.id) : false}
+        completedLabel={lang === 'hi' ? '✓ पूर्ण' : '✓ Completed'}
+        onBack={activeConcept ? () => navigateToConcept(null) : undefined}
+        backLabel={lang === 'hi' ? '← सभी नोटबुक पाठ' : '← Notebook Shelf'}
+        utilities={
+          <>
+            <LanguageToggle />
+            <ProjectorToggle />
+          </>
+        }
+      />
 
-      {/* Search & Class Filter + Thread Switcher Tabs when on Hub overview */}
-      {!activeConceptId && (
-        <div style={{ marginBottom: '1.25rem' }}>
-          {/* Search and Class Level Filter Row */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.85rem' }}>
-            <input
-              type="search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={
-                lang === 'hi'
-                  ? 'सूत्र, अध्याय या अवधारणा खोजें (जैसे: ओम, लेंस, kWh, V²/R)...'
-                  : 'Search formula, chapter, or trap (e.g. Ohm, lens, kWh, V²/R)...'
-              }
-              aria-label={lang === 'hi' ? 'अवधारणा खोजें' : 'Search concepts'}
-              style={{
-                flex: '1 1 240px',
-                padding: '0.55rem 0.85rem',
-                borderRadius: '6px',
-                border: '1.5px solid #cbd5e1',
-                fontSize: '0.9rem',
-                fontFamily: 'inherit',
-              }}
-            />
-            <div style={{ display: 'flex', gap: '0.35rem' }}>
-              {(
-                [
-                  { id: 'all', en: 'All Classes', hi: 'सभी कक्षाएं' },
-                  { id: 10, en: 'Class 10', hi: 'कक्षा 10' },
-                  { id: 9, en: 'Class 9', hi: 'कक्षा 9' },
-                ] as const
-              ).map((tab) => (
-                <button
-                  key={String(tab.id)}
-                  type="button"
-                  className={`kit-btn ${classFilter === tab.id ? 'kit-btn-primary' : 'kit-btn-secondary'}`}
-                  style={{ fontSize: '0.82rem', padding: '6px 10px' }}
-                  onClick={() => setClassFilter(tab.id)}
-                >
-                  {lang === 'hi' ? tab.hi : tab.en}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Thread Switcher Tabs (shown when not actively searching across all threads) */}
-          {!isFiltering && (
-            <div style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto', paddingBottom: '0.25rem' }}>
-              {THREADS.map((thread) => (
-                <button
-                  key={thread.id}
-                  type="button"
-                  className={`kit-btn ${selectedThread === thread.id ? 'kit-btn-primary' : 'kit-btn-secondary'}`}
-                  style={{ fontSize: '0.9rem', whiteSpace: 'nowrap' }}
-                  onClick={() => setSelectedThread(thread.id)}
-                >
-                  {thread.title[lang]}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Progress pill */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', background: '#f8fafc', padding: '0.5rem 0.85rem', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
-        <span style={{ fontSize: '0.85rem', color: '#475569', fontWeight: 600 }}>
-          {lang === 'hi' ? 'आपकी प्रगति:' : 'Your Progress:'} {completed.filter((c) => pilotConcepts.some((p) => p.id === c)).length} / {pilotConcepts.length} {lang === 'hi' ? 'कार्ड पूरे' : 'cards completed'}
-        </span>
-        {activeConceptId && (
-          <button
-            type="button"
-            className="kit-btn kit-btn-secondary"
-            style={{ minHeight: '32px', padding: '2px 8px', fontSize: '0.8rem' }}
-            onClick={() => navigateToConcept(null)}
-          >
-            {lang === 'hi' ? '← सभी कार्ड देखें' : '← All Cards'}
-          </button>
-        )}
-      </div>
-
-      {/* Active Concept Card View */}
+      {/* Active Concept Lesson rendered inside the 2-Column Connected Notebook Spread */}
       {activeConcept && content ? (
-        <article>
-          {/* Card Title & Board Badge */}
-          <div style={{ marginBottom: '1rem' }}>
-            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.3rem' }}>
-              <span className="kit-exam-tag">{activeConcept.boardMapping[0]?.chapterRef}</span>
-              {completed.includes(activeConcept.id) && (
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#047857', background: '#ecfdf5', padding: '2px 6px', borderRadius: '4px' }}>
-                  ✓ {lang === 'hi' ? 'पूर्ण' : 'Completed'}
+        <NotebookSpread
+          apparatus={
+            <>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <span className="nb-chapter-pill">
+                  {lang === 'hi' ? 'प्रत्यक्ष उपकरण बेंच (Interactive Apparatus)' : 'Interactive Apparatus & Simulation Bench'}
                 </span>
-              )}
-            </div>
-            <h2 style={{ margin: 0, fontSize: '1.35rem', color: '#0f172a' }}>{activeConcept.title[lang]}</h2>
-            <p style={{ margin: '0.4rem 0 0', fontSize: '0.95rem', color: '#475569' }}>{activeConcept.oneLine[lang]}</p>
-          </div>
+                {activeConcept.deepDiveRoute && (
+                  <a
+                    href={activeConcept.deepDiveRoute}
+                    className="nb-back-btn"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    {lang === 'hi' ? 'पूर्ण अध्याय प्रयोगशाला →' : 'Open Chapter Deep-Dive Lab →'}
+                  </a>
+                )}
+              </div>
 
-          {/* Hook Question */}
-          <div style={{ background: '#fefce8', borderInlineStart: '4px solid #ca8a04', padding: '0.75rem 1rem', borderRadius: '4px', margin: '1rem 0' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: '#854d0e', display: 'block' }}>
-              {lang === 'hi' ? 'रोज़मर्रा की पहेली (Daily Life Hook)' : 'Daily Life Hook'}
-            </span>
-            <p style={{ margin: '0.2rem 0 0', fontSize: '0.95rem', fontWeight: 600, color: '#713f12' }}>
-              {content.hook[lang]}
-            </p>
-          </div>
+              {/* Interactive Experiment Apparatus */}
+              <Suspense fallback={<div className="platform-loading">Loading apparatus…</div>}>
+                {activeConcept.id === 'rate-vs-total-intro' && <BucketInteractive lang={lang} />}
+                {activeConcept.id === 'current-vs-charge' && <ChargeInteractive lang={lang} />}
+                {activeConcept.id === 'power-vs-energy' && <EnergyInteractive lang={lang} />}
+                {activeConcept.id === 'units-on-the-bill' && <BillInteractive lang={lang} />}
+                {activeConcept.id === 'inverse-area-scaling' && <InverseAreaInteractive lang={lang} />}
+                {activeConcept.id === 'diameter-trap' && <DiameterTrapInteractive lang={lang} />}
+                {activeConcept.id === 'voltage-squared-power' && <VoltageSquaredInteractive lang={lang} />}
+                {activeConcept.id === 'gravity-inverse-square' && <GravityInverseInteractive lang={lang} />}
+                {activeConcept.id === 'fixed-voltage-vs-current' && <FixedPowerInteractive lang={lang} />}
+                {activeConcept.id === 'stretching-vs-comparing' && <StretchingInteractive lang={lang} />}
+                {activeConcept.id === 'constant-temp-ohmic' && <ConstantTempInteractive lang={lang} />}
+                {activeConcept.id === 'series-parallel-failure' && <CircuitFailureInteractive lang={lang} />}
+                {activeConcept.id === 'electrical-energy-transfer' && <ElectricalEnergyInteractive lang={lang} />}
+                {activeConcept.id === 'charge-conservation-junction' && <ChargeConservationInteractive lang={lang} />}
+                {activeConcept.id === 'circuit-power-balance' && <CircuitPowerBalanceInteractive lang={lang} />}
+                {activeConcept.id === 'mechanical-ramp-conservation' && <MechanicalRampConservationInteractive lang={lang} />}
+                {activeConcept.id === 'cartesian-sign-trap' && <CartesianSignInteractive lang={lang} />}
+                {activeConcept.id === 'real-vs-virtual-switch' && <RealVirtualCrossoverInteractive lang={lang} />}
+                {activeConcept.id === 'magnification-code' && <MagnificationDecoderInteractive lang={lang} />}
+              </Suspense>
 
-          {/* Predict First */}
-          <PredictCard
-            question={content.predictQuestion[lang]}
-            options={content.predictOptions.map((o) => o[lang])}
-            correctIndex={content.predictCorrectIndex}
-            explanation={content.predictExplanation[lang]}
-            lang={lang}
-            onLocked={() => markCompleted(activeConcept.id)}
-          />
+              {/* Core Scientific Insight Callout */}
+              <div className="nb-insight-box">
+                <div className="nb-insight-label">
+                  {lang === 'hi' ? 'मुख्य वैज्ञानिक सिद्धांत (Core Insight)' : 'Core Scientific Principle'}
+                </div>
+                <div className="nb-insight-formula">{content.insightFormula}</div>
+                <div className="nb-insight-summary">
+                  <strong>{content.insightTerm[lang]}:</strong> {content.insightSummary[lang]}
+                </div>
+              </div>
+            </>
+          }
+          fieldNotes={
+            <>
+              {/* Daily Life Hook */}
+              <div className="nb-hook-box">
+                <span className="nb-hook-label">
+                  {lang === 'hi' ? 'रोज़मर्रा की पहेली (Field Observation Hook)' : 'Field Observation Hook'}
+                </span>
+                <p className="nb-hook-text">{content.hook[lang]}</p>
+              </div>
 
-          {/* Interactive Experiment Reveal */}
-          {activeConcept.id === 'rate-vs-total-intro' && <BucketInteractive lang={lang} />}
-          {activeConcept.id === 'current-vs-charge' && <ChargeInteractive lang={lang} />}
-          {activeConcept.id === 'power-vs-energy' && <EnergyInteractive lang={lang} />}
-          {activeConcept.id === 'units-on-the-bill' && <BillInteractive lang={lang} />}
-          {activeConcept.id === 'inverse-area-scaling' && <InverseAreaInteractive lang={lang} />}
-          {activeConcept.id === 'diameter-trap' && <DiameterTrapInteractive lang={lang} />}
-          {activeConcept.id === 'voltage-squared-power' && <VoltageSquaredInteractive lang={lang} />}
-          {activeConcept.id === 'gravity-inverse-square' && <GravityInverseInteractive lang={lang} />}
-          {activeConcept.id === 'fixed-voltage-vs-current' && <FixedPowerInteractive lang={lang} />}
-          {activeConcept.id === 'stretching-vs-comparing' && <StretchingInteractive lang={lang} />}
-          {activeConcept.id === 'constant-temp-ohmic' && <ConstantTempInteractive lang={lang} />}
-          {activeConcept.id === 'series-parallel-failure' && <CircuitFailureInteractive lang={lang} />}
-          {activeConcept.id === 'electrical-energy-transfer' && <ElectricalEnergyInteractive lang={lang} />}
-          {activeConcept.id === 'charge-conservation-junction' && <ChargeConservationInteractive lang={lang} />}
-          {activeConcept.id === 'circuit-power-balance' && <CircuitPowerBalanceInteractive lang={lang} />}
-          {activeConcept.id === 'mechanical-ramp-conservation' && <MechanicalRampConservationInteractive lang={lang} />}
-          {activeConcept.id === 'cartesian-sign-trap' && <CartesianSignInteractive lang={lang} />}
-          {activeConcept.id === 'real-vs-virtual-switch' && <RealVirtualCrossoverInteractive lang={lang} />}
-          {activeConcept.id === 'magnification-code' && <MagnificationDecoderInteractive lang={lang} />}
-          {activeConcept.id === 'lens-power-dioptre' && <LensPowerInteractive lang={lang} />}
-
-          {/* Core Insight Callout */}
-          <div style={{ background: '#f0fdf4', border: '1.5px solid #86efac', borderRadius: '8px', padding: '1rem', margin: '1.25rem 0' }}>
-            <div style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', color: '#166534' }}>
-              {lang === 'hi' ? 'मुख्य वैज्ञानिक सिद्धांत (Core Insight)' : 'Core Scientific Insight'}
-            </div>
-            <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#14532d', margin: '0.3rem 0' }}>
-              {content.insightFormula}
-            </div>
-            <div style={{ fontSize: '0.92rem', color: '#166534', lineHeight: 1.45 }}>
-              <strong>{content.insightTerm[lang]}:</strong> {content.insightSummary[lang]}
-            </div>
-          </div>
-
-          {/* Board Exam Practice */}
-          <section style={{ marginTop: '1.5rem' }}>
-            <h3 style={{ fontSize: '1.1rem', color: '#0f172a', marginBottom: '0.5rem' }}>
-              {lang === 'hi' ? 'बोर्ड परीक्षा अभ्यास (Exam Pattern)' : 'Board Exam Practice'}
-            </h3>
-            {content.examQuestions.map((q, qIdx) => (
-              <ExamQuestion
-                key={qIdx}
-                title={q.title[lang]}
-                prompt={q.prompt[lang]}
-                options={q.options.map((o) => o[lang])}
-                correctIndex={q.correctIndex}
-                hint={q.hint[lang]}
-                solutionSteps={q.steps.map((s) => ({ label: s.label[lang], content: s.content[lang] }))}
-                finalAnswer={q.finalAnswer[lang]}
+              {/* Step 1: Predict First */}
+              <PredictCard
+                question={content.predictQuestion[lang]}
+                options={content.predictOptions.map((o) => o[lang])}
+                correctIndex={content.predictCorrectIndex}
+                explanation={content.predictExplanation[lang]}
                 lang={lang}
+                onLocked={() => markCompleted(activeConcept.id)}
               />
-            ))}
+
+              {/* Step 2: Board Exam Practice */}
+              <section>
+                <h3 style={{ fontSize: '1.05rem', color: 'var(--nb-ink)', margin: '0 0 0.5rem' }}>
+                  {lang === 'hi' ? 'बोर्ड परीक्षा अभ्यास (CBSE Board Application)' : 'CBSE Board Exam Application'}
+                </h3>
+                {content.examQuestions.map((q, qIdx) => (
+                  <ExamQuestion
+                    key={qIdx}
+                    title={q.title[lang]}
+                    prompt={q.prompt[lang]}
+                    options={q.options.map((o) => o[lang])}
+                    correctIndex={q.correctIndex}
+                    hint={q.hint[lang]}
+                    solutionSteps={q.steps.map((s) => ({
+                      label: s.label[lang],
+                      content: s.content[lang],
+                    }))}
+                    finalAnswer={q.finalAnswer[lang]}
+                    lang={lang}
+                  />
+                ))}
+              </section>
+
+              {/* Notebook Spine Footer: Share + Next Lesson Stepper */}
+              <footer
+                style={{
+                  paddingTop: '0.85rem',
+                  borderTop: '1px dashed var(--nb-border)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '0.65rem',
+                }}
+              >
+                <ShareButton
+                  challengeText={content.hook[lang]}
+                  path={`/learn/${activeConcept.id}`}
+                  lang={lang}
+                />
+
+                {(() => {
+                  const curIdx = pilotConcepts.findIndex((c) => c.id === activeConcept.id)
+                  const next = pilotConcepts[curIdx + 1]
+                  if (!next) return null
+                  return (
+                    <button
+                      type="button"
+                      className="kit-btn kit-btn-primary"
+                      onClick={() => navigateToConcept(next.id)}
+                    >
+                      {lang === 'hi' ? `अगला पाठ: ${next.title[lang]} →` : `Next: ${next.title[lang]} →`}
+                    </button>
+                  )
+                })()}
+              </footer>
+            </>
+          }
+        />
+      ) : (
+        /* Notebook Shelf Overview (/learn) */
+        <>
+          <section className="nb-shelf-controls" aria-label="Notebook shelf browse controls">
+            {/* Two Ways to Browse: By Mental-Model Thread vs By NCERT Syllabus Chapter */}
+            <div className="nb-shelf-mode-row">
+              <div className="nb-mode-tabs" role="tablist" aria-label="Browse mode">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={browseMode === 'threads'}
+                  className={`nb-mode-tab ${browseMode === 'threads' ? 'is-active' : ''}`}
+                  onClick={() => setBrowseMode('threads')}
+                >
+                  {lang === 'hi'
+                    ? '1. मानसिक मॉडल सूत्र (5 Core Threads)'
+                    : '1. By Mental-Model Thread (5 Core Patterns)'}
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={browseMode === 'chapters'}
+                  className={`nb-mode-tab ${browseMode === 'chapters' ? 'is-active' : ''}`}
+                  onClick={() => setBrowseMode('chapters')}
+                >
+                  {lang === 'hi'
+                    ? '2. एनसीईआरटी अध्याय के अनुसार (By NCERT Chapter)'
+                    : '2. By NCERT Syllabus Chapter (Class 9 & 10)'}
+                </button>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.35rem' }}>
+                {(
+                  [
+                    { id: 'all', en: 'All Classes', hi: 'सभी कक्षाएं' },
+                    { id: 10, en: 'Class 10', hi: 'कक्षा 10' },
+                    { id: 9, en: 'Class 9', hi: 'कक्षा 9' },
+                  ] as const
+                ).map((tab) => (
+                  <button
+                    key={String(tab.id)}
+                    type="button"
+                    className={`nb-chip-btn ${classFilter === tab.id ? 'is-active' : ''}`}
+                    onClick={() => setClassFilter(tab.id)}
+                  >
+                    {lang === 'hi' ? tab.hi : tab.en}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Search Input */}
+            <div className="nb-search-row">
+              <input
+                type="search"
+                className="nb-search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={
+                  lang === 'hi'
+                    ? 'सूत्र, अध्याय या अवधारणा खोजें (जैसे: ओम, लेंस, डाइऑप्टर, kWh, V²/R)...'
+                    : 'Search formula, chapter, or board-exam trap (e.g. lens, dioptre, Ohm, kWh, V²/R)...'
+                }
+                aria-label={lang === 'hi' ? 'अवधारणा खोजें' : 'Search concepts'}
+              />
+            </div>
+
+            {/* Thread or Chapter Switcher Pills */}
+            {!isFiltering && browseMode === 'threads' && (
+              <div className="nb-thread-ribbon" role="navigation" aria-label="Concept threads">
+                {THREADS.map((thread) => (
+                  <button
+                    key={thread.id}
+                    type="button"
+                    className={`nb-thread-pill ${selectedThread === thread.id ? 'is-active' : ''}`}
+                    onClick={() => setSelectedThread(thread.id)}
+                  >
+                    {thread.title[lang]}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {!isFiltering && browseMode === 'chapters' && (
+              <div className="nb-thread-ribbon" role="navigation" aria-label="NCERT chapters">
+                {SYLLABUS_CHAPTERS.map((ch) => (
+                  <button
+                    key={ch.id}
+                    type="button"
+                    className={`nb-thread-pill ${selectedChapter === ch.id ? 'is-active' : ''}`}
+                    onClick={() => setSelectedChapter(ch.id)}
+                  >
+                    {ch.title[lang]}
+                  </button>
+                ))}
+              </div>
+            )}
           </section>
 
-          {/* Card Footer: Share + Deep Dive + Next card */}
-          <footer style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-              <ShareButton
-                challengeText={content.hook[lang]}
-                path={`/learn/${activeConcept.id}`}
-                lang={lang}
-              />
-              {activeConcept.deepDiveRoute && (
-                <a
-                  href={activeConcept.deepDiveRoute}
-                  className="kit-btn kit-btn-secondary"
-                  style={{ textDecoration: 'none' }}
-                >
-                  {lang === 'hi' ? 'गहराई से पढ़ें (Deep Dive Lab) →' : 'Full Experiment Lab →'}
-                </a>
-              )}
-            </div>
-
-            {/* Stepper to next pilot card */}
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              {(() => {
-                const curIdx = pilotConcepts.findIndex((c) => c.id === activeConcept.id)
-                const next = pilotConcepts[curIdx + 1]
-                if (!next) return null
-                return (
-                  <button
-                    type="button"
-                    className="kit-btn kit-btn-primary"
-                    onClick={() => navigateToConcept(next.id)}
-                  >
-                    {lang === 'hi' ? `अगला कार्ड: ${next.title[lang]} →` : `Next: ${next.title[lang]} →`}
-                  </button>
-                )
-              })()}
-            </div>
-          </footer>
-        </article>
-      ) : (
-        /* Thread Overview: Cards in selected thread or search results */
-        <section>
-          <div style={{ marginBottom: '1rem' }}>
-            <p style={{ margin: 0, fontSize: '0.95rem', color: '#475569' }}>
-              {isFiltering
-                ? lang === 'hi'
-                  ? `${displayedConcepts.length} मिलान मिले (सभी अध्यायों में से)`
-                  : `Showing ${displayedConcepts.length} matching concept cards across all threads`
-                : currentThread.tagline[lang]}
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          {/* Grid of Notebook Lesson Cards */}
+          <section className="nb-card-grid" aria-label="Interactive notebook lessons">
             {displayedConcepts.map((concept, idx) => {
               const isDone = completed.includes(concept.id)
+              const itemContent = ALL_CONTENT[concept.id]
+              const isOptics = concept.thread === 'conventions-and-inversions'
               return (
-                <div
+                <button
                   key={concept.id}
-                  style={{
-                    background: '#ffffff',
-                    border: '1.5px solid #e2e8f0',
-                    borderRadius: '8px',
-                    padding: '1rem 1.25rem',
-                    cursor: 'pointer',
-                    transition: 'border-color 0.15s ease',
-                  }}
+                  type="button"
+                  className={`nb-index-card ${isOptics ? 'is-optics' : ''}`}
                   onClick={() => navigateToConcept(concept.id)}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#0369a1', textTransform: 'uppercase' }}>
-                      {lang === 'hi' ? `कार्ड ${idx + 1}` : `Card ${idx + 1}`} · {concept.boardMapping[0]?.chapterRef}
-                    </span>
-                    {isDone && (
-                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#047857', background: '#ecfdf5', padding: '2px 6px', borderRadius: '4px' }}>
-                        ✓ {lang === 'hi' ? 'पूर्ण' : 'Done'}
+                  <div>
+                    <div className="nb-index-card-top">
+                      <span className="nb-index-card-tag">
+                        {lang === 'hi' ? `पाठ ${idx + 1}` : `Notebook ${idx + 1}`} ·{' '}
+                        {concept.boardMapping[0]?.chapterRef}
                       </span>
-                    )}
+                      {isDone && (
+                        <span className="nb-badge-pill is-done">
+                          ✓ {lang === 'hi' ? 'पूर्ण' : 'Done'}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="nb-index-card-title">{concept.title[lang]}</h3>
+                    <p className="nb-index-card-desc" style={{ marginTop: '0.3rem' }}>
+                      {concept.oneLine[lang]}
+                    </p>
                   </div>
-                  <h3 style={{ margin: '0 0 0.3rem', fontSize: '1.1rem', color: '#0f172a' }}>{concept.title[lang]}</h3>
-                  <p style={{ margin: 0, fontSize: '0.9rem', color: '#475569', lineHeight: 1.45 }}>{concept.oneLine[lang]}</p>
-                </div>
+
+                  <div className="nb-index-card-footer">
+                    <span>{itemContent?.insightFormula.split('|')[0]?.trim() || 'Interactive Bench'}</span>
+                    <span>{lang === 'hi' ? 'खोलें →' : 'Open Bench →'}</span>
+                  </div>
+                </button>
               )
             })}
-          </div>
+          </section>
 
-          {/* Mapped Deep Dive Lessons */}
-          <div style={{ marginTop: '2rem', padding: '1rem', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-            <h4 style={{ margin: '0 0 0.5rem', color: '#0f172a' }}>
-              {lang === 'hi' ? 'विस्तृत प्रयोगशालाएँ (Deep Dive Labs)' : 'Full Experiment Labs (Mapped to NCERT)'}
-            </h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          {/* Full Chapter Experiment Labs Shelf */}
+          <section className="nb-header" style={{ marginTop: '0.5rem' }}>
+            <div>
+              <p className="nb-eyebrow">
+                {lang === 'hi' ? 'विस्तृत अध्याय प्रयोगशालाएँ' : 'Full-Chapter Apparatus Labs'}
+              </p>
+              <h2 style={{ margin: '0 0 0.5rem', fontSize: '1.12rem', color: 'var(--nb-ink)' }}>
+                {lang === 'hi'
+                  ? 'एनसीईआरटी कक्षा 9 व 10 पूर्ण प्रयोगशालाएँ (Deep-Dive Chapter Labs)'
+                  : 'Complete NCERT Chapter Workbenches (Optics, Mechanics & Electricity)'}
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
               {CONCEPTS.filter((c) => c.status === 'mapped').map((mc) => (
                 <a
                   key={mc.id}
                   href={mc.deepDiveRoute || '/'}
-                  style={{
-                    display: 'inline-block',
-                    padding: '0.4rem 0.75rem',
-                    background: '#ffffff',
-                    border: '1px solid #cbd5e1',
-                    borderRadius: '4px',
-                    fontSize: '0.85rem',
-                    color: '#0369a1',
-                    textDecoration: 'none',
-                    fontWeight: 600,
-                  }}
+                  className="nb-back-btn"
+                  style={{ textDecoration: 'none' }}
                 >
                   {mc.title[lang]} →
                 </a>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
+        </>
       )}
     </main>
   )

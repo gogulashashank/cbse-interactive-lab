@@ -2,27 +2,86 @@ import React, { useState } from 'react'
 import { calculateDiameterTrap } from './models'
 import { SliderField } from '../../kit/SliderField'
 import { formatNumber } from '../../kit/format'
+import { NotebookPipeline } from '../../notebook/NotebookSpread'
 
 export interface DiameterTrapInteractiveProps {
   lang: 'en' | 'hi'
 }
 
 export const DiameterTrapInteractive: React.FC<DiameterTrapInteractiveProps> = ({ lang }) => {
-  const [diameterMm, setDiameterMm] = useState<number>(1.0)
+  const [diameterMm, setDiameterMm] = useState<number>(2.0)
   const res = calculateDiameterTrap(diameterMm, 1.0)
 
+  const baseRadiusPx = 22
+  const activeRadiusPx = baseRadiusPx * diameterMm
+
+  const pipelineSteps = [
+    {
+      kicker: lang === 'hi' ? '1. व्यास अनुपात (d / d₀)' : '1. Diameter Ratio (d / d₀)',
+      math: `d = ${formatNumber(diameterMm, 1)} mm (${formatNumber(res.diameterMm)}×)`,
+    },
+    {
+      kicker: lang === 'hi' ? '2. क्षेत्रफल वर्ग नियम (d²)' : '2. Area Scales as d²',
+      math: `A = πd²/4 = ${formatNumber(res.areaMm2, 2)} mm² (${formatNumber(res.areaFactor)}× A₀)`,
+    },
+    {
+      kicker: lang === 'hi' ? '3. प्रतिरोध व्युत्क्रम (1/A)' : '3. Inverse Resistance (1/d²)',
+      math: `R = R₀ / (${formatNumber(res.diameterMm)}²) = R₀ / ${formatNumber(res.areaFactor)}`,
+    },
+    {
+      kicker: lang === 'hi' ? '4. नया प्रतिरोध (R)' : '4. Resulting Resistance',
+      math: `R = ${formatNumber(res.resistanceOhm, 2)} Ω (${formatNumber(res.resistanceFactor, 2)}× R₀)`,
+    },
+  ]
+
   return (
-    <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '1rem', margin: '1rem 0' }}>
-      <h4 style={{ margin: '0 0 0.5rem', color: '#0f172a' }}>
-        {lang === 'hi' ? 'प्रयोग: तार का व्यास (d) और 1/4 प्रतिरोध प्रभाव' : 'Interactive: Wire Diameter (d) & The 1/4th Resistance Trap'}
-      </h4>
-      <p style={{ margin: '0 0 0.75rem', fontSize: '0.88rem', color: '#475569' }}>
-        {lang === 'hi' ? 'व्यास बदलें और देखें कि क्षेत्रफल वर्ग (d²) के अनुसार कैसे बढ़ता है:' : 'Adjust diameter and see how area scales quadratically with d²:'}
-      </p>
+    <div className="nb-optics-bench-wrap">
+      <div className="nb-optics-svg-frame">
+        <svg
+          viewBox="0 0 760 220"
+          className="nb-optics-svg"
+          role="img"
+          aria-label={`Wire cross-section comparison for diameter d = ${diameterMm} mm`}
+        >
+          <defs>
+            <pattern id="nb-dia-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#e5dcc8" strokeWidth="0.75" />
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="760" height="220" fill="#fcf8ef" />
+          <rect x="0" y="0" width="760" height="220" fill="url(#nb-dia-grid)" />
+
+          {/* Baseline Wire Cross-Section (d0 = 1.0 mm) */}
+          <g transform="translate(185, 108)">
+            <circle cx="0" cy="0" r={baseRadiusPx} fill="#dbeafe" stroke="#2563eb" strokeWidth="2.4" />
+            <line x1={-baseRadiusPx} y1="0" x2={baseRadiusPx} y2="0" stroke="#1e3a8a" strokeWidth="1.5" strokeDasharray="3 2" />
+            <text x="0" y="-42" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#1e3a8a" fontFamily="ui-monospace, monospace">
+              Baseline Wire (d₀ = 1.0 mm)
+            </text>
+            <text x="0" y="52" textAnchor="middle" fontSize="11" fontWeight="700" fill="#334155" fontFamily="ui-monospace, monospace">
+              A₀ = 0.79 mm² | R₀ = 1.00 Ω
+            </text>
+          </g>
+
+          {/* Active Wire Cross-Section */}
+          <g transform="translate(525, 108)">
+            <circle cx="0" cy="0" r={activeRadiusPx} fill="#fef3c7" stroke="#d97706" strokeWidth="2.6" />
+            {/* Ghost 1.0 mm circle inside for visual area comparison */}
+            <circle cx="0" cy="0" r={baseRadiusPx} fill="none" stroke="#64748b" strokeWidth="1.4" strokeDasharray="3 3" />
+            <line x1={-activeRadiusPx} y1="0" x2={activeRadiusPx} y2="0" stroke="#92400e" strokeWidth="1.8" />
+            <text x="0" y={-Math.max(42, activeRadiusPx + 14)} textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#92400e" fontFamily="ui-monospace, monospace">
+              {`Test Wire: d = ${formatNumber(diameterMm, 1)} mm (${formatNumber(res.diameterMm)}×)`}
+            </text>
+            <text x="0" y={Math.max(52, activeRadiusPx + 22)} textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#b45309" fontFamily="ui-monospace, monospace">
+              {`Area = ${formatNumber(res.areaFactor)}× A₀ → R = ${formatNumber(res.resistanceOhm, 2)} Ω`}
+            </text>
+          </g>
+        </svg>
+      </div>
 
       <SliderField
         id="diameter-trap-slider"
-        label={lang === 'hi' ? 'तार का व्यास (Diameter d)' : 'Diameter (d)'}
+        label={lang === 'hi' ? 'तार का व्यास (Diameter d)' : 'Wire Diameter (d)'}
         unit="mm"
         value={diameterMm}
         min={0.5}
@@ -32,35 +91,7 @@ export const DiameterTrapInteractive: React.FC<DiameterTrapInteractiveProps> = (
         onChange={setDiameterMm}
       />
 
-      <div style={{ marginTop: '1rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(10.5rem, 1fr))', gap: '0.75rem' }}>
-        <div style={{ padding: '0.75rem', background: '#ffffff', border: '1px solid #cbd5e1', borderRadius: '6px' }}>
-          <span style={{ fontSize: '0.8rem', color: '#64748b', display: 'block' }}>
-            {lang === 'hi' ? 'क्षेत्रफल (A = πd²/4):' : 'Cross-Section Area:'}
-          </span>
-          <strong style={{ fontSize: '1.2rem', color: '#0369a1' }}>
-            {formatNumber(res.areaMm2, 2)} mm²
-          </strong>
-          <span style={{ fontSize: '0.78rem', color: '#0369a1', display: 'block', fontWeight: 600 }}>
-            ({formatNumber(res.areaFactor)}× {lang === 'hi' ? 'क्षेत्रफल' : 'area'})
-          </span>
-        </div>
-
-        <div style={{ padding: '0.75rem', background: '#fefce8', border: '1.5px solid #fde047', borderRadius: '6px' }}>
-          <span style={{ fontSize: '0.8rem', color: '#854d0e', display: 'block' }}>
-            {lang === 'hi' ? 'नया प्रतिरोध (R ∝ 1/d²):' : 'New Resistance:'}
-          </span>
-          <strong style={{ fontSize: '1.2rem', color: '#b45309' }}>
-            {formatNumber(res.resistanceOhm)} Ω
-          </strong>
-          <span style={{ fontSize: '0.78rem', color: '#9a3412', display: 'block', fontWeight: 700 }}>
-            {res.resistanceFactor === 0.25
-              ? lang === 'hi'
-                ? '★ ठीक 1/4 रह गया!'
-                : '★ Exactly 1/4th (Quartered)!'
-              : `(${formatNumber(res.resistanceFactor)}×)`}
-          </span>
-        </div>
-      </div>
+      <NotebookPipeline steps={pipelineSteps} ariaLabel="Diameter squared resistance scaling pipeline" />
     </div>
   )
 }

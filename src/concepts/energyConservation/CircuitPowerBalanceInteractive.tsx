@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Lang } from '../../kit/i18n'
 import { SliderField } from '../../kit/SliderField'
+import { NotebookPipeline } from '../../notebook/NotebookSpread'
 import { calculateParallelPowerBalance } from './models'
 
 interface Props {
@@ -14,18 +15,82 @@ export function CircuitPowerBalanceInteractive({ lang }: Props) {
 
   const balance = calculateParallelPowerBalance(voltage, r1, r2)
 
-  return (
-    <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem', margin: '1rem 0' }}>
-      <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1rem' }}>
-        {lang === 'hi' ? '🔬 प्रयोग: संपूर्ण परिपथ में शक्ति संतुलन (P_बैटरी = P₁ + P₂)' : '🔬 Experiment: Complete Circuit Power Balance (P_source = P₁ + P₂)'}
-      </h4>
-      <p style={{ fontSize: '0.86rem', color: '#64748b', margin: '0 0 1rem 0' }}>
-        {lang === 'hi'
-          ? 'बैटरी वोल्टेज और दोनों लोड का प्रतिरोध बदलें। देखें कि बैटरी द्वारा दी गई कुल वाट-शक्ति दोनों लोड के योग के ठीक बराबर होती है।'
-          : 'Adjust battery voltage and resistor loads. Observe how source power always exactly balances total dissipated power.'}
-      </p>
+  const pipelineSteps = [
+    {
+      kicker: lang === 'hi' ? '1. शाखा 1 शक्ति (P₁ = V²/R₁)' : '1. Branch 1 Load (P₁ = V²/R₁)',
+      math: `P₁ = ${voltage}² / ${r1} = ${balance.branch1Power} W`,
+    },
+    {
+      kicker: lang === 'hi' ? '2. शाखा 2 शक्ति (P₂ = V²/R₂)' : '2. Branch 2 Load (P₂ = V²/R₂)',
+      math: `P₂ = ${voltage}² / ${r2} = ${balance.branch2Power} W`,
+    },
+    {
+      kicker: lang === 'hi' ? '3. कुल लोड खपत (P₁ + P₂)' : '3. Total Load Dissipation',
+      math: `${balance.branch1Power} W + ${balance.branch2Power} W = ${balance.totalDissipatedPower} W`,
+    },
+    {
+      kicker: lang === 'hi' ? '4. बैटरी प्रदाय शक्ति (V × I)' : '4. Battery Power Supplied',
+      math: `${voltage} V × ${balance.totalCurrent} A = ${balance.batteryPower} W`,
+    },
+  ]
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+  return (
+    <div className="nb-optics-bench-wrap">
+      <div className="nb-optics-svg-frame">
+        <svg
+          viewBox="0 0 760 220"
+          className="nb-optics-svg"
+          role="img"
+          aria-label={`Circuit power balance: Battery supplies ${balance.batteryPower} W, loads dissipate ${balance.totalDissipatedPower} W`}
+        >
+          <defs>
+            <pattern id="nb-cpb-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#e5dcc8" strokeWidth="0.75" />
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="760" height="220" fill="#fcf8ef" />
+          <rect x="0" y="0" width="760" height="220" fill="url(#nb-cpb-grid)" />
+
+          {/* Parallel Circuit Rails */}
+          <line x1="130" y1="38" x2="620" y2="38" stroke="#1e293b" strokeWidth="2.5" />
+          <line x1="130" y1="182" x2="620" y2="182" stroke="#1e293b" strokeWidth="2.5" />
+          <line x1="130" y1="38" x2="130" y2="182" stroke="#1e293b" strokeWidth="2.5" />
+
+          {/* Battery Source Node */}
+          <rect x="48" y="72" width="164" height="76" rx="8" fill="#dcfce7" stroke="#16a34a" strokeWidth="2.2" />
+          <text x="130" y="96" textAnchor="middle" fontSize="11" fontWeight="800" fill="#14532d" fontFamily="ui-monospace, monospace">
+            BATTERY SOURCE ({voltage} V)
+          </text>
+          <text x="130" y="118" textAnchor="middle" fontSize="14" fontWeight="900" fill="#15803d" fontFamily="ui-monospace, monospace">
+            P_in = {balance.batteryPower} W
+          </text>
+          <text x="130" y="136" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#166534" fontFamily="ui-monospace, monospace">
+            I_total = {balance.totalCurrent} A
+          </text>
+
+          {/* Branch 1 Load */}
+          <line x1="365" y1="38" x2="365" y2="182" stroke="#1e293b" strokeWidth="2.5" />
+          <rect x="290" y="76" width="150" height="68" rx="8" fill="#fff7ed" stroke="#ea580c" strokeWidth="2" />
+          <text x="365" y="100" textAnchor="middle" fontSize="11" fontWeight="800" fill="#9a3412" fontFamily="ui-monospace, monospace">
+            LOAD 1 (R₁ = {r1} Ω)
+          </text>
+          <text x="365" y="125" textAnchor="middle" fontSize="13.5" fontWeight="900" fill="#c2410c" fontFamily="ui-monospace, monospace">
+            P₁ = {balance.branch1Power} W
+          </text>
+
+          {/* Branch 2 Load */}
+          <line x1="575" y1="38" x2="575" y2="182" stroke="#1e293b" strokeWidth="2.5" />
+          <rect x="500" y="76" width="150" height="68" rx="8" fill="#fef3c7" stroke="#d97706" strokeWidth="2" />
+          <text x="575" y="100" textAnchor="middle" fontSize="11" fontWeight="800" fill="#92400e" fontFamily="ui-monospace, monospace">
+            LOAD 2 (R₂ = {r2} Ω)
+          </text>
+          <text x="575" y="125" textAnchor="middle" fontSize="13.5" fontWeight="900" fill="#b45309" fontFamily="ui-monospace, monospace">
+            P₂ = {balance.branch2Power} W
+          </text>
+        </svg>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '0.85rem' }}>
         <SliderField
           id="cpb-voltage-slider"
           label={lang === 'hi' ? 'बैटरी वोल्टेज (V)' : 'Battery Voltage (V)'}
@@ -61,41 +126,7 @@ export function CircuitPowerBalanceInteractive({ lang }: Props) {
         />
       </div>
 
-      {/* Side-by-side power ledger */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
-        {/* Source Power */}
-        <div style={{ background: '#f0fdf4', border: '1.5px solid #86efac', borderRadius: '8px', padding: '0.85rem' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: '#166534' }}>
-            {lang === 'hi' ? 'स्रोत द्वारा प्रदाय शक्ति (Supplied)' : 'Power Supplied by Battery'}
-          </div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#14532d', margin: '0.25rem 0' }}>
-            {balance.batteryPower} W
-          </div>
-          <div style={{ fontSize: '0.8rem', color: '#15803d' }}>
-            P_source = V × I_total = {balance.batteryVoltage} V × {balance.totalCurrent} A
-          </div>
-        </div>
-
-        {/* Load Dissipation */}
-        <div style={{ background: '#fef2f2', border: '1.5px solid #fca5a5', borderRadius: '8px', padding: '0.85rem' }}>
-          <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: '#991b1b' }}>
-            {lang === 'hi' ? 'उपकरणों द्वारा खर्च शक्ति (Dissipated)' : 'Power Dissipated in Loads'}
-          </div>
-          <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#7f1d1d', margin: '0.25rem 0' }}>
-            {balance.totalDissipatedPower} W
-          </div>
-          <div style={{ fontSize: '0.8rem', color: '#b91c1c' }}>
-            P₁ ({balance.branch1Power} W) + P₂ ({balance.branch2Power} W)
-          </div>
-        </div>
-      </div>
-
-      <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: '6px', padding: '0.6rem 0.8rem', fontSize: '0.82rem', color: '#1e40af' }}>
-        <strong>{lang === 'hi' ? 'ऊर्जा संतुलन पुष्टि:' : 'Energy Balance Ledger:'}</strong>{' '}
-        {lang === 'hi'
-          ? `बैटरी शक्ति (${balance.batteryPower} W) = लोड 1 (${balance.branch1Power} W) + लोड 2 (${balance.branch2Power} W)। शक्ति अंतर: ${balance.powerDifference} W।`
-          : `Battery Power (${balance.batteryPower} W) = Load 1 (${balance.branch1Power} W) + Load 2 (${balance.branch2Power} W). Difference: ${balance.powerDifference} W.`}
-      </div>
+      <NotebookPipeline steps={pipelineSteps} ariaLabel="Circuit power conservation pipeline" />
     </div>
   )
 }

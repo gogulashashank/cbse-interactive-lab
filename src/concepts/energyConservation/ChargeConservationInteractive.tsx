@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Lang } from '../../kit/i18n'
 import { SliderField } from '../../kit/SliderField'
+import { NotebookPipeline } from '../../notebook/NotebookSpread'
 import { calculateJunctionConservation } from './models'
 
 interface Props {
@@ -14,18 +15,113 @@ export function ChargeConservationInteractive({ lang }: Props) {
 
   const junction = calculateJunctionConservation(in1, in2, branch1Ratio)
 
-  return (
-    <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem', margin: '1rem 0' }}>
-      <h4 style={{ margin: '0 0 0.5rem 0', color: '#0f172a', fontSize: '1rem' }}>
-        {lang === 'hi' ? '🔬 प्रयोग: तार के जोड़ पर आवेश संरक्षण (Σ I_in = Σ I_out)' : '🔬 Experiment: Charge Conservation at a Junction (Σ I_in = Σ I_out)'}
-      </h4>
-      <p style={{ fontSize: '0.86rem', color: '#64748b', margin: '0 0 1rem 0' }}>
-        {lang === 'hi'
-          ? 'दो आने वाली धाराओं और शाखाओं के अनुपात को बदलें। देखें कि आने वाला कुल आवेश जाने वाले आवेश के ठीक बराबर रहता है।'
-          : 'Vary the two incoming currents and the branch splitting ratio. Notice that incoming charge rate exactly matches outgoing.'}
-      </p>
+  const pipelineSteps = [
+    {
+      kicker: lang === 'hi' ? '1. प्रवेश धारा (Σ I_in)' : '1. Total Inflow (I₁ + I₂)',
+      math: `${junction.currentIn1} A + ${junction.currentIn2} A = ${junction.totalIn} A`,
+    },
+    {
+      kicker: lang === 'hi' ? '2. संधि नियम (आवेश संरक्षण)' : '2. Junction Charge Rule',
+      math: `No charge piles up at node`,
+    },
+    {
+      kicker: lang === 'hi' ? '3. शाखा विभाजन (I₃, I₄)' : '3. Branch Split (I₃, I₄)',
+      math: `I₃ = ${junction.currentOut1} A | I₄ = ${junction.currentOut2} A`,
+    },
+    {
+      kicker: lang === 'hi' ? '4. कुल निकास (Σ I_out)' : '4. Total Outflow Verified',
+      math: `Σ I_out = ${junction.totalOut} A = Σ I_in`,
+    },
+  ]
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+  return (
+    <div className="nb-optics-bench-wrap">
+      <div className="nb-optics-svg-frame">
+        <svg
+          viewBox="0 0 760 210"
+          className="nb-optics-svg"
+          role="img"
+          aria-label={`Junction current conservation: Inflow ${junction.totalIn} A equals Outflow ${junction.totalOut} A`}
+        >
+          <defs>
+            <pattern id="nb-junc-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#e5dcc8" strokeWidth="0.75" />
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="760" height="210" fill="#fcf8ef" />
+          <rect x="0" y="0" width="760" height="210" fill="url(#nb-junc-grid)" />
+
+          {/* Incoming wires */}
+          <line
+            x1="90"
+            y1="48"
+            x2="380"
+            y2="105"
+            stroke="#2563eb"
+            strokeWidth={Math.max(2.5, junction.currentIn1 * 1.4)}
+            strokeLinecap="round"
+          />
+          <line
+            x1="90"
+            y1="162"
+            x2="380"
+            y2="105"
+            stroke="#2563eb"
+            strokeWidth={Math.max(2.5, junction.currentIn2 * 1.4)}
+            strokeLinecap="round"
+          />
+
+          {/* Outgoing wires */}
+          <line
+            x1="380"
+            y1="105"
+            x2="670"
+            y2="48"
+            stroke="#15803d"
+            strokeWidth={Math.max(2.5, junction.currentOut1 * 1.4)}
+            strokeLinecap="round"
+          />
+          <line
+            x1="380"
+            y1="105"
+            x2="670"
+            y2="162"
+            stroke="#15803d"
+            strokeWidth={Math.max(2.5, junction.currentOut2 * 1.4)}
+            strokeLinecap="round"
+          />
+
+          {/* Central Junction Node */}
+          <circle cx="380" cy="105" r="16" fill="#1e293b" stroke="#fbbf24" strokeWidth="3" />
+          <rect x="305" y="132" width="150" height="26" rx="5" fill="#fef3c7" stroke="#d97706" />
+          <text x="380" y="149" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#92400e" fontFamily="ui-monospace, monospace">
+            {`Σ I = ${junction.totalIn} C/s`}
+          </text>
+
+          {/* Wire Callout Pills */}
+          <rect x="70" y="16" width="150" height="24" rx="4" fill="#dbeafe" stroke="#2563eb" />
+          <text x="145" y="32" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#1e3a8a" fontFamily="ui-monospace, monospace">
+            {`I₁ (in) = ${junction.currentIn1} A →`}
+          </text>
+
+          <rect x="70" y="170" width="150" height="24" rx="4" fill="#dbeafe" stroke="#2563eb" />
+          <text x="145" y="186" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#1e3a8a" fontFamily="ui-monospace, monospace">
+            {`I₂ (in) = ${junction.currentIn2} A →`}
+          </text>
+
+          <rect x="540" y="16" width="150" height="24" rx="4" fill="#dcfce7" stroke="#16a34a" />
+          <text x="615" y="32" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#14532d" fontFamily="ui-monospace, monospace">
+            {`→ I₃ (out) = ${junction.currentOut1} A`}
+          </text>
+
+          <rect x="540" y="170" width="150" height="24" rx="4" fill="#dcfce7" stroke="#16a34a" />
+          <text x="615" y="186" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#14532d" fontFamily="ui-monospace, monospace">
+            {`→ I₄ (out) = ${junction.currentOut2} A`}
+          </text>
+        </svg>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '0.85rem' }}>
         <SliderField
           id="cc-inflow1-slider"
           label={lang === 'hi' ? 'प्रवेश धारा 1 (I₁ in)' : 'Inflow Current 1 (I₁ in)'}
@@ -61,49 +157,7 @@ export function ChargeConservationInteractive({ lang }: Props) {
         />
       </div>
 
-      {/* Interactive junction SVG visual */}
-      <div style={{ background: '#ffffff', border: '1.5px solid #cbd5e1', borderRadius: '8px', padding: '1rem', textAlign: 'center', marginBottom: '1rem' }}>
-        <svg viewBox="0 0 400 160" style={{ width: '100%', maxHeight: '160px', display: 'block' }}>
-          {/* Incoming wires */}
-          <line x1="40" y1="40" x2="200" y2="80" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />
-          <line x1="40" y1="120" x2="200" y2="80" stroke="#2563eb" strokeWidth="4" strokeLinecap="round" />
-
-          {/* Junction Node */}
-          <circle cx="200" cy="80" r="10" fill="#0f172a" />
-
-          {/* Outgoing wires */}
-          <line x1="200" y1="80" x2="360" y2="40" stroke="#16a34a" strokeWidth="4" strokeLinecap="round" />
-          <line x1="200" y1="80" x2="360" y2="120" stroke="#16a34a" strokeWidth="4" strokeLinecap="round" />
-
-          {/* Labels */}
-          <text x="35" y="30" fill="#1e40af" fontSize="12" fontWeight="700">I₁ = {junction.currentIn1} A →</text>
-          <text x="35" y="145" fill="#1e40af" fontSize="12" fontWeight="700">I₂ = {junction.currentIn2} A →</text>
-
-          <text x="200" y="105" textAnchor="middle" fill="#0f172a" fontSize="11" fontWeight="800">
-            Node (Σ = {junction.totalIn} A)
-          </text>
-
-          <text x="365" y="30" textAnchor="end" fill="#15803d" fontSize="12" fontWeight="700">→ I₃ = {junction.currentOut1} A</text>
-          <text x="365" y="145" textAnchor="end" fill="#15803d" fontSize="12" fontWeight="700">→ I₄ = {junction.currentOut2} A</text>
-        </svg>
-
-        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '0.5rem', fontSize: '0.86rem' }}>
-          <div style={{ color: '#1e40af', fontWeight: 700 }}>
-            {lang === 'hi' ? 'कुल प्रवेश' : 'Total Inflow'}: {junction.totalIn} A
-          </div>
-          <div style={{ color: '#0f172a', fontWeight: 800 }}>=</div>
-          <div style={{ color: '#15803d', fontWeight: 700 }}>
-            {lang === 'hi' ? 'कुल निकास' : 'Total Outflow'}: {junction.totalOut} A
-          </div>
-        </div>
-      </div>
-
-      <div style={{ background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: '6px', padding: '0.6rem 0.8rem', fontSize: '0.82rem', color: '#065f46' }}>
-        <strong>{lang === 'hi' ? 'आवेश संरक्षण पुष्टि:' : 'Conservation Verified:'}</strong>{' '}
-        {lang === 'hi'
-          ? `प्रवेश धारा (${junction.currentIn1} + ${junction.currentIn2} = ${junction.totalIn} A) ठीक निकास धारा (${junction.currentOut1} + ${junction.currentOut2} = ${junction.totalOut} A) के बराबर है। कोई आवेश नष्ट नहीं हुआ।`
-          : `Inflow (${junction.currentIn1} + ${junction.currentIn2} = ${junction.totalIn} A) perfectly equals Outflow (${junction.currentOut1} + ${junction.currentOut2} = ${junction.totalOut} A). Not a single coulomb is lost.`}
-      </div>
+      <NotebookPipeline steps={pipelineSteps} ariaLabel="Junction charge conservation pipeline" />
     </div>
   )
 }

@@ -875,6 +875,37 @@ summary:focus-visible,
   gap: 0.45rem;
 }
 
+@media (max-width: 960px) {
+  .platform-topbar {
+    gap: 0.35rem 0.6rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .platform-brand-title {
+    font-size: 0.85rem;
+  }
+
+  .platform-provisional-badge {
+    font-size: 0.66rem;
+    padding: 0.12rem 0.45rem;
+  }
+
+  .platform-lesson-switcher {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+    scrollbar-width: thin;
+  }
+
+  .platform-lesson-btn {
+    flex: 0 0 auto;
+    font-size: 0.74rem;
+    padding: 0.28rem 0.6rem;
+    min-height: 1.9rem;
+  }
+}
+
 .platform-switcher-label {
   font-family: var(--sans);
   font-size: 0.78rem;

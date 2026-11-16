@@ -17,36 +17,72 @@ export type StandaloneRouteId =
   | 'billing'
   | 'safety'
 
+export type RouteGroup = 'hub' | 'optics' | 'electricity'
+
 export interface StandaloneRoute {
   id: StandaloneRouteId
   path: string
   aliases: readonly string[]
   navLabel: string
+  group: RouteGroup
 }
 
 export const STANDALONE_ROUTES: readonly StandaloneRoute[] = [
-  { id: 'learn', path: '/learn', aliases: ['/concepts'], navLabel: 'Concept Cards (EN / हिं)' },
+  {
+    id: 'learn',
+    path: '/learn',
+    aliases: ['/concepts'],
+    navLabel: 'Notebook Shelf (20 Labs)',
+    group: 'hub',
+  },
   {
     id: 'alternative',
     path: '/alternative',
     aliases: [],
-    navLabel: 'Lesson II (/alternative): Reading & Immersive Bench',
+    navLabel: 'Convex Lens Workbench',
+    group: 'optics',
   },
-  { id: 'electricity', path: '/electricity', aliases: [], navLabel: 'Electricity: What makes current change?' },
-  { id: 'series-parallel', path: '/series-parallel', aliases: [], navLabel: 'Series & Parallel: One Path or Two?' },
-  { id: 'resistivity', path: '/resistivity', aliases: [], navLabel: 'Resistivity: Why Do Wires Differ?' },
+  {
+    id: 'electricity',
+    path: '/electricity',
+    aliases: [],
+    navLabel: 'Ohm’s Law',
+    group: 'electricity',
+  },
+  {
+    id: 'series-parallel',
+    path: '/series-parallel',
+    aliases: [],
+    navLabel: 'Series & Parallel',
+    group: 'electricity',
+  },
+  {
+    id: 'resistivity',
+    path: '/resistivity',
+    aliases: [],
+    navLabel: 'Resistivity',
+    group: 'electricity',
+  },
   {
     id: 'power-heating',
     path: '/power-heating',
     aliases: ['/heating'],
-    navLabel: 'Power & Heating: Where Does Energy Go?',
+    navLabel: 'Power & Heating',
+    group: 'electricity',
   },
-  { id: 'billing', path: '/billing', aliases: ['/electricity-bill'], navLabel: 'Electricity Bill: Watts, kWh & Cost' },
+  {
+    id: 'billing',
+    path: '/billing',
+    aliases: ['/electricity-bill'],
+    navLabel: 'kWh Billing',
+    group: 'electricity',
+  },
   {
     id: 'safety',
     path: '/safety',
     aliases: ['/domestic-circuits', '/fuses'],
-    navLabel: 'Domestic Safety: Fuses & Earthing',
+    navLabel: 'Domestic Safety',
+    group: 'electricity',
   },
 ]
 

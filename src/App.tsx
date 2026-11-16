@@ -83,6 +83,7 @@ function App() {
       window.history.pushState({}, '', nextPath)
     }
     setPathname(nextPath)
+    window.dispatchEvent(new PopStateEvent('popstate'))
   }
 
   function openBook(lesson: ActiveLessonId, spread: number) {
@@ -97,41 +98,46 @@ function App() {
   const handleOpenRampLesson = () => openBook('inclined-ramp', 2)
 
   const StandaloneComponent = standalone ? STANDALONE_COMPONENTS[standalone.id] : null
+  const isDioptreRoute = pathname.startsWith('/learn/lens-power-dioptre')
 
   return (
     <div className="platform-shell">
-      {/* Top Reusable Platform Navigation & Provisional Branding Header */}
+      {/* Unified Illustrated Science Notebook Top Bar */}
       <header className="platform-topbar no-print">
         <div className="platform-brand-group">
           <span className="platform-brand-title">
             CBSE Interactive Lab · Illustrated Science Notebook
           </span>
           <span className="platform-provisional-badge">
-            Provisional Prototype — Educator &amp; Curriculum Review Pending
+            Class 9 &amp; 10 Interactive Physics
           </span>
         </div>
 
-        <nav className="platform-lesson-switcher" aria-label="Book contents and lesson navigation">
+        <nav className="platform-lesson-switcher" aria-label="Science notebook navigation">
+          {/* Primary Notebook Hub */}
           <button
             type="button"
             className={`platform-lesson-btn ${
-              isBook && activeLesson === 'convex-lens' && lensStartSpread === 1 ? 'is-active' : ''
+              standalone?.id === 'learn' && !isDioptreRoute ? 'is-active' : ''
             }`}
-            onClick={() => openBook('convex-lens', 1)}
+            aria-pressed={standalone?.id === 'learn' && !isDioptreRoute}
+            onClick={() => navigateTo('/learn')}
           >
-            Book Contents
+            Notebook Shelf (20 Labs)
           </button>
+
+          {/* Flagship Optics Notebook Shortcut */}
           <button
             type="button"
-            className={`platform-lesson-btn ${
-              isBook && activeLesson === 'convex-lens' && lensStartSpread === 2 ? 'is-active' : ''
-            }`}
-            aria-pressed={isBook && activeLesson === 'convex-lens' && lensStartSpread === 2}
-            onClick={handleOpenLensLesson}
+            className={`platform-lesson-btn ${isDioptreRoute ? 'is-active' : ''}`}
+            aria-pressed={isDioptreRoute}
+            onClick={() => navigateTo('/learn/lens-power-dioptre')}
           >
-            Lesson II: How a convex lens forms an image.
+            Optics: Power &amp; Dioptre
           </button>
-          {STANDALONE_ROUTES.map((route) => {
+
+          {/* Standalone Chapter Workbenches */}
+          {STANDALONE_ROUTES.filter((r) => r.id !== 'learn').map((route) => {
             const active = standalone?.id === route.id
             return (
               <button
@@ -145,6 +151,27 @@ function App() {
               </button>
             )
           })}
+
+          {/* 3D Book Views */}
+          <button
+            type="button"
+            className={`platform-lesson-btn ${
+              isBook && activeLesson === 'convex-lens' && lensStartSpread === 1 ? 'is-active' : ''
+            }`}
+            onClick={() => openBook('convex-lens', 1)}
+          >
+            3D Book Contents
+          </button>
+          <button
+            type="button"
+            className={`platform-lesson-btn ${
+              isBook && activeLesson === 'convex-lens' && lensStartSpread === 2 ? 'is-active' : ''
+            }`}
+            aria-pressed={isBook && activeLesson === 'convex-lens' && lensStartSpread === 2}
+            onClick={handleOpenLensLesson}
+          >
+            3D Lens Book
+          </button>
           <button
             type="button"
             className={`platform-lesson-btn ${
@@ -153,7 +180,7 @@ function App() {
             aria-pressed={isBook && activeLesson === 'inclined-ramp'}
             onClick={handleOpenRampLesson}
           >
-            Lesson I: Why does a ramp make lifting easier?
+            3D Ramp Book
           </button>
         </nav>
       </header>

@@ -11,6 +11,46 @@ export interface CartesianSignResult {
   imageSizeCategory: 'diminished' | 'same-size' | 'magnified' | 'at-infinity'
 }
 
+/**
+ * Symmetric SVG coordinate mapping for the Optics Ray Bench (`OpticsRayBenchSVG`).
+ * Maps `[-60 cm, +60 cm]` to `[80 px, 800 px]` inside `viewBox="0 0 880 340"`
+ * with 80 px visual padding on both sides so object/image arrows and labels stay unclipped.
+ */
+export const OPTICS_RAY_BENCH_GEOMETRY = {
+  SVG_W: 880,
+  SVG_H: 340,
+  ORIGIN_X: 440,
+  ORIGIN_Y: 175,
+  PX_PER_CM: 6.0,
+  Y_PX_PER_CM: 12.0,
+  RULER_MIN_CM: -60,
+  RULER_MAX_CM: 60,
+  OBJECT_HEIGHT_CM: 3.5,
+  toSvgX(cm: number): number {
+    return 440 + cm * 6.0
+  },
+  toSvgY(cm: number): number {
+    return 175 - cm * 12.0
+  },
+} as const
+
+export interface RaySegment2D {
+  x1Cm: number
+  y1Cm: number
+  x2Cm: number
+  y2Cm: number
+  kind: 'incident' | 'transmitted-or-reflected' | 'virtual-extension'
+}
+
+export interface PrincipalRayDiagram {
+  state: CartesianSignResult
+  objectHeightCm: number
+  imageHeightCm: number
+  clampedImageXCm: number | null
+  isImageWithinBench: boolean
+  segments: readonly RaySegment2D[]
+}
+
 export function calculateOpticalState(
   device: OpticalDeviceType,
   absObjectDistanceCm: number,
@@ -68,6 +108,170 @@ export function calculateOpticalState(
     isReal,
     isErect,
     imageSizeCategory,
+  }
+}
+
+/**
+ * Computes two NCERT principal rays (parallel to axis + through optical centre / pole)
+ * and any virtual backward extensions for the 4 spherical optical devices.
+ */
+export function computePrincipalRays(
+  device: OpticalDeviceType,
+  absObjectDistanceCm: number,
+  absFocalLengthCm: number,
+  objectHeightCm: number = OPTICS_RAY_BENCH_GEOMETRY.OBJECT_HEIGHT_CM
+): PrincipalRayDiagram {
+  const state = calculateOpticalState(device, absObjectDistanceCm, absFocalLengthCm)
+  const u = state.objectDistanceU
+  const f = state.focalLengthF
+  const v = state.imageDistanceV
+  const isLens = device === 'convex-lens' || device === 'concave-lens'
+  const hO = objectHeightCm
+  const hI =
+    v === Infinity ? Infinity : Number(Math.max(-9.5, Math.min(9.5, state.magnificationM * hO)).toFixed(2))
+
+  const segments: RaySegment2D[] = [
+    // Incident Ray 1: Parallel to principal axis from object tip (u, hO) to (0, hO)
+    { x1Cm: u, y1Cm: hO, x2Cm: 0, y2Cm: hO, kind: 'incident' },
+    // Incident Ray 2: From object tip (u, hO) to optical centre / pole (0, 0)
+    { x1Cm: u, y1Cm: hO, x2Cm: 0, y2Cm: 0, kind: 'incident' },
+  ]
+
+  if (v === Infinity) {
+    // Object at focus F of convex lens or concave mirror -> parallel outgoing rays
+    if (isLens) {
+      const slope = -hO / f
+      segments.push({
+        x1Cm: 0,
+        y1Cm: hO,
+        x2Cm: 58,
+        y2Cm: hO + slope * 58,
+        kind: 'transmitted-or-reflected',
+      })
+      segments.push({
+        x1Cm: 0,
+        y1Cm: 0,
+        x2Cm: 58,
+        y2Cm: slope * 58,
+        kind: 'transmitted-or-reflected',
+      })
+    } else {
+      const slope = hO / f
+      segments.push({
+        x1Cm: 0,
+        y1Cm: hO,
+        x2Cm: -58,
+        y2Cm: hO + slope * -58,
+        kind: 'transmitted-or-reflected',
+      })
+      segments.push({
+        x1Cm: 0,
+        y1Cm: 0,
+        x2Cm: -58,
+        y2Cm: slope * -58,
+        kind: 'transmitted-or-reflected',
+      })
+    }
+    return {
+      state,
+      objectHeightCm: hO,
+      imageHeightCm: Infinity,
+      clampedImageXCm: null,
+      isImageWithinBench: false,
+      segments,
+    }
+  }
+
+  const rawImageY = state.magnificationM * hO
+  const isImageWithinBench =
+    v >= OPTICS_RAY_BENCH_GEOMETRY.RULER_MIN_CM && v <= OPTICS_RAY_BENCH_GEOMETRY.RULER_MAX_CM
+  const clampedImageXCm = Math.max(
+    OPTICS_RAY_BENCH_GEOMETRY.RULER_MIN_CM,
+    Math.min(OPTICS_RAY_BENCH_GEOMETRY.RULER_MAX_CM, v)
+  )
+
+  if (isLens) {
+    // Transmitted rays travel to the right (x > 0)
+    const slope1 = -hO / f // passes through (f, 0)
+    const slope2 = hO / u // undeviated through (0, 0)
+    const xRight = Math.max(58, isImageWithinBench && v > 0 ? v : 58)
+    segments.push({
+      x1Cm: 0,
+      y1Cm: hO,
+      x2Cm: Math.min(60, xRight),
+      y2Cm: hO + slope1 * Math.min(60, xRight),
+      kind: 'transmitted-or-reflected',
+    })
+    segments.push({
+      x1Cm: 0,
+      y1Cm: 0,
+      x2Cm: Math.min(60, xRight),
+      y2Cm: slope2 * Math.min(60, xRight),
+      kind: 'transmitted-or-reflected',
+    })
+
+    if (!state.isReal) {
+      // Virtual image on the left (v < 0): dashed backward extensions to (v, rawImageY)
+      segments.push({
+        x1Cm: 0,
+        y1Cm: hO,
+        x2Cm: clampedImageXCm,
+        y2Cm: rawImageY,
+        kind: 'virtual-extension',
+      })
+      segments.push({
+        x1Cm: 0,
+        y1Cm: 0,
+        x2Cm: clampedImageXCm,
+        y2Cm: rawImageY,
+        kind: 'virtual-extension',
+      })
+    }
+  } else {
+    // Mirror: reflected rays travel to the left (x < 0)
+    const slope1 = hO / f // reflects through (f, 0)
+    const slope2 = -hO / u // symmetric reflection at pole (0, 0)
+    segments.push({
+      x1Cm: 0,
+      y1Cm: hO,
+      x2Cm: -58,
+      y2Cm: hO + slope1 * -58,
+      kind: 'transmitted-or-reflected',
+    })
+    segments.push({
+      x1Cm: 0,
+      y1Cm: 0,
+      x2Cm: -58,
+      y2Cm: slope2 * -58,
+      kind: 'transmitted-or-reflected',
+    })
+
+    if (!state.isReal) {
+      // Virtual image behind the mirror (v > 0): dashed extensions to (v, rawImageY)
+      segments.push({
+        x1Cm: 0,
+        y1Cm: hO,
+        x2Cm: clampedImageXCm,
+        y2Cm: rawImageY,
+        kind: 'virtual-extension',
+      })
+      segments.push({
+        x1Cm: 0,
+        y1Cm: 0,
+        x2Cm: clampedImageXCm,
+        y2Cm: rawImageY,
+        kind: 'virtual-extension',
+      })
+    }
+  }
+
+  return {
+    state,
+    objectHeightCm: hO,
+    imageHeightCm: hI,
+    clampedImageXCm,
+    isImageWithinBench,
+    segments,
   }
 }
 
