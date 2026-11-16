@@ -5,6 +5,7 @@ import {
   STANDALONE_ROUTES,
   type StandaloneRouteId,
 } from './platform/routeRegistry'
+import { RelatedNotebooksBar } from './notebook/RelatedNotebooksBar'
 
 /*
  * Every lesson is lazy-loaded into its own chunk (Phase 0 performance budget).
@@ -188,8 +189,14 @@ function App() {
       {/* Active Lesson Content */}
       <div className="platform-content-area">
         <Suspense fallback={<LoadingFallback />}>
-          {StandaloneComponent ? (
-            <StandaloneComponent />
+          {StandaloneComponent && standalone ? (
+            <>
+              <RelatedNotebooksBar
+                routeId={standalone.id}
+                onOpenConcept={(conceptPath) => navigateTo(conceptPath)}
+              />
+              <StandaloneComponent />
+            </>
           ) : activeLesson === 'convex-lens' ? (
             <ConvexLensLesson
               key={`lens-${navKey}`}
