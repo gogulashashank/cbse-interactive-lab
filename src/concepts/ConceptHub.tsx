@@ -5,13 +5,12 @@ import { SQUARES_AND_INVERSES_CONTENT } from './squaresAndInverses/content'
 import { CONTROLLED_EXPERIMENTS_CONTENT } from './controlledExperiments/content'
 import { ENERGY_CONSERVATION_CONTENT } from './energyConservation/content'
 import { CONVENTIONS_AND_INVERSIONS_CONTENT } from './conventionsAndInversions/content'
-import { PredictCard } from '../kit/PredictCard'
-import { ExamQuestion } from '../kit/ExamQuestion'
-import { ShareButton } from '../kit/ShareButton'
 import { LanguageToggle, ProjectorToggle } from '../kit/Toggles'
 import { usePrefs } from '../kit/prefs'
 import { safeGetItem, safeSetItem } from '../kit/storage'
-import { NotebookHeader, NotebookSpread } from '../notebook/NotebookSpread'
+import { NotebookHeader } from '../notebook/NotebookSpread'
+import { StoryNotebookEngine } from '../notebook/StoryNotebookEngine'
+import { STORY_STAGE_SUPPLEMENTS } from '../notebook/storyCurricula'
 import '../kit/kit.css'
 import '../notebook/notebook.css'
 
@@ -282,73 +281,28 @@ export function ConceptHub() {
 
   const completedPilotCount = completed.filter((c) => pilotConcepts.some((p) => p.id === c)).length
 
-  return (
-    <main className={`nb-page ${projector ? 'cil-projector' : ''}`}>
-      <NotebookHeader
-        eyebrow={
-          activeConcept
-            ? `${currentThread.title[lang]} · ${activeConcept.boardMapping[0]?.chapterRef || ''}`
-            : lang === 'hi'
-              ? 'सीबीएसई इंटरैक्टिव विज्ञान नोटबुक (Illustrated Science Notebook Shelf)'
-              : 'Illustrated Science Notebook · Interactive Concept Shelf'
-        }
-        title={
-          activeConcept
-            ? activeConcept.title[lang]
-            : browseMode === 'threads'
-              ? currentThread.title[lang]
-              : currentChapter.title[lang]
-        }
-        subtitle={
-          activeConcept
-            ? activeConcept.oneLine[lang]
-            : isFiltering
-              ? lang === 'hi'
-                ? `${displayedConcepts.length} मिलान मिले (सभी अध्यायों में से)`
-                : `Showing ${displayedConcepts.length} matching interactive notebook lessons`
-              : browseMode === 'threads'
-                ? currentThread.tagline[lang]
-                : currentChapter.tagline[lang]
-        }
-        chapterBadge={activeConcept?.boardMapping[0]?.chapterRef}
-        statusBadge={
-          lang === 'hi'
-            ? `प्रगति: ${completedPilotCount}/${pilotConcepts.length} पूर्ण`
-            : `Notebook Progress: ${completedPilotCount}/${pilotConcepts.length}`
-        }
-        isCompleted={activeConcept ? completed.includes(activeConcept.id) : false}
-        completedLabel={lang === 'hi' ? '✓ पूर्ण' : '✓ Completed'}
-        onBack={activeConcept ? () => navigateToConcept(null) : undefined}
-        backLabel={lang === 'hi' ? '← सभी नोटबुक पाठ' : '← Notebook Shelf'}
-        utilities={
-          <>
-            <LanguageToggle />
-            <ProjectorToggle />
-          </>
-        }
-      />
+  if (activeConcept && content && activeConcept.id !== 'lens-power-dioptre') {
+    const supplement =
+      STORY_STAGE_SUPPLEMENTS[activeConcept.id as keyof typeof STORY_STAGE_SUPPLEMENTS]
+    const curIdx = pilotConcepts.findIndex((c) => c.id === activeConcept.id)
+    const nextConcept = pilotConcepts[curIdx + 1] || null
 
-      {/* Active Concept Lesson rendered inside the 2-Column Connected Notebook Spread */}
-      {activeConcept && content ? (
-        <NotebookSpread
-          apparatus={
-            <>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <span className="nb-chapter-pill">
-                  {lang === 'hi' ? 'प्रत्यक्ष उपकरण बेंच (Interactive Apparatus)' : 'Interactive Apparatus & Simulation Bench'}
-                </span>
-                {activeConcept.deepDiveRoute && (
-                  <a
-                    href={activeConcept.deepDiveRoute}
-                    className="nb-back-btn"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    {lang === 'hi' ? 'पूर्ण अध्याय प्रयोगशाला →' : 'Open Chapter Deep-Dive Lab →'}
-                  </a>
-                )}
-              </div>
-
-              {/* Interactive Experiment Apparatus */}
+    if (supplement) {
+      return (
+        <main className={`nb-page ${projector ? 'cil-projector' : ''}`}>
+          <StoryNotebookEngine
+            key={activeConcept.id}
+            concept={activeConcept}
+            threadTitle={currentThread.title[lang]}
+            content={content}
+            supplement={supplement}
+            lang={lang}
+            isCompleted={completed.includes(activeConcept.id)}
+            onMarkCompleted={() => markCompleted(activeConcept.id)}
+            onBackToShelf={() => navigateToConcept(null)}
+            nextConcept={nextConcept}
+            onNavigateConcept={(nextId) => navigateToConcept(nextId)}
+            apparatusSlot={
               <Suspense fallback={<div className="platform-loading">Loading apparatus…</div>}>
                 {activeConcept.id === 'rate-vs-total-intro' && <BucketInteractive lang={lang} />}
                 {activeConcept.id === 'current-vs-charge' && <ChargeInteractive lang={lang} />}
@@ -370,101 +324,50 @@ export function ConceptHub() {
                 {activeConcept.id === 'real-vs-virtual-switch' && <RealVirtualCrossoverInteractive lang={lang} />}
                 {activeConcept.id === 'magnification-code' && <MagnificationDecoderInteractive lang={lang} />}
               </Suspense>
+            }
+          />
+        </main>
+      )
+    }
+  }
 
-              {/* Core Scientific Insight Callout */}
-              <div className="nb-insight-box">
-                <div className="nb-insight-label">
-                  {lang === 'hi' ? 'मुख्य वैज्ञानिक सिद्धांत (Core Insight)' : 'Core Scientific Principle'}
-                </div>
-                <div className="nb-insight-formula">{content.insightFormula}</div>
-                <div className="nb-insight-summary">
-                  <strong>{content.insightTerm[lang]}:</strong> {content.insightSummary[lang]}
-                </div>
-              </div>
-            </>
-          }
-          fieldNotes={
-            <>
-              {/* Daily Life Hook */}
-              <div className="nb-hook-box">
-                <span className="nb-hook-label">
-                  {lang === 'hi' ? 'रोज़मर्रा की पहेली (Field Observation Hook)' : 'Field Observation Hook'}
-                </span>
-                <p className="nb-hook-text">{content.hook[lang]}</p>
-              </div>
+  return (
+    <main className={`nb-page ${projector ? 'cil-projector' : ''}`}>
+      <NotebookHeader
+        eyebrow={
+          lang === 'hi'
+            ? 'सीबीएसई इंटरैक्टिव विज्ञान नोटबुक (Illustrated Science Notebook Shelf)'
+            : 'Illustrated Science Notebook · Interactive Concept Shelf'
+        }
+        title={
+          browseMode === 'threads'
+            ? currentThread.title[lang]
+            : currentChapter.title[lang]
+        }
+        subtitle={
+          isFiltering
+            ? lang === 'hi'
+              ? `${displayedConcepts.length} मिलान मिले (सभी अध्यायों में से)`
+              : `Showing ${displayedConcepts.length} matching interactive notebook lessons`
+            : browseMode === 'threads'
+              ? currentThread.tagline[lang]
+              : currentChapter.tagline[lang]
+        }
+        statusBadge={
+          lang === 'hi'
+            ? `प्रगति: ${completedPilotCount}/${pilotConcepts.length} पूर्ण`
+            : `Notebook Progress: ${completedPilotCount}/${pilotConcepts.length}`
+        }
+        utilities={
+          <>
+            <LanguageToggle />
+            <ProjectorToggle />
+          </>
+        }
+      />
 
-              {/* Step 1: Predict First */}
-              <PredictCard
-                question={content.predictQuestion[lang]}
-                options={content.predictOptions.map((o) => o[lang])}
-                correctIndex={content.predictCorrectIndex}
-                explanation={content.predictExplanation[lang]}
-                lang={lang}
-                onLocked={() => markCompleted(activeConcept.id)}
-              />
-
-              {/* Step 2: Board Exam Practice */}
-              <section>
-                <h3 style={{ fontSize: '1.05rem', color: 'var(--nb-ink)', margin: '0 0 0.5rem' }}>
-                  {lang === 'hi' ? 'बोर्ड परीक्षा अभ्यास (CBSE Board Application)' : 'CBSE Board Exam Application'}
-                </h3>
-                {content.examQuestions.map((q, qIdx) => (
-                  <ExamQuestion
-                    key={qIdx}
-                    title={q.title[lang]}
-                    prompt={q.prompt[lang]}
-                    options={q.options.map((o) => o[lang])}
-                    correctIndex={q.correctIndex}
-                    hint={q.hint[lang]}
-                    solutionSteps={q.steps.map((s) => ({
-                      label: s.label[lang],
-                      content: s.content[lang],
-                    }))}
-                    finalAnswer={q.finalAnswer[lang]}
-                    lang={lang}
-                  />
-                ))}
-              </section>
-
-              {/* Notebook Spine Footer: Share + Next Lesson Stepper */}
-              <footer
-                style={{
-                  paddingTop: '0.85rem',
-                  borderTop: '1px dashed var(--nb-border)',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: '0.65rem',
-                }}
-              >
-                <ShareButton
-                  challengeText={content.hook[lang]}
-                  path={`/learn/${activeConcept.id}`}
-                  lang={lang}
-                />
-
-                {(() => {
-                  const curIdx = pilotConcepts.findIndex((c) => c.id === activeConcept.id)
-                  const next = pilotConcepts[curIdx + 1]
-                  if (!next) return null
-                  return (
-                    <button
-                      type="button"
-                      className="kit-btn kit-btn-primary"
-                      onClick={() => navigateToConcept(next.id)}
-                    >
-                      {lang === 'hi' ? `अगला पाठ: ${next.title[lang]} →` : `Next: ${next.title[lang]} →`}
-                    </button>
-                  )
-                })()}
-              </footer>
-            </>
-          }
-        />
-      ) : (
-        /* Notebook Shelf Overview (/learn) */
-        <>
+      {/* Notebook Shelf Overview (/learn) */}
+      <>
           <section className="nb-shelf-controls" aria-label="Notebook shelf browse controls">
             {/* Two Ways to Browse: By Mental-Model Thread vs By NCERT Syllabus Chapter */}
             <div className="nb-shelf-mode-row">
@@ -627,7 +530,6 @@ export function ConceptHub() {
             </div>
           </section>
         </>
-      )}
     </main>
   )
 }

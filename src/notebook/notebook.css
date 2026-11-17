@@ -564,3 +564,209 @@
   color: var(--nb-ink);
   margin-top: 0.15rem;
 }
+
+/* ==========================================================================
+   6-Stage Story-Driven Notebook Stepper & Stage Sheets
+   ========================================================================== */
+
+.nb-stage-stepper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--nb-border);
+}
+
+.nb-stage-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-family: var(--nb-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.38rem 0.7rem;
+  min-height: 2.15rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--nb-border-strong);
+  background: var(--nb-paper-muted);
+  color: var(--nb-ink);
+  cursor: pointer;
+}
+
+.nb-stage-tab.is-visited {
+  border-color: var(--nb-accent-rust);
+  background: #fdf6ec;
+}
+
+.nb-stage-tab.is-active {
+  background: var(--nb-pen-blue);
+  border-color: var(--nb-pen-blue);
+  color: #ffffff;
+}
+
+.nb-stage-tab.is-locked,
+.nb-stage-tab:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  background: #efe6d4;
+}
+
+.nb-stage-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  background: rgba(28, 36, 51, 0.12);
+}
+
+.nb-stage-tab.is-active .nb-stage-dot {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+.nb-progress-summary {
+  margin-inline-start: auto;
+  font-family: var(--nb-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--nb-pen-blue);
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.35rem;
+  background: var(--nb-paper-chip);
+}
+
+.nb-stage-kicker {
+  font-family: var(--nb-sans);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--nb-accent-rust);
+  margin: 0;
+}
+
+.nb-stage-heading {
+  margin: 0.15rem 0 0;
+  font-size: 1.18rem;
+  color: var(--nb-ink);
+}
+
+.nb-protocol-box {
+  background: var(--nb-paper-muted);
+  border: 1px solid var(--nb-border-strong);
+  border-radius: 0.6rem;
+  padding: 0.8rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.nb-protocol-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: var(--nb-sans);
+  font-size: 0.87rem;
+  line-height: 1.45;
+  color: var(--nb-ink);
+}
+
+.nb-worked-card {
+  background: var(--nb-paper-elevated);
+  border: 1.5px solid var(--nb-border-strong);
+  border-radius: 0.65rem;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.nb-math-block {
+  font-family: var(--nb-mono);
+  font-size: 0.86rem;
+  font-weight: 700;
+  background: #ffffff;
+  border: 1px solid var(--nb-border);
+  border-inline-start: 3.5px solid var(--nb-pen-blue);
+  border-radius: 0.4rem;
+  padding: 0.45rem 0.65rem;
+  color: var(--nb-ink);
+}
+
+.nb-contrast-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.nb-trap-card {
+  background: #fef2f2;
+  border: 1.5px solid #fca5a5;
+  border-radius: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  font-family: var(--nb-sans);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #7f1d1d;
+}
+
+.nb-reality-card {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 0.6rem;
+  padding: 0.75rem 0.9rem;
+  font-family: var(--nb-sans);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #14532d;
+}
+
+.nb-rubric-box {
+  background: #fcf8ef;
+  border: 1.5px solid var(--nb-border-strong);
+  border-radius: 0.6rem;
+  padding: 0.8rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.nb-textarea {
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.45rem;
+  border: 1.5px solid var(--nb-border-strong);
+  background: #ffffff;
+  color: var(--nb-ink);
+  font-family: var(--nb-sans);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.nb-next-stage-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: var(--nb-sans);
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 0.52rem 1rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid var(--nb-pen-blue);
+  background: var(--nb-pen-blue);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.nb-next-stage-btn:hover {
+  opacity: 0.94;
+}
