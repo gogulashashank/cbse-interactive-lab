@@ -3,6 +3,7 @@ import {
   calculateCircuitFailure,
   calculateConstantTempOhmic,
   calculateFixedConditionPower,
+  calculateMomentumImpulse,
   calculateStretchingVsComparing,
 } from './models'
 
@@ -54,5 +55,15 @@ describe('Controlled Experiments Physics Models', () => {
     const parallelFail = calculateCircuitFailure('parallel', 3, 1)
     expect(parallelFail.activeBulbsCount).toBe(2)
     expect(parallelFail.isWholeCircuitDark).toBe(false)
+  })
+
+  it('calculates fixed momentum change Δp and inverse force reduction as stopping time Δt increases', () => {
+    // 0.15 kg cricket ball at 20 m/s => Δp = 3.0 kg·m/s
+    // Stiff catch (0.05 s) => F = 60 N; Cushioned catch (0.25 s) => F = 12 N (5x reduction)
+    const cushioned = calculateMomentumImpulse(0.15, 20, 0.25, 0.05)
+    expect(cushioned.momentumChangeKgMps).toBe(3)
+    expect(cushioned.stiffHandsForceN).toBe(60)
+    expect(cushioned.impactForceN).toBe(12)
+    expect(cushioned.forceReductionFactor).toBe(5)
   })
 })

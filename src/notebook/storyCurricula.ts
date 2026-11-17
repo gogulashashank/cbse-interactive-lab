@@ -2274,4 +2274,612 @@ export const STORY_STAGE_SUPPLEMENTS: Record<
       ],
     },
   },
+
+  'velocity-time-graph-area': {
+    ncertSection: 'NCERT Class 9 Chapter 7: Motion (Sec 7.4 — Graphical Representation of Motion)',
+    openingQuestion: {
+      en: '“Why do we divide axes on a velocity–time graph to find acceleration, but calculate the shaded area underneath to find displacement?”',
+      hi: '“वेग–समय ग्राफ में त्वरण निकालने के लिए हम ढाल (भागफल) लेते हैं, परंतु विस्थापन निकालने के लिए नीचे का क्षेत्रफल क्यों निकालते हैं?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Separate the rectangle area (ut) and triangle area (½at²) under a v–t graph and verify how slope gives acceleration while area gives total displacement.',
+        hi: 'v–t ग्राफ के नीचे आयत (ut) और त्रिभुज (½at²) के क्षेत्रफल को अलग करें और सत्यापित करें कि ढाल त्वरण देती है जबकि क्षेत्रफल कुल विस्थापन देता है।',
+      },
+      steps: [
+        {
+          en: 'Set initial velocity u = 5 m/s, final velocity v = 25 m/s, and time t = 4 s. Observe the red slope line rising by Δv = 20 m/s in 4 s (a = 5 m/s²).',
+          hi: 'u = 5 m/s, v = 25 m/s और समय t = 4 s रखें। देखें कि रेखा 4 s में Δv = 20 m/s ऊपर उठती है (ढाल a = 5 m/s²)।',
+        },
+        {
+          en: 'Inspect the blue rectangle (5 × 4 = 20 m) and the amber triangle (½ × 20 × 4 = 40 m). Their sum is the total displacement s = 60 m.',
+          hi: 'नीले आयत (5 × 4 = 20 m) और पीले त्रिभुज (½ × 20 × 4 = 40 m) को देखें। इनका योग कुल विस्थापन s = 60 m है।',
+        },
+        {
+          en: 'Now set u = 15 m/s and v = 15 m/s (uniform motion). Notice the triangle vanishes (a = 0 m/s²) and only the rectangle area remains!',
+          hi: 'अब u = 15 m/s और v = 15 m/s (एकसमान गति) रखें। देखें कि त्रिभुज शून्य हो जाता है (a = 0 m/s²) और केवल आयत का क्षेत्रफल बचता है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the v–t graph bench, when you set u = 5 m/s, v = 25 m/s, and t = 4 s, how much extra distance does the car cover because of its acceleration (the amber triangle area) compared to moving at steady u = 5 m/s?',
+          hi: 'जब आप u = 5 m/s, v = 25 m/s और t = 4 s रखते हैं, तो त्वरण के कारण (त्रिभुज क्षेत्रफल) कार नियत चाल u = 5 m/s की तुलना में कितनी अतिरिक्त दूरी तय करती है?',
+        },
+        options: [
+          {
+            en: '40 m (Triangle area ½ × (25 − 5) × 4 = 40 m on top of the 20 m rectangle)',
+            hi: '40 m (20 m के आयत के ऊपर त्रिभुज का क्षेत्रफल ½ × 20 × 4 = 40 m)',
+          },
+          {
+            en: '20 m (Only the rectangle area)',
+            hi: '20 m (केवल आयत का क्षेत्रफल)',
+          },
+          {
+            en: '100 m (Simple product 25 × 4)',
+            hi: '100 m (सीधा गुणनफल 25 × 4)',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'At steady u = 5 m/s for 4 s, the car would cover the rectangle area ut = 20 m. Uniform acceleration adds the triangle area ½(v − u)t = ½ × 20 × 4 = 40 m, giving s = 60 m total.',
+          hi: 'नियत u = 5 m/s पर 4 s में कार आयत क्षेत्रफल ut = 20 m तय करती। एकसमान त्वरण त्रिभुज क्षेत्रफल ½(v − u)t = 40 m जोड़ता है, जिससे कुल विस्थापन 60 m होता है।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'A v–t graph encodes both Rate and Total simultaneously: the slope (vertical rise ÷ horizontal run) is the rate of change of velocity (acceleration a), while the 2D area under the curve (height × base) accumulates total displacement (s).',
+        hi: 'v–t ग्राफ एक साथ दर और कुल मात्रा दोनों दर्शाता है: ढाल (लंब ÷ आधार) वेग परिवर्तन की दर (त्वरण a) है, जबकि रेखा के नीचे का क्षेत्रफल कुल संचित विस्थापन (s) है।',
+      },
+      scalingRule: {
+        en: 'Splitting the trapezium under a uniform-acceleration v–t graph into a rectangle (ut) + triangle (½(v−u)t = ½at²) visually proves the second equation of motion: s = ut + ½at².',
+        hi: 'समलंब चतुर्भुज क्षेत्रफल को आयत (ut) और त्रिभुज (½(v−u)t = ½at²) में बाँटने से गति का द्वितीय समीकरण s = ut + ½at² स्वतः सिद्ध हो जाता है।',
+      },
+      siUnitRule: {
+        en: 'Slope units: (m/s) ÷ s = m/s² (Acceleration). Area units: (m/s) × s = m (Metres of displacement).',
+        hi: 'ढाल का मात्रक: (m/s) ÷ s = m/s² (त्वरण)। क्षेत्रफल का मात्रक: (m/s) × s = m (विस्थापन, मीटर)।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 9 Motion · Braking Train Trapezium Area',
+        hi: 'NCERT कक्षा 9 गति · रेलगाड़ी के वेग–समय ग्राफ से दूरी व त्वरण',
+      },
+      problem: {
+        en: 'A car moving at 5 m/s accelerates uniformly to 25 m/s in 4 seconds. Using the velocity–time graph method, find (a) its acceleration and (b) the total distance covered in 4 seconds.',
+        hi: '5 m/s से चलती हुई एक कार 4 सेकंड में एकसमान रूप से त्वरित होकर 25 m/s का वेग प्राप्त करती है। वेग–समय ग्राफ विधि से (a) त्वरण तथा (b) 4 सेकंड में तय कुल दूरी ज्ञात कीजिए।',
+      },
+      given: [
+        { en: 'Initial velocity u = 5 m/s', hi: 'प्रारंभिक वेग u = 5 m/s' },
+        { en: 'Final velocity v = 25 m/s, Time t = 4 s', hi: 'अंतिम वेग v = 25 m/s, समय t = 4 s' },
+      ],
+      formula: 'a = (v − u) / t  |  s = Area of trapezium = u·t + ½(v − u)·t',
+      substitution: 'a = (25 − 5) / 4 = 5 m/s²  |  s = (5 × 4) + ½(20 × 4) = 20 + 40 = 60 m',
+      answer: {
+        en: 'Acceleration a = 5 m/s²; Total Distance s = 60 m.',
+        hi: 'त्वरण a = 5 m/s²; कुल तय दूरी s = 60 m।',
+      },
+      unitTrapNote: {
+        en: 'If speed is given in km/h (e.g. 36 km/h or 72 km/h) and time in seconds, ALWAYS multiply km/h by 5/18 to convert into m/s before finding slope or area!',
+        hi: 'यदि चाल km/h में दी हो और समय सेकंड में, तो ढाल या क्षेत्रफल निकालने से पहले हमेशा 5/18 से गुणा करके m/s में बदलें!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Multiplying Final Velocity by Time (s = v × t) When Acceleration is Present',
+        hi: 'त्वरित गति में सीधे अंतिम वेग को समय से गुणा कर देना (s = v × t)',
+      },
+      commonMistake: {
+        en: 'Writing Distance = Speed × Time = 25 m/s × 4 s = 100 m even though the car started at 5 m/s and only reached 25 m/s at the very end.',
+        hi: 'दूरी = चाल × समय = 25 × 4 = 100 m लिख देना, जबकि कार 5 m/s से शुरू हुई थी और केवल अंतिम क्षण में 25 m/s पर पहुँची।',
+      },
+      correctPhysics: {
+        en: 'When velocity changes uniformly from u to v, the region under the v–t graph is a triangle/trapezium, NOT a full v × t rectangle! You must use average velocity ((u + v)/2) × t or ut + ½at².',
+        hi: 'जब वेग u से v तक बदलता है, तो ग्राफ के नीचे का क्षेत्र समलंब होता है, पूरा v × t आयत नहीं! इसलिए औसत वेग ((u + v)/2) × t या ut + ½at² का उपयोग करना अनिवार्य है।',
+      },
+      checkRule: {
+        en: 'Always check whether velocity is constant (rectangle area) or changing (rectangle + triangle area).',
+        hi: 'हमेशा जाँचें कि वेग स्थिर है (आयत क्षेत्रफल) या बदल रहा है (आयत + त्रिभुज क्षेत्रफल)।',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Graph Comparison: Two Cars Achieving the Same Final Velocity',
+        hi: 'उच्च स्तरीय ग्राफ विश्लेषण: समान अंतिम वेग प्राप्त करने वाली दो कारें',
+      },
+      prompt: {
+        en: 'In 4 seconds, Car A accelerates uniformly from rest (u = 0 m/s) to v = 20 m/s, while Car B accelerates uniformly from u = 10 m/s to the same v = 20 m/s. Which car has the greater acceleration (slope), and which car covers the greater distance (area)? Explain using the v–t graph.',
+        hi: '4 सेकंड में, कार A विराम (u = 0 m/s) से v = 20 m/s तक त्वरित होती है, जबकि कार B u = 10 m/s से v = 20 m/s तक त्वरित होती है। किस कार का त्वरण (ढाल) अधिक है, और कौन-सी कार अधिक दूरी (क्षेत्रफल) तय करती है? v–t ग्राफ के आधार पर स्पष्ट कीजिए।',
+      },
+      claimOptions: [
+        {
+          en: 'Car A has greater acceleration (5 m/s² vs 2.5 m/s²), but Car B covers a greater distance (60 m vs 40 m).',
+          hi: 'कार A का त्वरण अधिक है (5 m/s² बनाम 2.5 m/s²), परंतु कार B अधिक दूरी तय करती है (60 m बनाम 40 m)।',
+        },
+        {
+          en: 'Car A has both greater acceleration and greater distance because its slope is steeper.',
+          hi: 'कार A का त्वरण और तय दूरी दोनों अधिक हैं क्योंकि उसकी ढाल अधिक तीखी है।',
+        },
+        {
+          en: 'Both cars cover the same distance because both finish at 20 m/s after 4 s.',
+          hi: 'दोनों कारें समान दूरी तय करती हैं क्योंकि दोनों 4 s बाद 20 m/s पर पहुँचती हैं।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Car A has a steeper slope: a_A = (20 − 0)/4 = 5 m/s² vs a_B = (20 − 10)/4 = 2.5 m/s². However, Car B’s v–t line sits higher throughout the 4 s, giving a trapezium area s_B = ½(10 + 20) × 4 = 60 m vs Car A’s triangle area s_A = ½ × 20 × 4 = 40 m!',
+        hi: 'कार A की ढाल अधिक है: a_A = 20/4 = 5 m/s² जबकि a_B = 10/4 = 2.5 m/s²। किंतु कार B का ग्राफ पूरे 4 s में ऊपर रहता है, जिससे उसका क्षेत्रफल s_B = 60 m होता है जबकि कार A का त्रिभुज क्षेत्रफल s_A = 40 m होता है!',
+      },
+      rubricPoints: [
+        {
+          en: 'Compares slopes for acceleration: a_A = (20 − 0)/4 = 5 m/s² is greater than a_B = (20 − 10)/4 = 2.5 m/s².',
+          hi: 'त्वरण के लिए ढाल की तुलना करता है: a_A = 5 m/s² > a_B = 2.5 m/s²।',
+        },
+        {
+          en: 'Calculates area under v–t graph for Car A: triangle area s_A = ½ × 4 × 20 = 40 m.',
+          hi: 'कार A के लिए त्रिभुज क्षेत्रफल की गणना करता है: s_A = ½ × 4 × 20 = 40 m।',
+        },
+        {
+          en: 'Calculates area under v–t graph for Car B: trapezium area s_B = (10 × 4) + ½(10 × 4) = 60 m > 40 m.',
+          hi: 'कार B के लिए समलंब क्षेत्रफल की गणना करता है: s_B = 40 + 20 = 60 m > 40 m।',
+        },
+      ],
+    },
+  },
+
+  'momentum-impulse-cushion': {
+    ncertSection: 'NCERT Class 9 Chapter 8: Force and Laws of Motion (Sec 8.4 — Second Law of Motion)',
+    openingQuestion: {
+      en: '“Whether you catch a fast cricket ball with stiff hands or pull your hands back smoothly, the ball still stops completely—so why do stiff hands sting painfully?”',
+      hi: '“चाहे आप तेज़ गेंद को कड़े हाथों से पकड़ें या हाथ पीछे खींचकर, गेंद दोनों स्थितियों में रुकती ही है—फिर कड़े हाथों में तेज़ चोट क्यों लगती है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Hold the incoming ball mass m and speed u constant (fixed momentum change Δp) while varying stopping time Δt to observe how peak impact force scales inversely.',
+        hi: 'गेंद का द्रव्यमान m और चाल u स्थिर रखकर (निश्चित संवेग परिवर्तन Δp) रोकने का समय Δt बदलें और देखें कि चोट का बल कैसे घटता है।',
+      },
+      steps: [
+        {
+          en: 'Keep Ball Mass m = 0.15 kg and Incoming Speed u = 20 m/s. Note in the header that required momentum change Δp = m × u = 3 kg·m/s is HELD FIXED.',
+          hi: 'm = 0.15 kg और u = 20 m/s रखें। देखें कि आवश्यक संवेग परिवर्तन Δp = m × u = 3 kg·m/s स्थिर है।',
+        },
+        {
+          en: 'Slide Stopping Time Δt down to 0.05 s (stiff hands). Observe that peak impact force spikes to 60 N.',
+          hi: 'रोकने का समय Δt घटाकर 0.05 s (कड़े हाथ) करें। देखें कि हाथों पर लगने वाला बल 60 N तक पहुँच जाता है।',
+        },
+        {
+          en: 'Now slide Stopping Time Δt up to 0.25 s (5× longer pull-back). Observe that the impact force drops 5-fold to just 12 N!',
+          hi: 'अब Δt बढ़ाकर 0.25 s (5 गुना अधिक समय) करें। देखें कि चोट का बल 5 गुना घटकर केवल 12 N रह जाता है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'When you increase Stopping Time Δt from 0.05 s to 0.25 s for the same 0.15 kg ball arriving at 20 m/s, what happens to the total momentum change Δp and the stopping force F?',
+          hi: '20 m/s से आती 0.15 kg की उसी गेंद के लिए जब आप रोकने का समय Δt = 0.05 s से बढ़ाकर 0.25 s करते हैं, तो कुल संवेग परिवर्तन Δp और बल F पर क्या प्रभाव पड़ता है?',
+        },
+        options: [
+          {
+            en: 'Δp remains 3 kg·m/s, while stopping force F drops from 60 N to 12 N.',
+            hi: 'Δp = 3 kg·m/s अपरिवर्तित रहता है, जबकि बल F 60 N से घटकर 12 N हो जाता है।',
+          },
+          {
+            en: 'Δp drops from 3 kg·m/s to 0.6 kg·m/s, and force stays 60 N.',
+            hi: 'Δp घटकर 0.6 kg·m/s हो जाता है और बल 60 N रहता है।',
+          },
+          {
+            en: 'Both Δp and F increase 5 times.',
+            hi: 'Δp और F दोनों 5 गुना बढ़ जाते हैं।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Because initial momentum (mu = 3 kg·m/s) and final momentum (0) are unchanged, Δp = 3 kg·m/s is invariant. Multiplying Δt by 5 divides F = Δp/Δt by 5 (60 N → 12 N).',
+          hi: 'प्रारंभिक संवेग (3 kg·m/s) और अंतिम संवेग (0) समान रहने से Δp = 3 kg·m/s स्थिर रहता है। समय Δt को 5 गुना करने पर बल F = Δp/Δt पाँचवाँ हिस्सा (12 N) रह जाता है।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Newton’s Second Law states that net force equals the RATE of change of momentum: F = Δp / Δt. Pain and damage in a collision are caused by peak force F, not by momentum change Δp alone!',
+        hi: 'न्यूटन के गति के द्वितीय नियम के अनुसार बल संवेग में परिवर्तन की दर के बराबर होता है: F = Δp / Δt। टक्कर में चोट संवेग परिवर्तन Δp के बजाय चरम बल F से लगती है!',
+      },
+      scalingRule: {
+        en: 'For a fixed momentum change Δp = m(u − v), Impact Force is inversely proportional to stopping duration: F ∝ 1 / Δt.',
+        hi: 'निश्चित संवेग परिवर्तन Δp = m(u − v) के लिए, औसत बल रोकने के समयांतराल के व्युत्क्रमानुपाती होता है: F ∝ 1 / Δt।',
+      },
+      siUnitRule: {
+        en: '1 Newton (N) = 1 kg·m/s² = 1 (kg·m/s) per second. Always convert mass from grams (g) to kilograms (kg) before computing momentum!',
+        hi: '1 न्यूटन (N) = 1 kg·m/s² = 1 (kg·m/s) प्रति सेकंड। संवेग निकालने से पहले हमेशा द्रव्यमान को ग्राम (g) से किलोग्राम (kg) में बदलें!',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 9 Ch 8 · Automobile Braking Force',
+        hi: 'NCERT कक्षा 9 अध्याय 8 · वाहन पर लगने वाला ब्रेक बल',
+      },
+      problem: {
+        en: 'A motorcar of mass 1200 kg is moving along a straight line with a uniform velocity of 20 m/s. Its velocity is slowed down to 5 m/s in 3 seconds by an unbalanced external braking force. Calculate the change in momentum and the magnitude of the braking force.',
+        hi: '1200 kg द्रव्यमान की एक कार 20 m/s के एकसमान वेग से चल रही है। ब्रेक लगाने पर 3 सेकंड में इसका वेग घटकर 5 m/s रह जाता है। संवेग में परिवर्तन तथा ब्रेक बल का परिमाण ज्ञात कीजिए।',
+      },
+      given: [
+        { en: 'Mass m = 1200 kg, u = 20 m/s, v = 5 m/s', hi: 'द्रव्यमान m = 1200 kg, u = 20 m/s, v = 5 m/s' },
+        { en: 'Braking time interval Δt = 3 s', hi: 'समयांतराल Δt = 3 s' },
+      ],
+      formula: 'Δp = m(v − u)  |  |F| = |Δp| / Δt',
+      substitution: '|Δp| = 1200 × (20 − 5) = 18,000 kg·m/s  |  |F| = 18,000 / 3 = 6,000 N',
+      answer: {
+        en: 'Momentum change |Δp| = 18,000 kg·m/s; Braking force |F| = 6,000 N.',
+        hi: 'संवेग परिवर्तन |Δp| = 18,000 kg·m/s; ब्रेक बल |F| = 6,000 N।',
+      },
+      unitTrapNote: {
+        en: 'Watch out for cricket/bullet problems where mass is in grams (e.g. 150 g or 20 g): divide by 1000 to get kg before using F = Δp/Δt!',
+        hi: 'क्रिकेट गेंद या बंदूक की गोली वाले प्रश्नों में द्रव्यमान ग्राम (g) में दिया होता है: सूत्र लगाने से पहले 1000 से भाग देकर kg में बदलें!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Claiming That Pulling Hands Back or Using Airbags “Reduces the Change in Momentum”',
+        hi: 'यह लिखना कि हाथ पीछे खींचने या एयरबैग से “संवेग परिवर्तन (Δp) कम हो जाता है”',
+      },
+      commonMistake: {
+        en: 'Writing in board exams: “A fielder pulls their hands back to reduce the change in momentum of the ball.”',
+        hi: 'परीक्षा में यह लिखना: “खिलाड़ी गेंद के संवेग परिवर्तन को कम करने के लिए हाथ पीछे खींचता है।”',
+      },
+      correctPhysics: {
+        en: 'The ball still goes from speed u to rest (v = 0), so the total change in momentum Δp = mu is 100% IDENTICAL! Pulling hands back increases the stopping time Δt, which reduces the RATE of change of momentum (Δp/Δt) and therefore reduces the force F.',
+        hi: 'गेंद को अभी भी वेग u से विराम (v = 0) में लाना होता है, इसलिए कुल संवेग परिवर्तन Δp = mu बिल्कुल समान रहता है! हाथ पीछे खींचने से समय Δt बढ़ता है, जिससे संवेग परिवर्तन की दर (Δp/Δt) अर्थात बल F कम होता है।',
+      },
+      checkRule: {
+        en: 'Always write “reduces the RATE of change of momentum (Δp/Δt)”, never “reduces the change in momentum (Δp)”.',
+        hi: 'हमेशा “संवेग परिवर्तन की दर (Δp/Δt) कम होती है” लिखें, न कि “संवेग परिवर्तन (Δp) कम होता है”।',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Real-World Engineering: High-Jump Cushioned Mats vs Concrete Floor',
+        hi: 'उच्च स्तरीय अनुप्रयोग: ऊँची कूद में गद्देदार मैट बनाम पक्का फर्श',
+      },
+      prompt: {
+        en: 'In an athletic high-jump event, athletes of mass 60 kg land at 8 m/s on a thick foam cushion rather than a hard track. Compare the athlete’s momentum change Δp and landing force F on the foam cushion (stopping time 0.40 s) versus the hard floor (stopping time 0.04 s).',
+        hi: 'ऊँची कूद प्रतियोगिता में 60 kg का खिलाड़ी 8 m/s के वेग से कड़े फर्श (रुकने का समय 0.04 s) के बजाय मोटे गद्दे (रुकने का समय 0.40 s) पर गिरता है। दोनों स्थितियों में संवेग परिवर्तन Δp तथा लगने वाले बल F की तुलना कीजिए।',
+      },
+      claimOptions: [
+        {
+          en: 'Both surfaces produce the exact same momentum change Δp = 480 kg·m/s, but the foam cushion increases Δt 10-fold (0.40 s vs 0.04 s), cutting peak impact force 10-fold from 12,000 N to 1,200 N.',
+          hi: 'दोनों सतहों पर संवेग परिवर्तन Δp = 480 kg·m/s समान है, परंतु गद्दा समय Δt को 10 गुना बढ़ाकर आघात बल को 12,000 N से घटाकर 1,200 N (1/10) कर देता है।',
+        },
+        {
+          en: 'The foam cushion reduces the athlete’s momentum change Δp by 10 times.',
+          hi: 'गद्दा खिलाड़ी के संवेग परिवर्तन Δp को 10 गुना कम कर देता है।',
+        },
+        {
+          en: 'The impact force is identical on both surfaces because landing speed is 8 m/s in both cases.',
+          hi: 'दोनों सतहों पर बल समान रहता है क्योंकि टकराने का वेग 8 m/s समान है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'In both landings, the athlete decelerates from 8 m/s to 0 m/s, so Δp = 60 × 8 = 480 kg·m/s is held fixed. Extending stopping time from 0.04 s to 0.40 s slashes F = Δp/Δt from 12,000 N to 1,200 N.',
+        hi: 'दोनों स्थितियों में खिलाड़ी 8 m/s से विराम में आता है, अतः Δp = 60 × 8 = 480 kg·m/s स्थिर है। समय 0.04 s से 0.40 s होने पर बल F = Δp/Δt 12,000 N से घटकर 1,200 N रह जाता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'States that momentum change Δp = m × u = 60 × 8 = 480 kg·m/s is identical on both surfaces.',
+          hi: 'स्पष्ट करता है कि दोनों सतहों पर संवेग परिवर्तन Δp = 60 × 8 = 480 kg·m/s समान रहता है।',
+        },
+        {
+          en: 'Applies Newton’s Second Law F = Δp / Δt to show force is inversely proportional to stopping time Δt.',
+          hi: 'न्यूटन के द्वितीय नियम F = Δp / Δt से दर्शाता है कि बल समय Δt के व्युत्क्रमानुपाती है।',
+        },
+        {
+          en: 'Computes the 10× force reduction: F_floor = 480/0.04 = 12,000 N vs F_cushion = 480/0.40 = 1,200 N.',
+          hi: 'बल में 10 गुना कमी की गणना करता है: फर्श पर 12,000 N बनाम गद्दे पर 1,200 N।',
+        },
+      ],
+    },
+  },
+
+  'archimedes-buoyancy-float': {
+    ncertSection: 'NCERT Class 9 Chapter 9: Gravitation (Sec 9.5–9.6 — Thrust, Pressure & Archimedes’ Principle)',
+    openingQuestion: {
+      en: '“Why does a tiny solid iron nail sink immediately in water, while a massive steel cargo ship weighing thousands of tonnes floats high on the sea?”',
+      hi: '“लोहे की एक छोटी-सी कील पानी में तुरंत डूब जाती है, जबकि हज़ारों टन वजनी लोहे का विशाल जहाज समुद्र पर आसानी से क्यों तैरता है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Use the Eureka overflow beaker and spring balance to verify that upward buoyant force equals the weight of displaced fluid (F_B = W_disp) and test the density threshold for floating vs sinking.',
+        hi: 'यूरेका पात्र और कमानीदार तुला से सत्यापित करें कि उत्प्लावन बल विस्थापित तरल के भार के बराबर होता है (F_B = W_disp) और तैरने-डूबने की घनत्व शर्त जाँचें।',
+      },
+      steps: [
+        {
+          en: 'Set Object Density ρ_obj = 2.5 g/cm³, Volume V = 400 cm³, and Fluid Density ρ_fluid = 1.0 g/cm³. Observe that true weight in air is 10 N, displaced water is 400 cm³ (4 N), and the spring balance reads 10 − 4 = 6 N.',
+          hi: 'ρ_obj = 2.5 g/cm³, V = 400 cm³ और ρ_fluid = 1.0 g/cm³ रखें। देखें कि वायु में भार 10 N है, विस्थापित जल 400 cm³ (4 N) है, और तुला का पाठ्यांक 10 − 4 = 6 N है।',
+        },
+        {
+          en: 'Increase Fluid Density ρ_fluid to 1.4 g/cm³ (dense brine). Notice the displaced fluid still has volume 400 cm³, but weighs 5.6 N, dropping apparent weight to 4.4 N!',
+          hi: 'द्रव का घनत्व बढ़ाकर 1.4 g/cm³ करें। देखें कि विस्थापित आयतन अभी भी 400 cm³ है, पर उत्प्लावन बल 5.6 N हो जाता है और आभासी भार घटकर 4.4 N रह जाता है!',
+        },
+        {
+          en: 'Now lower Object Density ρ_obj to 0.6 g/cm³ in water (1.0 g/cm³). Watch the block rise and float with 60% of its volume submerged and Apparent Weight = 0 N.',
+          hi: 'अब पानी (1.0 g/cm³) में वस्तु का घनत्व घटाकर 0.6 g/cm³ करें। देखें कि गुटका 60% डूबकर तैरता है और आभासी भार 0 N हो जाता है।',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'When the 400 cm³ block of density 2.5 g/cm³ (Weight in air = 10 N) is fully submerged in water (1.0 g/cm³), how does the upward buoyant force F_B compare to the water collected in the overflow cylinder?',
+          hi: 'जब 2.5 g/cm³ घनत्व और 400 cm³ आयतन वाला गुटका (वायु में भार = 10 N) पानी (1.0 g/cm³) में पूर्णतः डूबता है, तो उत्प्लावन बल F_B और विस्थापित पानी के भार में क्या संबंध होता है?',
+        },
+        options: [
+          {
+            en: 'F_B = 4 N, which is exactly equal to the weight of the 400 cm³ (0.4 kg) of displaced water.',
+            hi: 'F_B = 4 N, जो विस्थापित 400 cm³ (0.4 kg) पानी के भार के बिल्कुल बराबर है।',
+          },
+          {
+            en: 'F_B = 10 N, equal to the weight of the metal block in air.',
+            hi: 'F_B = 10 N, धातु के गुटके के वायु में भार के बराबर।',
+          },
+          {
+            en: 'F_B = 6 N, equal to the reading on the spring balance.',
+            hi: 'F_B = 6 N, कमानीदार तुला के पाठ्यांक के बराबर।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: '400 cm³ of water has a mass of 400 g = 0.4 kg and weight W_disp = 0.4 kg × 10 m/s² = 4 N. By Archimedes’ Principle, F_B = W_disp = 4 N, reducing the spring scale reading from 10 N to 6 N.',
+          hi: '400 cm³ पानी का द्रव्यमान 400 g = 0.4 kg तथा भार 0.4 × 10 = 4 N होता है। आर्किमिडीज सिद्धांत से उत्प्लावन बल F_B = 4 N है, जिससे तुला का पाठ्यांक 10 N से घटकर 6 N रह जाता है।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Buoyancy is not magic: fluid pressure increases with depth, pushing upward on the bottom of a submerged object harder than downward on its top. That net upward force equals the weight of the displaced fluid: F_B = ρ_fluid · V_disp · g.',
+        hi: 'गहराई के साथ द्रव का दाब बढ़ता है, जिससे वस्तु की निचली सतह पर ऊपर की ओर लगने वाला बल ऊपरी सतह के बल से अधिक होता है। यह परिणामी उत्प्लावन बल हटाए गए द्रव के भार के बराबर होता है: F_B = ρ_fluid · V_disp · g।',
+      },
+      scalingRule: {
+        en: 'Float–Sink Rule: An object floats if its average density is less than or equal to the fluid density (ρ_obj ≤ ρ_fluid), submerging just enough fraction (ρ_obj / ρ_fluid) so F_B balances W_air. If ρ_obj > ρ_fluid, even 100% submersion cannot balance W_air, so it sinks.',
+        hi: 'तैरने-डूबने का नियम: यदि वस्तु का औसत घनत्व तरल के घनत्व से कम या बराबर हो (ρ_obj ≤ ρ_fluid) तो वस्तु तैरती है। यदि ρ_obj > ρ_fluid हो, तो वस्तु डूब जाती है।',
+      },
+      siUnitRule: {
+        en: 'Water density is 1 g/cm³ = 1000 kg/m³. Relative Density (RD = ρ_obj / ρ_water) is a pure ratio and has NO units!',
+        hi: 'पानी का घनत्व 1 g/cm³ = 1000 kg/m³ होता है। आपेक्षिक घनत्व (समान राशियों का अनुपात) का कोई मात्रक नहीं होता!',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 9 Gravitation · Apparent Weight & Displaced Water',
+        hi: 'NCERT कक्षा 9 · पानी में आभासी भार एवं उत्प्लावन बल',
+      },
+      problem: {
+        en: 'A solid cube of volume 500 cm³ and mass 1.5 kg is suspended from a spring balance and completely immersed in water (density = 1 g/cm³, take g = 10 m/s²). Calculate (a) its weight in air, (b) the buoyant force acting on it, and (c) its apparent weight in water.',
+        hi: '500 cm³ आयतन तथा 1.5 kg द्रव्यमान का एक ठोस घन कमानीदार तुला से लटकाकर पानी (घनत्व = 1 g/cm³, g = 10 m/s²) में पूर्णतः डुबोया जाता है। (a) वायु में भार, (b) उत्प्लावन बल तथा (c) पानी में आभासी भार ज्ञात कीजिए।',
+      },
+      given: [
+        { en: 'Volume V = 500 cm³, Mass m = 1.5 kg', hi: 'आयतन V = 500 cm³, द्रव्यमान m = 1.5 kg' },
+        { en: 'Water density ρ_water = 1 g/cm³, g = 10 m/s²', hi: 'पानी का घनत्व ρ_water = 1 g/cm³, g = 10 m/s²' },
+      ],
+      formula: 'W_air = m·g  |  F_B = m_water_disp · g  |  W_app = W_air − F_B',
+      substitution: 'W_air = 1.5 × 10 = 15 N  |  m_water = 500 g = 0.5 kg ⇒ F_B = 0.5 × 10 = 5 N  |  W_app = 15 − 5 = 10 N',
+      answer: {
+        en: 'W_air = 15 N; Buoyant Force F_B = 5 N; Apparent Weight W_app = 10 N.',
+        hi: 'वायु में भार = 15 N; उत्प्लावन बल F_B = 5 N; आभासी भार = 10 N।',
+      },
+      unitTrapNote: {
+        en: 'Remember that Buoyant Force F_B depends on the density of the FLUID and the displaced VOLUME—not the mass or density of the submerged metal!',
+        hi: 'ध्यान रखें कि पूर्णतः डूबी वस्तु पर उत्प्लावन बल F_B केवल विस्थापित आयतन और तरल के घनत्व पर निर्भर करता है, धातु के द्रव्यमान पर नहीं!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Thinking a Denser Metal Block Experiences a Larger Buoyant Force When Both Blocks Have the Same Volume',
+        hi: 'समान आयतन के दो पूर्णतः डूबे गुटकों में भारी धातु पर अधिक उत्प्लावन बल मान लेना',
+      },
+      commonMistake: {
+        en: 'Saying that a 100 cm³ lead block submerged in water experiences a greater upward buoyant force than a 100 cm³ aluminium block submerged in water.',
+        hi: 'यह सोचना कि पानी में डूबे 100 cm³ सीसे (Lead) के गुटके पर 100 cm³ एल्युमिनियम के गुटके से अधिक उत्प्लावन बल लगता है।',
+      },
+      correctPhysics: {
+        en: 'Both submerged blocks displace the exact same 100 cm³ of water! Since F_B equals the weight of displaced water (100 g → 1 N), BOTH blocks experience the exact same upward buoyant force F_B = 1 N.',
+        hi: 'दोनों गुटके समान 100 cm³ पानी विस्थापित करते हैं! चूँकि उत्प्लावन बल विस्थापित पानी के भार (1 N) के बराबर होता है, इसलिए दोनों गुटकों पर बिल्कुल समान उत्प्लावन बल F_B = 1 N लगता है।',
+      },
+      checkRule: {
+        en: 'To find F_B, always ask: “How much FLUID was pushed aside?” (F_B = ρ_fluid · V_disp · g).',
+        hi: 'उत्प्लावन बल निकालने के लिए हमेशा पूछें: “कितना तरल विस्थापित हुआ?” (F_B = ρ_fluid · V_disp · g)।',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Naval Architecture: Why a Hollow Steel Ship Floats While an Iron Nail Sinks',
+        hi: 'उच्च स्तरीय विश्लेषण: लोहे की कील डूबती है पर लोहे का जहाज क्यों तैरता है?',
+      },
+      prompt: {
+        en: 'Solid iron has a density of 7.8 g/cm³, which is much greater than water (1.0 g/cm³). Explain scientifically why a solid iron nail sinks in water, whereas a ship made of the same steel floats easily and can carry heavy cargo.',
+        hi: 'ठोस लोहे का घनत्व 7.8 g/cm³ है जो पानी (1.0 g/cm³) से बहुत अधिक है। वैज्ञानिक कारण स्पष्ट कीजिए कि लोहे की ठोस कील पानी में क्यों डूब जाती है, जबकि उसी इस्पात से बना जहाज आसानी से तैरता है।',
+      },
+      claimOptions: [
+        {
+          en: 'The hollow hull of the ship encloses a large volume of air, making the ship’s average density (Total Mass ÷ Total Hull Volume) less than 1.0 g/cm³, so it displaces a weight of water equal to the entire ship’s weight before submerging completely.',
+          hi: 'जहाज का खोखला ढाँचा बहुत अधिक आयतन घेरता है जिससे जहाज का औसत घनत्व पानी (1.0 g/cm³) से कम हो जाता है और वह पूर्णतः डूबे बिना ही अपने भार के बराबर पानी विस्थापित कर लेता है।',
+        },
+        {
+          en: 'Ocean water has a density greater than 7.8 g/cm³.',
+          hi: 'समुद्र के पानी का घनत्व 7.8 g/cm³ से अधिक होता है।',
+        },
+        {
+          en: 'Archimedes’ principle applies only to small objects like nails and not to large ships.',
+          hi: 'आर्किमिडीज का सिद्धांत केवल छोटी वस्तुओं पर लागू होता है, बड़े जहाजों पर नहीं।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'A solid nail displaces a tiny volume of water whose weight is much less than the nail’s weight (ρ_nail = 7.8 > 1.0 g/cm³). Shaping steel into a wide hollow hull dramatically increases displaced water volume V_disp, lowering average density below 1.0 g/cm³ so F_B = W_ship.',
+        hi: 'ठोस कील बहुत कम पानी हटाती है जिसका भार कील के भार से कम होता है। इस्पात को खोखले जहाज का आकार देने से विस्थापित जल का आयतन V_disp बहुत बढ़ जाता है और औसत घनत्व 1.0 g/cm³ से कम हो जाता है, जिससे F_B = W_जहाज संतुलित हो जाता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Explains why the solid iron nail sinks: its density (7.8 g/cm³) exceeds water (1.0 g/cm³), so buoyant force F_B < weight W_nail.',
+          hi: 'बताता है कि ठोस कील का घनत्व (7.8 g/cm³) पानी से अधिक होने के कारण F_B < W_कील होता है और वह डूब जाती है।',
+        },
+        {
+          en: 'Explains how the hollow hull geometry encloses a large volume of air, reducing the ship’s overall average density below 1.0 g/cm³.',
+          hi: 'स्पष्ट करता है कि जहाज की खोखली बनावट बड़े आयतन में हवा घेरती है जिससे औसत घनत्व 1.0 g/cm³ से कम हो जाता है।',
+        },
+        {
+          en: 'Connects to Archimedes’ Principle: the wide hull displaces a large volume of water whose weight equals the total weight of the ship (F_B = W_ship).',
+          hi: 'आर्किमिडीज के सिद्धांत से जोड़ता है: जहाज अपने कुल भार के बराबर पानी विस्थापित कर लेता है (F_B = W_जहाज)।',
+        },
+      ],
+    },
+  },
+
+  'sound-echo-wave-speed': {
+    ncertSection: 'NCERT Class 9 Chapter 11: Sound (Sec 11.2 — Propagation & Wave Speed; Sec 11.3 — Reflection of Sound & Echo)',
+    openingQuestion: {
+      en: '“If a soprano singer hits a high-pitched note (twice the frequency of a bass note) in an auditorium, does her high note reach the back row any faster?”',
+      hi: '“यदि किसी सभागार में एक गायिका दोगुनी आवृत्ति (उच्च तारत्व) का स्वर गाती है, तो क्या उसकी आवाज़ पिछली पंक्ति तक तेज़ी से पहुँचेगी?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Investigate how wavelength λ scales inversely with frequency f in a uniform medium (v = fλ) and determine the minimum cliff distance required for a distinct echo (t ≥ 0.1 s).',
+        hi: 'समान माध्यम में आवृत्ति f के साथ तरंगदैर्घ्य λ के व्युत्क्रम संबंध (v = fλ) का परीक्षण करें और स्पष्ट प्रतिध्वनि (t ≥ 0.1 s) के लिए न्यूनतम दूरी ज्ञात करें।',
+      },
+      steps: [
+        {
+          en: 'Keep Wave Speed v = 340 m/s and increase Wave Frequency f from 170 Hz to 340 Hz. Observe in the top wave profile that wavelength λ halves from 2.0 m to 1.0 m while speed remains 340 m/s.',
+          hi: 'ध्वनि की चाल v = 340 m/s स्थिर रखकर आवृत्ति f को 170 Hz से 340 Hz करें। देखें कि तरंगदैर्घ्य λ 2.0 m से घटकर 1.0 m (आधी) हो जाती है।',
+        },
+        {
+          en: 'Set Cliff Distance d = 85 m at v = 340 m/s. Note that the sound travels 85 m to the cliff + 85 m back (2d = 170 m), taking t = 170 / 340 = 0.50 s (Distinct Echo Heard ✓).',
+          hi: 'चट्टान की दूरी d = 85 m रखें। देखें कि ध्वनि 85 m जाकर 85 m लौटती है (2d = 170 m) और समय t = 170/340 = 0.50 s लगता है (स्पष्ट प्रतिध्वनि ✓)।',
+        },
+        {
+          en: 'Slide Cliff Distance d down to 15 m. Notice round-trip distance is 30 m and t = 0.09 s < 0.10 s — the bench warns “TOO CLOSE FOR ECHO”!',
+          hi: 'अब चट्टान की दूरी d घटाकर 15 m करें। देखें कि कुल पथ 30 m और समय t = 0.09 s (< 0.10 s) हो जाता है, जिससे स्पष्ट प्रतिध्वनि सुनाई नहीं देती!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'At a wave speed of v = 340 m/s in air, what is the minimum cliff distance d at which the echo bench switches to “DISTINCT ECHO HEARD ✓” (t_echo ≥ 0.10 s)?',
+          hi: 'वायु में v = 340 m/s की चाल पर स्पष्ट प्रतिध्वनि (t_echo ≥ 0.10 s) सुनने के लिए अवरोधक की न्यूनतम दूरी d कितनी होनी चाहिए?',
+        },
+        options: [
+          {
+            en: 'd = 17 m (because round-trip 2d = 34 m takes 34 / 340 = 0.10 s)',
+            hi: 'd = 17 m (क्योंकि कुल आने-जाने की दूरी 2d = 34 m में 34 / 340 = 0.10 s लगते हैं)',
+          },
+          {
+            en: 'd = 34 m (ignoring the return journey)',
+            hi: 'd = 34 m (वापसी की दूरी को अनदेखा करने पर)',
+          },
+          {
+            en: 'd = 340 m',
+            hi: 'd = 340 m',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'The sensation of sound persists in the human brain for 0.1 s. In 0.1 s at 340 m/s, sound travels a total round-trip distance 2d = 340 × 0.1 = 34 m, so the reflecting surface must be at least d = 34 / 2 = 17 m away!',
+          hi: 'मस्तिष्क में ध्वनि की संवेदना 0.1 s तक बनी रहती है। 0.1 s में ध्वनि कुल दूरी 2d = 340 × 0.1 = 34 m तय करती है, अतः परावर्तक सतह की न्यूनतम दूरी d = 34 / 2 = 17 m होनी चाहिए!',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Wave speed v is a property of the medium (faster in solids/liquids than gases, and faster in warmer air). Frequency f is fixed by the vibrating source. Therefore wavelength λ = v/f adjusts automatically to match both.',
+        hi: 'ध्वनि की चाल v माध्यम का गुण है (ठोस व द्रव में गैस से अधिक, तथा गर्म वायु में अधिक)। आवृत्ति f स्रोत द्वारा तय होती है, इसलिए तरंगदैर्घ्य λ = v/f स्वतः समायोजित होती है।',
+      },
+      scalingRule: {
+        en: '1. In the same medium (fixed v): λ ∝ 1/f.  2. For any reflection/echo/SONAR problem: Total Distance = 2d = v × t, so one-way distance d = (v × t) / 2.',
+        hi: '1. समान माध्यम में (स्थिर v): λ ∝ 1/f।  2. किसी भी प्रतिध्वनि या सोनार प्रश्न में: कुल दूरी = 2d = v × t, अतः एकतरफा दूरी d = (v × t) / 2।',
+      },
+      siUnitRule: {
+        en: 'Frequency f is in Hertz (Hz = 1/s), Time Period T = 1/f is in seconds (s), Wavelength λ is in metres (m), and Wave Speed v = fλ is in m/s.',
+        hi: 'आवृत्ति f का मात्रक हर्ट्ज़ (Hz = 1/s), आवर्तकाल T = 1/f का सेकंड (s), तरंगदैर्घ्य λ का मीटर (m) तथा चाल v = fλ का m/s होता है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 9 Sound · SONAR Seabed Depth Calculation',
+        hi: 'NCERT कक्षा 9 ध्वनि · सोनार (SONAR) से समुद्र की गहराई',
+      },
+      problem: {
+        en: 'A ship sends out an ultrasound pulse that returns from the seabed and is detected after 3.42 s. If the speed of ultrasound through seawater is 1531 m/s, what is the distance of the seabed from the ship?',
+        hi: 'एक जहाज पराध्वनि उत्सर्जित करता है जो समुद्र तल से परावर्तित होकर 3.42 s के पश्चात संसूचित की जाती है। यदि समुद्री जल में पराध्वनि की चाल 1531 m/s हो, तो समुद्र तल से जहाज की दूरी कितनी है?',
+      },
+      given: [
+        { en: 'Ultrasound speed in seawater v = 1531 m/s', hi: 'समुद्री जल में चाल v = 1531 m/s' },
+        { en: 'Round-trip echo time t = 3.42 s', hi: 'पल्स के लौटने का कुल समय t = 3.42 s' },
+      ],
+      formula: '2d = v × t  ⇒  d = (v × t) / 2',
+      substitution: '2d = 1531 × 3.42 = 5236.02 m  ⇒  d = 5236.02 / 2 = 2618.01 m',
+      answer: {
+        en: 'Seabed depth d = 2618 m (approx 2.62 km).',
+        hi: 'समुद्र तल की गहराई d = 2618 m (लगभग 2.62 km)।',
+      },
+      unitTrapNote: {
+        en: 'If frequency is given in kilohertz (e.g. 2 kHz), convert it to Hz (2000 Hz) and convert wavelength from cm to m before computing v = fλ!',
+        hi: 'यदि आवृत्ति kHz में दी हो (जैसे 2 kHz = 2000 Hz) और तरंगदैर्घ्य सेमी (cm) में, तो v = fλ लगाने से पहले उन्हें Hz और मीटर (m) में बदलें!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Forgetting the Factor of 2 in Echo & SONAR Problems (Writing d = v × t Instead of 2d = v × t)',
+        hi: 'प्रतिध्वनि व सोनार प्रश्नों में 2 का गुणक भूल जाना (2d = vt के स्थान पर d = vt लिखना)',
+      },
+      commonMistake: {
+        en: 'Multiplying speed by echo time (v × t) and reporting that full round-trip distance as the distance to the cliff or seabed.',
+        hi: 'चाल और प्रतिध्वनि समय का गुणा (v × t) करके उसी कुल दूरी को चट्टान या समुद्र तल की दूरी मान लेना।',
+      },
+      correctPhysics: {
+        en: 'An echo must travel from the source to the reflector (+d) AND from the reflector back to the receiver (+d). Therefore v × t equals 2d, and the reflector distance is always d = (v × t) / 2.',
+        hi: 'प्रतिध्वनि स्रोत से परावर्तक तक जाती है (+d) और परावर्तक से वापस श्रोता तक लौटती है (+d)। अतः v × t हमेशा 2d के बराबर होता है, और एकतरफा दूरी d = (v × t) / 2 होती है।',
+      },
+      checkRule: {
+        en: 'As soon as you read “echo” or “SONAR return pulse”, write 2d = v × t on your first line!',
+        hi: 'जैसे ही प्रश्न में “प्रतिध्वनि (Echo)” या “सोनार (SONAR)” पढ़ें, पहली ही पंक्ति में 2d = v × t लिखें!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Summer vs Winter Echo: Why a Distant Valley Echo May Vanish on a Hot Day',
+        hi: 'उच्च स्तरीय विश्लेषण: गर्मी के दिन प्रतिध्वनि के लिए अधिक न्यूनतम दूरी क्यों चाहिए?',
+      },
+      prompt: {
+        en: 'On a cold winter morning (air temperature 10 °C), the speed of sound is 336 m/s and a student standing 17.0 m from a wall hears a distinct echo. On a hot summer afternoon (40 °C), the speed of sound rises to 356 m/s. Will the student still hear a distinct echo from the same 17.0 m spot? Explain with calculation.',
+        hi: 'सर्दियों की सुबह (10 °C) ध्वनि की चाल 336 m/s है और दीवार से 17.0 m दूर खड़े छात्र को स्पष्ट प्रतिध्वनि सुनाई देती है। गर्मियों की दोपहर (40 °C) में ध्वनि की चाल बढ़कर 356 m/s हो जाती है। क्या उसी 17.0 m दूरी से स्पष्ट प्रतिध्वनि सुनाई देगी? गणना सहित स्पष्ट कीजिए।',
+      },
+      claimOptions: [
+        {
+          en: 'No! At v = 356 m/s, the echo returns in t = 34 / 356 = 0.0955 s (< 0.10 s threshold), so the minimum distance needed rises to d_min = (356 × 0.1)/2 = 17.8 m.',
+          hi: 'नहीं! v = 356 m/s पर प्रतिध्वनि t = 34 / 356 = 0.0955 s (< 0.10 s) में लौट आती है; स्पष्ट प्रतिध्वनि हेतु अब न्यूनतम दूरी d_min = 17.8 m चाहिए।',
+        },
+        {
+          en: 'Yes, because faster sound always makes echoes easier to hear at shorter distances.',
+          hi: 'हाँ, क्योंकि तेज़ चाल होने से कम दूरी पर भी प्रतिध्वनि आसानी से सुनाई देती है।',
+        },
+        {
+          en: 'Yes, because the minimum distance for an echo is fixed at 17.0 m regardless of temperature.',
+          hi: 'हाँ, क्योंकि प्रतिध्वनि की न्यूनतम दूरी तापमान से स्वतंत्र होकर सदैव 17.0 m रहती है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Because the human brain requires at least t = 0.10 s to separate an echo from the original sound, a higher wave speed v in hot air requires a larger minimum reflector distance: d_min = (v × 0.10) / 2 = 17.8 m > 17.0 m!',
+        hi: 'मस्तिष्क को मूल ध्वनि और प्रतिध्वनि में अंतर करने हेतु कम से कम 0.10 s चाहिए। गर्म हवा में चाल बढ़ने (356 m/s) पर न्यूनतम आवश्यक दूरी d_min = (356 × 0.10)/2 = 17.8 m हो जाती है, इसलिए 17.0 m पर स्पष्ट प्रतिध्वनि नहीं सुनाई देगी!',
+      },
+      rubricPoints: [
+        {
+          en: 'States the persistence of hearing requirement: echo return time must be at least t ≥ 0.10 s.',
+          hi: 'श्रवण निबंध (Persistence of hearing) की शर्त लिखता है: प्रतिध्वनि का समय t ≥ 0.10 s होना चाहिए।',
+        },
+        {
+          en: 'Calculates echo return time at 40 °C (v = 356 m/s) for d = 17.0 m: t = 2d / v = 34 / 356 = 0.0955 s < 0.10 s.',
+          hi: '40 °C (v = 356 m/s) पर d = 17.0 m के लिए समय की गणना करता है: t = 34 / 356 = 0.0955 s < 0.10 s।',
+        },
+        {
+          en: 'Concludes that no distinct echo is heard at 17.0 m because the new minimum distance is d_min = (356 × 0.10)/2 = 17.8 m.',
+          hi: 'निष्कर्ष निकालता है कि 17.0 m पर स्पष्ट प्रतिध्वनि नहीं सुनाई देगी क्योंकि अब न्यूनतम दूरी 17.8 m आवश्यक है।',
+        },
+      ],
+    },
+  },
 }

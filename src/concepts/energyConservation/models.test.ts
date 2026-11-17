@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  calculateArchimedesBuoyancy,
   calculateElectricalEnergy,
   calculateJunctionConservation,
   calculateParallelPowerBalance,
@@ -51,5 +52,25 @@ describe('Thread 4: Energy Conservation Models', () => {
     expect(ground.kineticEnergyJoules).toBe(196)
     expect(ground.totalEnergyJoules).toBe(196)
     expect(ground.currentVelocityMps).toBe(14)
+  })
+
+  it('calculates Archimedes buoyancy, displaced fluid volume, and apparent weight for floating vs sinking blocks', () => {
+    // Sinking block: 400 cm³, density 2.5 g/cm³ in water (1.0 g/cm³)
+    // Mass = 1.0 kg => W_air = 10 N, V_disp = 400 cm³ => F_B = 4 N, W_app = 6 N
+    const sink = calculateArchimedesBuoyancy(400, 2.5, 1.0)
+    expect(sink.floats).toBe(false)
+    expect(sink.weightInAirN).toBe(10)
+    expect(sink.displacedVolumeCm3).toBe(400)
+    expect(sink.buoyantUpthrustN).toBe(4)
+    expect(sink.apparentWeightN).toBe(6)
+
+    // Floating block: 400 cm³, density 0.6 g/cm³ in water (1.0 g/cm³)
+    // Mass = 0.24 kg => W_air = 2.4 N, submergedFraction = 0.6 => V_disp = 240 cm³, F_B = 2.4 N, W_app = 0 N
+    const float = calculateArchimedesBuoyancy(400, 0.6, 1.0)
+    expect(float.floats).toBe(true)
+    expect(float.weightInAirN).toBe(2.4)
+    expect(float.displacedVolumeCm3).toBe(240)
+    expect(float.buoyantUpthrustN).toBe(2.4)
+    expect(float.apparentWeightN).toBe(0)
   })
 })

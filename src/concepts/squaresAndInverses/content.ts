@@ -212,4 +212,81 @@ export const SQUARES_AND_INVERSES_CONTENT: Record<string, ConceptCardContent> = 
       },
     ],
   },
+
+  'sound-echo-wave-speed': {
+    hook: {
+      en: 'When you shout across a valley and hear your echo 0.5 seconds later, why must you divide the sound travel distance by 2 to find the cliff’s distance?',
+      hi: 'जब आप घाटी में चिल्लाते हैं और 0.5 सेकंड बाद प्रतिध्वनि सुनते हैं, तो चट्टान की दूरी निकालने के लिए कुल ध्वनि दूरी को 2 से भाग क्यों देना पड़ता है?',
+    },
+    predictQuestion: {
+      en: 'A sound wave travels in air at v = 340 m/s. If you double its frequency from f = 170 Hz to 340 Hz in the same air, what happens to its wavelength λ and its speed v?',
+      hi: 'वायु में ध्वनि तरंग v = 340 m/s की चाल से चलती है। यदि उसी वायु में आवृत्ति f = 170 Hz से दोगुनी (340 Hz) कर दी जाए, तो तरंगदैर्घ्य λ और चाल v पर क्या प्रभाव पड़ेगा?',
+    },
+    predictOptions: [
+      {
+        en: 'Wave speed v stays 340 m/s (fixed by the medium), so wavelength λ halves from 2 m to 1 m.',
+        hi: 'चाल v = 340 m/s स्थिर रहती है (माध्यम द्वारा निर्धारित), इसलिए तरंगदैर्घ्य λ आधी (2 m से 1 m) हो जाती है।',
+      },
+      {
+        en: 'Wave speed v doubles to 680 m/s and wavelength stays 2 m.',
+        hi: 'चाल v दोगुनी (680 m/s) हो जाती है और तरंगदैर्घ्य 2 m रहती है।',
+      },
+      {
+        en: 'Both wavelength λ and speed v double.',
+        hi: 'तरंगदैर्घ्य λ और चाल v दोनों दोगुने हो जाते हैं।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Wave speed v depends only on the medium (air temperature/density), NOT the frequency! Since v = f × λ is constant in the same air, doubling frequency f forces wavelength λ = v/f to halve.',
+      hi: 'ध्वनि की चाल v केवल माध्यम (वायु) पर निर्भर करती है! चूँकि v = f × λ स्थिर है, आवृत्ति f दोगुनी करने पर तरंगदैर्घ्य λ = v/f आधी रह जाती है।',
+    },
+    insightFormula: 'λ = v / f  |  Echo Round-Trip: 2d = v × t',
+    insightTerm: {
+      en: 'Sound Wave Equation & Echo Ranging (NCERT Ch 11.2–11.3)',
+      hi: 'ध्वनि तरंग समीकरण एवं प्रतिध्वनि (NCERT 11.2–11.3)',
+    },
+    insightSummary: {
+      en: 'In a uniform medium, wavelength is inversely proportional to frequency (λ = v/f). For an echo or SONAR pulse, the wave travels to the reflector and back, so total distance is 2d = v × t.',
+      hi: 'समान माध्यम में तरंगदैर्घ्य आवृत्ति के व्युत्क्रमानुपाती होती है (λ = v/f)। प्रतिध्वनि या सोनार में ध्वनि जाकर वापस लौटती है, इसलिए कुल दूरी 2d = v × t होती है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 9 Example 11.2 · Cliff Echo Distance',
+          hi: 'NCERT कक्षा 9 उदाहरण 11.2 · प्रतिध्वनि से चट्टान की दूरी',
+        },
+        prompt: {
+          en: 'A person claps their hands near a cliff and hears the echo after 2 seconds. What is the distance of the cliff from the person if the speed of sound v is taken as 346 m/s?',
+          hi: 'एक मनुष्य किसी खड़ी चट्टान के पास ताली बजाता है और उसकी प्रतिध्वनि 2 सेकंड पश्चात सुनता है। यदि ध्वनि की चाल 346 m/s हो, तो चट्टान से मनुष्य की दूरी कितनी होगी?',
+        },
+        options: [
+          { en: '346 m (2d = 692 m ⇒ d = 346 m)', hi: '346 m (2d = 692 m ⇒ d = 346 m)' },
+          { en: '692 m (Forgot to divide round-trip by 2)', hi: '692 m (2 से भाग देना भूल गए)' },
+          { en: '173 m', hi: '173 m' },
+          { en: '1,384 m', hi: '1,384 m' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Remember the sound travels to the cliff and back: 2d = v × t, so d = (v × t) / 2.',
+          hi: 'ध्वनि चट्टान तक जाती है और वापस आती है: 2d = v × t, अतः d = (v × t) / 2।',
+        },
+        steps: [
+          {
+            label: { en: 'Given', hi: 'दिया है' },
+            content: { en: 'Speed v = 346 m/s, Echo time t = 2 s', hi: 'चाल v = 346 m/s, प्रतिध्वनि समय t = 2 s' },
+          },
+          {
+            label: { en: 'Round-Trip Formula', hi: 'द्विमार्गी सूत्र' },
+            content: { en: '2d = v × t = 346 × 2 = 692 m', hi: '2d = v × t = 346 × 2 = 692 m' },
+          },
+          {
+            label: { en: 'One-Way Cliff Distance d', hi: 'चट्टान की दूरी d' },
+            content: { en: 'd = 692 / 2 = 346 m', hi: 'd = 692 / 2 = 346 m' },
+          },
+        ],
+        finalAnswer: { en: 'Cliff Distance d = 346 m', hi: 'चट्टान की दूरी d = 346 m' },
+      },
+    ],
+  },
 }

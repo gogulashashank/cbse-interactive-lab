@@ -34,6 +34,10 @@ export type ConceptId =
   | 'real-vs-virtual-switch'
   | 'magnification-code'
   | 'lens-power-dioptre'
+  | 'velocity-time-graph-area'
+  | 'momentum-impulse-cushion'
+  | 'archimedes-buoyancy-float'
+  | 'sound-echo-wave-speed'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -411,6 +415,76 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     contexts: [{ en: 'Optometrist eye prescription (+2.0 D vs -1.5 D)', hi: 'चश्मे का नंबर (+2.0 D बनाम -1.5 D)' }],
     boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 9: Light (9.3.6)' }],
     deepDiveRoute: '/alternative',
+    status: 'pilot',
+  },
+
+  // Class 9 Physics Expansion: Motion, Force & Laws of Motion, Floatation, and Sound
+  {
+    id: 'velocity-time-graph-area',
+    thread: 'rate-vs-total',
+    title: {
+      en: 'Velocity–Time Graph: Slope vs Area Under the Curve',
+      hi: 'वेग–समय ग्राफ: ढाल (त्वरण) बनाम क्षेत्रफल (विस्थापन)',
+    },
+    oneLine: {
+      en: 'Slope Δv/Δt gives the rate of change (acceleration a), while shaded area under the v–t line gives accumulated displacement (s = ut + ½at²).',
+      hi: 'ग्राफ की ढाल Δv/Δt त्वरण (a) देती है, जबकि v–t रेखा के नीचे का क्षेत्रफल कुल विस्थापन (s = ut + ½at²) देता है।',
+    },
+    prerequisites: ['rate-vs-total-intro'],
+    misconceptionIds: ['vt-slope-is-distance', 'vt-area-ignores-initial-velocity'],
+    contexts: [{ en: 'Train accelerating along a straight track', hi: 'सीधी पटरी पर त्वरित होती रेलगाड़ी' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 7: Motion (7.4)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'momentum-impulse-cushion',
+    thread: 'controlled-experiments',
+    title: {
+      en: 'Second Law of Motion: Why Fielding Hands Pull Back (F = Δp/Δt)',
+      hi: 'गति का द्वितीय नियम: कैच लेते समय हाथ पीछे क्यों खींचते हैं? (F = Δp/Δt)',
+    },
+    oneLine: {
+      en: 'Stopping an incoming ball requires a fixed momentum change Δp = mu; extending stopping time Δt inversely slashes peak impact force F.',
+      hi: 'आती हुई गेंद को रोकने के लिए संवेग परिवर्तन Δp = mu स्थिर रहता है; समय Δt बढ़ाने से चोट का बल F व्युत्क्रमानुपाती रूप से घटता है।',
+    },
+    prerequisites: ['inverse-area-scaling'],
+    misconceptionIds: ['pulling-hands-back-reduces-momentum-change'],
+    contexts: [{ en: 'Cricket fielder catching a fast ball & car airbags', hi: 'क्रिकेट खिलाड़ी द्वारा कैच लेना और कार एयरबैग' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 8: Force and Laws of Motion (8.4)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'archimedes-buoyancy-float',
+    thread: 'energy-conservation',
+    title: {
+      en: 'Archimedes’ Principle: Upthrust & The Float–Sink Density Threshold',
+      hi: 'आर्किमिडीज का सिद्धांत: उत्प्लावन बल एवं तैरने–डूबने की शर्त',
+    },
+    oneLine: {
+      en: 'Upward buoyant force equals the weight of displaced fluid (F_B = W_disp), reducing apparent weight (W_app = W_air − F_B).',
+      hi: 'ऊपर की ओर उत्प्लावन बल विस्थापित तरल के भार के बराबर होता है (F_B = W_disp), जिससे आभासी भार घट जाता है।',
+    },
+    prerequisites: ['inverse-area-scaling'],
+    misconceptionIds: ['heavy-objects-always-sink', 'buoyancy-depends-on-object-mass'],
+    contexts: [{ en: 'Eureka overflow beaker, spring balance & iron ship vs nail', hi: 'यूरेका पात्र, कमानीदार तुला और लोहे का जहाज बनाम कील' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 9: Gravitation & Floatation (9.5)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'sound-echo-wave-speed',
+    thread: 'squares-and-inverses',
+    title: {
+      en: 'Sound Waves: Inverse Wavelength (λ = v/f) & Echo Round-Trip (2d = vt)',
+      hi: 'ध्वनि तरंगें: व्युत्क्रम तरंगदैर्घ्य (λ = v/f) एवं प्रतिध्वनि (2d = vt)',
+    },
+    oneLine: {
+      en: 'In a given medium, wave speed v is constant so λ = v/f; an echo travels to the cliff and back (2d = vt) requiring t ≥ 0.1 s.',
+      hi: 'समान माध्यम में चाल v स्थिर रहती है (λ = v/f); प्रतिध्वनि जाकर वापस लौटती है (2d = vt) और स्पष्ट सुनने हेतु t ≥ 0.1 s आवश्यक है।',
+    },
+    prerequisites: ['rate-vs-total-intro'],
+    misconceptionIds: ['higher-frequency-travels-faster', 'echo-forgets-factor-of-two'],
+    contexts: [{ en: 'Mountain cliff echo & SONAR depth ranging', hi: 'पहाड़ी प्रतिध्वनि और सोनार (SONAR) गहराई मापन' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 11: Sound (11.2 & 11.3)' }],
     status: 'pilot',
   },
 

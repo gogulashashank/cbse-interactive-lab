@@ -112,3 +112,47 @@ export function calculateGravityInverse(distanceR: number, baselineDistanceR = 1
     forceFactor,
   }
 }
+
+export interface SoundEchoWaveResult {
+  frequencyHz: number
+  waveSpeedMps: number
+  cliffDistanceM: number
+  wavelengthM: number
+  timePeriodMs: number
+  roundTripDistanceM: number
+  echoTimeS: number
+  isDistinctEcho: boolean
+}
+
+/**
+ * Class 9 Sound (NCERT Ch 11.2–11.3):
+ * 1. Wave equation: v = f * λ => λ = v / f (inversely proportional in a given medium).
+ * 2. Echo round-trip equation: 2d = v * t => t_echo = 2d / v.
+ * 3. Distinct echo condition: human persistence of hearing is 0.1 s (t_echo >= 0.1 s).
+ */
+export function calculateSoundEchoWave(
+  frequencyHz: number,
+  waveSpeedMps = 340,
+  cliffDistanceM = 85
+): SoundEchoWaveResult {
+  const safeF = Math.max(50, frequencyHz)
+  const safeV = Math.max(200, waveSpeedMps)
+  const safeD = Math.max(5, cliffDistanceM)
+
+  const wavelengthM = tidyNumber(safeV / safeF, 2)
+  const timePeriodMs = tidyNumber((1 / safeF) * 1000, 2)
+  const roundTripDistanceM = tidyNumber(2 * safeD, 1)
+  const echoTimeS = tidyNumber(roundTripDistanceM / safeV, 2)
+  const isDistinctEcho = echoTimeS >= 0.1
+
+  return {
+    frequencyHz: safeF,
+    waveSpeedMps: safeV,
+    cliffDistanceM: safeD,
+    wavelengthM,
+    timePeriodMs,
+    roundTripDistanceM,
+    echoTimeS,
+    isDistinctEcho,
+  }
+}

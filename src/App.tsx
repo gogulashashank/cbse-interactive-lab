@@ -124,7 +124,7 @@ function App() {
             aria-pressed={standalone?.id === 'learn' && !isDioptreRoute}
             onClick={() => navigateTo('/learn')}
           >
-            Notebook Shelf (20 Labs)
+            Notebook Shelf (24 Labs)
           </button>
 
           {/* Flagship Optics Notebook Shortcut */}

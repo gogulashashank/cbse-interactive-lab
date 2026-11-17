@@ -187,3 +187,46 @@ export function calculateCircuitFailure(
     isWholeCircuitDark: false,
   }
 }
+
+export interface MomentumImpulseResult {
+  massKg: number
+  initialSpeedMps: number
+  stoppingTimeS: number
+  momentumChangeKgMps: number
+  impactForceN: number
+  stiffHandsForceN: number
+  forceReductionFactor: number
+}
+
+/**
+ * Class 9 Force & Laws of Motion (NCERT Ch 8.4):
+ * Stopping a ball of mass m moving at speed u requires a FIXED momentum change Δp = m * u.
+ * Average stopping force F = Δp / Δt.
+ * Increasing stopping time Δt inversely reduces peak impact force F.
+ */
+export function calculateMomentumImpulse(
+  massKg: number,
+  initialSpeedMps: number,
+  stoppingTimeS: number,
+  stiffBaselineTimeS = 0.05
+): MomentumImpulseResult {
+  const safeM = Math.max(0.05, massKg)
+  const safeU = Math.max(1, initialSpeedMps)
+  const safeDt = Math.max(0.02, stoppingTimeS)
+  const safeBaselineDt = Math.max(0.02, stiffBaselineTimeS)
+
+  const momentumChangeKgMps = tidyNumber(safeM * safeU, 2)
+  const impactForceN = tidyNumber(momentumChangeKgMps / safeDt, 2)
+  const stiffHandsForceN = tidyNumber(momentumChangeKgMps / safeBaselineDt, 2)
+  const forceReductionFactor = tidyNumber(stiffHandsForceN / impactForceN, 2)
+
+  return {
+    massKg: safeM,
+    initialSpeedMps: safeU,
+    stoppingTimeS: safeDt,
+    momentumChangeKgMps,
+    impactForceN,
+    stiffHandsForceN,
+    forceReductionFactor,
+  }
+}

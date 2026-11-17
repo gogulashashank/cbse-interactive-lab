@@ -296,4 +296,98 @@ export const ENERGY_CONSERVATION_CONTENT: Record<string, ConceptContentItem> = {
       },
     ],
   },
+
+  'archimedes-buoyancy-float': {
+    hook: {
+      en: 'A heavy stone feels much lighter while submerged in a bucket of water, and a wooden block floats effortlessly on top. Where does the "missing" weight go?',
+      hi: 'पानी की बाल्टी में डूबा हुआ पत्थर हाथ में हल्का लगता है, और लकड़ी का गुटका ऊपर तैरता रहता है। पत्थर का यह "गायब" भार कहाँ चला जाता है?',
+    },
+    predictQuestion: {
+      en: 'A solid metal block of volume 400 cm³ and weight 10 N in air is completely submerged in water (density 1 g/cm³, g = 10 m/s²). It displaces 400 cm³ (0.4 kg) of water weighing 4 N. What will the spring balance read?',
+      hi: '400 cm³ आयतन और वायु में 10 N भार वाला एक धातु का गुटका पानी (घनत्व 1 g/cm³, g = 10 m/s²) में पूर्णतः डुबोया जाता है। यह 4 N भार का 400 cm³ (0.4 kg) पानी विस्थापित करता है। कमानीदार तुला का पाठ्यांक क्या होगा?',
+    },
+    predictOptions: [
+      {
+        en: '6 N (Apparent weight = 10 N − 4 N upward buoyant force)',
+        hi: '6 N (आभासी भार = 10 N − 4 N उत्प्लावन बल)',
+      },
+      {
+        en: '10 N (Weight never changes in water)',
+        hi: '10 N (पानी में पाठ्यांक नहीं बदलता)',
+      },
+      {
+        en: '4 N (Equal to the weight of displaced water)',
+        hi: '4 N (विस्थापित पानी के भार के बराबर)',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'By Archimedes’ Principle, the upward buoyant force F_B equals the weight of the displaced water (4 N). Therefore the apparent weight on the spring scale is W_air − F_B = 10 N − 4 N = 6 N!',
+      hi: 'आर्किमिडीज के सिद्धांत के अनुसार ऊपर की ओर लगने वाला उत्प्लावन बल F_B विस्थापित पानी के भार (4 N) के बराबर होता है। अतः आभासी भार = 10 N − 4 N = 6 N होगा!',
+    },
+    insightSummary: {
+      en: 'Archimedes’ Principle: Any body immersed in a fluid experiences an upward buoyant force equal to the weight of the fluid it displaces (F_B = W_displaced). Objects with ρ_obj ≤ ρ_fluid float; objects with ρ_obj > ρ_fluid sink.',
+      hi: 'आर्किमिडीज का सिद्धांत: जब किसी वस्तु को तरल में डुबोया जाता है, तो उस पर ऊपर की ओर उत्प्लावन बल लगता है जो वस्तु द्वारा हटाए गए तरल के भार के बराबर होता है (F_B = W_विस्थापित)। यदि ρ_वस्तु ≤ ρ_तरल हो तो वस्तु तैरती है।',
+    },
+    insightFormula: 'F_B = W_displaced = ρ_fluid · V_disp · g  |  W_app = W_air − F_B',
+    insightTerm: {
+      en: 'Archimedes’ Principle & Floatation (NCERT Ch 9.5–9.6)',
+      hi: 'आर्किमिडीज का सिद्धांत एवं प्लवन (NCERT 9.5–9.6)',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 9 Gravitation · Sealed Packet Floatation Test',
+          hi: 'NCERT कक्षा 9 · बंद पैकेट का तैरना या डूबना',
+        },
+        prompt: {
+          en: 'The volume of a 500 g sealed packet is 350 cm³. Will the packet float or sink in water if the density of water is 1 g/cm³? What will be the mass of the water displaced by this packet?',
+          hi: '500 g के एक मोहरबंद पैकेट का आयतन 350 cm³ है। पैकेट <1 g/cm³ घनत्व वाले पानी में तैरेगा या डूबेगा? इस पैकेट द्वारा विस्थापित पानी का द्रव्यमान कितना होगा?',
+        },
+        options: [
+          {
+            en: 'It will SINK (ρ = 1.43 g/cm³ > 1 g/cm³) and displace 350 g of water.',
+            hi: 'यह डूबेगा (ρ = 1.43 g/cm³ > 1 g/cm³) और 350 g पानी विस्थापित करेगा।',
+          },
+          {
+            en: 'It will FLOAT and displace 500 g of water.',
+            hi: 'यह तैरेगा और 500 g पानी विस्थापित करेगा।',
+          },
+          {
+            en: 'It will SINK and displace 500 g of water.',
+            hi: 'यह डूबेगा और 500 g पानी विस्थापित करेगा।',
+          },
+          {
+            en: 'It will FLOAT and displace 350 g of water.',
+            hi: 'यह तैरेगा और 350 g पानी विस्थापित करेगा।',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'First find the packet’s density ρ = Mass / Volume = 500 g / 350 cm³. Since it sinks completely, displaced water volume equals the packet’s full 350 cm³ volume.',
+          hi: 'पहले पैकेट का घनत्व ρ = 500 / 350 निकालें। चूँकि यह डूबता है, विस्थापित पानी का आयतन 350 cm³ होगा।',
+        },
+        steps: [
+          {
+            label: { en: 'Step 1: Packet Density', hi: 'चरण 1: पैकेट का घनत्व' },
+            content: {
+              en: 'ρ_packet = 500 g / 350 cm³ = 1.43 g/cm³. Since 1.43 > 1.0 g/cm³, the packet sinks.',
+              hi: 'ρ_पैकेट = 500 g / 350 cm³ = 1.43 g/cm³ > 1.0 g/cm³, अतः पैकेट डूब जाएगा।',
+            },
+          },
+          {
+            label: { en: 'Step 2: Mass of Displaced Water', hi: 'चरण 2: विस्थापित पानी का द्रव्यमान' },
+            content: {
+              en: 'Fully submerged volume V_disp = 350 cm³. Mass of water = 350 cm³ × 1 g/cm³ = 350 g.',
+              hi: 'पूर्णतः डूबा आयतन V_disp = 350 cm³। विस्थापित पानी का द्रव्यमान = 350 × 1 = 350 g।',
+            },
+          },
+        ],
+        finalAnswer: {
+          en: 'Packet sinks (ρ = 1.43 g/cm³) and displaces 350 g of water.',
+          hi: 'पैकेट डूबेगा (ρ = 1.43 g/cm³) और 350 g पानी विस्थापित करेगा।',
+        },
+      },
+    ],
+  },
 }

@@ -232,4 +232,80 @@ export const RATE_VS_TOTAL_CONTENT: Record<string, ConceptCardContent> = {
       },
     ],
   },
+
+  'velocity-time-graph-area': {
+    hook: {
+      en: 'On a velocity–time (v–t) graph, both the steepness of the line and the shaded region underneath have physical meaning. Which one gives acceleration and which gives distance?',
+      hi: 'वेग–समय (v–t) ग्राफ में रेखा की ढाल और नीचे का छायांकित क्षेत्रफल दोनों का भौतिक अर्थ है। इनमें से कौन त्वरण बताता है और कौन तय की गई दूरी?',
+    },
+    predictQuestion: {
+      en: 'A car accelerates uniformly from u = 5 m/s to v = 25 m/s in t = 4 s. What does the shaded area under its v–t graph represent?',
+      hi: 'एक कार t = 4 s में u = 5 m/s से v = 25 m/s तक एकसमान रूप से त्वरित होती है। इसके v–t ग्राफ के नीचे का क्षेत्रफल क्या दर्शाता है?',
+    },
+    predictOptions: [
+      {
+        en: 'Total displacement s = 60 m (Rectangle 20 m + Triangle 40 m)',
+        hi: 'कुल विस्थापन s = 60 m (आयत 20 m + त्रिभुज 40 m)',
+      },
+      {
+        en: 'Acceleration a = 5 m/s²',
+        hi: 'त्वरण a = 5 m/s²',
+      },
+      {
+        en: 'Simple product v × t = 100 m',
+        hi: 'सीधा गुणनफल v × t = 100 m',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'On a v–t graph, the SLOPE (Δv/Δt = 5 m/s²) gives the rate of change of velocity (acceleration), while the AREA under the line (ut + ½at² = 20 + 40 = 60 m) gives the accumulated total displacement!',
+      hi: 'v–t ग्राफ की ढाल (Δv/Δt = 5 m/s²) वेग परिवर्तन की दर (त्वरण) देती है, जबकि रेखा के नीचे का क्षेत्रफल (ut + ½at² = 20 + 40 = 60 m) कुल विस्थापन देता है!',
+    },
+    insightFormula: 'Slope a = (v−u)/t  |  Area s = ut + ½at²',
+    insightTerm: {
+      en: 'Velocity–Time Graph: Slope vs Area (NCERT Ch 7.4)',
+      hi: 'वेग–समय ग्राफ: ढाल बनाम क्षेत्रफल (NCERT 7.4)',
+    },
+    insightSummary: {
+      en: 'Dividing axes (Δv ÷ Δt = slope) gives the rate of change (acceleration a). Multiplying axes (v × t = area) gives the accumulated total (displacement s).',
+      hi: 'अक्षों का भागफल (Δv ÷ Δt = ढाल) दर (त्वरण a) देता है, और अक्षों का गुणनफल (v × t = क्षेत्रफल) कुल संचित विस्थापन (s) देता है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 9 Motion · Trapezium Area Displacement',
+          hi: 'NCERT कक्षा 9 गति · ग्राफ क्षेत्रफल से विस्थापन',
+        },
+        prompt: {
+          en: 'A train starting from a speed of 10 m/s accelerates uniformly to 20 m/s in 6 seconds along a straight track. Calculate the distance travelled by the train during this interval.',
+          hi: '10 m/s की चाल से चलती हुई एक रेलगाड़ी 6 सेकंड में एकसमान त्वरण से 20 m/s का वेग प्राप्त करती है। इस समयांतराल में रेलगाड़ी द्वारा तय की गई दूरी ज्ञात कीजिए।',
+        },
+        options: [
+          { en: '90 m (Rectangle 60 m + Triangle 30 m)', hi: '90 m (आयत 60 m + त्रिभुज 30 m)' },
+          { en: '120 m', hi: '120 m' },
+          { en: '60 m', hi: '60 m' },
+          { en: '1.67 m', hi: '1.67 m' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Split the area under the v–t graph into a rectangle (u × t) plus a triangle (½ × (v − u) × t).',
+          hi: 'v–t ग्राफ के नीचे के क्षेत्रफल को आयत (u × t) और त्रिभुज (½ × (v − u) × t) में बाँटें।',
+        },
+        steps: [
+          {
+            label: { en: 'Given', hi: 'दिया है' },
+            content: { en: 'u = 10 m/s, v = 20 m/s, t = 6 s', hi: 'u = 10 m/s, v = 20 m/s, t = 6 s' },
+          },
+          {
+            label: { en: 'Rectangle + Triangle Area', hi: 'आयत + त्रिभुज का क्षेत्रफल' },
+            content: {
+              en: 's = u·t + ½(v − u)t = (10 × 6) + ½(20 − 10)(6) = 60 + 30',
+              hi: 's = u·t + ½(v − u)t = (10 × 6) + ½(20 − 10)(6) = 60 + 30',
+            },
+          },
+        ],
+        finalAnswer: { en: 'Total Distance s = 90 m', hi: 'कुल तय दूरी s = 90 m' },
+      },
+    ],
+  },
 }

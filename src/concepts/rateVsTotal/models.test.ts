@@ -4,6 +4,7 @@ import {
   calculateBucket,
   calculateCharge,
   calculateEnergy,
+  calculateVelocityTimeGraph,
 } from './models'
 
 describe('Rate vs Total Models', () => {
@@ -42,5 +43,17 @@ describe('Rate vs Total Models', () => {
     expect(res.geyserCost).toBe(180)
     expect(res.fridgeCost).toBe(648)
     expect(res.totalCost).toBe(828)
+  })
+
+  it('calculates velocity-time graph slope (acceleration) and area (displacement)', () => {
+    // u = 5 m/s, v = 25 m/s, t = 4 s:
+    // a = (25 - 5) / 4 = 5 m/s²
+    // s_rect = 5 * 4 = 20 m, s_tri = 0.5 * 20 * 4 = 40 m => total s = 60 m
+    const res = calculateVelocityTimeGraph(5, 25, 4)
+    expect(res.accelerationMps2).toBe(5)
+    expect(res.rectangleDisplacementM).toBe(20)
+    expect(res.triangleDisplacementM).toBe(40)
+    expect(res.totalDisplacementM).toBe(60)
+    expect(res.averageVelocityMps).toBe(15)
   })
 })

@@ -3,6 +3,7 @@ import {
   calculateDiameterTrap,
   calculateGravityInverse,
   calculateInverseArea,
+  calculateSoundEchoWave,
   calculateVoltageSquared,
 } from './models'
 
@@ -61,5 +62,20 @@ describe('Squares and Inverses Physics Models', () => {
     // Triple distance: r = 3 → F ≈ 11.11 N (1/9th)
     const tripleR = calculateGravityInverse(3.0)
     expect(tripleR.forceN).toBeCloseTo(11.11, 1)
+  })
+
+  it('calculates inverse wavelength λ = v/f and echo round-trip time t = 2d/v', () => {
+    // f = 170 Hz, v = 340 m/s, d = 85 m => λ = 2 m, 2d = 170 m, t_echo = 0.5 s (distinct echo)
+    const echo = calculateSoundEchoWave(170, 340, 85)
+    expect(echo.wavelengthM).toBe(2)
+    expect(echo.roundTripDistanceM).toBe(170)
+    expect(echo.echoTimeS).toBe(0.5)
+    expect(echo.isDistinctEcho).toBe(true)
+
+    // Near wall d = 10 m at v = 340 m/s => 2d = 20 m, t_echo = 0.06 s (< 0.1 s, not distinct)
+    const near = calculateSoundEchoWave(340, 340, 10)
+    expect(near.wavelengthM).toBe(1)
+    expect(near.echoTimeS).toBe(0.06)
+    expect(near.isDistinctEcho).toBe(false)
   })
 })

@@ -212,4 +212,81 @@ export const CONTROLLED_EXPERIMENTS_CONTENT: Record<string, ConceptCardContent> 
       },
     ],
   },
+
+  'momentum-impulse-cushion': {
+    hook: {
+      en: 'Why does a seasoned cricket fielder always pull their hands backwards while catching a fast-moving ball?',
+      hi: 'क्रिकेट का एक अनुभवी खिलाड़ी तेज़ आती हुई गेंद को लपकते समय अपने हाथ पीछे की ओर क्यों खींचता है?',
+    },
+    predictQuestion: {
+      en: 'A 0.15 kg cricket ball arriving at 20 m/s is brought to rest. If the fielder increases the stopping time Δt from 0.05 s to 0.25 s (5× longer), what happens to the momentum change Δp and the average impact force F?',
+      hi: '20 m/s से आती 0.15 kg की गेंद को रोका जाता है। यदि खिलाड़ी रोकने का समय Δt = 0.05 s से बढ़ाकर 0.25 s (5 गुना) कर दे, तो संवेग परिवर्तन Δp और औसत बल F पर क्या प्रभाव पड़ेगा?',
+    },
+    predictOptions: [
+      {
+        en: 'Δp stays fixed at 3 kg·m/s, so impact force F drops to 1/5th (from 60 N to 12 N).',
+        hi: 'Δp = 3 kg·m/s स्थिर रहता है, इसलिए चोट का बल F घटकर 1/5 (60 N से 12 N) रह जाता है।',
+      },
+      {
+        en: 'Both Δp and impact force F decrease to 1/5th.',
+        hi: 'Δp और बल F दोनों घटकर 1/5 हो जाते हैं।',
+      },
+      {
+        en: 'Impact force F stays 60 N regardless of stopping time.',
+        hi: 'रोकने के समय से स्वतंत्र, बल F हमेशा 60 N रहता है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Whether caught with stiff hands or cushioned hands, the ball goes from 20 m/s to 0 m/s, so Δp = m(u − 0) = 3 kg·m/s is HELD FIXED. By F = Δp/Δt, multiplying stopping time Δt by 5 divides the impact force F by 5!',
+      hi: 'गेंद 20 m/s से 0 m/s तक रुकती है, इसलिए संवेग परिवर्तन Δp = 3 kg·m/s स्थिर रहता है। F = Δp/Δt के अनुसार समय Δt को 5 गुना बढ़ाने पर बल F घटकर पाँचवाँ हिस्सा (12 N) रह जाता है!',
+    },
+    insightFormula: 'F = Δp / Δt  (Δp = m·u held fixed ⇒ F ∝ 1/Δt)',
+    insightTerm: {
+      en: 'Second Law of Motion & Impulse (NCERT Ch 8.4)',
+      hi: 'गति का द्वितीय नियम एवं आवेग (NCERT 8.4)',
+    },
+    insightSummary: {
+      en: 'Force equals the rate of change of momentum (F = Δp/Δt). When a fixed momentum Δp must be stopped, extending contact time Δt inversely reduces peak force.',
+      hi: 'बल संवेग परिवर्तन की दर के बराबर होता है (F = Δp/Δt)। जब निश्चित संवेग Δp को रोकना हो, तो समय Δt बढ़ाने से बल व्युत्क्रमानुपाती रूप से घटता है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 9 Example 8.4 · Cricket Ball Stopping Force',
+          hi: 'NCERT कक्षा 9 · क्रिकेट गेंद को रोकने का बल',
+        },
+        prompt: {
+          en: 'A cricket ball of mass 150 g (0.15 kg) travelling at 30 m/s is brought to rest by a player in 0.15 s. Calculate the magnitude of the average force applied by the player’s hands.',
+          hi: '150 g (0.15 kg) द्रव्यमान की एक क्रिकेट गेंद 30 m/s के वेग से चल रही है। एक खिलाड़ी इसे 0.15 s में विराम में लाता है। खिलाड़ी के हाथों द्वारा लगाए गए औसत बल का परिमाण ज्ञात कीजिए।',
+        },
+        options: [
+          { en: '30 N (Δp = 4.5 kg·m/s ÷ 0.15 s)', hi: '30 N (Δp = 4.5 kg·m/s ÷ 0.15 s)' },
+          { en: '4.5 N', hi: '4.5 N' },
+          { en: '300 N', hi: '300 N' },
+          { en: '0.675 N', hi: '0.675 N' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'First convert 150 g to 0.15 kg. Then compute Δp = m × u and divide by Δt = 0.15 s.',
+          hi: 'पहले 150 g को 0.15 kg में बदलें। फिर Δp = m × u निकालकर Δt = 0.15 s से भाग दें।',
+        },
+        steps: [
+          {
+            label: { en: 'Given in SI Units', hi: 'SI मात्रकों में मान' },
+            content: { en: 'm = 150 g = 0.15 kg, u = 30 m/s, v = 0, Δt = 0.15 s', hi: 'm = 0.15 kg, u = 30 m/s, v = 0, Δt = 0.15 s' },
+          },
+          {
+            label: { en: 'Momentum Change Δp', hi: 'संवेग परिवर्तन Δp' },
+            content: { en: 'Δp = m × u = 0.15 × 30 = 4.5 kg·m/s', hi: 'Δp = m × u = 0.15 × 30 = 4.5 kg·m/s' },
+          },
+          {
+            label: { en: 'Average Force F', hi: 'औसत बल F' },
+            content: { en: 'F = Δp / Δt = 4.5 / 0.15 = 30 N', hi: 'F = Δp / Δt = 4.5 / 0.15 = 30 N' },
+          },
+        ],
+        finalAnswer: { en: 'Average Stopping Force F = 30 N', hi: 'औसत अवरोधक बल F = 30 N' },
+      },
+    ],
+  },
 }

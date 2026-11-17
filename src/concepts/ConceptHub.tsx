@@ -106,6 +106,26 @@ const LensPowerNotebookLesson = lazy(() =>
     default: m.LensPowerNotebookLesson,
   }))
 )
+const VelocityTimeGraphInteractive = lazy(() =>
+  import('./rateVsTotal/VelocityTimeGraphInteractive').then((m) => ({
+    default: m.VelocityTimeGraphInteractive,
+  }))
+)
+const MomentumImpulseInteractive = lazy(() =>
+  import('./controlledExperiments/MomentumImpulseInteractive').then((m) => ({
+    default: m.MomentumImpulseInteractive,
+  }))
+)
+const ArchimedesBuoyancyInteractive = lazy(() =>
+  import('./energyConservation/ArchimedesBuoyancyInteractive').then((m) => ({
+    default: m.ArchimedesBuoyancyInteractive,
+  }))
+)
+const SoundEchoWaveInteractive = lazy(() =>
+  import('./squaresAndInverses/SoundEchoWaveInteractive').then((m) => ({
+    default: m.SoundEchoWaveInteractive,
+  }))
+)
 
 const PROGRESS_KEY = 'cil.progress'
 
@@ -153,17 +173,24 @@ const SYLLABUS_CHAPTERS: readonly {
   {
     id: 'mechanics-9',
     title: {
-      en: 'Class 9 Ch 7–10: Motion, Gravitation & Work-Energy',
-      hi: 'कक्षा 9 अध्याय 7–10: गति, गुरुत्वाकर्षण तथा कार्य और ऊर्जा',
+      en: 'Class 9 Ch 7–11: Motion, Force, Gravitation, Work-Energy & Sound',
+      hi: 'कक्षा 9 अध्याय 7–11: गति, बल, गुरुत्वाकर्षण, कार्य-ऊर्जा तथा ध्वनि',
     },
     tagline: {
-      en: 'Rate vs total flow, pressure & contact area, inverse-square gravitation, and mechanical energy conservation on ramps.',
-      hi: 'दर बनाम कुल मात्रा, दाब और क्षेत्रफल, गुरुत्वाकर्षण का व्युत्क्रम वर्ग नियम और नत समतल पर यांत्रिक ऊर्जा संरक्षण।',
+      en: 'v–t graph slope vs area, Second Law impulse cushioning, Archimedes buoyancy & floatation, inverse-square gravitation, ramp energy conservation, and sound wave echoes.',
+      hi: 'v–t ग्राफ ढाल व क्षेत्रफल, गति का द्वितीय नियम (आवेग), आर्किमिडीज उत्प्लावन व प्लवन, गुरुत्वाकर्षण, यांत्रिक ऊर्जा संरक्षण तथा ध्वनि प्रतिध्वनि।',
     },
-    matchChapter: (ref) =>
-      ref.toLowerCase().includes('motion') ||
-      ref.toLowerCase().includes('gravitation') ||
-      ref.toLowerCase().includes('work'),
+    matchChapter: (ref) => {
+      const lower = ref.toLowerCase()
+      return (
+        lower.includes('motion') ||
+        lower.includes('force') ||
+        lower.includes('gravitation') ||
+        lower.includes('floatation') ||
+        lower.includes('work') ||
+        lower.includes('sound')
+      )
+    },
   },
 ]
 
@@ -323,6 +350,10 @@ export function ConceptHub() {
                 {activeConcept.id === 'cartesian-sign-trap' && <CartesianSignInteractive lang={lang} />}
                 {activeConcept.id === 'real-vs-virtual-switch' && <RealVirtualCrossoverInteractive lang={lang} />}
                 {activeConcept.id === 'magnification-code' && <MagnificationDecoderInteractive lang={lang} />}
+                {activeConcept.id === 'velocity-time-graph-area' && <VelocityTimeGraphInteractive lang={lang} />}
+                {activeConcept.id === 'momentum-impulse-cushion' && <MomentumImpulseInteractive lang={lang} />}
+                {activeConcept.id === 'archimedes-buoyancy-float' && <ArchimedesBuoyancyInteractive lang={lang} />}
+                {activeConcept.id === 'sound-echo-wave-speed' && <SoundEchoWaveInteractive lang={lang} />}
               </Suspense>
             }
           />

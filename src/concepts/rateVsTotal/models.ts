@@ -103,3 +103,47 @@ export function calculateBillComparison(
     totalCost: tidyNumber(geyserCost + fridgeCost, 2),
   }
 }
+
+export interface VelocityTimeGraphResult {
+  initialVelocityMps: number
+  finalVelocityMps: number
+  timeSeconds: number
+  accelerationMps2: number
+  rectangleDisplacementM: number
+  triangleDisplacementM: number
+  totalDisplacementM: number
+  averageVelocityMps: number
+}
+
+/**
+ * Class 9 Motion (NCERT Ch 7.4):
+ * Slope of v-t graph = acceleration a = (v - u) / t (m/s²).
+ * Area under v-t graph = displacement s = u*t + 0.5*(v - u)*t (m).
+ * Assumes uniform (constant) acceleration along a straight line.
+ */
+export function calculateVelocityTimeGraph(
+  initialVelocityMps: number,
+  finalVelocityMps: number,
+  timeSeconds: number
+): VelocityTimeGraphResult {
+  const safeU = Math.max(0, initialVelocityMps)
+  const safeV = Math.max(0, finalVelocityMps)
+  const safeT = Math.max(0.5, timeSeconds)
+
+  const accelerationMps2 = tidyNumber((safeV - safeU) / safeT, 2)
+  const rectangleDisplacementM = tidyNumber(safeU * safeT, 2)
+  const triangleDisplacementM = tidyNumber(0.5 * (safeV - safeU) * safeT, 2)
+  const totalDisplacementM = tidyNumber(rectangleDisplacementM + triangleDisplacementM, 2)
+  const averageVelocityMps = tidyNumber((safeU + safeV) / 2, 2)
+
+  return {
+    initialVelocityMps: safeU,
+    finalVelocityMps: safeV,
+    timeSeconds: safeT,
+    accelerationMps2,
+    rectangleDisplacementM,
+    triangleDisplacementM,
+    totalDisplacementM,
+    averageVelocityMps,
+  }
+}
