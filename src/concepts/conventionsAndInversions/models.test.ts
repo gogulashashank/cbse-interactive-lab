@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import {
+  calculateEyeDefectCorrection,
   calculateOpticalState,
   calculateLensPower,
+  calculatePrismDispersionScattering,
   computePrincipalRays,
   OPTICS_RAY_BENCH_GEOMETRY,
 } from './models'
@@ -82,5 +84,38 @@ describe('Thread 5: Conventions & Inversions Optics Models', () => {
     expect(convexMirror.state.imageDistanceV).toBe(10)
     expect(convexMirror.state.isReal).toBe(false)
     expect(convexMirror.segments.filter((s) => s.kind === 'virtual-extension')).toHaveLength(2)
+  })
+
+  it('calculates myopia concave lens power and hypermetropia convex lens power', () => {
+    // Myopia with far point d_F = 80 cm => f = -80 cm, P = -1.25 D
+    const myopia = calculateEyeDefectCorrection('myopia', 80, true)
+    expect(myopia.requiredLensType).toBe('concave')
+    expect(myopia.correctiveFocalLengthCm).toBe(-80)
+    expect(myopia.correctivePowerDioptres).toBe(-1.25)
+    expect(myopia.uncorrectedFocusSite).toBe('in-front-of-retina')
+    expect(myopia.activeFocusSite).toBe('on-retina')
+
+    // Hypermetropia with near point d_N = 100 cm (1 m) => 1/f = 1/25 - 1/100 = 3/100 => f = +33.3 cm, P = +3.0 D
+    const hyper = calculateEyeDefectCorrection('hypermetropia', 100, false)
+    expect(hyper.requiredLensType).toBe('convex')
+    expect(hyper.correctiveFocalLengthCm).toBeCloseTo(33.3, 1)
+    expect(hyper.correctivePowerDioptres).toBe(3)
+    expect(hyper.uncorrectedFocusSite).toBe('behind-retina')
+    expect(hyper.activeFocusSite).toBe('behind-retina')
+  })
+
+  it('calculates prism wavelength dispersion, Rayleigh scattering (∝ 1/λ⁴), and inverted-prism recombination', () => {
+    const violet = calculatePrismDispersionScattering(400, false)
+    const red = calculatePrismDispersionScattering(700, true)
+
+    expect(violet.colorBandName).toBe('Violet')
+    expect(red.colorBandName).toBe('Red')
+    expect(violet.refractiveIndexGlass).toBeGreaterThan(red.refractiveIndexGlass)
+    expect(violet.prismDeviationDeg).toBeGreaterThan(red.prismDeviationDeg)
+    // (700/400)^4 = 1.75^4 = 9.3789 => 9.38
+    expect(violet.rayleighScatteringRelativeToRed).toBeCloseTo(9.38, 2)
+    expect(red.rayleighScatteringRelativeToRed).toBe(1)
+    expect(violet.emergentBeamState).toBe('dispersed-spectrum')
+    expect(red.emergentBeamState).toBe('recombined-white-light')
   })
 })

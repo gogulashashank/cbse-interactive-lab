@@ -4,6 +4,7 @@ import {
   calculateConstantTempOhmic,
   calculateFixedConditionPower,
   calculateMomentumImpulse,
+  calculateMotorForceFlemingsRule,
   calculateStretchingVsComparing,
 } from './models'
 
@@ -65,5 +66,28 @@ describe('Controlled Experiments Physics Models', () => {
     expect(cushioned.stiffHandsForceN).toBe(60)
     expect(cushioned.impactForceN).toBe(12)
     expect(cushioned.forceReductionFactor).toBe(5)
+  })
+
+  it('calculates motor force F = B*I*L*sin(θ) and verifies double-reversal invariance under Fleming’s Left-Hand Rule', () => {
+    // Perpendicular (90°): B = 0.5 T, I = 4 A, L = 0.2 m => F = 0.4 N Upward (+Z)
+    const perp = calculateMotorForceFlemingsRule(0.5, 4, 90, 1, 1, 0.2)
+    expect(perp.forceMagnitudeN).toBe(0.4)
+    expect(perp.forceDirectionSign).toBe(1)
+    expect(perp.forceDirectionLabel).toBe('Upward (+Z)')
+
+    // Reverse ONLY current (-1, +1) => Downward (-Z)
+    const revI = calculateMotorForceFlemingsRule(0.5, 4, 90, -1, 1, 0.2)
+    expect(revI.forceDirectionSign).toBe(-1)
+    expect(revI.forceDirectionLabel).toBe('Downward (−Z)')
+
+    // Reverse BOTH current and magnetic field (-1, -1) => Upward (+Z) unchanged!
+    const revBoth = calculateMotorForceFlemingsRule(0.5, 4, 90, -1, -1, 0.2)
+    expect(revBoth.forceDirectionSign).toBe(1)
+    expect(revBoth.forceDirectionLabel).toBe('Upward (+Z)')
+
+    // Parallel (0°) => F = 0 N
+    const parallel = calculateMotorForceFlemingsRule(0.5, 4, 0, 1, 1, 0.2)
+    expect(parallel.forceMagnitudeN).toBe(0)
+    expect(parallel.forceDirectionSign).toBe(0)
   })
 })

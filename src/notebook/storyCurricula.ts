@@ -2882,4 +2882,612 @@ export const STORY_STAGE_SUPPLEMENTS: Record<
       ],
     },
   },
+
+  'eye-defects-correction': {
+    ncertSection: 'NCERT Class 10 Chapter 10: The Human Eye and the Colourful World (Sec 10.2 — Defects of Vision and Their Correction)',
+    openingQuestion: {
+      en: '“Why does a near-sighted (myopic) eye need a negative diverging lens, whereas a far-sighted (hypermetropic) eye needs a positive converging lens?”',
+      hi: '“निकट-दृष्टि दोष (Myopia) के लिए ऋणात्मक अवतल लेंस की आवश्यकता क्यों होती है, जबकि दीर्घ-दृष्टि दोष (Hypermetropia) के लिए धनात्मक उत्तल लेंस क्यों लगाया जाता है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Compare where light rays focus inside an uncorrected myopic versus hypermetropic eyeball, and verify how corrective spectacle lenses restore sharp focus on the retina.',
+        hi: 'बिना चश्मे के निकट-दृष्टि एवं दीर्घ-दृष्टि दोष वाले नेत्र गोलक में किरणों के फोकस की तुलना करें और सत्यापित करें कि संशोधक लेंस रेटिना पर फोकस कैसे स्थापित करता है।',
+      },
+      steps: [
+        {
+          en: 'Select “Myopia (Near-Sighted)” with Far Point d_F = 80 cm and toggle “Uncorrected Eye (Spectacles OFF)”. Observe that parallel rays from infinity converge IN FRONT of the retina.',
+          hi: '“Myopia (निकट-दृष्टि दोष)” और दूर बिंदु d_F = 80 cm चुनें तथा चश्मा बंद (OFF) करें। देखें कि अनंत से आने वाली समानांतर किरणें रेटिना के सामने ही मिल जाती हैं।',
+        },
+        {
+          en: 'Toggle “Corrective Spectacles ON”. Notice the concave lens (f = −80 cm, P = −1.25 D) diverges incoming rays slightly so the eye lens focuses them squarely onto the retina!',
+          hi: 'अब चश्मा चालू (ON) करें। देखें कि अवतल लेंस (f = −80 cm, P = −1.25 D) किरणों को थोड़ा अपसरित करता है जिससे नेत्र लेंस उन्हें ठीक रेटिना पर फोकस कर देता है!',
+        },
+        {
+          en: 'Switch to “Hypermetropia (Far-Sighted)” with Near Point d_N = 100 cm. Toggle spectacles OFF to see near rays (u = −25 cm) focus BEHIND the retina, then ON to see the +3.0 D convex lens restore retinal focus.',
+          hi: 'अब “Hypermetropia (दीर्घ-दृष्टि दोष)” और निकट बिंदु d_N = 100 cm चुनें। बिना चश्मे के पास की किरणें (u = −25 cm) रेटिना के पीछे जाती हैं, जिन्हें +3.0 D उत्तल लेंस रेटिना पर लाता है।',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'In the Hypermetropia mode with defective near point d_N = 50 cm, what focal length f and spectacle power P are required so the person can read a book held at the normal near point (u = −25 cm)?',
+          hi: 'दीर्घ-दृष्टि दोष में जब दोषपूर्ण निकट बिंदु d_N = 50 cm हो, तो सामान्य निकट बिंदु (u = −25 cm) पर रखी पुस्तक पढ़ने के लिए किस फोकस दूरी f और क्षमता P का लेंस चाहिए?',
+        },
+        options: [
+          {
+            en: 'Convex lens with f = +50 cm and Power P = +2.0 D (1/f = 1/(−50) − 1/(−25) = +1/50)',
+            hi: 'उत्तल लेंस जिसकी फोकस दूरी f = +50 cm तथा क्षमता P = +2.0 D हो (1/f = 1/(−50) − 1/(−25) = +1/50)',
+          },
+          {
+            en: 'Concave lens with f = −50 cm and Power P = −2.0 D',
+            hi: 'अवतल लेंस जिसकी फोकस दूरी f = −50 cm तथा क्षमता P = −2.0 D हो',
+          },
+          {
+            en: 'Convex lens with f = +25 cm and Power P = +4.0 D',
+            hi: 'उत्तल लेंस जिसकी फोकस दूरी f = +25 cm तथा क्षमता P = +4.0 D हो',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Here u = −25 cm and target virtual image v = −50 cm. By the lens formula: 1/f = 1/(−50) − 1/(−25) = −1/50 + 2/50 = +1/50 cm⁻¹, so f = +50 cm = +0.5 m and P = +2.0 D.',
+          hi: 'यहाँ u = −25 cm तथा आभासी प्रतिबिंब दूरी v = −50 cm है। लेंस सूत्र से: 1/f = 1/(−50) − 1/(−25) = +1/50 cm⁻¹, अतः f = +50 cm = +0.5 m तथा क्षमता P = +2.0 D।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'A corrective spectacle lens does not heal the eyeball; instead, it takes an object at the desired normal position (u = −∞ for myopia, u = −25 cm for hypermetropia) and forms a virtual image at the distance where the person’s eye CAN see clearly (v = −d_F or v = −d_N).',
+        hi: 'संशोधक चश्मा नेत्र गोलक को नहीं बदलता; वह वस्तु (निकट-दृष्टि हेतु u = −∞, दीर्घ-दृष्टि हेतु u = −25 cm) का आभासी प्रतिबिंब उस बिंदु (v = −d_F या v = −d_N) पर बना देता है जहाँ व्यक्ति का नेत्र स्पष्ट देख सकता है।',
+      },
+      scalingRule: {
+        en: '1. Myopia: f = −d_F (Concave lens, negative Dioptres).  2. Hypermetropia: 1/f = 1/(−d_N) − 1/(−25) = (d_N − 25)/(25·d_N) (Convex lens, positive Dioptres).',
+        hi: '1. निकट-दृष्टि दोष: f = −d_F (अवतल लेंस, ऋणात्मक क्षमता)।  2. दीर्घ-दृष्टि दोष: 1/f = 1/25 − 1/d_N (उत्तल लेंस, धनात्मक क्षमता)।',
+      },
+      siUnitRule: {
+        en: 'Both u and v in human-eye problems lie in front of the spectacle lens, so BOTH u and v carry a NEGATIVE (−) sign under the New Cartesian Sign Convention!',
+        hi: 'नेत्र दोष के प्रश्नों में बिंब (u) और आभासी प्रतिबिंब (v) दोनों चश्मे के सामने (बाईं ओर) होते हैं, इसलिए कार्तीय परिपाटी में u और v दोनों ऋणात्मक (−) लिए जाते हैं!',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 10 Q5 · Myopic Far-Point Prescription',
+        hi: 'NCERT कक्षा 10 अध्याय 10 प्रश्न 5 · निकट-दृष्टि दोष संशोधन',
+      },
+      problem: {
+        en: 'A person with a myopic eye cannot see objects beyond 1.2 m (120 cm) distinctly. What should be the type of the corrective lens used to restore proper vision, and what is its power?',
+        hi: 'निकट-दृष्टि दोष का कोई व्यक्ति 1.2 m (120 cm) से अधिक दूरी पर रखी वस्तुओं को सुस्पष्ट नहीं देख सकता। इस दोष को दूर करने के लिए प्रयुक्त संशोधक लेंस किस प्रकार का होना चाहिए तथा उसकी क्षमता क्या होगी?',
+      },
+      given: [
+        { en: 'Object at infinity: u = −∞', hi: 'अनंत पर स्थित बिंब: u = −∞' },
+        { en: 'Myopic far point: v = −1.2 m = −120 cm', hi: 'दोषपूर्ण दूर बिंदु: v = −1.2 m = −120 cm' },
+      ],
+      formula: '1/f = 1/v − 1/u  |  P = 1 / f(m)',
+      substitution: '1/f = 1/(−1.2 m) − 1/(−∞) = −1/1.2 m⁻¹ ⇒ f = −1.2 m  |  P = 1 / (−1.2) = −0.83 D',
+      answer: {
+        en: 'Concave (diverging) lens of focal length f = −1.2 m and power P = −0.83 D.',
+        hi: 'अवतल (अपसारी) लेंस जिसकी फोकस दूरी f = −1.2 m तथा क्षमता P = −0.83 D हो।',
+      },
+      unitTrapNote: {
+        en: 'Never plug u = −25 cm into a Myopia distant-vision problem! Myopia affects distant vision, so u = −∞ and f simply equals −d_F.',
+        hi: 'निकट-दृष्टि दोष (दूर की वस्तु न दिखना) के प्रश्न में गलती से u = −25 cm न रखें! वहाँ दूरस्थ वस्तु के लिए u = −∞ होता है और f = −d_F होता है।',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Setting f = +d_N Directly in Hypermetropia Instead of Using u = −25 cm and v = −d_N',
+        hi: 'दीर्घ-दृष्टि दोष में u = −25 cm का उपयोग किए बिना सीधे f = +d_N लिख देना',
+      },
+      commonMistake: {
+        en: 'Reading “the near point of a hypermetropic eye is 100 cm” and immediately writing f = +100 cm, P = +1.0 D.',
+        hi: '“दीर्घ-दृष्टि दोष वाले नेत्र का निकट बिंदु 100 cm है” पढ़कर सीधे f = +100 cm और P = +1.0 D लिख देना।',
+      },
+      correctPhysics: {
+        en: 'In hypermetropia, the object is a book held at the normal near point u = −25 cm, and its virtual image must be formed at v = −100 cm! Using 1/f = 1/(−100) − 1/(−25) = +3/100 gives f = +33.3 cm and P = +3.0 D—three times stronger!',
+        hi: 'दीर्घ-दृष्टि दोष में पुस्तक सामान्य निकट बिंदु u = −25 cm पर रखी होती है और उसका आभासी प्रतिबिंब v = −100 cm पर बनना चाहिए! लेंस सूत्र 1/f = 1/(−100) − 1/(−25) = +3/100 से f = +33.3 cm और क्षमता P = +3.0 D आती है!',
+      },
+      checkRule: {
+        en: 'Myopia uses 1 distance (u = −∞, v = −d_F ⇒ f = −d_F). Hypermetropia ALWAYS combines 2 distances (u = −25 cm and v = −d_N)!',
+        hi: 'निकट-दृष्टि में 1 दूरी (f = −d_F) लगती है, जबकि दीर्घ-दृष्टि में हमेशा 2 दूरियाँ (u = −25 cm तथा v = −d_N) सूत्र में रखी जाती हैं!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Bifocal Prescription: Decoding a Dual-Lens Spectacle Card',
+        hi: 'उच्च स्तरीय विश्लेषण: द्विफोकसी (Bifocal) चश्मे के कार्ड को डिकोड करना',
+      },
+      prompt: {
+        en: 'An elderly teacher suffering from presbyopia wears bifocal spectacles: the upper part has power −1.0 D and the lower part has power +2.0 D. Identify which defect each part corrects, state the lens type of each part, and calculate the teacher’s uncorrected far point and near point.',
+        hi: 'जरा-दूरदृष्टिता (Presbyopia) से पीड़ित एक वरिष्ठ शिक्षक द्विफोकसी चश्मा पहनते हैं: ऊपरी भाग की क्षमता −1.0 D और निचले भाग की क्षमता +2.0 D है। प्रत्येक भाग का लेंस प्रकार तथा शिक्षक का बिना चश्मे का दूर बिंदु (d_F) और निकट बिंदु (d_N) ज्ञात कीजिए।',
+      },
+      claimOptions: [
+        {
+          en: 'Upper part (−1.0 D, concave) corrects myopia with far point d_F = 100 cm; lower part (+2.0 D, convex, f = +50 cm) corrects hypermetropia with near point d_N = 50 cm.',
+          hi: 'ऊपरी भाग (−1.0 D, अवतल) दूर देखने हेतु है (d_F = 100 cm); निचला भाग (+2.0 D, उत्तल, f = +50 cm) पढ़ने हेतु है (निकट बिंदु d_N = 50 cm)।',
+        },
+        {
+          en: 'Upper part is convex for reading and lower part is concave for distance.',
+          hi: 'ऊपरी भाग पढ़ने के लिए उत्तल है और निचला भाग दूर देखने के लिए अवतल है।',
+        },
+        {
+          en: 'Upper part gives far point 100 cm and lower part gives near point 25 cm.',
+          hi: 'ऊपरी भाग से दूर बिंदु 100 cm और निचले भाग से दोषपूर्ण निकट बिंदु 25 cm है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'For the upper −1.0 D concave lens, f = −100 cm ⇒ uncorrected far point d_F = 100 cm (1 m). For the lower +2.0 D convex reading lens, f = +50 cm; using 1/50 = 1/v − 1/(−25) gives 1/v = 1/50 − 1/25 = −1/50 ⇒ v = −50 cm (uncorrected near point d_N = 50 cm).',
+        hi: 'ऊपरी −1.0 D अवतल लेंस के लिए f = −100 cm ⇒ दूर बिंदु d_F = 100 cm। निचले +2.0 D उत्तल लेंस के लिए f = +50 cm; सूत्र 1/50 = 1/v − 1/(−25) से 1/v = −1/50 ⇒ v = −50 cm (दोषपूर्ण निकट बिंदु d_N = 50 cm)।',
+      },
+      rubricPoints: [
+        {
+          en: 'Identifies upper part (−1.0 D) as a concave lens for distant vision and calculates far point d_F = 100 / 1.0 = 100 cm (1 m).',
+          hi: 'ऊपरी भाग (−1.0 D) को दूर दृष्टि हेतु अवतल लेंस पहचानता है और दूर बिंदु d_F = 100 cm (1 m) निकालता है।',
+        },
+        {
+          en: 'Identifies lower part (+2.0 D) as a convex lens for near reading with focal length f = +50 cm.',
+          hi: 'निचले भाग (+2.0 D) को निकट पठन हेतु उत्तल लेंस (f = +50 cm) पहचानता है।',
+        },
+        {
+          en: 'Substitutes u = −25 cm and f = +50 cm into 1/v = 1/f + 1/u to find uncorrected near point v = −50 cm (d_N = 50 cm).',
+          hi: 'u = −25 cm और f = +50 cm रखकर दोषपूर्ण निकट बिंदु d_N = 50 cm की गणना करता है।',
+        },
+      ],
+    },
+  },
+
+  'prism-dispersion-scattering': {
+    ncertSection: 'NCERT Class 10 Chapter 10: The Human Eye and the Colourful World (Sec 10.3–10.6 — Prism Dispersion, Rainbow & Tyndall/Rayleigh Scattering)',
+    openingQuestion: {
+      en: '“Why does a rectangular glass slab merely shift a white light beam sideways without splitting it into colours, whereas a triangular glass prism fans it out into VIBGYOR?”',
+      hi: '“काँच का आयताकार स्लैब श्वेत प्रकाश को बिना रंगों में बाँटे केवल पार्श्विक रूप से विस्थापित करता है, जबकि त्रिभुजाकार प्रिज्म उसे सात रंगों (VIBGYOR) में क्यों फैला देता है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Explore how refractive index n, prism deviation angle δ, and Rayleigh sky scattering scale inversely with light wavelength λ across 400 nm (Violet) to 700 nm (Red), and test Newton’s two-prism recombination.',
+        hi: '400 nm (बैंगनी) से 700 nm (लाल) तक तरंगदैर्घ्य λ के साथ अपवर्तनांक n, विचलन कोण δ और प्रकीर्णन के व्युत्क्रम संबंध का परीक्षण करें तथा न्यूटन के द्वि-प्रिज्म पुनर्योजन की जाँच करें।',
+      },
+      steps: [
+        {
+          en: 'Slide Light Wavelength λ to 400 nm (Violet). Note in the ledger that glass refractive index is highest (n = 1.532), deviation angle is largest (δ = 43.2°), and Rayleigh scattering is 9.38× stronger than Red.',
+          hi: 'तरंगदैर्घ्य λ को 400 nm (बैंगनी) पर सेट करें। देखें कि अपवर्तनांक सर्वाधिक (n = 1.532), विचलन कोण अधिकतम (δ = 43.2°) और प्रकीर्णन लाल की तुलना में 9.38 गुना अधिक है।',
+        },
+        {
+          en: 'Slide Wavelength λ up to 700 nm (Red). Observe that refractive index drops to 1.512, deviation angle drops to 39.2° (least bent at top of spectrum), and relative scattering is 1×.',
+          hi: 'अब तरंगदैर्घ्य λ को 700 nm (लाल) तक बढ़ाएं। देखें कि अपवर्तनांक घटकर 1.512 और विचलन कोण घटकर 39.2° (स्पेक्ट्रम में सबसे ऊपर, न्यूनतम झुकाव) रह जाता है।',
+        },
+        {
+          en: 'Click “2. Newton’s Inverted 2nd Prism: Recombine White Light”. Observe how the upside-down second prism bends the dispersed fan in the opposite direction to emerge as a single white beam!',
+          hi: '“2. न्यूटन का उल्टा द्वितीय प्रिज्म” बटन दबाएं। देखें कि उल्टा रखा दूसरा प्रिज्म सातों रंगों के कोणीय फैलाव को निरस्त कर पुनः श्वेत प्रकाश पुंज बाहर निकालता है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'As you sweep the wavelength slider from 400 nm (Violet) to 700 nm (Red), how do the speed of light inside glass and the prism deviation angle δ change?',
+          hi: 'जब आप तरंगदैर्घ्य स्लाइडर को 400 nm (बैंगनी) से 700 nm (लाल) की ओर ले जाते हैं, तो काँच के भीतर प्रकाश की चाल और विचलन कोण δ में क्या परिवर्तन होता है?',
+        },
+        options: [
+          {
+            en: 'Speed inside glass INCREASES from Violet to Red, so refractive index n and deviation angle δ DECREASE (Red bends the least).',
+            hi: 'बैंगनी से लाल की ओर जाने पर काँच में प्रकाश की चाल बढ़ती है, इसलिए अपवर्तनांक n और विचलन कोण δ घटते हैं (लाल सबसे कम मुड़ता है)।',
+          },
+          {
+            en: 'Speed inside glass DECREASES from Violet to Red, so Red bends the most.',
+            hi: 'बैंगनी से लाल की ओर जाने पर चाल घटती है और लाल सबसे अधिक मुड़ता है।',
+          },
+          {
+            en: 'All wavelengths have the exact same refractive index n in glass.',
+            hi: 'काँच में सभी तरंगदैर्घ्यों का अपवर्तनांक n समान रहता है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Longer wavelength Red (700 nm) interacts less strongly with glass electrons, travelling faster in glass (lower refractive index n = c/v) and therefore bending the least (δ = 39.2° vs 43.2° for Violet).',
+          hi: 'बड़ी तरंगदैर्घ्य वाला लाल प्रकाश (700 nm) काँच में सबसे तेज़ चलता है, जिससे उसका अपवर्तनांक n = c/v सबसे कम होता है और वह सबसे कम कोण (39.2°) पर मुड़ता है।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'In vacuum/air, all colours of light travel at the same speed c ≈ 3 × 10⁸ m/s. Inside a dispersive medium like glass or a water raindrop, speed depends on wavelength: shorter λ (Violet) slows down more than longer λ (Red), splitting white light into its component spectrum.',
+        hi: 'निर्वात में सभी रंग समान चाल (3 × 10⁸ m/s) से चलते हैं। परंतु काँच या पानी की बूँद में चाल तरंगदैर्घ्य पर निर्भर करती है: छोटी λ (बैंगनी) अधिक धीमी हो जाती है और अधिक मुड़ती है, जिससे श्वेत प्रकाश सात रंगों में विभक्त हो जाता है।',
+      },
+      scalingRule: {
+        en: '1. Wavelength order: λ_Red (~700 nm) > ... > λ_Violet (~400 nm).  2. Bending / Deviation order: δ_Violet > ... > δ_Red.  3. Rayleigh Scattering off air molecules: I_scat ∝ 1 / λ⁴.',
+        hi: '1. तरंगदैर्घ्य क्रम: λ_लाल > ... > λ_बैंगनी।  2. विचलन (झुकाव) क्रम: δ_बैंगनी > ... > δ_लाल।  3. वायु के अणुओं द्वारा प्रकीर्णन: I_scat ∝ 1 / λ⁴।',
+      },
+      siUnitRule: {
+        en: '1 nanometre (nm) = 10⁻⁹ m. Visible light spans roughly 400 nm (Violet) to 700 nm (Red).',
+        hi: '1 नैनोमीटर (nm) = 10⁻⁹ मीटर। दृश्य प्रकाश का परिसर लगभग 400 nm (बैंगनी) से 700 nm (लाल) तक होता है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 10 · Rayleigh Scattering Ratio Between Blue and Red Light',
+        hi: 'NCERT कक्षा 10 अध्याय 10 · नीले और लाल प्रकाश के प्रकीर्णन का अनुपात',
+      },
+      problem: {
+        en: 'The wavelength of red light is approximately 700 nm, which is about 1.75 times the wavelength of violet-blue light (400 nm). Using Rayleigh’s inverse fourth-power law (I ∝ 1/λ⁴), calculate how many times more strongly violet-blue light is scattered by fine air molecules than red light.',
+        hi: 'लाल प्रकाश की तरंगदैर्घ्य (700 nm) बैंगनी-नीले प्रकाश (400 nm) की लगभग 1.75 गुनी है। रैले के प्रकीर्णन नियम (I ∝ 1/λ⁴) से गणना कीजिए कि वायु के सूक्ष्म अणुओं द्वारा बैंगनी-नीला प्रकाश लाल प्रकाश की तुलना में कितने गुना अधिक प्रकीर्णित होता है।',
+      },
+      given: [
+        { en: 'λ_red = 700 nm, λ_violet = 400 nm', hi: 'λ_लाल = 700 nm, λ_बैंगनी = 400 nm' },
+        { en: 'Wavelength ratio: λ_red / λ_violet = 700 / 400 = 1.75', hi: 'तरंगदैर्घ्य अनुपात: 700 / 400 = 1.75' },
+      ],
+      formula: 'I_violet / I_red = (λ_red / λ_violet)⁴',
+      substitution: 'I_violet / I_red = (700 / 400)⁴ = (1.75)⁴ = 9.38',
+      answer: {
+        en: 'Violet-blue light scatters 9.38 times (nearly 10×) more strongly than red light.',
+        hi: 'बैंगनी-नीला प्रकाश लाल प्रकाश की तुलना में 9.38 गुना (लगभग 10 गुना) अधिक प्रकीर्णित होता है।',
+      },
+      unitTrapNote: {
+        en: 'Because (λ_red / λ_violet) is a ratio of two wavelengths, keep both in nanometres (nm) so the units cancel cleanly before raising to the 4th power!',
+        hi: 'अनुपात निकालते समय दोनों तरंगदैर्घ्यों को एक ही मात्रक (nm) में रखें ताकि घात 4 करने से पहले मात्रक कट जाएं!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Thinking Newton’s Second Prism Must Be Upright or Thinking the Prism “Paints” Colour Onto White Light',
+        hi: 'न्यूटन के दूसरे प्रिज्म को सीधा बना देना या यह सोचना कि प्रिज्म स्वयं रंग उत्पन्न करता है',
+      },
+      commonMistake: {
+        en: 'Drawing both prisms with their apexes pointing UPWARD in the recombination diagram, or claiming the glass prism chemically colours the white light.',
+        hi: 'पुनर्योजन चित्र में दोनों प्रिज्मों के शीर्ष ऊपर की ओर बना देना, यह भूलकर कि समान दिशा में रखने पर वर्ण-विक्षेपण और अधिक बढ़ जाएगा।',
+      },
+      correctPhysics: {
+        en: 'White light already contains all 7 spectral wavelengths. The second identical prism MUST be placed INVERTED (apex downward, parallel to the first prism’s opposite face) so its angular dispersion is equal and opposite, recombining the colours into white light!',
+        hi: 'श्वेत प्रकाश में पहले से ही सभी रंग उपस्थित होते हैं। दूसरे समान प्रिज्म को उल्टा (शीर्ष नीचे की ओर) रखना अनिवार्य है ताकि उसका कोणीय विक्षेपण विपरीत दिशा में होकर सातों रंगों को पुनः श्वेत प्रकाश में मिला दे!',
+      },
+      checkRule: {
+        en: 'In exam diagrams of Newton’s recombination: Prism 1 = Apex UP (△), Prism 2 = Apex DOWN (▽)!',
+        hi: 'बोर्ड परीक्षा में न्यूटन के पुनर्योजन चित्र में: पहला प्रिज्म = सीधा (△), दूसरा प्रिज्म = उल्टा (▽) बनाएं!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Atmospheric Optics: Why the Sky is Blue to Us on Earth but Pitch-Black to Astronauts in Space',
+        hi: 'उच्च स्तरीय विश्लेषण: पृथ्वी से आकाश नीला पर अंतरिक्ष यात्रियों को काला क्यों दिखता है?',
+      },
+      prompt: {
+        en: 'Explain scientifically why the clear daytime sky appears blue to an observer on Earth, why the Sun appears reddish at sunrise/sunset, and why the sky appears dark/black to an astronaut aboard the International Space Station.',
+        hi: 'वैज्ञानिक कारण स्पष्ट कीजिए कि पृथ्वी पर स्वच्छ आकाश नीला क्यों दिखता है, सूर्योदय/सूर्यास्त के समय सूर्य रक्ताभ (लाल) क्यों प्रतीत होता है, तथा अंतरिक्ष यात्री को आकाश काला क्यों दिखाई देता है?',
+      },
+      claimOptions: [
+        {
+          en: 'Fine air molecules scatter short-wavelength blue light strongly across the sky (I ∝ 1/λ⁴); at horizon sunrise/sunset, blue is scattered away over the long atmospheric path leaving red; in outer space, there is no atmosphere so no scattering occurs and the sky looks black.',
+          hi: 'वायु के सूक्ष्म अणु छोटी तरंगदैर्घ्य के नीले प्रकाश को प्रकीर्णित करते हैं (I ∝ 1/λ⁴); क्षितिज पर लंबी वायुमंडलीय दूरी में नीला प्रकाश बिखर जाता है व लाल पहुँचता है; अंतरिक्ष में वायुमंडल न होने से प्रकीर्णन नहीं होता और आकाश काला दिखता है।',
+        },
+        {
+          en: 'The blue colour of the sky is caused by reflection of the blue oceans, which cannot reach outer space.',
+          hi: 'आकाश का नीला रंग समुद्र के परावर्तन के कारण होता है जो अंतरिक्ष तक नहीं पहुँच पाता।',
+        },
+        {
+          en: 'Red light scatters the most at noon and blue light scatters the least in space.',
+          hi: 'दोपहर में लाल प्रकाश सबसे अधिक फैलता है और अंतरिक्ष में नीला प्रकाश सबसे कम।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Air molecules are smaller than visible wavelengths and scatter short-wavelength blue light ~6–9× more than red (I ∝ 1/λ⁴). At sunset, sunlight traverses a thick horizontal layer of air, scattering away most blue light so predominantly red reaches the eye. In vacuum space, absence of atmosphere means zero scattering (dark sky).',
+        hi: 'वायु के अणु छोटी तरंगदैर्घ्य वाले नीले प्रकाश को लाल की अपेक्षा बहुत अधिक प्रकीर्णित करते हैं। सूर्यास्त पर प्रकाश वायुमंडल की मोटी परत से गुजरता है जिससे नीला रंग मार्ग में बिखर जाता है और लाल आँख तक पहुँचता है। अंतरिक्ष में वायुमंडल न होने से प्रकीर्णन शून्य होता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Explains blue daytime sky: fine air molecules scatter shorter-wavelength blue light much more strongly than red light (I ∝ 1/λ⁴).',
+          hi: 'नीले आकाश का कारण: वायु के सूक्ष्म कण छोटी तरंगदैर्घ्य के नीले प्रकाश का लाल से कहीं अधिक प्रकीर्णन करते हैं।',
+        },
+        {
+          en: 'Explains reddish sunrise/sunset: sunlight travels a much longer atmospheric path near the horizon, scattering away blue light so longer-wavelength red reaches the observer.',
+          hi: 'सूर्योदय/सूर्यास्त पर लालिमा: क्षितिज के पास प्रकाश वायुमंडल में लंबी दूरी तय करता है जिससे नीला रंग बिखर जाता है और केवल लाल रंग पहुँचता है।',
+        },
+        {
+          en: 'Explains dark sky in space: in the absence of an atmosphere in outer space, no scattering of sunlight takes place.',
+          hi: 'अंतरिक्ष में काला आकाश: वायुमंडल की अनुपस्थिति में सूर्य के प्रकाश का प्रकीर्णन नहीं होता।',
+        },
+      ],
+    },
+  },
+
+  'magnetic-field-solenoid': {
+    ncertSection: 'NCERT Class 10 Chapter 12: Magnetic Effects of Electric Current (Sec 12.2 — Straight Conductor, Right-Hand Thumb Rule & Solenoid)',
+    openingQuestion: {
+      en: '“How can a simple coil of copper wire—which is completely non-magnetic on its own—turn into a powerful bar magnet with North and South poles the instant electric current flows through it?”',
+      hi: '“तांबे के तार की एक साधारण कुंडली—जो स्वयं चुंबकीय नहीं होती—विद्युत धारा प्रवाहित होते ही उत्तरी और दक्षिणी ध्रुवों वाले शक्तिशाली छड़ चुंबक में कैसे बदल जाती है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Verify how magnetic field B weakens inversely with distance r around a straight wire (B ∝ I/r), how Right-Hand Thumb Rule predicts field direction, and how a solenoid concentrates field lines into a uniform core (B ∝ N·I).',
+        hi: 'सत्यापित करें कि सीधे तार से दूरी r बढ़ने पर चुंबकीय क्षेत्र कैसे घटता है (B ∝ I/r), दक्षिण-हस्त अंगुष्ठ नियम दिशा कैसे बताता है, और परिनालिका के भीतर एकसमान क्षेत्र (B ∝ N·I) कैसे बनता है।',
+      },
+      steps: [
+        {
+          en: 'Set Electric Current I = 4 A and Radial Distance r = 2 cm in panel 1. Note that the wire field is B = 40 μT and the loops run Anticlockwise (↺) for upward current.',
+          hi: 'धारा I = 4 A और दूरी r = 2 cm रखें। देखें कि सीधे तार का चुंबकीय क्षेत्र B = 40 μT है और ऊपर जाती धारा के लिए दिशा वामावर्त (↺) है।',
+        },
+        {
+          en: 'Increase Radial Distance r from 2 cm to 8 cm (4× farther). Observe that the straight-wire magnetic field drops to 1/4th (from 40 μT to 10 μT)!',
+          hi: 'अब तार से दूरी r को 2 cm से बढ़ाकर 8 cm (4 गुना दूर) करें। देखें कि चुंबकीय क्षेत्र घटकर चौथाई (40 μT से 10 μT) रह जाता है!',
+        },
+        {
+          en: 'Now increase Solenoid Coil Turns N from 100 to 200 turns and toggle current direction between Upward (↑) and Downward (↓). Watch the uniform core field double from 4 mT to 8 mT and the N/S poles swap ends!',
+          hi: 'अब परिनालिका के फेरे N को 100 से 200 करें और धारा की दिशा बदलें। देखें कि क्रोड का एकसमान चुंबकीय क्षेत्र दोगुना (4 mT से 8 mT) हो जाता है और N/S ध्रुव आपस में बदल जाते हैं!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the magnetic field bench, if you double the electric current I from 3 A to 6 A AND double the radial distance r from the straight wire from 2 cm to 4 cm, what happens to the magnetic field B_wire?',
+          hi: 'यदि आप सीधे तार में विद्युत धारा I को 3 A से दोगुना (6 A) कर दें और तार से दूरी r को भी 2 cm से दोगुना (4 cm) कर दें, तो चुंबकीय क्षेत्र B_wire पर क्या प्रभाव पड़ेगा?',
+        },
+        options: [
+          {
+            en: 'B_wire stays unchanged at 30 μT because B ∝ I/r and the 2× current cancels the 2× distance.',
+            hi: 'B_wire = 30 μT अपरिवर्तित रहता है क्योंकि B ∝ I/r में दोगुनी धारा और दोगुनी दूरी का अनुपात समान रहता है।',
+          },
+          {
+            en: 'B_wire quadruples to 120 μT.',
+            hi: 'B_wire चार गुना बढ़कर 120 μT हो जाता है।',
+          },
+          {
+            en: 'B_wire drops to zero.',
+            hi: 'B_wire शून्य हो जाता है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Because B_wire = 20 × I / r (in μT), at I = 3 A, r = 2 cm we get B = 60/2 = 30 μT. At I = 6 A, r = 4 cm we get B = 120/4 = 30 μT—doubling numerator I and denominator r leaves B invariant!',
+          hi: 'चूँकि B_wire ∝ I / r होता है, इसलिए अंश (धारा I) और हर (दूरी r) दोनों को दोगुना करने पर चुंबकीय क्षेत्र 30 μT पर अपरिवर्तित रहता है!',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Moving electric charges always generate a magnetic field in the surrounding space. Wrapping a current-carrying wire into a tightly packed cylinder of N turns (a solenoid) adds the fields of all N loops axially, producing a uniform parallel interior field and external poles just like a bar magnet.',
+        hi: 'गतिमान आवेश (विद्युत धारा) हमेशा अपने चारों ओर चुंबकीय क्षेत्र उत्पन्न करते हैं। तार को N फेरों वाली बेलनाकार परिनालिका में लपेटने से सभी फेरों का चुंबकीय क्षेत्र जुड़ जाता है और भीतर समानांतर रेखाओं वाला एकसमान चुंबकीय क्षेत्र बनता है।',
+      },
+      scalingRule: {
+        en: '1. Straight Conductor: B ∝ I and B ∝ 1/r (Concentric circles get sparser farther from wire).  2. Solenoid Interior: B ∝ N · I (Uniform parallel lines; inserting a soft-iron core multiplies B into a strong electromagnet).',
+        hi: '1. सीधा चालक: B ∝ I तथा B ∝ 1/r।  2. परिनालिका का भीतरी भाग: B ∝ N · I (समानांतर रेखाएं = एकसमान क्षेत्र; नर्म लोहे का क्रोड रखने पर शक्तिशाली विद्युत चुंबक बनता है)।',
+      },
+      siUnitRule: {
+        en: 'The SI unit of magnetic field strength B is the Tesla (T). 1 milliTesla (mT) = 10⁻³ T; 1 microTesla (μT) = 10⁻⁶ T (Earth’s surface magnetic field is ~30–50 μT).',
+        hi: 'चुंबकीय क्षेत्र B का SI मात्रक टेस्ला (Tesla, T) है। 1 mT = 10⁻³ T तथा 1 μT = 10⁻⁶ T।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 12 Example 12.1 · Right-Hand Thumb Rule on an East–West Power Line',
+        hi: 'NCERT कक्षा 10 उदाहरण 12.1 · पूर्व–पश्चिम विद्युत लाइन के नीचे चुंबकीय क्षेत्र की दिशा',
+      },
+      problem: {
+        en: 'A current through a horizontal overhead power line flows from East to West direction. What is the direction of the magnetic field at a point directly BELOW it and at a point directly ABOVE it?',
+        hi: 'किसी क्षैतिज शक्ति संचरण लाइन (Power line) में पूर्व से पश्चिम दिशा की ओर विद्युत धारा प्रवाहित हो रही है। इसके ठीक नीचे के किसी बिंदु पर तथा इसके ठीक ऊपर के किसी बिंदु पर चुंबकीय क्षेत्र की दिशा क्या है?',
+      },
+      given: [
+        { en: 'Current direction: East → West', hi: 'विद्युत धारा की दिशा: पूर्व से पश्चिम की ओर' },
+        { en: 'Observation points: (a) Directly below wire, (b) Directly above wire', hi: 'प्रेक्षण बिंदु: (a) तार के ठीक नीचे, (b) तार के ठीक ऊपर' },
+      ],
+      formula: 'Right-Hand Thumb Rule: Thumb = Current (East → West), Curled Fingers = Magnetic Field B',
+      substitution: 'Viewing from East looking West: fingers curl clockwise ⇒ ABOVE wire points North, BELOW wire points South',
+      answer: {
+        en: 'Directly BELOW the wire: towards SOUTH. Directly ABOVE the wire: towards NORTH.',
+        hi: 'तार के ठीक नीचे: दक्षिण (South) की ओर। तार के ठीक ऊपर: उत्तर (North) की ओर।',
+      },
+      unitTrapNote: {
+        en: 'Always use your RIGHT hand for finding the magnetic field created by a current (Right-Hand Thumb Rule), and save your LEFT hand for finding the force on a current inside an external magnetic field!',
+        hi: 'धारा से उत्पन्न चुंबकीय क्षेत्र की दिशा जानने के लिए हमेशा दाहिने हाथ (दक्षिण-हस्त अंगुष्ठ नियम) का प्रयोग करें, और बाह्य क्षेत्र में बल जानने के लिए बाएँ हाथ (फ्लेमिंग वाम-हस्त नियम) का!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Claiming Two Magnetic Field Lines Can Intersect Each Other or That Field Inside a Solenoid Weakens at the Center',
+        hi: 'दो चुंबकीय क्षेत्र रेखाओं का प्रतिच्छेद करना या परिनालिका के भीतर असमान क्षेत्र मान लेना',
+      },
+      commonMistake: {
+        en: 'Drawing crossing magnetic field lines or stating that the magnetic field inside a long solenoid is zero at its center.',
+        hi: 'चुंबकीय क्षेत्र रेखाओं को एक-दूसरे को काटते हुए बनाना या परिनालिका के केंद्र पर चुंबकीय क्षेत्र शून्य बताना।',
+      },
+      correctPhysics: {
+        en: '1. Two magnetic field lines NEVER intersect—if they did, a compass needle placed at the intersection would have to point in two directions at once, which is impossible! 2. Inside a long solenoid, field lines are parallel straight lines, meaning the field is UNIFORM throughout the core.',
+        hi: '1. दो चुंबकीय क्षेत्र रेखाएं कभी एक-दूसरे को नहीं काटतीं—यदि काटतीं तो प्रतिच्छेदन बिंदु पर दिक्सूची को एक साथ दो दिशाओं में रुकना पड़ता जो असंभव है! 2. परिनालिका के भीतर समानांतर रेखाएं एकसमान चुंबकीय क्षेत्र दर्शाती हैं।',
+      },
+      checkRule: {
+        en: 'Never let two field lines cross, and remember: outside a magnet N → S, inside a magnet/solenoid S → N (closed loops)!',
+        hi: 'क्षेत्र रेखाएं बंद वक्र होती हैं: चुंबक के बाहर उत्तर से दक्षिण (N → S) तथा भीतर दक्षिण से उत्तर (S → N)!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Electromagnet Design: Soft Iron Core vs Permanent Steel Core in a Solenoid',
+        hi: 'उच्च स्तरीय अभिकल्पन: विद्युत चुंबक के क्रोड हेतु नर्म लोहा बनाम इस्पात (Steel)',
+      },
+      prompt: {
+        en: 'A student winds an insulated copper solenoid around a soft iron rod in Setup A and around a hardened carbon-steel rod in Setup B, passing 5 A of current through both. Explain what happens in each setup during current flow AND after the switch is turned OFF, and state three ways to increase an electromagnet’s strength.',
+        hi: 'एक छात्र व्यवस्था A में नर्म लोहे की छड़ पर तथा व्यवस्था B में कठोर इस्पात (Steel) की छड़ पर परिनालिका लपेटकर 5 A की धारा प्रवाहित करता है। धारा बहते समय तथा स्विच बंद (OFF) करने के बाद दोनों में क्या अंतर होगा? विद्युत चुंबक की प्रबलता बढ़ाने के तीन उपाय भी लिखिए।',
+      },
+      claimOptions: [
+        {
+          en: 'Soft iron (Setup A) produces a much stronger temporary electromagnet that demagnetises immediately when current is switched OFF; steel (Setup B) retains magnetism permanently and cannot be switched off. Strength increases by increasing turns N, increasing current I, or using a soft-iron core.',
+          hi: 'नर्म लोहा (A) प्रबल अस्थायी विद्युत चुंबक बनाता है जो धारा बंद करते ही विचुंबकित हो जाता है; इस्पात (B) स्थायी चुंबक बन जाता है। प्रबलता बढ़ाने के उपाय: फेरों की संख्या N बढ़ाना, धारा I बढ़ाना, तथा नर्म लोहे का क्रोड लगाना।',
+        },
+        {
+          en: 'Both soft iron and steel lose all magnetism immediately when current stops.',
+          hi: 'धारा बंद करने पर नर्म लोहा और इस्पात दोनों तुरंत अपना संपूर्ण चुंबकत्व खो देते हैं।',
+        },
+        {
+          en: 'Decreasing the number of turns N and reducing current I increases the magnetic field of the solenoid.',
+          hi: 'फेरों की संख्या N और धारा I घटाने से परिनालिका का चुंबकीय क्षेत्र बढ़ता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Soft iron has high magnetic permeability and low retentivity, making it ideal for controllable electromagnets (cranes, electric bells) that turn off when current stops. Steel has high retentivity/coercivity and becomes a permanent magnet.',
+        hi: 'नर्म लोहा धारा प्रवाहित होने पर प्रबल चुंबकत्व देता है और धारा बंद होते ही चुंबकत्व खो देता है, इसलिए क्रेन व विद्युत घंटी के विद्युत चुंबक में प्रयुक्त होता है। इस्पात चुंबकत्व को स्थायी रूप से बनाए रखता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Distinguishes soft iron vs steel: soft iron loses magnetism when current is switched off (temporary electromagnet), whereas steel retains magnetism (permanent magnet).',
+          hi: 'नर्म लोहा और इस्पात में अंतर स्पष्ट करता है: धारा बंद करने पर नर्म लोहा विचुंबकित हो जाता है जबकि इस्पात स्थायी चुंबक बन जाता है।',
+        },
+        {
+          en: 'Identifies factors increasing solenoid field strength: (1) increasing number of turns per unit length (N), and (2) increasing current (I).',
+          hi: 'प्रबलता बढ़ाने के कारक लिखता है: (1) प्रति एकांक लंबाई में फेरों की संख्या N बढ़ाना, (2) विद्युत धारा I का मान बढ़ाना।',
+        },
+        {
+          en: 'Notes that inserting a soft-iron core inside the solenoid concentrates magnetic flux and reverses polarity when current direction is reversed.',
+          hi: 'बताता है कि नर्म लोहे का क्रोड रखने से क्षेत्र अत्यंत प्रबल हो जाता है तथा धारा की दिशा पलटने पर ध्रुवता (N/S) पलट जाती है।',
+        },
+      ],
+    },
+  },
+
+  'motor-force-flemings-rule': {
+    ncertSection: 'NCERT Class 10 Chapter 12: Magnetic Effects of Electric Current (Sec 12.3 — Force on a Current-Carrying Conductor in a Magnetic Field)',
+    openingQuestion: {
+      en: '“Why does a current-carrying wire jump violently when placed across a magnetic field, yet feel zero magnetic force when aligned parallel to the exact same magnet?”',
+      hi: '“चुंबकीय क्षेत्र के लंबवत रखा धारावाही तार अचानक झटका खाता है, किंतु उसी चुंबक के समानांतर रखने पर उस पर शून्य चुंबकीय बल क्यों लगता है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Control magnetic field B, conductor current I, angle θ, and polarities independently to verify F = B·I·L·sin(θ) and test single vs double polarity reversals under Fleming’s Left-Hand Rule.',
+        hi: 'चुंबकीय क्षेत्र B, धारा I, कोण θ और ध्रुवता को नियंत्रित करते हुए F = B·I·L·sin(θ) का सत्यापन करें तथा फ्लेमिंग के वाम-हस्त नियम के अंतर्गत एकल बनाम दोहरे व्युत्क्रमण का परीक्षण करें।',
+      },
+      steps: [
+        {
+          en: 'Set Magnetic Field B = 0.5 T, Current I = 4 A, and Angle θ = 90° (Perpendicular). Observe that Rod AB experiences maximum upward force F = 0.5 × 4 × 0.2 × sin(90°) = 0.40 N Upward (+Z).',
+          hi: 'B = 0.5 T, I = 4 A और कोण θ = 90° (लंबवत) रखें। देखें कि छड़ AB पर अधिकतम बल F = 0.40 N ऊपर की ओर (+Z) लगता है।',
+        },
+        {
+          en: 'Click “Reverse Current I” ONCE. Notice the force immediately flips to Downward (−Z). Now click “Reverse Magnetic Field B” so BOTH are reversed—notice the force returns to Upward (+Z)!',
+          hi: '“धारा दिशा पलटें” पर एक बार क्लिक करें—बल नीचे की ओर (−Z) हो जाता है। अब “चुंबक ध्रुव पलटें” पर भी क्लिक करें (दोनों उलट गए)—देखें कि बल पुनः ऊपर की ओर (+Z) आ जाता है!',
+        },
+        {
+          en: 'Click “θ = 0° (Parallel · Zero Force)” or slide Angle θ to 0°. Even with strong B and I flowing, sin(0°) = 0 so the magnetic force drops to 0 N!',
+          hi: 'अब कोण θ को 0° (समानांतर) पर सेट करें। प्रबल B और I होने के बावजूद sin(0°) = 0 होने के कारण चुंबकीय बल शून्य (0 N) हो जाता है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the Fleming’s Left-Hand Rule apparatus, starting from an upward force (+Z), what happens if you reverse BOTH the electric current direction I AND swap the North–South magnet poles B at the same time?',
+          hi: 'फ्लेमिंग के वाम-हस्त नियम उपकरण में, यदि प्रारंभ में बल ऊपर की ओर (+Z) है और आप विद्युत धारा I की दिशा तथा चुंबक के N–S ध्रुव दोनों एक साथ पलट दें, तो बल की दिशा क्या होगी?',
+        },
+        options: [
+          {
+            en: 'The force continues to act UPWARD (+Z) because reversing both I (−1) and B (−1) cancels out ((−1) × (−1) = +1).',
+            hi: 'बल ऊपर की ओर (+Z) ही बना रहता है क्योंकि धारा (−1) और क्षेत्र (−1) दोनों को एक साथ पलटने पर प्रभाव निरस्त हो जाता है ((−1) × (−1) = +1)।',
+          },
+          {
+            en: 'The force reverses to DOWNWARD (−Z).',
+            hi: 'बल पलटकर नीचे की ओर (−Z) हो जाता है।',
+          },
+          {
+            en: 'The force becomes zero.',
+            hi: 'बल शून्य हो जाता है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Magnetic force depends on the cross product of current I and magnetic field B. Reversing either one alone flips the force sign, so reversing both simultaneously flips the sign twice, restoring the original upward (+Z) direction!',
+          hi: 'धारा अथवा चुंबकीय क्षेत्र में से किसी एक को पलटने पर बल की दिशा उलटती है। अतः दोनों को एक साथ पलटने पर दिशा दो बार उलटकर पुनः मूल दिशा (ऊपर की ओर +Z) में आ जाती है!',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'When a current-carrying conductor sits inside an external magnetic field, the conductor’s own magnetic field interacts with the external magnet’s field—crowding field lines on one side and thinning them on the other—producing a sideways mechanical push (the motor principle!).',
+        hi: 'जब किसी धारावाही चालक को बाह्य चुंबकीय क्षेत्र में रखा जाता है, तो चालक का चुंबकीय क्षेत्र और बाह्य चुंबक का क्षेत्र परस्पर क्रिया करते हैं, जिससे चालक पर लंबवत यांत्रिक बल लगता है (विद्युत मोटर का मूल सिद्धांत!)।',
+      },
+      scalingRule: {
+        en: 'F = B · I · L · sin(θ): Force is directly proportional to field B, current I, active length L, and sin(θ). It is maximum at θ = 90° (perpendicular) and zero at θ = 0° or 180° (parallel/antiparallel).',
+        hi: 'F = B · I · L · sin(θ): बल B, I, L और sin(θ) के समानुपाती होता है। θ = 90° (लंबवत) पर अधिकतम तथा θ = 0° या 180° (समानांतर) पर शून्य होता है।',
+      },
+      siUnitRule: {
+        en: '1 Tesla = 1 N / (A · m). Thus B (in Tesla) × I (in Amperes) × L (in metres) yields Force directly in Newtons (N).',
+        hi: '1 टेस्ला (T) = 1 न्यूटन / (एम्पीयर × मीटर)। अतः B (T) × I (A) × L (m) से बल सीधे न्यूटन (N) में प्राप्त होता है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 12 · Force on a Conductor Rod in a Horseshoe Magnet',
+        hi: 'NCERT कक्षा 10 अध्याय 12 · चुंबकीय क्षेत्र में रखी छड़ पर बल की गणना',
+      },
+      problem: {
+        en: 'A straight aluminium rod of length 0.20 m carrying a current of 5.0 A is placed perpendicular (θ = 90°) to a uniform magnetic field of flux density 0.40 T. Calculate the magnitude of the magnetic force acting on the rod, and state what the force becomes if the rod is rotated parallel to the field.',
+        hi: '0.20 m लंबाई की एक सीधी एल्युमिनियम छड़ जिसमें 5.0 A की विद्युत धारा प्रवाहित हो रही है, 0.40 T के एकसमान चुंबकीय क्षेत्र के लंबवत (θ = 90°) रखी है। छड़ पर लगने वाले चुंबकीय बल का परिमाण ज्ञात कीजिए, तथा बताइए कि छड़ को क्षेत्र के समानांतर कर देने पर बल कितना होगा।',
+      },
+      given: [
+        { en: 'Magnetic field B = 0.40 T, Current I = 5.0 A', hi: 'चुंबकीय क्षेत्र B = 0.40 T, विद्युत धारा I = 5.0 A' },
+        { en: 'Length L = 0.20 m, Angle θ = 90° (sin 90° = 1)', hi: 'लंबाई L = 0.20 m, कोण θ = 90° (sin 90° = 1)' },
+      ],
+      formula: 'F = B × I × L × sin(θ)',
+      substitution: 'At 90°: F = 0.40 × 5.0 × 0.20 × 1 = 0.40 N  |  At 0° (parallel): F = 0.40 × 5.0 × 0.20 × sin(0°) = 0 N',
+      answer: {
+        en: 'Perpendicular Force F = 0.40 N; Parallel Force F = 0 N.',
+        hi: 'लंबवत स्थिति में बल F = 0.40 N; समानांतर स्थिति में बल F = 0 N।',
+      },
+      unitTrapNote: {
+        en: 'If conductor length L is given in centimetres (e.g. 20 cm), divide by 100 to convert to metres (0.20 m) before multiplying B × I × L!',
+        hi: 'यदि चालक की लंबाई L सेंटीमीटर में दी हो (जैसे 20 cm), तो सूत्र में रखने से पहले 100 से भाग देकर मीटर (0.20 m) में बदलें!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Pointing Your Left Middle Finger in the Direction of Electron Motion Instead of Conventional Current (+ Charge Flow)',
+        hi: 'फ्लेमिंग के वाम-हस्त नियम में मध्यमा को विद्युत धारा के बजाय इलेक्ट्रॉन की गति की दिशा में रख देना',
+      },
+      commonMistake: {
+        en: 'When a board question says “an electron beam moves towards the East”, pointing the left middle finger East and getting the exact opposite force direction.',
+        hi: 'जब प्रश्न में दिया हो कि “इलेक्ट्रॉन पुंज पूर्व की ओर गतिमान है”, तो बाएँ हाथ की मध्यमा को पूर्व की ओर रखकर बल की विपरीत (गलत) दिशा निकाल लेना।',
+      },
+      correctPhysics: {
+        en: 'In Fleming’s Left-Hand Rule, the Middle Finger represents CONVENTIONAL CURRENT I—which is the direction of positive charge flow (alpha particles/protons) and is strictly OPPOSITE to the motion of negative electrons! If electrons move East, point your middle finger WEST.',
+        hi: 'फ्लेमिंग के वाम-हस्त नियम में मध्यमा सदैव परंपरागत विद्युत धारा I (धनावेश/प्रोटॉन/अल्फा कणों की गति की दिशा) को दर्शाती है, जो ऋणावेशित इलेक्ट्रॉन की गति के ठीक विपरीत होती है! यदि इलेक्ट्रॉन पूर्व में जा रहे हैं, तो मध्यमा पश्चिम में रखें।',
+      },
+      checkRule: {
+        en: 'Proton / Alpha particle (+): Current I = SAME direction. Electron / Beta particle (−): Current I = OPPOSITE direction!',
+        hi: 'प्रोटॉन / अल्फा कण (+): धारा I = समान दिशा। इलेक्ट्रॉन (−): धारा I = विपरीत दिशा!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Charged-Particle Deflection: Alpha Particle (+2e), Electron (−e), and Neutron (0) Entering a Magnetic Field',
+        hi: 'उच्च स्तरीय विश्लेषण: चुंबकीय क्षेत्र में अल्फा कण, इलेक्ट्रॉन तथा न्यूट्रॉन का विक्षेपण',
+      },
+      prompt: {
+        en: 'A uniform magnetic field points vertically INTO the page. Three particles—an alpha particle (positively charged), an electron (negatively charged), and a neutron (uncharged)—are projected horizontally from Left to Right (+X) into the field. Using Fleming’s Left-Hand Rule, predict the initial direction of magnetic force on each of the three particles.',
+        hi: 'एकसमान चुंबकीय क्षेत्र कागज के तल के लंबवत भीतर की ओर है। तीन कण—एक अल्फा कण (धनावेशित), एक इलेक्ट्रॉन (ऋणावेशित) तथा एक न्यूट्रॉन (उदासीन)—बाईं से दाईं ओर (+X) इस क्षेत्र में प्रवेश करते हैं। फ्लेमिंग के वाम-हस्त नियम से तीनों कणों पर लगने वाले प्रारंभिक बल की दिशा बताइए।',
+      },
+      claimOptions: [
+        {
+          en: 'Alpha particle (+): current is Left → Right, so force is UPWARD (towards top of page); Electron (−): conventional current is Right → Left, so force is DOWNWARD; Neutron (q = 0): zero current, so ZERO magnetic force (moves straight undeviated).',
+          hi: 'अल्फा कण (+): धारा बाईं से दाईं ओर है, अतः बल कागज के तल में ऊपर की ओर; इलेक्ट्रॉन (−): धारा विपरीत (दाईं से बाईं ओर) है, अतः बल नीचे की ओर; न्यूट्रॉन (आवेशहीन): शून्य धारा, अतः कोई बल नहीं (सीधा निकल जाएगा)।',
+        },
+        {
+          en: 'All three particles are deflected upward towards the top of the page.',
+          hi: 'तीनों कण ऊपर की ओर विक्षेपित होते हैं।',
+        },
+        {
+          en: 'Alpha particle and electron are both deflected downward, while neutron stops.',
+          hi: 'अल्फा कण और इलेक्ट्रॉन दोनों नीचे की ओर मुड़ते हैं और न्यूट्रॉन रुक जाता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Point left forefinger INTO the page (Field B). For the positive alpha particle moving right, middle finger (Current I) points Right ⇒ Thumb points UPWARD. For the negative electron moving right, conventional current points Left ⇒ force is DOWNWARD. The neutral neutron carries no charge (I = 0), experiencing zero magnetic force.',
+        hi: 'बाएँ हाथ की तर्जनी (क्षेत्र B) कागज के भीतर रखें। धनावेशित अल्फा कण के लिए मध्यमा (धारा I) दाईं ओर रखने पर अंगूठा ऊपर की ओर इंगित करता है। ऋणावेशित इलेक्ट्रॉन के लिए धारा विपरीत होने से बल नीचे की ओर लगता है। उदासीन न्यूट्रॉन (q = 0) पर कोई चुंबकीय बल नहीं लगता।',
+      },
+      rubricPoints: [
+        {
+          en: 'Determines upward force on the positive alpha particle using Fleming’s Left-Hand Rule (Field into page, Current I to the right).',
+          hi: 'फ्लेमिंग के वाम-हस्त नियम से धनावेशित अल्फा कण पर ऊपर की ओर बल निर्धारित करता है।',
+        },
+        {
+          en: 'Determines opposite (downward) force on the negative electron because conventional current I is opposite to electron motion.',
+          hi: 'ऋणावेशित इलेक्ट्रॉन के लिए धारा की दिशा विपरीत लेकर नीचे की ओर बल निर्धारित करता है।',
+        },
+        {
+          en: 'Concludes that the uncharged neutron constitutes zero electric current and passes through undeviated (F = 0).',
+          hi: 'स्पष्ट करता है कि आवेशहीन न्यूट्रॉन से कोई धारा नहीं बनती, अतः उस पर शून्य बल (F = 0) लगता है।',
+        },
+      ],
+    },
+  },
 }

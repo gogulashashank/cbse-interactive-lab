@@ -289,4 +289,92 @@ export const SQUARES_AND_INVERSES_CONTENT: Record<string, ConceptCardContent> = 
       },
     ],
   },
+
+  'magnetic-field-solenoid': {
+    hook: {
+      en: 'When Oersted passed electric current through a wire, a nearby compass needle suddenly jumped! How does that invisible magnetic field change as you move farther from the wire or wind the wire into a solenoid coil?',
+      hi: 'जब ओर्स्टेड ने तार में विद्युत धारा प्रवाहित की, तो पास रखी दिक्सूची (कंपास) की सुई अचानक घूम गई! तार से दूर जाने पर या तार को परिनालिका (Solenoid) के रूप में लपेटने पर यह चुंबकीय क्षेत्र कैसे बदलता है?',
+    },
+    predictQuestion: {
+      en: 'A straight wire carries a steady current of 4 A upward. If you move a magnetic compass from r = 2 cm away to r = 6 cm away (3× farther), what happens to the magnetic field strength B and the concentric field direction?',
+      hi: 'एक सीधे तार में ऊपर की ओर 4 A की धारा बह रही है। यदि आप चुंबकीय सुई को तार से r = 2 cm से हटाकर r = 6 cm (3 गुना दूर) ले जाएं, तो चुंबकीय क्षेत्र B के परिमाण और दिशा पर क्या प्रभाव पड़ेगा?',
+    },
+    predictOptions: [
+      {
+        en: 'Field strength B drops to 1/3rd (B ∝ I/r), while the concentric field loops remain anticlockwise (↺) by the Right-Hand Thumb Rule.',
+        hi: 'चुंबकीय क्षेत्र B घटकर 1/3 रह जाता है (B ∝ I/r), और दक्षिण-हस्त अंगुष्ठ नियम से क्षेत्र रेखाएं वामावर्त (↺) ही रहती हैं।',
+      },
+      {
+        en: 'Field strength B triples and reverses to clockwise.',
+        hi: 'चुंबकीय क्षेत्र B 3 गुना बढ़ जाता है और दिशा दक्षिणावर्त हो जाती है।',
+      },
+      {
+        en: 'Field strength B stays identical at all distances around a straight wire.',
+        hi: 'सीधे तार के चारों ओर सभी दूरियों पर चुंबकीय क्षेत्र B समान रहता है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Around a straight current-carrying conductor, magnetic field lines form concentric circles whose strength decreases inversely with radial distance (B ∝ I/r). Since the upward current direction has not changed, the Right-Hand Thumb Rule keeps the field sense anticlockwise (↺).',
+      hi: 'सीधे धारावाही चालक के चारों ओर चुंबकीय क्षेत्र रेखाएं संकेंद्री वृत्त बनाती हैं और दूरी r बढ़ने पर क्षेत्र की तीव्रता व्युत्क्रमानुपाती रूप से घटती है (B ∝ I/r)। धारा ऊपर की ओर ही रहने से दिशा वामावर्त (↺) रहती है।',
+    },
+    insightFormula: 'Straight Wire: B ∝ I / r  |  Solenoid Core: B ∝ N · I (Uniform)',
+    insightTerm: {
+      en: 'Right-Hand Thumb Rule & Solenoid Electromagnet (NCERT Ch 12.2)',
+      hi: 'दक्षिण-हस्त अंगुष्ठ नियम एवं परिनालिका (NCERT 12.2)',
+    },
+    insightSummary: {
+      en: 'Outside a straight wire, concentric magnetic circles weaken with distance (B ∝ I/r). Winding the wire into a cylindrical solenoid of N turns packs those loops together, creating a nearly UNIFORM parallel magnetic field inside (B ∝ N·I) that acts like a bar magnet!',
+      hi: 'सीधे तार के बाहर चुंबकीय क्षेत्र दूरी के साथ घटता है (B ∝ I/r)। तार को N फेरों वाली परिनालिका में लपेटने पर भीतर समानांतर रेखाओं वाला एकसमान चुंबकीय क्षेत्र (B ∝ N·I) बनता है जो छड़ चुंबक की तरह कार्य करता है!',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 12 · Magnetic Field Inside a Long Solenoid',
+          hi: 'NCERT कक्षा 10 अध्याय 12 · परिनालिका के भीतर चुंबकीय क्षेत्र',
+        },
+        prompt: {
+          en: 'The magnetic field inside a long straight solenoid carrying electric current:',
+          hi: 'किसी विद्युत धारावाही सीधी लंबी परिनालिका के भीतर चुंबकीय क्षेत्र:',
+        },
+        options: [
+          {
+            en: 'Is the same at all points (uniform parallel field lines)',
+            hi: 'सभी बिंदुओं पर समान होता है (समानांतर क्षेत्र रेखाएं)',
+          },
+          {
+            en: 'Is zero',
+            hi: 'शून्य होता है',
+          },
+          {
+            en: 'Decreases as we move towards its end',
+            hi: 'इसके सिरे की ओर जाने पर घटता है',
+          },
+          {
+            en: 'Increases as we move towards its end',
+            hi: 'इसके सिरे की ओर जाने पर बढ़ता है',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Look at the field lines inside the solenoid coil on the bench: they are parallel, equally spaced straight lines.',
+          hi: 'परिनालिका के भीतर की क्षेत्र रेखाएं देखें: वे परस्पर समानांतर और समदूरस्थ सीधी रेखाएं होती हैं।',
+        },
+        steps: [
+          {
+            label: { en: 'Field Line Geometry Inside Solenoid', hi: 'परिनालिका के भीतर क्षेत्र रेखाएं' },
+            content: { en: 'Inside a long solenoid, the magnetic field lines are parallel straight lines.', hi: 'परिनालिका के भीतर चुंबकीय क्षेत्र रेखाएं समानांतर सरल रेखाओं के भाँति होती हैं।' },
+          },
+          {
+            label: { en: 'Physical Interpretation', hi: 'भौतिक निष्कर्ष' },
+            content: { en: 'Parallel, equally spaced field lines indicate that the magnetic field strength B is uniform (the same at all interior points).', hi: 'यह निर्दिष्ट करता है कि परिनालिका के भीतर सभी बिंदुओं पर चुंबकीय क्षेत्र समान (एकसमान) होता है।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'The magnetic field is uniform (the same at all points inside the solenoid).',
+          hi: 'परिनालिका के भीतर सभी बिंदुओं पर चुंबकीय क्षेत्र समान होता है।',
+        },
+      },
+    ],
+  },
 }

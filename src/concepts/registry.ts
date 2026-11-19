@@ -38,6 +38,10 @@ export type ConceptId =
   | 'momentum-impulse-cushion'
   | 'archimedes-buoyancy-float'
   | 'sound-echo-wave-speed'
+  | 'eye-defects-correction'
+  | 'prism-dispersion-scattering'
+  | 'magnetic-field-solenoid'
+  | 'motor-force-flemings-rule'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -485,6 +489,80 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     misconceptionIds: ['higher-frequency-travels-faster', 'echo-forgets-factor-of-two'],
     contexts: [{ en: 'Mountain cliff echo & SONAR depth ranging', hi: 'पहाड़ी प्रतिध्वनि और सोनार (SONAR) गहराई मापन' }],
     boardMapping: [{ board: 'CBSE', classLevel: 9, chapterRef: 'Chapter 11: Sound (11.2 & 11.3)' }],
+    status: 'pilot',
+  },
+
+  // Class 10 Physics Completion: Ch 10 (Human Eye & Colourful World) and Ch 12 (Magnetic Effects of Electric Current)
+  {
+    id: 'eye-defects-correction',
+    thread: 'conventions-and-inversions',
+    title: {
+      en: 'Myopia & Hypermetropia: Corrective Lens Power & Near/Far Point Shift',
+      hi: 'निकट-दृष्टि एवं दीर्घ-दृष्टि दोष: संशोधक लेंस क्षमता (Myopia & Hypermetropia)',
+    },
+    oneLine: {
+      en: 'Myopia focuses distant rays before the retina (concave f = −d_F); Hypermetropia focuses near rays behind the retina (convex 1/f = 1/25 − 1/d_N).',
+      hi: 'निकट-दृष्टि दोष में दूर की किरणें रेटिना के आगे मिलती हैं (अवतल f = −d_F); दीर्घ-दृष्टि दोष में पास की किरणें रेटिना के पीछे मिलती हैं (उत्तल लेंस)।',
+    },
+    prerequisites: ['cartesian-sign-trap', 'lens-power-dioptre'],
+    misconceptionIds: ['myopia-uses-convex-lens', 'hypermetropia-ignores-25cm-near-point'],
+    contexts: [{ en: 'Optometrist eye clinic & reading glasses vs distance spectacles', hi: 'नेत्र चिकित्सक क्लिनिक और पढ़ने बनाम दूर देखने का चश्मा' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 10: The Human Eye and the Colourful World (10.2)' }],
+    deepDiveRoute: '/alternative',
+    status: 'pilot',
+  },
+  {
+    id: 'prism-dispersion-scattering',
+    thread: 'conventions-and-inversions',
+    title: {
+      en: 'Glass Prism Dispersion, Inverted Recombination & Rayleigh Sky Scattering',
+      hi: 'प्रिज्म द्वारा वर्ण-विक्षेपण, न्यूटन का पुनर्योजन एवं प्रकाश का प्रकीर्णन',
+    },
+    oneLine: {
+      en: 'Shorter wavelength (Violet/Blue) has higher refractive index in glass (bends most) and scatters ~6–9× more in air (I ∝ 1/λ⁴) than Red.',
+      hi: 'छोटी तरंगदैर्घ्य (बैंगनी/नीला) का काँच में अपवर्तनांक अधिक होता है (सर्वाधिक विचलन) और वायु में लाल से ~6–9 गुना अधिक प्रकीर्णन (I ∝ 1/λ⁴) होता है।',
+    },
+    prerequisites: ['lens-power-dioptre'],
+    misconceptionIds: ['red-bends-more-than-violet', 'prism-creates-colour-rather-than-splitting'],
+    contexts: [{ en: 'Newton’s two-prism recombination, rainbow & red danger signals', hi: 'न्यूटन का द्वि-प्रिज्म प्रयोग, इंद्रधनुष और लाल खतरे के संकेत' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 10: The Human Eye and the Colourful World (10.3–10.6)' }],
+    deepDiveRoute: '/alternative',
+    status: 'pilot',
+  },
+  {
+    id: 'magnetic-field-solenoid',
+    thread: 'squares-and-inverses',
+    title: {
+      en: 'Right-Hand Thumb Rule & Solenoid Electromagnet (B ∝ I/r vs Uniform Core)',
+      hi: 'दक्षिण-हस्त अंगुष्ठ नियम एवं परिनालिका का चुंबकीय क्षेत्र (B ∝ I/r बनाम एकसमान क्रोड)',
+    },
+    oneLine: {
+      en: 'Around a straight wire magnetic field weakens inversely with distance (B ∝ I/r); inside a solenoid of N turns field lines are parallel and uniform (B ∝ N·I).',
+      hi: 'सीधे तार के चारों ओर चुंबकीय क्षेत्र दूरी के व्युत्क्रमानुपाती घटता है (B ∝ I/r); परिनालिका के भीतर समानांतर रेखाओं वाला एकसमान क्षेत्र (B ∝ N·I) बनता है।',
+    },
+    prerequisites: ['current-vs-charge', 'inverse-area-scaling'],
+    misconceptionIds: ['solenoid-interior-field-is-zero-or-nonuniform'],
+    contexts: [{ en: 'Oersted compass deflection & soft-iron core electromagnet', hi: 'ओर्स्टेड का दिक्सूची प्रयोग और नर्म लोहे के क्रोड वाला विद्युत चुंबक' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Magnetic Effects of Electric Current (12.2)' }],
+    deepDiveRoute: '/safety',
+    status: 'pilot',
+  },
+  {
+    id: 'motor-force-flemings-rule',
+    thread: 'controlled-experiments',
+    title: {
+      en: 'Fleming’s Left-Hand Rule & Magnetic Force on a Conductor (F = BIL sinθ)',
+      hi: 'फ्लेमिंग का वाम-हस्त नियम एवं धारावाही चालक पर बल (F = BIL sinθ)',
+    },
+    oneLine: {
+      en: 'Magnetic force is maximum when current is perpendicular to field (θ = 90°), zero when parallel (θ = 0°), and unchanged if both I and B reverse together.',
+      hi: 'धारा और चुंबकीय क्षेत्र लंबवत (θ = 90°) होने पर बल अधिकतम, समानांतर (θ = 0°) होने पर शून्य, तथा I व B दोनों एक साथ पलटने पर बल की दिशा अपरिवर्तित रहती है।',
+    },
+    prerequisites: ['fixed-voltage-vs-current'],
+    misconceptionIds: ['electron-motion-equals-conventional-current-direction', 'parallel-current-experiences-magnetic-force'],
+    contexts: [{ en: 'Kicking aluminium rod in horseshoe magnet & electron beam deflection', hi: 'नाल चुंबक में एल्युमिनियम छड़ का विस्थापन और इलेक्ट्रॉन पुंज का विक्षेपण' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Magnetic Effects of Electric Current (12.3)' }],
+    deepDiveRoute: '/safety',
     status: 'pilot',
   },
 

@@ -156,3 +156,53 @@ export function calculateSoundEchoWave(
     isDistinctEcho,
   }
 }
+
+export interface MagneticFieldSolenoidResult {
+  currentA: number
+  radialDistanceCm: number
+  solenoidTurnsN: number
+  currentDirection: 'upward-or-ccw' | 'downward-or-cw'
+  wireFieldMicroTesla: number
+  solenoidCoreFieldMilliTesla: number
+  thumbRuleFieldLoopSense: 'anticlockwise' | 'clockwise'
+  solenoidLeftPole: 'North' | 'South'
+  solenoidRightPole: 'North' | 'South'
+}
+
+/**
+ * Class 10 Magnetic Effects of Electric Current (NCERT Ch 12.2):
+ * 1. Straight conductor magnetic field: B_wire ∝ I / r (inversely proportional to radial distance r).
+ *    Exact Biot-Savart / Ampere value in vacuum: B = (μ₀ I) / (2π r) = 20 * I(A) / r(cm) μT.
+ * 2. Current-carrying solenoid internal field: B_solenoid ∝ N * I (for fixed length L = 10 cm,
+ *    B = μ₀ (N/L) I ≈ 0.01257 * N * I mT).
+ * 3. Right-Hand Thumb Rule reverses magnetic field sense and solenoid N/S polarity when current reverses.
+ */
+export function calculateMagneticFieldSolenoid(
+  currentA: number,
+  radialDistanceCm: number,
+  solenoidTurnsN = 100,
+  currentDirection: 'upward-or-ccw' | 'downward-or-cw' = 'upward-or-ccw'
+): MagneticFieldSolenoidResult {
+  const safeI = Math.max(0.5, currentA)
+  const safeR = Math.max(1, radialDistanceCm)
+  const safeN = Math.max(20, solenoidTurnsN)
+
+  // B_wire (μT) = 20 * I / r_cm
+  const wireFieldMicroTesla = tidyNumber((20 * safeI) / safeR, 2)
+  // B_solenoid (mT) for L = 0.1257 m => 0.01 * N * I mT
+  const solenoidCoreFieldMilliTesla = tidyNumber(0.01 * safeN * safeI, 2)
+
+  const isUp = currentDirection === 'upward-or-ccw'
+
+  return {
+    currentA: safeI,
+    radialDistanceCm: safeR,
+    solenoidTurnsN: safeN,
+    currentDirection,
+    wireFieldMicroTesla,
+    solenoidCoreFieldMilliTesla,
+    thumbRuleFieldLoopSense: isUp ? 'anticlockwise' : 'clockwise',
+    solenoidLeftPole: isUp ? 'North' : 'South',
+    solenoidRightPole: isUp ? 'South' : 'North',
+  }
+}

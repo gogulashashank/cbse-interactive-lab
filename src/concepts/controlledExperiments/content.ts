@@ -289,4 +289,92 @@ export const CONTROLLED_EXPERIMENTS_CONTENT: Record<string, ConceptCardContent> 
       },
     ],
   },
+
+  'motor-force-flemings-rule': {
+    hook: {
+      en: 'An aluminium rod suspended between the poles of a horseshoe magnet suddenly kicks sideways when current is switched on! What happens if you flip BOTH the battery terminals AND the magnet poles at the same time?',
+      hi: 'नाल चुंबक के ध्रुवों के बीच लटकी एल्युमिनियम की छड़ में धारा प्रवाहित करते ही वह अचानक एक ओर झटका खाती है! यदि आप बैटरी के सिरे और चुंबक के ध्रुव दोनों एक साथ पलट दें तो क्या होगा?',
+    },
+    predictQuestion: {
+      en: 'A current-carrying rod placed perpendicular (θ = 90°) to a magnetic field B experiences an upward force (+Z). What happens to the force if you (a) rotate the rod parallel to the magnetic field (θ = 0°), or (b) keep θ = 90° and reverse BOTH the current I and the magnetic field B simultaneously?',
+      hi: 'चुंबकीय क्षेत्र B के लंबवत (θ = 90°) रखी धारावाही छड़ पर ऊपर की ओर (+Z) बल लगता है। बल पर क्या प्रभाव पड़ेगा यदि (a) छड़ को चुंबकीय क्षेत्र के समानांतर (θ = 0°) रख दिया जाए, या (b) θ = 90° रखते हुए धारा I और चुंबकीय क्षेत्र B दोनों की दिशा एक साथ पलट दी जाए?',
+    },
+    predictOptions: [
+      {
+        en: '(a) Force becomes ZERO at θ = 0°; (b) Force remains UPWARD (+Z) because two reversals cancel out!',
+        hi: '(a) θ = 0° पर बल शून्य हो जाता है; (b) बल ऊपर की ओर (+Z) ही रहता है क्योंकि दो बार उलटने का प्रभाव निरस्त हो जाता है!',
+      },
+      {
+        en: '(a) Force is maximum at θ = 0°; (b) Force reverses downward.',
+        hi: '(a) θ = 0° पर बल अधिकतम होता है; (b) बल नीचे की ओर उलट जाता है।',
+      },
+      {
+        en: 'Force stays identical at every angle θ from 0° to 90°.',
+        hi: '0° से 90° तक प्रत्येक कोण θ पर बल समान रहता है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'By F = B·I·L·sin(θ), when the conductor is parallel to the field (θ = 0°), sin(0°) = 0 so magnetic force vanishes! Under Fleming’s Left-Hand Rule, reversing current flips force (−1), and reversing field flips it again (−1 × −1 = +1), keeping the force in the original upward direction!',
+      hi: 'F = B·I·L·sin(θ) के अनुसार समानांतर स्थिति (θ = 0°) में sin(0°) = 0 होने से बल शून्य हो जाता है! फ्लेमिंग के वाम-हस्त नियम से केवल एक (I या B) को पलटने पर बल उलटता है, परंतु दोनों को एक साथ पलटने (−1 × −1 = +1) पर बल की दिशा अपरिवर्तित रहती है!',
+    },
+    insightFormula: 'F = B · I · L · sin(θ)  |  Max at θ = 90°, Zero at θ = 0°',
+    insightTerm: {
+      en: 'Magnetic Force & Fleming’s Left-Hand Rule (NCERT Ch 12.3)',
+      hi: 'धारावाही चालक पर बल एवं फ्लेमिंग का वाम-हस्त नियम (NCERT 12.3)',
+    },
+    insightSummary: {
+      en: 'Stretch the thumb, forefinger, and middle finger of your left hand mutually perpendicular: Forefinger = Magnetic Field (B), Middle Finger = Current (I, direction of + charge flow), Thumb = Force/Motion (F). Force is maximum at 90° and zero when parallel (0°).',
+      hi: 'बाएँ हाथ की तर्जनी (चुंबकीय क्षेत्र B), मध्यमा (विद्युत धारा I, धन आवेश की दिशा) और अंगूठे (बल F) को परस्पर लंबवत फैलाएं। बल 90° पर अधिकतम और समानांतर (0°) होने पर शून्य होता है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Example 12.2 · Electron Beam Entering a Magnetic Field',
+          hi: 'NCERT कक्षा 10 उदाहरण 12.2 · चुंबकीय क्षेत्र में इलेक्ट्रॉन पर बल',
+        },
+        prompt: {
+          en: 'An electron enters a magnetic field at right angles to it: the magnetic field points towards the right (+X) and the electron moves vertically downward (−Y). What will be the direction of force acting on the electron?',
+          hi: 'कोई इलेक्ट्रॉन किसी चुंबकीय क्षेत्र में क्षेत्र के लंबवत प्रवेश करता है: चुंबकीय क्षेत्र दाईं ओर (+X) है और इलेक्ट्रॉन नीचे की ओर (−Y) गति कर रहा है। इलेक्ट्रॉन पर आरोपित बल की दिशा क्या होगी?',
+        },
+        options: [
+          {
+            en: 'Into the page (because conventional current I is UPWARD, opposite to negative electron motion)',
+            hi: 'कागज के भीतर की ओर (क्योंकि विद्युत धारा I की दिशा इलेक्ट्रॉन की गति के विपरीत ऊपर की ओर है)',
+          },
+          {
+            en: 'Out of the page',
+            hi: 'कागज से बाहर की ओर',
+          },
+          {
+            en: 'To the right (parallel to magnetic field)',
+            hi: 'दाईं ओर (चुंबकीय क्षेत्र की दिशा में)',
+          },
+          {
+            en: 'No force acts on the electron',
+            hi: 'इलेक्ट्रॉन पर कोई बल नहीं लगेगा',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Convention trap: conventional electric current I is OPPOSITE to the motion of negative electrons! Point your left middle finger UPWARD (+Y) and forefinger RIGHT (+X).',
+          hi: 'ध्यान दें: विद्युत धारा I की दिशा ऋणावेशित इलेक्ट्रॉन की गति के विपरीत (ऊपर की ओर +Y) ली जाती है! अब फ्लेमिंग का वाम-हस्त नियम लगाएं।',
+        },
+        steps: [
+          {
+            label: { en: 'Step 1: Find Conventional Current I', hi: 'चरण 1: विद्युत धारा I की दिशा' },
+            content: { en: 'Since the negatively charged electron moves vertically downward, conventional current I points vertically UPWARD.', hi: 'इलेक्ट्रॉन नीचे की ओर जा रहा है, अतः विद्युत धारा I की दिशा ऊर्ध्वाधर ऊपर की ओर होगी।' },
+          },
+          {
+            label: { en: 'Step 2: Apply Fleming’s Left-Hand Rule', hi: 'चरण 2: फ्लेमिंग का वाम-हस्त नियम' },
+            content: { en: 'Forefinger (Field B) points Right; Middle finger (Current I) points Upward ⇒ Thumb (Force F) points INTO the page.', hi: 'तर्जनी (B) दाईं ओर तथा मध्यमा (I) ऊपर की ओर रखने पर अंगूठा (बल F) कागज के भीतर की ओर इंगित करता है।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Force acts INTO the page.',
+          hi: 'बल की दिशा कागज के भीतर की ओर होगी।',
+        },
+      },
+    ],
+  },
 }

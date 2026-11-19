@@ -280,4 +280,169 @@ export const CONVENTIONS_AND_INVERSIONS_CONTENT: Record<string, ConceptContentIt
       },
     ],
   },
+
+  'eye-defects-correction': {
+    hook: {
+      en: 'One student’s spectacles carry a −1.25 D prescription to read the classroom blackboard, while their grandfather wears +3.0 D glasses to read the morning newspaper. Why do the signs and lens shapes flip?',
+      hi: 'एक छात्र ब्लैकबोर्ड पढ़ने के लिए −1.25 D का चश्मा पहनता है, जबकि उसके दादाजी अखबार पढ़ने के लिए +3.0 D का चश्मा लगाते हैं। इन दोनों में चिह्न और लेंस के प्रकार क्यों बदल जाते हैं?',
+    },
+    predictQuestion: {
+      en: 'A myopic person cannot see objects clearly beyond 80 cm (their far point d_F = 80 cm). What focal length f and power P of spectacle lens will bring distant objects (u = −∞) into sharp focus on their retina?',
+      hi: 'निकट-दृष्टि दोष (Myopia) से पीड़ित एक व्यक्ति 80 cm से अधिक दूर की वस्तुओं को स्पष्ट नहीं देख सकता (दूर बिंदु d_F = 80 cm)। दूरस्थ वस्तुओं (u = −∞) को रेटिना पर फोकस करने के लिए किस फोकस दूरी f और क्षमता P का लेंस चाहिए?',
+    },
+    predictOptions: [
+      {
+        en: 'Concave lens with f = −80 cm and Power P = −1.25 D',
+        hi: 'अवतल लेंस जिसकी फोकस दूरी f = −80 cm तथा क्षमता P = −1.25 D हो',
+      },
+      {
+        en: 'Convex lens with f = +80 cm and Power P = +1.25 D',
+        hi: 'उत्तल लेंस जिसकी फोकस दूरी f = +80 cm तथा क्षमता P = +1.25 D हो',
+      },
+      {
+        en: 'Concave lens with f = −25 cm and Power P = −4.0 D',
+        hi: 'अवतल लेंस जिसकी फोकस दूरी f = −25 cm तथा क्षमता P = −4.0 D हो',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'In myopia, parallel rays from infinity focus IN FRONT of the retina. A diverging (concave) lens must form a virtual image of distant objects (u = −∞) at the person’s far point (v = −80 cm). By 1/f = 1/v − 1/u, f = −80 cm = −0.8 m, so P = 1/(−0.8) = −1.25 D!',
+      hi: 'निकट-दृष्टि दोष में अनंत से आने वाली किरणें रेटिना के सामने फोकस हो जाती हैं। अवतल लेंस अनंत की वस्तु (u = −∞) का आभासी प्रतिबिंब व्यक्ति के दूर बिंदु (v = −80 cm) पर बनाता है। अतः f = −80 cm = −0.8 m तथा क्षमता P = −1.25 D होगी!',
+    },
+    insightFormula: 'Myopia: f = −d_F (−D)  |  Hypermetropia: 1/f = 1/25 − 1/d_N (+D)',
+    insightTerm: {
+      en: 'Defects of Vision & Their Correction (NCERT Ch 10.2)',
+      hi: 'दृष्टि दोष तथा उनका संशोधन (NCERT 10.2)',
+    },
+    insightSummary: {
+      en: 'Myopia (near-sightedness) focuses distant light in front of the retina → correct with a Concave (−D) lens of f = −d_F. Hypermetropia (far-sightedness) focuses near light behind the retina → correct with a Convex (+D) lens.',
+      hi: 'निकट-दृष्टि दोष (Myopia) में दूर का प्रकाश रेटिना के आगे मिलता है → अवतल लेंस (−D, f = −d_F) लगाएं। दीर्घ-दृष्टि दोष (Hypermetropia) में पास का प्रकाश रेटिना के पीछे मिलता है → उत्तल लेंस (+D) लगाएं।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 10 Q6 · Hypermetropic Near-Point Correction',
+          hi: 'NCERT कक्षा 10 अध्याय 10 · दीर्घ-दृष्टि दोष का संशोधन',
+        },
+        prompt: {
+          en: 'The near point of a hypermetropic eye is 1 m (100 cm). What is the power of the lens required to correct this defect? Assume that the near point of the normal eye is 25 cm.',
+          hi: 'किसी दीर्घ-दृष्टि दोष से पीड़ित व्यक्ति का निकट बिंदु 1 m (100 cm) है। इस दोष को संशोधित करने के लिए आवश्यक लेंस की क्षमता क्या होगी? मान लीजिए कि सामान्य नेत्र का निकट बिंदु 25 cm है।',
+        },
+        options: [
+          { en: '+3.0 D (Convex lens with f = +33.3 cm)', hi: '+3.0 D (उत्तल लेंस, f = +33.3 cm)' },
+          { en: '−3.0 D (Concave lens with f = −33.3 cm)', hi: '−3.0 D (अवतल लेंस, f = −33.3 cm)' },
+          { en: '+1.0 D (Convex lens with f = +100 cm)', hi: '+1.0 D (उत्तल लेंस, f = +100 cm)' },
+          { en: '+4.0 D (Convex lens with f = +25 cm)', hi: '+4.0 D (उत्तल लेंस, f = +25 cm)' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'The lens must take an object at u = −25 cm and form its virtual image at v = −100 cm. Use 1/f = 1/v − 1/u.',
+          hi: 'लेंस को u = −25 cm पर रखी वस्तु का आभासी प्रतिबिंब v = −100 cm पर बनाना है। 1/f = 1/v − 1/u लगाएं।',
+        },
+        steps: [
+          {
+            label: { en: 'Given with Cartesian Signs', hi: 'कार्तीय चिह्नों सहित मान' },
+            content: { en: 'u = −25 cm (normal near point), v = −100 cm (defective near point)', hi: 'u = −25 cm, v = −100 cm' },
+          },
+          {
+            label: { en: 'Lens Formula 1/f = 1/v − 1/u', hi: 'लेंस सूत्र 1/f = 1/v − 1/u' },
+            content: { en: '1/f = 1/(−100) − 1/(−25) = −1/100 + 4/100 = +3/100 cm⁻¹ ⇒ f = +33.33 cm = +1/3 m', hi: '1/f = −1/100 + 1/25 = +3/100 cm⁻¹ ⇒ f = +1/3 m' },
+          },
+          {
+            label: { en: 'Power P = 1 / f(m)', hi: 'क्षमता P = 1 / f(m)' },
+            content: { en: 'P = 1 / (1/3 m) = +3.0 D (Convex lens)', hi: 'P = +3.0 D (उत्तल लेंस)' },
+          },
+        ],
+        finalAnswer: { en: 'Power P = +3.0 D (Convex / Converging lens)', hi: 'लेंस की क्षमता P = +3.0 D (उत्तल लेंस)' },
+      },
+    ],
+  },
+
+  'prism-dispersion-scattering': {
+    hook: {
+      en: 'Why does violet light bend the sharpest inside a glass prism and scatter to paint the daytime sky blue, while red light bends the least and serves as the universal danger signal through fog?',
+      hi: 'काँच के प्रिज्म में बैंगनी प्रकाश सबसे अधिक क्यों मुड़ता है और आकाश को नीला बनाता है, जबकि लाल प्रकाश सबसे कम मुड़ता है और कोहरे में खतरे के संकेत के रूप में क्यों चुना जाता है?',
+    },
+    predictQuestion: {
+      en: 'When a narrow beam of white light passes through a triangular glass prism, which colour travels the slowest inside the glass, bends through the largest deviation angle δ, and what happens if an identical inverted prism is placed right behind it?',
+      hi: 'जब श्वेत प्रकाश की किरण काँच के प्रिज्म से गुजरती है, तो कौन-सा रंग काँच में सबसे धीमा चलता है और सबसे अधिक कोण δ पर मुड़ता है, तथा पीछे एक उल्टा प्रिज्म रखने पर क्या होता है?',
+    },
+    predictOptions: [
+      {
+        en: 'Violet (shortest λ ≈ 400 nm) travels slowest in glass and bends the most; an inverted second prism recombines the spectrum back into white light.',
+        hi: 'बैंगनी (सबसे कम λ ≈ 400 nm) काँच में सबसे धीमा चलता है व सबसे अधिक मुड़ता है; उल्टा दूसरा प्रिज्म स्पेक्ट्रम को पुनः श्वेत प्रकाश में मिला देता है।',
+      },
+      {
+        en: 'Red (longest λ ≈ 700 nm) bends the most, and a second prism splits the colours into 14 bands.',
+        hi: 'लाल रंग सबसे अधिक मुड़ता है और दूसरा प्रिज्म रंगों को 14 पट्टियों में बाँट देता है।',
+      },
+      {
+        en: 'All colours travel at the exact same speed inside glass, but bend differently only due to prism thickness.',
+        hi: 'काँच में सभी रंग समान चाल से चलते हैं, केवल प्रिज्म की मोटाई से अलग मुड़ते हैं।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'In glass, refractive index n increases as wavelength λ decreases. Violet (λ ≈ 400 nm) experiences the highest refractive index n, travels slowest in glass (v = c/n), and bends the most. Placing a second identical prism upside-down cancels the angular dispersion and recombines the 7 colours into white light (Newton’s experiment)!',
+      hi: 'काँच में तरंगदैर्घ्य λ कम होने पर अपवर्तनांक n अधिक होता है। बैंगनी रंग (λ ≈ 400 nm) काँच में सबसे धीमा चलता है और सबसे अधिक झुकता है। दूसरा समान प्रिज्म उल्टा रखने पर कोणीय विक्षेपण निरस्त हो जाता है और पुनः श्वेत प्रकाश प्राप्त होता है!',
+    },
+    insightFormula: 'λ_violet < λ_red ⇒ n_violet > n_red ⇒ δ_violet > δ_red  |  I_scatter ∝ 1/λ⁴',
+    insightTerm: {
+      en: 'Prism Dispersion, Recombination & Scattering (NCERT Ch 10.3–10.6)',
+      hi: 'प्रिज्म द्वारा वर्ण-विक्षेपण, पुनर्योजन एवं प्रकीर्णन (NCERT 10.3–10.6)',
+    },
+    insightSummary: {
+      en: 'Shorter wavelength (Violet/Blue) has higher refractive index in glass (bends most in prism) and scatters ~6–9× more strongly off fine air molecules (I ∝ 1/λ⁴ → blue sky). Longer wavelength (Red) bends least and scatters least (travels farthest through fog/smoke).',
+      hi: 'छोटी तरंगदैर्घ्य (बैंगनी/नीला) का काँच में अपवर्तनांक अधिक होता है (प्रिज्म में सर्वाधिक विचलन) और वायु के सूक्ष्म कणों द्वारा ~6–9 गुना अधिक प्रकीर्णित होती है (I ∝ 1/λ⁴ → नीला आकाश)। लाल रंग (बड़ी λ) सबसे कम मुड़ता और सबसे कम प्रकीर्णित होता है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'CBSE Class 10 Board Question · Danger Signals & Rayleigh Scattering',
+          hi: 'सीबीएसई कक्षा 10 बोर्ड प्रश्न · खतरे के संकेत लाल क्यों होते हैं?',
+        },
+        prompt: {
+          en: 'Why are danger signal lights red in colour, and how does the wavelength of red light compare to blue/violet light?',
+          hi: 'खतरे के संकेत (Danger signals) का प्रकाश लाल रंग का क्यों होता है, तथा लाल प्रकाश की तरंगदैर्घ्य नीले/बैंगनी प्रकाश की तुलना में कैसी होती है?',
+        },
+        options: [
+          {
+            en: 'Red light has the longest visible wavelength (~1.8× blue), so it is scattered the least by fog or smoke (I ∝ 1/λ⁴) and remains visible from afar.',
+            hi: 'लाल प्रकाश की तरंगदैर्घ्य सबसे अधिक (नीले से ~1.8 गुना) होती है, इसलिए कोहरे या धुएँ द्वारा इसका प्रकीर्णन सबसे कम (I ∝ 1/λ⁴) होता है।',
+          },
+          {
+            en: 'Red light has the shortest wavelength and scatters the most in fog.',
+            hi: 'लाल प्रकाश की तरंगदैर्घ्य सबसे कम होती है और यह कोहरे में सबसे अधिक फैलता है।',
+          },
+          {
+            en: 'Red light bends the most when passing through a glass prism.',
+            hi: 'लाल प्रकाश काँच के प्रिज्म से गुजरने पर सबसे अधिक मुड़ता है।',
+          },
+          {
+            en: 'Red light travels faster than blue light in outer-space vacuum.',
+            hi: 'निर्वात में लाल प्रकाश नीले प्रकाश से अधिक चाल से चलता है।',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Recall Rayleigh’s scattering rule: shorter wavelengths scatter strongly, while the longest visible wavelength (Red, ~700 nm) passes through fog/smoke with minimal scattering.',
+          hi: 'प्रकीर्णन नियम याद करें: बड़ी तरंगदैर्घ्य (लाल ~700 nm) का कोहरे या धुएँ द्वारा सबसे कम प्रकीर्णन होता है।',
+        },
+        steps: [
+          {
+            label: { en: 'Wavelength Comparison', hi: 'तरंगदैर्घ्य की तुलना' },
+            content: { en: 'Red light has the longest wavelength in the visible spectrum (λ_red ≈ 1.8 × λ_blue).', hi: 'दृश्य प्रकाश में लाल रंग की तरंगदैर्घ्य सबसे अधिक होती है (λ_लाल ≈ 1.8 × λ_नीला)।' },
+          },
+          {
+            label: { en: 'Scattering Effect in Fog/Smoke', hi: 'कोहरे या धुएँ में प्रकीर्णन' },
+            content: { en: 'Because scattering decreases steeply with wavelength (I ∝ 1/λ⁴), red light is scattered the least and penetrates farthest without losing intensity.', hi: 'चूँकि बड़ी तरंगदैर्घ्य का प्रकीर्णन सबसे कम होता है, लाल प्रकाश लंबी दूरी से भी स्पष्ट दिखाई देता है।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Longest wavelength → least scattered by fog/smoke.',
+          hi: 'सर्वाधिक तरंगदैर्घ्य → कोहरे या धुएँ में न्यूनतम प्रकीर्णन।',
+        },
+      },
+    ],
+  },
 }

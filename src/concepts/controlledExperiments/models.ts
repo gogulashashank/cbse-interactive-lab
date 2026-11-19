@@ -230,3 +230,63 @@ export function calculateMomentumImpulse(
     forceReductionFactor,
   }
 }
+
+export interface MotorForceFlemingsResult {
+  magneticFieldTesla: number
+  currentA: number
+  conductorLengthM: number
+  angleDeg: number
+  sinTheta: number
+  forceMagnitudeN: number
+  currentPolarity: 1 | -1
+  fieldPolarity: 1 | -1
+  forceDirectionSign: -1 | 0 | 1
+  forceDirectionLabel: 'Upward (+Z)' | 'Downward (−Z)' | 'Zero Force (Parallel: θ = 0°)'
+}
+
+/**
+ * Class 10 Magnetic Effects of Electric Current (NCERT Ch 12.3):
+ * Force on a current-carrying conductor in a magnetic field:
+ *   F = B * I * L * sin(θ)
+ * - Maximum force when conductor is perpendicular to magnetic field (θ = 90°, sin 90° = 1).
+ * - Zero force when conductor is parallel to magnetic field (θ = 0°, sin 0° = 0).
+ * - Fleming's Left-Hand Rule polarity:
+ *   Reversing ONLY current OR ONLY magnetic field reverses force direction (-1).
+ *   Reversing BOTH current AND magnetic field keeps force direction UNCHANGED (( -1 ) * ( -1 ) = +1)!
+ */
+export function calculateMotorForceFlemingsRule(
+  magneticFieldTesla: number,
+  currentA: number,
+  angleDeg = 90,
+  currentPolarity: 1 | -1 = 1,
+  fieldPolarity: 1 | -1 = 1,
+  conductorLengthM = 0.2
+): MotorForceFlemingsResult {
+  const safeB = Math.max(0.1, magneticFieldTesla)
+  const safeI = Math.max(0.5, currentA)
+  const safeL = Math.max(0.05, conductorLengthM)
+  const safeAngle = Math.max(0, Math.min(90, angleDeg))
+
+  const rad = (safeAngle * Math.PI) / 180
+  const sinTheta = tidyNumber(Math.sin(rad), 3)
+  const forceMagnitudeN = tidyNumber(safeB * safeI * safeL * Math.sin(rad), 3)
+
+  const rawSign = forceMagnitudeN < 1e-6 ? 0 : ((currentPolarity * fieldPolarity) as -1 | 1)
+  let forceDirectionLabel: MotorForceFlemingsResult['forceDirectionLabel'] =
+    'Zero Force (Parallel: θ = 0°)'
+  if (rawSign === 1) forceDirectionLabel = 'Upward (+Z)'
+  else if (rawSign === -1) forceDirectionLabel = 'Downward (−Z)'
+
+  return {
+    magneticFieldTesla: safeB,
+    currentA: safeI,
+    conductorLengthM: safeL,
+    angleDeg: safeAngle,
+    sinTheta,
+    forceMagnitudeN,
+    currentPolarity,
+    fieldPolarity,
+    forceDirectionSign: rawSign,
+    forceDirectionLabel,
+  }
+}

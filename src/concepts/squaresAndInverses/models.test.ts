@@ -3,6 +3,7 @@ import {
   calculateDiameterTrap,
   calculateGravityInverse,
   calculateInverseArea,
+  calculateMagneticFieldSolenoid,
   calculateSoundEchoWave,
   calculateVoltageSquared,
 } from './models'
@@ -77,5 +78,22 @@ describe('Squares and Inverses Physics Models', () => {
     expect(near.wavelengthM).toBe(1)
     expect(near.echoTimeS).toBe(0.06)
     expect(near.isDistinctEcho).toBe(false)
+  })
+
+  it('calculates magnetic field inverse radial scaling (B ∝ I/r) and solenoid Right-Hand Thumb Rule polarity', () => {
+    const nearUp = calculateMagneticFieldSolenoid(4, 2, 100, 'upward-or-ccw')
+    const farDown = calculateMagneticFieldSolenoid(4, 4, 200, 'downward-or-cw')
+
+    // Doubling r from 2 cm to 4 cm halves B_wire from 40 μT to 20 μT
+    expect(nearUp.wireFieldMicroTesla).toBe(40)
+    expect(farDown.wireFieldMicroTesla).toBe(20)
+    // Doubling turns N from 100 to 200 doubles solenoid core field from 4 mT to 8 mT
+    expect(nearUp.solenoidCoreFieldMilliTesla).toBe(4)
+    expect(farDown.solenoidCoreFieldMilliTesla).toBe(8)
+    // Polarity reversal
+    expect(nearUp.thumbRuleFieldLoopSense).toBe('anticlockwise')
+    expect(nearUp.solenoidLeftPole).toBe('North')
+    expect(farDown.thumbRuleFieldLoopSense).toBe('clockwise')
+    expect(farDown.solenoidLeftPole).toBe('South')
   })
 })

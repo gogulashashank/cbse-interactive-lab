@@ -126,6 +126,26 @@ const SoundEchoWaveInteractive = lazy(() =>
     default: m.SoundEchoWaveInteractive,
   }))
 )
+const EyeDefectCorrectionInteractive = lazy(() =>
+  import('./conventionsAndInversions/EyeDefectCorrectionInteractive').then((m) => ({
+    default: m.EyeDefectCorrectionInteractive,
+  }))
+)
+const PrismDispersionInteractive = lazy(() =>
+  import('./conventionsAndInversions/PrismDispersionInteractive').then((m) => ({
+    default: m.PrismDispersionInteractive,
+  }))
+)
+const MagneticFieldSolenoidInteractive = lazy(() =>
+  import('./squaresAndInverses/MagneticFieldSolenoidInteractive').then((m) => ({
+    default: m.MagneticFieldSolenoidInteractive,
+  }))
+)
+const MotorForceFlemingsInteractive = lazy(() =>
+  import('./controlledExperiments/MotorForceFlemingsInteractive').then((m) => ({
+    default: m.MotorForceFlemingsInteractive,
+  }))
+)
 
 const PROGRESS_KEY = 'cil.progress'
 
@@ -149,26 +169,32 @@ const SYLLABUS_CHAPTERS: readonly {
   {
     id: 'light-10',
     title: {
-      en: 'Class 10 Ch 9: Light — Reflection & Refraction',
-      hi: 'कक्षा 10 अध्याय 9: प्रकाश — परावर्तन तथा अपवर्तन',
+      en: 'Class 10 Ch 9 & 10: Light, Human Eye & Colourful World',
+      hi: 'कक्षा 10 अध्याय 9 व 10: प्रकाश, मानव नेत्र तथा रंगबिरंगा संसार',
     },
     tagline: {
-      en: 'New Cartesian Sign Convention (+/-), real-to-virtual focal crossover, magnification dual-code, and lens power in Dioptres.',
-      hi: 'नई कार्तीय चिह्न परिपाटी (+/-), वास्तविक से आभासी फोकस संक्रमण, आवर्धन डिकोडिंग और लेंस की क्षमता (डाइऑप्टर)।',
+      en: 'Cartesian signs, real/virtual crossover, magnification code, lens power in Dioptres, myopia/hypermetropia correction, and prism dispersion & sky scattering.',
+      hi: 'कार्तीय चिह्न, फोकस संक्रमण, आवर्धन डिकोडिंग, लेंस क्षमता (डाइऑप्टर), दृष्टि दोष संशोधन तथा प्रिज्म वर्ण-विक्षेपण एवं प्रकीर्णन।',
     },
-    matchChapter: (ref) => ref.toLowerCase().includes('light'),
+    matchChapter: (ref) => {
+      const lower = ref.toLowerCase()
+      return lower.includes('light') || lower.includes('human eye')
+    },
   },
   {
     id: 'electricity-10',
     title: {
-      en: 'Class 10 Ch 11: Electricity & Circuits',
-      hi: 'कक्षा 10 अध्याय 11: विद्युत एवं परिपथ',
+      en: 'Class 10 Ch 11 & 12: Electricity & Magnetic Effects of Current',
+      hi: 'कक्षा 10 अध्याय 11 व 12: विद्युत तथा विद्युत धारा के चुंबकीय प्रभाव',
     },
     tagline: {
-      en: 'Current vs charge, Ohm’s law, wire diameter scaling, series vs parallel power traps, Joule heating, and kWh billing.',
-      hi: 'धारा बनाम आवेश, ओम का नियम, तार व्यास प्रभाव, श्रेणी बनाम समानांतर शक्ति, जूल तापन और बिजली बिल (kWh)।',
+      en: 'Current vs charge, Ohm’s law, wire diameter scaling, series/parallel power traps, Joule heating, kWh billing, Right-Hand Thumb Rule, solenoids, and Fleming’s Left-Hand Rule.',
+      hi: 'धारा व आवेश, ओम का नियम, तार व्यास प्रभाव, श्रेणी/समानांतर शक्ति, जूल तापन, बिजली बिल, दक्षिण-हस्त नियम, परिनालिका तथा फ्लेमिंग का वाम-हस्त नियम।',
     },
-    matchChapter: (ref) => ref.toLowerCase().includes('electricity'),
+    matchChapter: (ref) => {
+      const lower = ref.toLowerCase()
+      return lower.includes('electricity') || lower.includes('magnetic')
+    },
   },
   {
     id: 'mechanics-9',
@@ -354,6 +380,10 @@ export function ConceptHub() {
                 {activeConcept.id === 'momentum-impulse-cushion' && <MomentumImpulseInteractive lang={lang} />}
                 {activeConcept.id === 'archimedes-buoyancy-float' && <ArchimedesBuoyancyInteractive lang={lang} />}
                 {activeConcept.id === 'sound-echo-wave-speed' && <SoundEchoWaveInteractive lang={lang} />}
+                {activeConcept.id === 'eye-defects-correction' && <EyeDefectCorrectionInteractive lang={lang} />}
+                {activeConcept.id === 'prism-dispersion-scattering' && <PrismDispersionInteractive lang={lang} />}
+                {activeConcept.id === 'magnetic-field-solenoid' && <MagneticFieldSolenoidInteractive lang={lang} />}
+                {activeConcept.id === 'motor-force-flemings-rule' && <MotorForceFlemingsInteractive lang={lang} />}
               </Suspense>
             }
           />
