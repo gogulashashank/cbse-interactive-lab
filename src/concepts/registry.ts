@@ -42,6 +42,10 @@ export type ConceptId =
   | 'prism-dispersion-scattering'
   | 'magnetic-field-solenoid'
   | 'motor-force-flemings-rule'
+  | 'chemical-equation-mass-balance'
+  | 'ph-scale-exponential-acid'
+  | 'metal-reactivity-displacement'
+  | 'carbon-homologous-series'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -563,6 +567,76 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     contexts: [{ en: 'Kicking aluminium rod in horseshoe magnet & electron beam deflection', hi: 'नाल चुंबक में एल्युमिनियम छड़ का विस्थापन और इलेक्ट्रॉन पुंज का विक्षेपण' }],
     boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 12: Magnetic Effects of Electric Current (12.3)' }],
     deepDiveRoute: '/safety',
+    status: 'pilot',
+  },
+
+  // Class 10 Chemistry Expansion (Chapters 1–4): Chemical Reactions, Acids/Bases/pH, Metals & Carbon Compounds
+  {
+    id: 'chemical-equation-mass-balance',
+    thread: 'energy-conservation',
+    title: {
+      en: 'Balancing Chemical Equations & Law of Conservation of Mass (3Fe + 4H₂O → Fe₃O₄ + 4H₂)',
+      hi: 'रासायनिक समीकरण संतुलन एवं द्रव्यमान संरक्षण का नियम (3Fe + 4H₂O → Fe₃O₄ + 4H₂)',
+    },
+    oneLine: {
+      en: 'Atoms are never created or destroyed: adjust front stoichiometric coefficients (never subscripts!) so LHS atom counts and total mass equal RHS.',
+      hi: 'रासायनिक अभिक्रिया में परमाणु नष्ट नहीं होते: सूत्र के पादांक बदले बिना आगे के गुणांक समायोजित करें ताकि दोनों पक्षों का कुल द्रव्यमान बराबर हो।',
+    },
+    prerequisites: ['charge-conservation-junction'],
+    misconceptionIds: ['changing-formula-subscripts-to-balance'],
+    contexts: [{ en: 'Red-hot iron reacting with steam & double-displacement precipitates', hi: 'तप्त लोहे की भाप से अभिक्रिया और द्विविस्थापन अवक्षेपण' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 1: Chemical Reactions and Equations (1.1)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'ph-scale-exponential-acid',
+    thread: 'squares-and-inverses',
+    title: {
+      en: 'The pH Scale: Inverse Ten-Fold [H⁺] Scaling & Tooth Decay Threshold ([H⁺] = 10⁻ᵖᴴ)',
+      hi: 'pH स्केल: हाइड्रोजन आयन सांद्रता का 10-गुना व्युत्क्रम नियम ([H⁺] = 10⁻ᵖᴴ)',
+    },
+    oneLine: {
+      en: 'Lower pH means higher [H⁺]; every 1-unit drop in pH multiplies [H⁺] by 10× (pH 2 is 1,000× more acidic than pH 5, and tooth enamel corrodes below pH 5.5).',
+      hi: 'कम pH का अर्थ अधिक [H⁺] है; pH में 1 इकाई की कमी [H⁺] को 10 गुना बढ़ाती है (pH 5.5 से नीचे दंत-क्षय प्रारंभ होता है)।',
+    },
+    prerequisites: ['inverse-area-scaling'],
+    misconceptionIds: ['ph-scale-is-linear', 'higher-ph-means-higher-h-plus'],
+    contexts: [{ en: 'Universal indicator strip, tooth enamel decay (pH < 5.5) & antacids', hi: 'सार्वत्रिक सूचक पट्टी, दंत-क्षय (pH < 5.5) और ऐंटासिड' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 2: Acids, Bases and Salts (2.3)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'metal-reactivity-displacement',
+    thread: 'controlled-experiments',
+    title: {
+      en: 'The Reactivity Series: Single-Displacement Direction (Fe + CuSO₄ → FeSO₄ + Cu)',
+      hi: 'सक्रियता श्रेणी एवं एकल विस्थापन अभिक्रिया की दिशा (Fe + CuSO₄ → FeSO₄ + Cu)',
+    },
+    oneLine: {
+      en: 'A metal A displaces metal ions B²⁺ from aqueous solution if and only if A stands higher than B in the Reactivity Series (Mg > Zn > Fe > Cu > Ag).',
+      hi: 'कोई धातु A किसी लवण विलयन से धातु B को तभी विस्थापित करती है जब सक्रियता श्रेणी में A का स्थान B से ऊपर हो (Mg > Zn > Fe > Cu > Ag)।',
+    },
+    prerequisites: ['fixed-voltage-vs-current'],
+    misconceptionIds: ['any-metal-displaces-any-other-metal'],
+    contexts: [{ en: 'Iron nail in blue CuSO₄ vs copper wire in FeSO₄ or AgNO₃', hi: 'नीले कॉपर सल्फेट में लोहे की कील बनाम सिल्वर नाइट्रेट में तांबा' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 3: Metals and Non-metals (3.2.5)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'carbon-homologous-series',
+    thread: 'rate-vs-total',
+    title: {
+      en: 'Carbon Homologous Series: The Constant +CH₂ (+14 u) Step & Unsaturation',
+      hi: 'कार्बन की समजातीय श्रेणी: नियत +CH₂ (+14 u) अंतर एवं असंतृप्तता',
+    },
+    oneLine: {
+      en: 'Every successive member in a homologous series (Alkanes CₙH₂ₙ₊₂, Alkenes CₙH₂ₙ, Alkynes CₙH₂ₙ₋₂) adds a constant −CH₂− unit (+14 u molecular mass).',
+      hi: 'समजातीय श्रेणी (ऐल्केन CₙH₂ₙ₊₂, ऐल्कीन CₙH₂ₙ, ऐल्काइन CₙH₂ₙ₋₂) के प्रत्येक क्रमागत सदस्य में −CH₂− इकाई (+14 u द्रव्यमान) का नियत अंतर होता है।',
+    },
+    prerequisites: ['rate-vs-total-intro'],
+    misconceptionIds: ['alkene-starts-at-n-equals-1', 'homologous-members-have-different-chemical-properties'],
+    contexts: [{ en: 'LPG fuel alkanes, unsaturated alkenes & alcohol functional groups', hi: 'ईंधन ऐल्केन, असंतृप्त ऐल्कीन और ऐल्कोहॉल प्रकार्यात्मक समूह' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 4: Carbon and its Compounds (4.2.4)' }],
     status: 'pilot',
   },
 

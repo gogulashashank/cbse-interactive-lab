@@ -4,6 +4,7 @@ import {
   calculateBucket,
   calculateCharge,
   calculateEnergy,
+  calculateHomologousMember,
   calculateVelocityTimeGraph,
 } from './models'
 
@@ -55,5 +56,21 @@ describe('Rate vs Total Models', () => {
     expect(res.triangleDisplacementM).toBe(40)
     expect(res.totalDisplacementM).toBe(60)
     expect(res.averageVelocityMps).toBe(15)
+  })
+
+  it('calculates carbon homologous series formulas, +14 u (+CH2) step, and saturation', () => {
+    const propane = calculateHomologousMember('alkane', 3)
+    expect(propane.iupacName).toBe('Propane')
+    expect(propane.molecularFormula).toBe('C₃H₈')
+    expect(propane.molecularMassU).toBe(44)
+    expect(propane.nextHomologueMassU).toBe(58)
+    expect(propane.massStepToNextU).toBe(14)
+    expect(propane.decolourisesBromineWater).toBe(false)
+
+    const ethene = calculateHomologousMember('alkene', 2)
+    expect(ethene.iupacName).toBe('Ethene')
+    expect(ethene.molecularFormula).toBe('C₂H₄')
+    expect(ethene.molecularMassU).toBe(28)
+    expect(ethene.decolourisesBromineWater).toBe(true)
   })
 })

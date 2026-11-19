@@ -5,6 +5,7 @@ import {
   calculateJunctionConservation,
   calculateParallelPowerBalance,
   calculateMechanicalEnergyAtHeight,
+  calculateSteamIronMassBalance,
 } from './models'
 
 describe('Thread 4: Energy Conservation Models', () => {
@@ -72,5 +73,23 @@ describe('Thread 4: Energy Conservation Models', () => {
     expect(float.displacedVolumeCm3).toBe(240)
     expect(float.buoyantUpthrustN).toBe(2.4)
     expect(float.apparentWeightN).toBe(0)
+  })
+
+  it('verifies atom and mass conservation in the steam-iron equation 3Fe + 4H2O -> Fe3O4 + 4H2', () => {
+    const unbalanced = calculateSteamIronMassBalance(1, 1, 1, 1)
+    expect(unbalanced.isBalanced).toBe(false)
+    expect(unbalanced.lhsTotalMassG).toBe(74) // 56 + 18
+    expect(unbalanced.rhsTotalMassG).toBe(234) // 232 + 2
+
+    const balanced = calculateSteamIronMassBalance(3, 4, 1, 4)
+    expect(balanced.isBalanced).toBe(true)
+    expect(balanced.lhsFe).toBe(3)
+    expect(balanced.rhsFe).toBe(3)
+    expect(balanced.lhsH).toBe(8)
+    expect(balanced.rhsH).toBe(8)
+    expect(balanced.lhsO).toBe(4)
+    expect(balanced.rhsO).toBe(4)
+    expect(balanced.lhsTotalMassG).toBe(240)
+    expect(balanced.rhsTotalMassG).toBe(240)
   })
 })

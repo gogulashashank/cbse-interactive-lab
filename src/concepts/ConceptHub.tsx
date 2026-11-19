@@ -146,6 +146,26 @@ const MotorForceFlemingsInteractive = lazy(() =>
     default: m.MotorForceFlemingsInteractive,
   }))
 )
+const ChemicalMassBalanceInteractive = lazy(() =>
+  import('./energyConservation/ChemicalMassBalanceInteractive').then((m) => ({
+    default: m.ChemicalMassBalanceInteractive,
+  }))
+)
+const PhScaleExponentialInteractive = lazy(() =>
+  import('./squaresAndInverses/PhScaleExponentialInteractive').then((m) => ({
+    default: m.PhScaleExponentialInteractive,
+  }))
+)
+const MetalReactivityInteractive = lazy(() =>
+  import('./controlledExperiments/MetalReactivityInteractive').then((m) => ({
+    default: m.MetalReactivityInteractive,
+  }))
+)
+const CarbonHomologousInteractive = lazy(() =>
+  import('./rateVsTotal/CarbonHomologousInteractive').then((m) => ({
+    default: m.CarbonHomologousInteractive,
+  }))
+)
 
 const PROGRESS_KEY = 'cil.progress'
 
@@ -158,7 +178,7 @@ const ALL_CONTENT = {
 }
 
 export type BrowseMode = 'threads' | 'chapters'
-export type ChapterFilterId = 'light-10' | 'electricity-10' | 'mechanics-9'
+export type ChapterFilterId = 'light-10' | 'electricity-10' | 'chemistry-10' | 'mechanics-9'
 
 const SYLLABUS_CHAPTERS: readonly {
   id: ChapterFilterId
@@ -194,6 +214,26 @@ const SYLLABUS_CHAPTERS: readonly {
     matchChapter: (ref) => {
       const lower = ref.toLowerCase()
       return lower.includes('electricity') || lower.includes('magnetic')
+    },
+  },
+  {
+    id: 'chemistry-10',
+    title: {
+      en: 'Class 10 Ch 1–4: Chemistry — Reactions, Acids/pH, Metals & Carbon',
+      hi: 'कक्षा 10 अध्याय 1–4: रसायन — अभिक्रियाएं, अम्ल/pH, धातु एवं कार्बन',
+    },
+    tagline: {
+      en: 'Stoichiometric equation balancing & conservation of mass, inverse 10-fold pH logarithmic scale, metal reactivity displacement, and carbon homologous series (+CH₂ / +14 u).',
+      hi: 'रासायनिक समीकरण संतुलन व द्रव्यमान संरक्षण, pH स्केल का 10-गुना घातांकी नियम, धातु सक्रियता विस्थापन तथा कार्बन की समजातीय श्रेणी (+CH₂ / +14 u)।',
+    },
+    matchChapter: (ref) => {
+      const lower = ref.toLowerCase()
+      return (
+        lower.includes('chemical') ||
+        lower.includes('acids') ||
+        lower.includes('metals') ||
+        lower.includes('carbon')
+      )
     },
   },
   {
@@ -384,6 +424,10 @@ export function ConceptHub() {
                 {activeConcept.id === 'prism-dispersion-scattering' && <PrismDispersionInteractive lang={lang} />}
                 {activeConcept.id === 'magnetic-field-solenoid' && <MagneticFieldSolenoidInteractive lang={lang} />}
                 {activeConcept.id === 'motor-force-flemings-rule' && <MotorForceFlemingsInteractive lang={lang} />}
+                {activeConcept.id === 'chemical-equation-mass-balance' && <ChemicalMassBalanceInteractive lang={lang} />}
+                {activeConcept.id === 'ph-scale-exponential-acid' && <PhScaleExponentialInteractive lang={lang} />}
+                {activeConcept.id === 'metal-reactivity-displacement' && <MetalReactivityInteractive lang={lang} />}
+                {activeConcept.id === 'carbon-homologous-series' && <CarbonHomologousInteractive lang={lang} />}
               </Suspense>
             }
           />

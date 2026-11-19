@@ -97,22 +97,22 @@ export function RevisionWorkbookPage() {
       <NotebookHeader
         eyebrow={
           lang === 'hi'
-            ? 'सीबीएसई बोर्ड परीक्षा सिम्युलेटर एवं पुनरावृत्ति कार्यपुस्तिका (28 अध्याय)'
-            : 'CBSE Board Exam Simulator & Printable Revision Workbook · All 28 Notebooks'
+            ? 'सीबीएसई बोर्ड परीक्षा सिम्युलेटर एवं पुनरावृत्ति कार्यपुस्तिका (32 अध्याय)'
+            : 'CBSE Board Exam Simulator & Printable Revision Workbook · All 32 Notebooks'
         }
         title={
           lang === 'hi'
-            ? 'कक्षा 9 एवं 10 भौतिकी: सूत्र, परीक्षा के जाल एवं बोर्ड अभ्यास'
-            : 'Class 9 & 10 Physics: Board Paper Simulator, Trap Deck & Formula Sheets'
+            ? 'कक्षा 9 एवं 10 विज्ञान: सूत्र, परीक्षा के जाल एवं बोर्ड अभ्यास'
+            : 'Class 9 & 10 Science: Board Paper Simulator, Trap Deck & Formula Sheets'
         }
         subtitle={
           lang === 'hi'
             ? 'स्वतः मूल्यांकित संख्यात्मक प्रश्नों (Auto-Graded) और स्व-मूल्यांकित लिखित तर्क (Self-Assessed 3-Point Rubric) के साथ संपूर्ण अभ्यास।'
             : 'Practice mixed-chapter board numericals, HOTS scientific claims with transparent 3-point self-check rubrics, and print-ready revision sheets.'
         }
-        chapterBadge="CBSE Class 9 & 10 Complete Syllabus (28 Labs)"
+        chapterBadge="CBSE Class 9 & 10 Complete Syllabus (32 Labs)"
         onBack={() => navigateToPath('/learn')}
-        backLabel={lang === 'hi' ? '← नोटबुक शेल्फ (28 लैब्स)' : '← Notebook Shelf (28 Labs)'}
+        backLabel={lang === 'hi' ? '← नोटबुक शेल्फ (32 लैब्स)' : '← Notebook Shelf (32 Labs)'}
         utilities={
           <div className="no-print" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', alignItems: 'center' }}>
             <LanguageToggle />
@@ -205,7 +205,7 @@ export function RevisionWorkbookPage() {
                 aria-pressed={classFilter === 'all'}
                 onClick={() => setClassFilter('all')}
               >
-                {lang === 'hi' ? 'सभी कक्षाएं (28)' : 'All Classes (28)'}
+                {lang === 'hi' ? 'सभी कक्षाएं (32)' : 'All Classes (32)'}
               </button>
               <button
                 type="button"
@@ -213,7 +213,7 @@ export function RevisionWorkbookPage() {
                 aria-pressed={classFilter === 10}
                 onClick={() => setClassFilter(10)}
               >
-                {lang === 'hi' ? 'कक्षा 10 बोर्ड (21)' : 'Class 10 Board (21)'}
+                {lang === 'hi' ? 'कक्षा 10 बोर्ड (25)' : 'Class 10 Board (25)'}
               </button>
               <button
                 type="button"

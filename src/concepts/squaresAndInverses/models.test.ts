@@ -4,6 +4,7 @@ import {
   calculateGravityInverse,
   calculateInverseArea,
   calculateMagneticFieldSolenoid,
+  calculatePhIonScaling,
   calculateSoundEchoWave,
   calculateVoltageSquared,
 } from './models'
@@ -95,5 +96,18 @@ describe('Squares and Inverses Physics Models', () => {
     expect(nearUp.solenoidLeftPole).toBe('North')
     expect(farDown.thumbRuleFieldLoopSense).toBe('clockwise')
     expect(farDown.solenoidLeftPole).toBe('South')
+  })
+
+  it('calculates ten-fold logarithmic [H+] scaling on the pH scale and tooth enamel decay threshold', () => {
+    // pH 2 compared to pH 5 => 10^(5-2) = 1000x higher [H+]
+    const strongAcid = calculatePhIonScaling(2, 5)
+    expect(strongAcid.hPlusExponent).toBe(-2)
+    expect(strongAcid.tenFoldHPlusRatioVsReference).toBe(1000)
+    expect(strongAcid.nature).toBe('strongly-acidic')
+    expect(strongAcid.causesToothEnamelDecay).toBe(true)
+
+    const neutral = calculatePhIonScaling(7, 7)
+    expect(neutral.nature).toBe('neutral')
+    expect(neutral.causesToothEnamelDecay).toBe(false)
   })
 })

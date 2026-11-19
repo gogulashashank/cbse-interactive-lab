@@ -377,4 +377,92 @@ export const SQUARES_AND_INVERSES_CONTENT: Record<string, ConceptCardContent> = 
       },
     ],
   },
+
+  'ph-scale-exponential-acid': {
+    hook: {
+      en: 'If tomato juice has a pH of 4 and lemon juice has a pH of 2, is lemon juice just “twice as acidic” as tomato juice—or 100 times more acidic?',
+      hi: 'यदि टमाटर के रस का pH 4 है और नींबू के रस का pH 2 है, तो क्या नींबू का रस टमाटर के रस से केवल “दोगुना अम्लीय” है—या 100 गुना अधिक अम्लीय?',
+    },
+    predictQuestion: {
+      en: 'Because pH is a negative base-10 logarithm ([H⁺] = 10⁻ᵖᴴ mol/L), what happens to the hydrogen ion concentration [H⁺] when a solution’s pH drops by 3 units from pH 5 to pH 2?',
+      hi: 'चूँकि pH आधार-10 का ऋणात्मक लघुगणक है ([H⁺] = 10⁻ᵖᴴ mol/L), जब किसी विलयन का pH मान 5 से घटकर 2 (3 इकाई कम) हो जाता है, तो [H⁺] आयन सांद्रता पर क्या प्रभाव पड़ता है?',
+    },
+    predictOptions: [
+      {
+        en: '[H⁺] increases 1,000 times (10³×, from 10⁻⁵ M to 10⁻² M), making the solution 1,000× more acidic!',
+        hi: '[H⁺] सांद्रता 1,000 गुना (10³×, 10⁻⁵ M से 10⁻² M) बढ़ जाती है!',
+      },
+      {
+        en: '[H⁺] increases by 3 times.',
+        hi: '[H⁺] सांद्रता केवल 3 गुना बढ़ती है।',
+      },
+      {
+        en: '[H⁺] decreases by 1,000 times because 2 is smaller than 5.',
+        hi: '[H⁺] सांद्रता 1,000 गुना घट जाती है क्योंकि 2, 5 से छोटा है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'On the pH scale, LOWER pH means HIGHER [H⁺] concentration (inverse relationship), and each 1-unit drop multiplies [H⁺] by 10! A 3-unit drop from pH 5 to pH 2 multiplies [H⁺] by 10 × 10 × 10 = 1,000×.',
+      hi: 'pH स्केल पर कम pH का अर्थ अधिक [H⁺] सांद्रता (व्युत्क्रम संबंध) है, और प्रत्येक 1 इकाई की कमी [H⁺] को 10 गुना बढ़ाती है! अतः pH 5 से 2 (3 इकाई कमी) होने पर [H⁺] सांद्रता 10³ = 1,000 गुना बढ़ जाती है।',
+    },
+    insightFormula: '[H⁺] = 10⁻ᵖᴴ mol/L  |  Ratio [H⁺]₁ / [H⁺]₂ = 10^(pH₂ − pH₁)',
+    insightTerm: {
+      en: 'pH Logarithmic Scale & Biological Thresholds (NCERT Ch 2.3)',
+      hi: 'pH स्केल का घातांकी नियम एवं दैनिक जीवन में महत्व (NCERT 2.3)',
+    },
+    insightSummary: {
+      en: 'pH < 7 is acidic, pH = 7 is neutral, and pH > 7 is basic/alkaline. Every 1-unit decrease in pH represents a 10-fold increase in [H⁺](aq). Tooth enamel (calcium hydroxyapatite) begins to corrode when mouth pH falls below 5.5.',
+      hi: 'pH < 7 अम्लीय, pH = 7 उदासीन तथा pH > 7 क्षारकीय होता है। pH में प्रत्येक 1 इकाई की कमी [H⁺] आयन सांद्रता में 10 गुना वृद्धि दर्शाती है। मुँह का pH 5.5 से कम होने पर दंत-क्षय प्रारंभ हो जाता है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 2 Q8 · Comparing Five Solutions by pH Values',
+          hi: 'NCERT कक्षा 10 अध्याय 2 · पाँच विलयनों के pH मानों की तुलना',
+        },
+        prompt: {
+          en: 'Five solutions A, B, C, D, and E when tested with universal indicator showed pH as 4, 1, 11, 7, and 9 respectively. Which solution is (i) neutral, (ii) strongly alkaline, and (iii) strongly acidic, and what is their order of increasing [H⁺] ion concentration?',
+          hi: 'पाँच विलयनों A, B, C, D तथा E की सार्वत्रिक सूचक से जाँच करने पर pH मान क्रमशः 4, 1, 11, 7 एवं 9 प्राप्त हुए। कौन-सा विलयन (i) उदासीन, (ii) प्रबल क्षारीय, तथा (iii) प्रबल अम्लीय है? इन्हें [H⁺] सांद्रता के बढ़ते क्रम में व्यवस्थित कीजिए।',
+        },
+        options: [
+          {
+            en: '(i) D (pH 7), (ii) C (pH 11), (iii) B (pH 1); Increasing [H⁺] order: C (11) < E (9) < D (7) < A (4) < B (1).',
+            hi: '(i) D (pH 7), (ii) C (pH 11), (iii) B (pH 1); [H⁺] का बढ़ता क्रम: C (11) < E (9) < D (7) < A (4) < B (1)।',
+          },
+          {
+            en: 'Increasing [H⁺] order: B (1) < A (4) < D (7) < E (9) < C (11).',
+            hi: '[H⁺] का बढ़ता क्रम: B (1) < A (4) < D (7) < E (9) < C (11)।',
+          },
+          {
+            en: 'A (pH 4) is strongly alkaline and C (pH 11) is strongly acidic.',
+            hi: 'A (pH 4) प्रबल क्षारीय है और C (pH 11) प्रबल अम्लीय है।',
+          },
+          {
+            en: 'All solutions have the same [H⁺] concentration.',
+            hi: 'सभी विलयनों में [H⁺] सांद्रता समान है।',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Remember that [H⁺] = 10⁻ᵖᴴ varies INVERSELY with pH: the highest pH (11) has the lowest [H⁺] (10⁻¹¹ M), and the lowest pH (1) has the highest [H⁺] (10⁻¹ M)!',
+          hi: '[H⁺] = 10⁻ᵖᴴ होने से उच्चतम pH (11) में न्यूनतम [H⁺] तथा न्यूनतम pH (1) में अधिकतम [H⁺] होती है!',
+        },
+        steps: [
+          {
+            label: { en: 'Classify Each pH', hi: 'प्रत्येक pH का वर्गीकरण' },
+            content: { en: 'D (pH 7) = Neutral; C (pH 11) = Strongly alkaline; B (pH 1) = Strongly acidic; A (pH 4) = Weakly acidic; E (pH 9) = Weakly alkaline.', hi: 'D (7) = उदासीन; C (11) = प्रबल क्षारीय; B (1) = प्रबल अम्लीय; A (4) = दुर्बल अम्लीय; E (9) = दुर्बल क्षारीय।' },
+          },
+          {
+            label: { en: 'Order by Increasing [H⁺]', hi: '[H⁺] के बढ़ते क्रम में' },
+            content: { en: 'Higher pH → Lower [H⁺]: C (10⁻¹¹ M) < E (10⁻⁹ M) < D (10⁻⁷ M) < A (10⁻⁴ M) < B (10⁻¹ M).', hi: 'C (pH 11) < E (pH 9) < D (pH 7) < A (pH 4) < B (pH 1)।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Neutral: D (7), Strongly Alkaline: C (11), Strongly Acidic: B (1); [H⁺] order: C < E < D < A < B.',
+          hi: 'उदासीन: D, प्रबल क्षारीय: C, प्रबल अम्लीय: B; [H⁺] का बढ़ता क्रम: C < E < D < A < B।',
+        },
+      },
+    ],
+  },
 }

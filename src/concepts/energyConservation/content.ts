@@ -390,4 +390,80 @@ export const ENERGY_CONSERVATION_CONTENT: Record<string, ConceptContentItem> = {
       },
     ],
   },
+
+  'chemical-equation-mass-balance': {
+    hook: {
+      en: 'When red-hot iron reacts with steam (Fe + H₂O → Fe₃O₄ + H₂), why can’t you just erase the subscript “3” in Fe₃O₄ to balance the iron atoms?',
+      hi: 'जब तप्त लोहा भाप से अभिक्रिया करता है (Fe + H₂O → Fe₃O₄ + H₂), तो आयरन परमाणुओं को संतुलित करने के लिए आप Fe₃O₄ के पादांक (subscript) “3” को क्यों नहीं मिटा सकते?',
+    },
+    predictQuestion: {
+      en: 'To obey Lavoisier’s Law of Conservation of Mass in the skeletal equation c₁Fe + c₂H₂O → c₃Fe₃O₄ + c₄H₂, what stoichiometric coefficients (c₁ : c₂ : c₃ : c₄) balance every atom and make the total reactant mass equal the total product mass (240 g = 240 g)?',
+      hi: 'कंकाली समीकरण c₁Fe + c₂H₂O → c₃Fe₃O₄ + c₄H₂ में द्रव्यमान संरक्षण के नियम का पालन करने के लिए कौन-से गुणांक (c₁ : c₂ : c₃ : c₄) सभी परमाणुओं और कुल द्रव्यमान (240 g = 240 g) को संतुलित करते हैं?',
+    },
+    predictOptions: [
+      {
+        en: '3Fe + 4H₂O → 1Fe₃O₄ + 4H₂ (3 Fe, 8 H, 4 O on both sides; 240 g LHS = 240 g RHS)',
+        hi: '3Fe + 4H₂O → 1Fe₃O₄ + 4H₂ (दोनों ओर 3 Fe, 8 H, 4 O; 240 g LHS = 240 g RHS)',
+      },
+      {
+        en: '1Fe + 4H₂O → 1Fe₃O₄ + 4H₂',
+        hi: '1Fe + 4H₂O → 1Fe₃O₄ + 4H₂',
+      },
+      {
+        en: '3Fe + 1H₂O → 1Fe₃O₄ + 1H₂',
+        hi: '3Fe + 1H₂O → 1Fe₃O₄ + 1H₂',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Fe₃O₄ contains 3 Fe atoms and 4 O atoms. Putting coefficient 4 in front of H₂O supplies 4 O atoms and 8 H atoms; putting 3 in front of Fe and 4 in front of H₂ balances all atoms (3 Fe, 8 H, 4 O) and conserves mass: (3×56) + (4×18) = 240 g = 232 + (4×2)!',
+      hi: 'Fe₃O₄ में 3 Fe तथा 4 O परमाणु हैं। H₂O के आगे 4 लगाने से 4 O और 8 H मिलते हैं; Fe के आगे 3 और H₂ के आगे 4 लगाने से दोनों पक्षों में (3 Fe, 8 H, 4 O) तथा कुल द्रव्यमान 240 g = 240 g संतुलित हो जाता है!',
+    },
+    insightSummary: {
+      en: 'Law of Conservation of Mass: Mass can neither be created nor destroyed in a chemical reaction. Balancing an equation means adjusting stoichiometric coefficients (front multipliers) while keeping chemical subscripts inside boxes untouched so LHS atom counts equal RHS atom counts.',
+      hi: 'द्रव्यमान संरक्षण का नियम: किसी भी रासायनिक अभिक्रिया में द्रव्यमान का न तो निर्माण होता है न विनाश। रासायनिक सूत्र के पादांक (subscripts) बदले बिना केवल आगे के गुणांकों को समायोजित कर दोनों पक्षों के परमाणुओं की संख्या बराबर की जाती है।',
+    },
+    insightFormula: '3Fe(s) + 4H₂O(g) → Fe₃O₄(s) + 4H₂(g)  |  ∑ Mass_LHS = ∑ Mass_RHS',
+    insightTerm: {
+      en: 'Stoichiometric Balancing & Conservation of Mass (NCERT Ch 1.1)',
+      hi: 'रासायनिक समीकरण संतुलन एवं द्रव्यमान संरक्षण (NCERT 1.1)',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 1 · Balancing Barium Chloride + Aluminium Sulphate',
+          hi: 'NCERT कक्षा 10 अध्याय 1 · बेरियम क्लोराइड एवं ऐलुमिनियम सल्फेट का संतुलन',
+        },
+        prompt: {
+          en: 'Balance the double-displacement precipitation reaction: c₁ BaCl₂(aq) + c₂ Al₂(SO₄)₃(aq) → c₃ BaSO₄(s)↓ + c₄ AlCl₃(aq). What are the smallest whole-number coefficients (c₁, c₂, c₃, c₄)?',
+          hi: 'द्विविस्थापन अवक्षेपण अभिक्रिया को संतुलित कीजिए: c₁ BaCl₂(aq) + c₂ Al₂(SO₄)₃(aq) → c₃ BaSO₄(s)↓ + c₄ AlCl₃(aq)। न्यूनतम पूर्णांक गुणांक (c₁, c₂, c₃, c₄) क्या होंगे?',
+        },
+        options: [
+          { en: '3, 1, 3, 2 (3BaCl₂ + Al₂(SO₄)₃ → 3BaSO₄↓ + 2AlCl₃)', hi: '3, 1, 3, 2 (3BaCl₂ + Al₂(SO₄)₃ → 3BaSO₄↓ + 2AlCl₃)' },
+          { en: '1, 1, 1, 1', hi: '1, 1, 1, 1' },
+          { en: '2, 1, 2, 2', hi: '2, 1, 2, 2' },
+          { en: '3, 2, 3, 2', hi: '3, 2, 3, 2' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Start with the compound containing the most polyatomic groups: 1 Al₂(SO₄)₃ has 2 Al atoms and 3 SO₄²⁻ ions.',
+          hi: 'सबसे अधिक परमाणु समूह वाले यौगिक Al₂(SO₄)₃ से प्रारंभ करें: इसमें 2 Al परमाणु और 3 SO₄²⁻ आयन हैं।',
+        },
+        steps: [
+          {
+            label: { en: 'Step 1: Balance Al and SO₄ groups', hi: 'चरण 1: Al तथा SO₄ समूहों को संतुलित करें' },
+            content: { en: '1 Al₂(SO₄)₃ on LHS requires 2 AlCl₃ (for 2 Al) and 3 BaSO₄ (for 3 SO₄) on RHS.', hi: '1 Al₂(SO₄)₃ के लिए RHS पर 2 AlCl₃ तथा 3 BaSO₄ आवश्यक हैं।' },
+          },
+          {
+            label: { en: 'Step 2: Balance Ba and Cl atoms', hi: 'चरण 2: Ba तथा Cl परमाणुओं को संतुलित करें' },
+            content: { en: '3 BaSO₄ and 2 AlCl₃ on RHS contain 3 Ba and 6 Cl, which are supplied by 3 BaCl₂ on LHS.', hi: 'RHS के 3 Ba और 6 Cl को संतुलित करने के लिए LHS पर 3 BaCl₂ रखें।' },
+          },
+        ],
+        finalAnswer: {
+          en: '3BaCl₂(aq) + Al₂(SO₄)₃(aq) → 3BaSO₄(s)↓ + 2AlCl₃(aq)',
+          hi: '3BaCl₂(aq) + Al₂(SO₄)₃(aq) → 3BaSO₄(s)↓ + 2AlCl₃(aq)',
+        },
+      },
+    ],
+  },
 }

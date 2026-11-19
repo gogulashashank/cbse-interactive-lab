@@ -7,13 +7,13 @@ import {
 } from './revisionModel'
 
 describe('CBSE Board Exam Simulator & Revision Workbook Model', () => {
-  it('aggregates all 28 pilot notebooks (21 Class 10 + 7 Class 9) with complete en/hi translations', () => {
+  it('aggregates all 32 pilot notebooks (25 Class 10 + 7 Class 9) with complete en/hi translations', () => {
     const entries = getAllRevisionEntries()
-    expect(entries).toHaveLength(28)
+    expect(entries).toHaveLength(32)
 
     const class10 = entries.filter((e) => e.classLevel === 10)
     const class9 = entries.filter((e) => e.classLevel === 9)
-    expect(class10).toHaveLength(21)
+    expect(class10).toHaveLength(25)
     expect(class9).toHaveLength(7)
 
     for (const entry of entries) {

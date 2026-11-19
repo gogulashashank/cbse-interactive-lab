@@ -3,6 +3,7 @@ import {
   calculateCircuitFailure,
   calculateConstantTempOhmic,
   calculateFixedConditionPower,
+  calculateMetalDisplacement,
   calculateMomentumImpulse,
   calculateMotorForceFlemingsRule,
   calculateStretchingVsComparing,
@@ -89,5 +90,17 @@ describe('Controlled Experiments Physics Models', () => {
     const parallel = calculateMotorForceFlemingsRule(0.5, 4, 0, 1, 1, 0.2)
     expect(parallel.forceMagnitudeN).toBe(0)
     expect(parallel.forceDirectionSign).toBe(0)
+  })
+
+  it('determines single-displacement direction across the Metal Reactivity Series (Fe + CuSO4 vs Cu + FeSO4)', () => {
+    const feInCu = calculateMetalDisplacement('Fe', 'Cu')
+    expect(feInCu.reactionOccurs).toBe(true)
+    expect(feInCu.initialSolutionColor).toContain('Blue')
+    expect(feInCu.finalSolutionColor).toContain('Green')
+    expect(feInCu.depositOnStrip).toContain('Cu')
+
+    const cuInFe = calculateMetalDisplacement('Cu', 'Fe')
+    expect(cuInFe.reactionOccurs).toBe(false)
+    expect(cuInFe.equationText).toContain('No Reaction')
   })
 })

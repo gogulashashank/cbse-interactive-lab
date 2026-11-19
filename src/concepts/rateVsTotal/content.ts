@@ -308,4 +308,92 @@ export const RATE_VS_TOTAL_CONTENT: Record<string, ConceptCardContent> = {
       },
     ],
   },
+
+  'carbon-homologous-series': {
+    hook: {
+      en: 'Methane (CH₄), Ethane (C₂H₆), Propane (C₃H₈), and Butane (C₄H₁₀) are all fuel gases/liquids with different boiling points—yet they obey one exact mathematical formula! What stays constant from one step to the next?',
+      hi: 'मेथेन (CH₄), एथेन (C₂H₆), प्रोपेन (C₃H₈) और ब्यूटेन (C₄H₁₀) सभी अलग-अलग क्वथनांक वाले ईंधन हैं—फिर भी वे एक ही गणितीय सूत्र का पालन करते हैं! एक सदस्य से अगले सदस्य में क्या नियत रहता है?',
+    },
+    predictQuestion: {
+      en: 'In any organic homologous series (such as Alkanes CₙH₂ₙ₊₂, Alkenes CₙH₂ₙ, or Alcohols CₙH₂ₙ₊₁OH), by what exact chemical unit and molecular mass (in u) do any two adjacent members differ? (Take Atomic masses: C = 12 u, H = 1 u)',
+      hi: 'किसी भी कार्बनिक समजातीय श्रेणी (जैसे ऐल्केन CₙH₂ₙ₊₂, ऐल्कीन CₙH₂ₙ या ऐल्कोहॉल CₙH₂ₙ₊₁OH) के किन्हीं दो क्रमागत सदस्यों के बीच किस रासायनिक इकाई और कितने आणविक द्रव्यमान (u में) का अंतर होता है? (C = 12 u, H = 1 u)',
+    },
+    predictOptions: [
+      {
+        en: 'Every successive member differs by a −CH₂− unit and a constant molecular mass step of +14 u (12 + 2×1 = 14 u).',
+        hi: 'प्रत्येक क्रमागत सदस्य में −CH₂− इकाई तथा +14 u (12 + 2×1 = 14 u) आणविक द्रव्यमान का नियत अंतर होता है।',
+      },
+      {
+        en: 'Successive members differ by −CH₄− and +16 u.',
+        hi: 'क्रमागत सदस्यों में −CH₄− तथा +16 u का अंतर होता है।',
+      },
+      {
+        en: 'The mass difference changes depending on whether the series is an alkane, alkene, or alcohol.',
+        hi: 'द्रव्यमान का अंतर ऐल्केन, ऐल्कीन और ऐल्कोहॉल में अलग-अलग होता है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Adding 1 carbon atom to a chain requires adding 2 hydrogen atoms to maintain the same degree of saturation and functional group. Therefore every homologous step adds −CH₂−, increasing molecular mass by 12 u + 2(1 u) = +14 u regardless of the family!',
+      hi: 'श्रृंखला में 1 कार्बन जोड़ने पर संतृप्तता बनाए रखने के लिए 2 हाइड्रोजन जुड़ते हैं। अतः प्रत्येक समजातीय श्रेणी में अगला सदस्य −CH₂− इकाई तथा 12 + 2(1) = +14 u द्रव्यमान से बढ़ता है!',
+    },
+    insightFormula: 'Alkane: CₙH₂ₙ₊₂  |  Alkene: CₙH₂ₙ  |  Alkyne: CₙH₂ₙ₋₂  |  Step: +CH₂ (+14 u)',
+    insightTerm: {
+      en: 'Homologous Series & Degree of Unsaturation (NCERT Ch 4.2.4)',
+      hi: 'समजातीय श्रेणी एवं संतृप्त/असंतृप्त हाइड्रोकार्बन (NCERT 4.2.4)',
+    },
+    insightSummary: {
+      en: 'Members of a homologous series share the same functional group and general formula, show a gradual physical trend (boiling point rises with mass), and differ by −CH₂− (+14 u) between adjacent members. Unsaturated chains (C=C or C≡C) undergo addition reactions and decolourise bromine water.',
+      hi: 'समजातीय श्रेणी के सदस्यों का प्रकार्यात्मक समूह और सामान्य सूत्र समान होता है, भौतिक गुणों में क्रमिक परिवर्तन होता है, तथा क्रमागत सदस्यों में −CH₂− (+14 u) का अंतर होता है। असंतृप्त हाइड्रोकार्बन (C=C या C≡C) ब्रोमीन जल को रंगहीन कर देते हैं।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 4 · Identifying Alkene & Alkyne Homologues',
+          hi: 'NCERT कक्षा 10 अध्याय 4 · समजातीय श्रेणी के अगले सदस्यों की पहचान',
+        },
+        prompt: {
+          en: 'Write the molecular formula and molecular mass of the 2nd and 3rd members of the homologous series of Alkenes (general formula CₙH₂ₙ, starting at n = 2 for the 1st member Ethene C₂H₄).',
+          hi: 'ऐल्कीन समजातीय श्रेणी (सामान्य सूत्र CₙH₂ₙ, प्रथम सदस्य एथीन C₂H₄ जहाँ n = 2 है) के दूसरे तथा तीसरे सदस्यों के आणविक सूत्र एवं आणविक द्रव्यमान ज्ञात कीजिए।',
+        },
+        options: [
+          {
+            en: '2nd member (n = 3): Propene C₃H₆ (42 u); 3rd member (n = 4): Butene C₄H₈ (56 u) — differing by +CH₂ (+14 u).',
+            hi: 'दूसरा सदस्य (n = 3): प्रोपीन C₃H₆ (42 u); तीसरा सदस्य (n = 4): ब्यूटीन C₄H₈ (56 u) — अंतर +CH₂ (+14 u)।',
+          },
+          {
+            en: '2nd member: C₂H₆ (30 u); 3rd member: C₃H₈ (44 u).',
+            hi: 'दूसरा सदस्य: C₂H₆ (30 u); तीसरा सदस्य: C₃H₈ (44 u)।',
+          },
+          {
+            en: '2nd member: C₃H₄ (40 u); 3rd member: C₄H₆ (54 u).',
+            hi: 'दूसरा सदस्य: C₃H₄ (40 u); तीसरा सदस्य: C₄H₆ (54 u)।',
+          },
+          {
+            en: '2nd member: CH₂ (14 u); 3rd member: C₂H₄ (28 u).',
+            hi: 'दूसरा सदस्य: CH₂ (14 u); तीसरा सदस्य: C₂H₄ (28 u)।',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Watch the starting index trap: Methene (n = 1) cannot exist because a C=C double bond requires at least 2 carbons! So the 1st alkene is n = 2 (C₂H₄), the 2nd is n = 3 (C₃H₆), and the 3rd is n = 4 (C₄H₈).',
+          hi: 'ध्यान दें: C=C द्वि-आबंध के लिए कम से कम 2 कार्बन आवश्यक हैं! अतः प्रथम ऐल्कीन n = 2 (C₂H₄), दूसरा n = 3 (C₃H₆) और तीसरा n = 4 (C₄H₈) होता है।',
+        },
+        steps: [
+          {
+            label: { en: '1st Member (n = 2)', hi: 'प्रथम सदस्य (n = 2)' },
+            content: { en: 'Ethene = C₂H₄ (Mass = 2×12 + 4×1 = 28 u).', hi: 'एथीन = C₂H₄ (द्रव्यमान = 28 u)।' },
+          },
+          {
+            label: { en: '2nd & 3rd Members (+CH₂ each)', hi: 'दूसरा व तीसरा सदस्य (+CH₂ जोड़ने पर)' },
+            content: { en: 'n = 3: Propene = C₃H₆ (28 + 14 = 42 u); n = 4: Butene = C₄H₈ (42 + 14 = 56 u).', hi: 'n = 3: प्रोपीन = C₃H₆ (42 u); n = 4: ब्यूटीन = C₄H₈ (56 u)।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Propene C₃H₆ (42 u) and Butene C₄H₈ (56 u).',
+          hi: 'प्रोपीन C₃H₆ (42 u) तथा ब्यूटीन C₄H₈ (56 u)।',
+        },
+      },
+    ],
+  },
 }

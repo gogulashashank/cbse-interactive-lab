@@ -116,7 +116,7 @@ function App() {
             CBSE Interactive Lab · Illustrated Science Notebook
           </span>
           <span className="platform-provisional-badge">
-            Class 9 &amp; 10 Interactive Physics
+            Class 9 &amp; 10 Interactive Science
           </span>
         </div>
 
@@ -130,7 +130,7 @@ function App() {
             aria-pressed={standalone?.id === 'learn' && !isDioptreRoute}
             onClick={() => navigateTo('/learn')}
           >
-            Notebook Shelf (28 Labs)
+            Notebook Shelf (32 Labs)
           </button>
 
           {/* Flagship Optics Notebook Shortcut */}

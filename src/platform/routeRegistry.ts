@@ -33,7 +33,7 @@ export const STANDALONE_ROUTES: readonly StandaloneRoute[] = [
     id: 'learn',
     path: '/learn',
     aliases: ['/', '/concepts'],
-    navLabel: 'Notebook Shelf (28 Labs)',
+    navLabel: 'Notebook Shelf (32 Labs)',
     group: 'hub',
   },
   {

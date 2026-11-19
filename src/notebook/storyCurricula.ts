@@ -3490,4 +3490,600 @@ export const STORY_STAGE_SUPPLEMENTS: Record<
       ],
     },
   },
+
+  'chemical-equation-mass-balance': {
+    ncertSection: 'NCERT Class 10 Chapter 1: Chemical Reactions and Equations (Sec 1.1.2 — Balanced Chemical Equations)',
+    openingQuestion: {
+      en: '“Why must every chemical equation be balanced, and why is changing a subscript inside a formula (like turning H₂O into H₂O₂) strictly forbidden?”',
+      hi: '“प्रत्येक रासायनिक समीकरण को संतुलित करना क्यों आवश्यक है, और किसी सूत्र के पादांक को बदलना (जैसे H₂O को H₂O₂ लिखना) पूर्णतः वर्जित क्यों है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Use the analytical mass balance and atom-count ledger to balance the steam-iron reaction (c₁Fe + c₂H₂O → c₃Fe₃O₄ + c₄H₂) and verify that total reactant mass equals total product mass.',
+        hi: 'द्रव्यमान तुला और परमाणु लेजर की सहायता से भाप-लोहा अभिक्रिया (c₁Fe + c₂H₂O → c₃Fe₃O₄ + c₄H₂) को संतुलित करें और सत्यापित करें कि अभिकारकों का कुल द्रव्यमान उत्पादों के कुल द्रव्यमान के बराबर होता है।',
+      },
+      steps: [
+        {
+          en: 'Click “✗ Load Unbalanced Skeleton (1 : 1 : 1 : 1)”. Notice the scale tips heavily to the right: LHS has 1 Fe, 2 H, 1 O (74 g) while RHS has 3 Fe, 2 H, 4 O (234 g)!',
+          hi: '“✗ असंतुलित कंकाली समीकरण (1 : 1 : 1 : 1)” बटन दबाएं। देखें कि तुला दाईं ओर झुक जाती है: LHS पर 74 g तथा RHS पर 234 g है!',
+        },
+        {
+          en: 'First balance Oxygen (4 O in Fe₃O₄) by sliding H₂O Coefficient (c₂) to 4. Now LHS has 8 H atoms, so slide H₂ Coefficient (c₄) to 4.',
+          hi: 'सबसे पहले ऑक्सीजन (Fe₃O₄ में 4 O) को संतुलित करने के लिए H₂O गुणांक (c₂) को 4 करें। अब LHS पर 8 H हो गए, अतः H₂ गुणांक (c₄) को भी 4 करें।',
+        },
+        {
+          en: 'Finally, balance Iron (3 Fe in Fe₃O₄) by sliding Fe Coefficient (c₁) to 3. Watch the beam level horizontally at 240 g LHS = 240 g RHS!',
+          hi: 'अंत में आयरन (Fe₃O₄ में 3 Fe) को संतुलित करने के लिए Fe गुणांक (c₁) को 3 करें। देखें कि तुला 240 g LHS = 240 g RHS पर पूर्णतः क्षैतिज हो जाती है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the mass-balance bench, when the steam-iron reaction is balanced at 3Fe + 4H₂O → Fe₃O₄ + 4H₂, what is the total molar mass on the Reactant pan (LHS) and Product pan (RHS)? (Fe = 56 u, H = 1 u, O = 16 u)',
+          hi: 'जब समीकरण 3Fe + 4H₂O → Fe₃O₄ + 4H₂ पर संतुलित होता है, तो अभिकारक पलड़े (LHS) और उत्पाद पलड़े (RHS) पर कुल द्रव्यमान कितना होता है?',
+        },
+        options: [
+          {
+            en: '240 g on LHS (3×56 + 4×18) and 240 g on RHS (232 + 4×2) — exact mass conservation!',
+            hi: 'LHS पर 240 g (3×56 + 4×18) तथा RHS पर 240 g (232 + 4×2) — पूर्ण द्रव्यमान संरक्षण!',
+          },
+          {
+            en: '74 g on LHS and 234 g on RHS.',
+            hi: 'LHS पर 74 g तथा RHS पर 234 g।',
+          },
+          {
+            en: '100 g on both sides.',
+            hi: 'दोनों ओर 100 g।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: '3 mol Fe (168 g) + 4 mol H₂O (72 g) = 240 g on LHS. 1 mol Fe₃O₄ (232 g) + 4 mol H₂ (8 g) = 240 g on RHS.',
+          hi: '3 मोल Fe (168 g) + 4 मोल H₂O (72 g) = 240 g (LHS)। 1 मोल Fe₃O₄ (232 g) + 4 मोल H₂ (8 g) = 240 g (RHS)।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'A chemical reaction breaks existing chemical bonds and forms new ones, rearranging atoms without ever creating or destroying a single atom (Dalton’s Atomic Theory + Lavoisier’s Law of Conservation of Mass).',
+        hi: 'रासायनिक अभिक्रिया में पुराने आबंध टूटते हैं और नए आबंध बनते हैं, परंतु एक भी परमाणु न तो उत्पन्न होता है और न ही नष्ट होता है।',
+      },
+      scalingRule: {
+        en: 'Draw an imaginary box around every chemical formula first! You may multiply a whole box by a front coefficient c, which multiplies every atom inside that box by c, until ∑ Atoms_LHS = ∑ Atoms_RHS.',
+        hi: 'सबसे पहले प्रत्येक रासायनिक सूत्र के चारों ओर एक बॉक्स बनाएं! बॉक्स के भीतर पादांक कभी न बदलें; केवल बॉक्स के बाहर गुणांक लगाकर दोनों पक्षों के परमाणु बराबर करें।',
+      },
+      siUnitRule: {
+        en: 'Physical state symbols in balanced equations: (s) = solid, (l) = liquid, (g) = gas/steam, and (aq) = aqueous solution dissolved in water.',
+        hi: 'भौतिक अवस्था संकेत: (s) = ठोस, (l) = द्रव, (g) = गैस/भाप, तथा (aq) = जल में घुला जलीय विलयन।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 1 · Mass Conservation in Magnesium Ribbon Combustion',
+        hi: 'NCERT कक्षा 10 अध्याय 1 · मैग्नीशियम रिबन के दहन में द्रव्यमान संरक्षण',
+      },
+      problem: {
+        en: 'Write the balanced chemical equation for the burning of magnesium ribbon in oxygen to form magnesium oxide. Using atomic masses Mg = 24 u and O = 16 u, verify that total reactant mass equals total product mass, and calculate what mass of MgO is produced when 48 g of Mg burns completely.',
+        hi: 'ऑक्सीजन में मैग्नीशियम रिबन के दहन से मैग्नीशियम ऑक्साइड बनने का संतुलित समीकरण लिखिए। परमाणु द्रव्यमान Mg = 24 u तथा O = 16 u लेकर द्रव्यमान संरक्षण सत्यापित कीजिए और 48 g Mg के पूर्ण दहन से बनने वाले MgO का द्रव्यमान ज्ञात कीजिए।',
+      },
+      given: [
+        { en: 'Skeletal reaction: Mg(s) + O₂(g) → MgO(s)', hi: 'कंकाली समीकरण: Mg(s) + O₂(g) → MgO(s)' },
+        { en: 'Atomic masses: Mg = 24 u, O = 16 u (Molar mass of MgO = 40 g/mol)', hi: 'परमाणु द्रव्यमान: Mg = 24 u, O = 16 u (MgO = 40 g/mol)' },
+      ],
+      formula: '2Mg(s) + O₂(g) → 2MgO(s)',
+      substitution: 'LHS Mass = 2(24) + 2(16) = 48 g + 32 g = 80 g  |  RHS Mass = 2(24 + 16) = 2 × 40 g = 80 g',
+      answer: {
+        en: '48 g of Mg reacts with 32 g of O₂ to produce 80 g of white MgO powder (80 g LHS = 80 g RHS).',
+        hi: '48 g Mg, 32 g O₂ से अभिक्रिया कर 80 g श्वेत MgO चूर्ण बनाता है (80 g LHS = 80 g RHS)।',
+      },
+      unitTrapNote: {
+        en: 'Oxygen gas is diatomic (O₂ = 32 g/mol), never monoatomic O! And Magnesium Oxide is MgO (Mg²⁺ and O²⁻), never MgO₂!',
+        hi: 'ऑक्सीजन गैस द्विपरमाणुक (O₂ = 32 g/mol) होती है, और संयोजकता 2 होने से मैग्नीशियम ऑक्साइड का सूत्र MgO होता है, MgO₂ नहीं!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Altering Chemical Subscripts (Writing MgO₂ or H₂O₂) Instead of Placing Stoichiometric Coefficients in Front',
+        hi: 'गुणांक लगाने के स्थान पर रासायनिक सूत्र का पादांक बदल देना (जैसे MgO को MgO₂ लिख देना)',
+      },
+      commonMistake: {
+        en: 'Balancing Mg + O₂ → MgO by changing the product formula to “MgO₂”, or balancing H₂ + O₂ → H₂O by changing water to “H₂O₂”.',
+        hi: 'Mg + O₂ → MgO को संतुलित करने के लिए उत्पाद को “MgO₂” लिख देना, या जल H₂O को “H₂O₂” बना देना।',
+      },
+      correctPhysics: {
+        en: 'Subscripts are fixed by ionic valency/covalent bonding: changing H₂O to H₂O₂ changes water into toxic hydrogen peroxide! You must NEVER alter subscripts—place a coefficient in front of the entire formula instead (2H₂ + O₂ → 2H₂O; 2Mg + O₂ → 2MgO).',
+        hi: 'सूत्र के पादांक संयोजकता द्वारा निश्चित होते हैं: H₂O को H₂O₂ करने से जल बदलकर हाइड्रोजन पेरॉक्साइड बन जाता है! इसलिए पादांक कभी न बदलें—पूरे सूत्र के आगे गुणांक लगाएं (2Mg + O₂ → 2MgO)।',
+      },
+      checkRule: {
+        en: 'Put every formula in a box [MgO] first—nothing inside the box is allowed to change!',
+        hi: 'प्रत्येक सूत्र को पहले एक बॉक्स [MgO] में बंद करें—बॉक्स के अंदर कुछ भी बदलना मना है!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Endothermic vs Exothermic & Stoichiometry: Respiration and Quicklime Slaking',
+        hi: 'उच्च स्तरीय विश्लेषण: श्वसन एवं बिना बुझे चूने की जल से अभिक्रिया',
+      },
+      prompt: {
+        en: 'Explain why cellular respiration (C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energy) is classified as an exothermic reaction, verify the atom counts on both sides of the balanced respiration equation, and explain why magnesium ribbon must be cleaned with sandpaper before burning in air.',
+        hi: 'स्पष्ट कीजिए कि श्वसन (C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ऊर्जा) को ऊष्माक्षेपी अभिक्रिया क्यों कहा जाता है, दोनों पक्षों के परमाणुओं की संख्या सत्यापित कीजिए, तथा बताइए कि वायु में जलाने से पहले मैग्नीशियम रिबन को रेगमाल से साफ क्यों किया जाता है।',
+      },
+      claimOptions: [
+        {
+          en: 'Respiration breaks down glucose with oxygen to release energy (ATP/heat), with 6 C, 12 H, and 18 O conserved on both sides; magnesium ribbon is sanded to remove the protective basic magnesium oxide/carbonate layer that hinders combustion.',
+          hi: 'श्वसन में ग्लूकोज के ऑक्सीकरण से ऊर्जा मुक्त होती है तथा दोनों पक्षों में 6 C, 12 H व 18 O संरक्षित रहते हैं; मैग्नीशियम रिबन पर जमी मैग्नीशियम ऑक्साइड की बाधक परत हटाने के लिए उसे रेगमाल से साफ किया जाता है।',
+        },
+        {
+          en: 'Respiration absorbs heat (endothermic) and destroys oxygen atoms.',
+          hi: 'श्वसन ऊष्माशोषी अभिक्रिया है और इसमें ऑक्सीजन परमाणु नष्ट हो जाते हैं।',
+        },
+        {
+          en: 'Magnesium ribbon is sanded to make it heavier before burning.',
+          hi: 'मैग्नीशियम रिबन को भारी बनाने के लिए रेगमाल से रगड़ा जाता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'In C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O, LHS has 6 C, 12 H, and 6 + 12 = 18 O; RHS has 6 C, 12 H, and 12 + 6 = 18 O. Energy is released during glucose oxidation (exothermic). Sanding Mg ribbon strips away the unreactive MgO coating formed by moist air.',
+        hi: 'C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O में दोनों ओर 6 C, 12 H तथा 18 O परमाणु बराबर हैं। ऊर्जा मुक्त होने के कारण यह ऊष्माक्षेपी है। मैग्नीशियम पर वायु की नमी से बनी MgO की परत हटाने हेतु रेगमाल से साफ किया जाता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Defines exothermic reaction and explains that respiration oxidises glucose to release energy needed for life.',
+          hi: 'ऊष्माक्षेपी अभिक्रिया को परिभाषित करता है और बताता है कि श्वसन में ग्लूकोज के ऑक्सीकरण से ऊर्जा मुक्त होती है।',
+        },
+        {
+          en: 'Verifies atom conservation in C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O (6 C, 12 H, 18 O on both LHS and RHS).',
+          hi: 'समीकरण के दोनों पक्षों में परमाणुओं की समान संख्या (6 C, 12 H, 18 O) सत्यापित करता है।',
+        },
+        {
+          en: 'Explains that sandpaper removes the protective magnesium oxide layer from the Mg ribbon so it can react freely with oxygen.',
+          hi: 'बताता है कि रेगमाल मैग्नीशियम रिबन की सतह से मैग्नीशियम ऑक्साइड की सुरक्षात्मक परत हटाता है ताकि दहन आसानी से हो सके।',
+        },
+      ],
+    },
+  },
+
+  'ph-scale-exponential-acid': {
+    ncertSection: 'NCERT Class 10 Chapter 2: Acids, Bases and Salts (Sec 2.3 — How Strong are Acid or Base Solutions? & Importance of pH in Everyday Life)',
+    openingQuestion: {
+      en: '“Why does dropping just 2 units on the pH scale—from pH 6 down to pH 4—multiply the acid’s hydrogen-ion punch by 100 times instead of just 2 times?”',
+      hi: '“pH स्केल पर मान केवल 2 इकाई कम होने (pH 6 से pH 4 आने) पर अम्ल की हाइड्रोजन आयन सांद्रता 2 गुना के बजाय 100 गुना क्यों बढ़ जाती है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Explore the inverse ten-fold relationship [H⁺] = 10⁻ᵖᴴ mol/L across pH 0 to 14 on the Universal Indicator bench and test biological thresholds for tooth decay (pH < 5.5) and antacid neutralization.',
+        hi: 'सार्वत्रिक सूचक बेंच पर pH 0 से 14 के बीच [H⁺] = 10⁻ᵖᴴ mol/L के 10-गुना व्युत्क्रम नियम का परीक्षण करें तथा दंत-क्षय (pH < 5.5) और ऐंटासिड उदासीनीकरण की सीमा जाँचें।',
+      },
+      steps: [
+        {
+          en: 'Set Comparison Reference pH = 5 and Sample Solution pH = 4 (1 unit lower). Observe in the ledger that [H⁺] increases 10× (from 10⁻⁵ M to 10⁻⁴ M).',
+          hi: 'तुलनात्मक विलयन B का pH = 5 और विलयन A का pH = 4 (1 इकाई कम) रखें। देखें कि [H⁺] सांद्रता 10 गुना (10⁻⁵ M से 10⁻⁴ M) बढ़ जाती है।',
+        },
+        {
+          en: 'Now slide Sample Solution pH down to 2 (3 units below pH 5). Observe that [H⁺] jumps to 1,000× (10³×) relative to pH 5!',
+          hi: 'अब विलयन A का pH घटाकर 2 (pH 5 से 3 इकाई कम) करें। देखें कि [H⁺] सांद्रता 1,000 गुना (10³×) हो जाती है!',
+        },
+        {
+          en: 'Click “Tooth Decay Limit (pH 5.4)” vs “Pure Water (pH 7.0)” vs “Milk of Magnesia (pH 10.0)”. Verify how the tooth enamel corrosion alert triggers whenever pH < 5.5.',
+          hi: '“Tooth Decay Limit (pH 5.4)”, “Pure Water (pH 7.0)” तथा “Milk of Magnesia (pH 10.0)” पर क्लिक करें और देखें कि pH < 5.5 होते ही दंत इनेमल क्षय की चेतावनी सक्रिय हो जाती है।',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'Solution X has pH = 3 and Solution Y has pH = 6. Which solution is more acidic, and how many times greater is its [H⁺] ion concentration?',
+          hi: 'विलयन X का pH = 3 है तथा विलयन Y का pH = 6 है। कौन-सा विलयन अधिक अम्लीय है, और उसकी [H⁺] आयन सांद्रता कितने गुना अधिक है?',
+        },
+        options: [
+          {
+            en: 'Solution X (pH 3) is more acidic, and its [H⁺] concentration (10⁻³ M) is 1,000 times (10³×) greater than Solution Y (10⁻⁶ M).',
+            hi: 'विलयन X (pH 3) अधिक अम्लीय है, और इसकी [H⁺] सांद्रता (10⁻³ M) विलयन Y (10⁻⁶ M) से 1,000 गुना (10³×) अधिक है।',
+          },
+          {
+            en: 'Solution X is 2 times more acidic than Solution Y.',
+            hi: 'विलयन X, विलयन Y से 2 गुना अधिक अम्लीय है।',
+          },
+          {
+            en: 'Solution Y (pH 6) is more acidic because 6 > 3.',
+            hi: 'विलयन Y (pH 6) अधिक अम्लीय है क्योंकि 6 > 3 है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: '[H⁺]_X / [H⁺]_Y = 10⁻³ / 10⁻⁶ = 10^(6 − 3) = 10³ = 1,000 times.',
+          hi: '[H⁺]_X / [H⁺]_Y = 10⁻³ / 10⁻⁶ = 10³ = 1,000 गुना।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'The “p” in pH stands for “potenz” (power of 10 in German): pH is the negative power of 10 of the hydronium/hydrogen ion concentration in moles per litre ([H⁺] = 10⁻ᵖᴴ M). Even basic solutions contain [H⁺] ions, just fewer than [OH⁻] ions!',
+        hi: 'pH में “p” जर्मन शब्द “पुसांस (potenz)” अर्थात 10 की घात को दर्शाता है ([H⁺] = 10⁻ᵖᴴ mol/L)। क्षारीय विलयनों में भी H⁺ आयन होते हैं, परंतु उनकी संख्या OH⁻ आयनों से कम होती है!',
+      },
+      scalingRule: {
+        en: '1. Inverse Rule: As pH increases from 0 to 14, [H⁺] decreases from 10⁰ to 10⁻¹⁴ M while [OH⁻] increases from 10⁻¹⁴ to 10⁰ M.  2. Ten-Fold Rule: [H⁺]₁ / [H⁺]₂ = 10^(pH₂ − pH₁).',
+        hi: '1. व्युत्क्रम नियम: pH बढ़ने पर [H⁺] घटती है और [OH⁻] बढ़ती है।  2. दस-गुना नियम: [H⁺]₁ / [H⁺]₂ = 10^(pH₂ − pH₁)।',
+      },
+      siUnitRule: {
+        en: 'pH is a pure dimensionless number (0 to 14 at 25 °C). Ion concentrations [H⁺] and [OH⁻] are measured in mol/L (Molarity, M).',
+        hi: 'pH एक विमाहीन संख्या (0 से 14) है, जबकि आयन सांद्रता [H⁺] का मात्रक मोल प्रति लीटर (mol/L या M) होता है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 2 · Dilution & pH Shift of an Acid Solution',
+        hi: 'NCERT कक्षा 10 अध्याय 2 · अम्ल के तनुकरण से [H⁺] एवं pH में परिवर्तन',
+      },
+      problem: {
+        en: 'An aqueous hydrochloric acid (HCl) solution has a hydrogen ion concentration [H⁺] = 10⁻² mol/L (pH = 2). If 10 mL of this solution is diluted with pure water to a total volume of 1,000 mL (100-fold dilution), find the new [H⁺] concentration and the new pH.',
+        hi: 'हाइड्रोक्लोरिक अम्ल (HCl) के एक जलीय विलयन में [H⁺] सांद्रता 10⁻² mol/L (pH = 2) है। यदि इसके 10 mL को शुद्ध जल मिलाकर 1,000 mL तक तनुकृत (100 गुना तनुकरण) किया जाए, तो नई [H⁺] सांद्रता और नया pH मान ज्ञात कीजिए।',
+      },
+      given: [
+        { en: 'Initial [H⁺]₁ = 10⁻² mol/L (pH₁ = 2)', hi: 'प्रारंभिक [H⁺]₁ = 10⁻² mol/L (pH₁ = 2)' },
+        { en: 'Dilution factor: V₂ / V₁ = 1000 mL / 10 mL = 100 (10²)', hi: 'तनुकरण गुणक: 1000 / 10 = 100 (10²)' },
+      ],
+      formula: '[H⁺]₂ = [H⁺]₁ / 100  |  pH₂ = −log₁₀([H⁺]₂)',
+      substitution: '[H⁺]₂ = 10⁻² / 10² = 10⁻⁴ mol/L  ⇒  pH₂ = 4',
+      answer: {
+        en: 'New [H⁺]₂ = 10⁻⁴ mol/L; New pH = 4 (pH shifts 2 units towards neutral 7).',
+        hi: 'नई सांद्रता [H⁺]₂ = 10⁻⁴ mol/L; नया pH = 4 (उदासीन 7 की ओर 2 इकाई बढ़ता है)।',
+      },
+      unitTrapNote: {
+        en: 'Diluting an acid with water decreases [H⁺] per unit volume, which INCREASES pH towards 7 (never above 7!).',
+        hi: 'अम्ल में जल मिलाने (तनुकरण) पर प्रति इकाई आयतन [H⁺] घटती है, जिससे pH का मान बढ़कर 7 की ओर जाता है!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Thinking Higher pH Means Higher [H⁺] Concentration or Treating pH as a Linear Scale',
+        hi: 'अधिक pH का अर्थ अधिक [H⁺] मान लेना या pH स्केल को रैखिक समझ लेना',
+      },
+      commonMistake: {
+        en: 'Writing that pH 6 has more H⁺ ions than pH 2 because 6 > 2, or saying that basic solutions (pH > 7) contain zero H⁺ ions.',
+        hi: 'यह लिखना कि pH 6 में pH 2 से अधिक H⁺ आयन हैं, या यह कहना कि क्षारकीय विलयनों (pH > 7) में H⁺ आयन बिल्कुल नहीं होते।',
+      },
+      correctPhysics: {
+        en: '1. Because of the minus sign in pH = −log₁₀[H⁺], a SMALLER pH means a LARGER [H⁺] concentration (10⁻² M > 10⁻⁶ M by 10,000×!). 2. Basic solutions DO contain H⁺(aq) ions—they are basic simply because [OH⁻] > [H⁺].',
+        hi: '1. ऋणात्मक चिह्न के कारण कम pH का अर्थ बहुत अधिक [H⁺] सांद्रता होता है (10⁻² M, 10⁻⁶ M से 10,000 गुना बड़ा है!)। 2. क्षारकीय विलयनों में भी H⁺ आयन उपस्थित होते हैं, किंतु उनमें OH⁻ आयनों की सांद्रता H⁺ से अधिक होती है।',
+      },
+      checkRule: {
+        en: 'Low pH = High [H⁺] (Acidic). High pH = Low [H⁺] & High [OH⁻] (Basic)!',
+        hi: 'कम pH = अधिक [H⁺] (अम्लीय)। अधिक pH = कम [H⁺] एवं अधिक [OH⁻] (क्षारीय)!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Everyday Chemistry: Why Toothpaste is Basic and Why Curd Is Never Kept in Brass/Copper Vessels',
+        hi: 'उच्च स्तरीय दैनिक रसायन: दंतमंजन क्षारीय क्यों होता है और दही को पीतल/तांबे के बर्तन में क्यों नहीं रखते?',
+      },
+      prompt: {
+        en: 'Explain scientifically: (a) Why tooth decay starts when the pH of the mouth falls below 5.5 after meals, and how toothpaste prevents it; (b) Why sour substances like curd should not be stored in brass or copper vessels.',
+        hi: 'वैज्ञानिक कारण स्पष्ट कीजिए: (a) भोजन के बाद मुँह का pH 5.5 से कम होने पर दंत-क्षय क्यों प्रारंभ होता है और दंतमंजन इसे कैसे रोकता है? (b) दही एवं खट्टे पदार्थों को पीतल या तांबे के बर्तनों में क्यों नहीं रखना चाहिए?',
+      },
+      claimOptions: [
+        {
+          en: '(a) Bacteria in the mouth degrade sugar into acids that lower pH below 5.5, corroding calcium hydroxyapatite enamel; basic toothpaste (pH > 7) neutralizes the excess acid. (b) Lactic acid in curd reacts with copper/brass to form toxic metal salts unfit for consumption.',
+          hi: '(a) मुँह के जीवाणु शर्करा का निम्नीकरण कर अम्ल बनाते हैं जिससे pH < 5.5 होकर कैल्सियम हाइड्रॉक्सीऐपेटाइट इनेमल संक्षारित होता है; क्षारकीय दंतमंजन अम्ल को उदासीन करता है। (b) दही का अम्ल तांबे/पीतल से क्रिया कर विषैले लवण बनाता है।',
+        },
+        {
+          en: 'Toothpaste is strongly acidic (pH 1) to dissolve bacteria, and curd freezes inside copper vessels.',
+          hi: 'दंतमंजन प्रबल अम्लीय (pH 1) होता है और दही तांबे के बर्तन में जम जाता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Tooth enamel is crystalline calcium hydroxyapatite—the hardest substance in the body—which corrodes below pH 5.5. Basic toothpaste neutralizes bacterial acids. Acids in curd react with Cu/Zn in brass to leach poisonous soluble copper/zinc salts.',
+        hi: 'दंत इनेमल (कैल्सियम हाइड्रॉक्सीऐपेटाइट) pH 5.5 से नीचे संक्षारित होने लगता है। क्षारकीय दंतमंजन अतिरिक्त अम्ल को उदासीन करता है। दही का लैक्टिक अम्ल पीतल/तांबे से अभिक्रिया कर विषाक्त धात्विक लवण बनाता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Identifies tooth enamel composition (calcium hydroxyapatite) and states that mouth bacteria produce acids from food sugars, dropping pH below 5.5.',
+          hi: 'दंत इनेमल (कैल्सियम हाइड्रॉक्सीऐपेटाइट) तथा शर्करा से जीवाणुओं द्वारा अम्ल बनने से pH < 5.5 होने का उल्लेख करता है।',
+        },
+        {
+          en: 'Explains that toothpaste is basic (alkaline) in nature and neutralizes the excess acid to prevent enamel corrosion.',
+          hi: 'स्पष्ट करता है कि दंतमंजन क्षारकीय प्रकृति का होता है जो अतिरिक्त अम्ल को उदासीन कर दंत-क्षय रोकता है।',
+        },
+        {
+          en: 'Explains that acids in curd/sour food react with copper and brass (Cu + Zn) to form toxic metal salts.',
+          hi: 'बताता है कि दही के अम्ल तांबे व पीतल के साथ अभिक्रिया कर हानिकारक (विषैले) लवण बनाते हैं।',
+        },
+      ],
+    },
+  },
+
+  'metal-reactivity-displacement': {
+    ncertSection: 'NCERT Class 10 Chapter 3: Metals and Non-metals (Sec 3.2.5 — How do Metals React with Solutions of other Metal Salts? & The Reactivity Series)',
+    openingQuestion: {
+      en: '“Why can an iron nail strip the blue copper ions right out of copper sulphate solution, whereas a gleaming copper coin sitting in iron sulphate solution can’t displace a single iron ion?”',
+      hi: '“लोहे की कील नीले कॉपर सल्फेट विलयन से कॉपर आयनों को आसानी से बाहर निकाल देती है, परंतु आयरन सल्फेट में पड़ा तांबे का सिक्का एक भी आयरन आयन को विस्थापित क्यों नहीं कर पाता?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Test pairwise metal-in-salt combinations across Mg, Zn, Fe, Cu, and Ag to verify the one-way single-displacement rule: Metal A displaces Metal B from solution if and only if Reactivity(A) > Reactivity(B).',
+        hi: 'Mg, Zn, Fe, Cu तथा Ag के युग्मों का परीक्षण कर एकतरफा विस्थापन नियम सत्यापित करें: धातु A विलयन से धातु B को तभी विस्थापित करती है जब सक्रियता(A) > सक्रियता(B)।',
+      },
+      steps: [
+        {
+          en: 'Select Metal Strip A = Fe (Iron) and Salt Solution BC = CuSO₄ (aq). Observe that blue CuSO₄ turns pale green (FeSO₄) and a reddish-brown Cu coating deposits on the iron strip!',
+          hi: 'धातु पट्टी A = Fe (लोहा) और विलयन BC = CuSO₄ (aq) चुनें। देखें कि नीला विलयन हल्का हरा (FeSO₄) हो जाता है और पट्टी पर लाल-भूरा तांबा जम जाता है!',
+        },
+        {
+          en: 'Now reverse the pair: select Metal Strip A = Cu (Copper) and Salt Solution BC = FeSO₄ (aq). Notice the ledger reads “✗ NO REACTION” because Cu is lower than Fe in the Reactivity Series!',
+          hi: 'अब युग्म उलट दें: पट्टी A = Cu (तांबा) और विलयन BC = FeSO₄ चुनें। देखें कि कोई अभिक्रिया नहीं होती क्योंकि सक्रियता श्रेणी में Cu, Fe से नीचे है!',
+        },
+        {
+          en: 'Test Metal Strip A = Cu (Copper) in Salt Solution BC = AgNO₃ (aq). Observe that Cu DOES displace Ag (Cu > Ag), turning the colourless solution blue (Cu(NO₃)₂) and depositing shiny silver Ag crystals!',
+          hi: 'अब पट्टी A = Cu (तांबा) को AgNO₃ (aq) विलयन में परखें। देखें कि Cu, Ag को विस्थापित कर देता है (Cu > Ag), जिससे विलयन नीला (Cu(NO₃)₂) हो जाता है और चाँदी जम जाती है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the Reactivity Series bench, when you immerse a clean Copper (Cu) strip into colourless aqueous Silver Nitrate (AgNO₃) solution, what do you observe?',
+          hi: 'जब आप साफ तांबे (Cu) की पट्टी को रंगहीन सिल्वर नाइट्रेट (AgNO₃) विलयन में डुबोते हैं, तो क्या प्रेक्षण मिलता है?',
+        },
+        options: [
+          {
+            en: 'Displacement occurs (Cu > Ag): shiny silver (Ag) deposits on the copper strip and the solution turns blue due to Cu(NO₃)₂ formation.',
+            hi: 'विस्थापन होता है (Cu > Ag): तांबे की पट्टी पर चमकदार चाँदी (Ag) जम जाती है और Cu(NO₃)₂ बनने से विलयन नीला हो जाता है।',
+          },
+          {
+            en: 'No reaction occurs because copper never reacts with any salt solution.',
+            hi: 'कोई अभिक्रिया नहीं होती क्योंकि तांबा किसी लवण से क्रिया नहीं करता।',
+          },
+          {
+            en: 'The solution turns pale green due to FeSO₄.',
+            hi: 'विलयन हल्का हरा हो जाता है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Copper lies above Silver in the reactivity series (Cu > Ag): Cu(s) + 2AgNO₃(aq) → Cu(NO₃)₂(aq, Blue) + 2Ag(s)↓.',
+          hi: 'सक्रियता श्रेणी में कॉपर, सिल्वर से ऊपर है (Cu > Ag): Cu(s) + 2AgNO₃(aq) → Cu(NO₃)₂(aq, नीला) + 2Ag(s)↓।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Single displacement is an electron-transfer competition: a more reactive metal atom A has a stronger tendency to give up valence electrons (oxidise to A²⁺) than a less reactive metal ion B²⁺, forcing B²⁺ to accept those electrons and plate out as solid metal B(s).',
+        hi: 'एकल विस्थापन वास्तव में इलेक्ट्रॉन त्यागने की प्रतिस्पर्धा है: अधिक अभिक्रियाशील धातु A आसानी से इलेक्ट्रॉन त्यागकर धनायन (A²⁺) बनाती है और कम अभिक्रियाशील आयन B²⁺ को इलेक्ट्रॉन ग्रहण कर ठोस धातु B(s) के रूप में निक्षेपित होने के लिए बाध्य करती है।',
+      },
+      scalingRule: {
+        en: 'NCERT Reactivity Hierarchy (Top to Bottom): K > Na > Ca > Mg > Al > Zn > Fe > Pb > [H] > Cu > Hg > Ag > Au. Metals above [H] displace H₂ gas from dilute acids; metals below [H] (Cu, Ag, Au) do not!',
+        hi: 'सक्रियता श्रेणी: K > Na > Ca > Mg > Al > Zn > Fe > Pb > [H] > Cu > Hg > Ag > Au। [H] से ऊपर स्थित धातुएं तनु अम्लों से H₂ गैस विस्थापित करती हैं, जबकि नीचे स्थित धातुएं (Cu, Ag, Au) नहीं करतीं!',
+      },
+      siUnitRule: {
+        en: 'Key aqueous ion colours for board exams: Cu²⁺(aq) = Deep Blue; Fe²⁺(aq) = Pale Green; Zn²⁺(aq), Mg²⁺(aq), Al³⁺(aq), Ag⁺(aq) = Colourless!',
+        hi: 'बोर्ड परीक्षा हेतु मुख्य जलीय आयनों के रंग: Cu²⁺(aq) = नीला; Fe²⁺(aq) = हल्का हरा; Zn²⁺, Mg²⁺, Al³⁺, Ag⁺ = रंगहीन!',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 3 Q7 · Ranking Four Unknown Metals A, B, C, D from Displacement Table',
+        hi: 'NCERT कक्षा 10 अध्याय 3 · विस्थापन सारणी से चार अज्ञात धातुओं A, B, C, D का क्रम निर्धारण',
+      },
+      problem: {
+        en: 'Samples of four metals A, B, C, and D were added to solutions: Metal A displaced Cu from CuSO₄ but gave no reaction with FeSO₄; Metal B displaced Fe from FeSO₄ but gave no reaction with ZnSO₄; Metal C displaced Ag from AgNO₃ only; Metal D gave no reaction with any of them. Arrange A, B, C, D in decreasing order of reactivity.',
+        hi: 'चार धातुओं A, B, C तथा D को लवण विलयनों में डाला गया: धातु A ने CuSO₄ से Cu को विस्थापित किया पर FeSO₄ से क्रिया नहीं की; धातु B ने FeSO₄ से Fe को विस्थापित किया पर ZnSO₄ से क्रिया नहीं की; धातु C ने केवल AgNO₃ से Ag को विस्थापित किया; धातु D ने किसी से क्रिया नहीं की। इन्हें घटती सक्रियता के क्रम में व्यवस्थित कीजिए।',
+      },
+      given: [
+        { en: 'B displaces Fe (so B > Fe); A displaces Cu but not Fe (so Fe > A > Cu)', hi: 'B > Fe तथा Fe > A > Cu' },
+        { en: 'C displaces only Ag (so Cu > C > Ag); D displaces none (so Ag > D)', hi: 'Cu > C > Ag तथा Ag > D' },
+      ],
+      formula: 'Chain Inequality: B > Fe > A > Cu > C > Ag > D',
+      substitution: 'Most reactive = Metal B; Least reactive = Metal D; Decreasing order: B > A > C > D',
+      answer: {
+        en: 'Decreasing reactivity order: B > A > C > D (Metal B will also displace Cu from CuSO₄ yielding blue-to-colourless/green shift).',
+        hi: 'सक्रियता का घटता क्रम: B > A > C > D (धातु B सर्वाधिक अभिक्रियाशील है)।',
+      },
+      unitTrapNote: {
+        en: 'Always check whether the exam question asks for DECREASING order (Most → Least: B > A > C > D) or INCREASING order (Least → Most: D < C < A < B)!',
+        hi: 'परीक्षा में ध्यान से पढ़ें कि प्रश्न में “घटता क्रम (B > A > C > D)” पूछा गया है या “बढ़ता क्रम (D < C < A < B)”!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Assuming Copper Reacts With Dilute HCl to Release H₂ Gas or Confusing ZnSO₄ Colour With CuSO₄',
+        hi: 'तांबे (Cu) की तनु HCl से अभिक्रिया द्वारा H₂ गैस निकाल देना या ZnSO₄ को नीला मान लेना',
+      },
+      commonMistake: {
+        en: 'Writing Cu + 2HCl → CuCl₂ + H₂↑, or saying aqueous zinc sulphate (ZnSO₄) is blue.',
+        hi: 'Cu + 2HCl → CuCl₂ + H₂↑ लिख देना, या जिंक सल्फेट (ZnSO₄) के जलीय विलयन को नीला बताना।',
+      },
+      correctPhysics: {
+        en: '1. Copper stands BELOW Hydrogen [H] in the reactivity series, so Copper CANNOT displace hydrogen from dilute HCl or dilute H₂SO₄ (No bubbles, No reaction!). 2. CuSO₄(aq) is blue, FeSO₄(aq) is pale green, and ZnSO₄(aq) / Al₂(SO₄)₃(aq) are completely COLOURLESS!',
+        hi: '1. सक्रियता श्रेणी में तांबा (Cu) हाइड्रोजन [H] से नीचे स्थित है, इसलिए तांबा तनु HCl या तनु H₂SO₄ से हाइड्रोजन गैस विस्थापित नहीं कर सकता! 2. CuSO₄ नीला तथा FeSO₄ हल्का हरा होता है, जबकि ZnSO₄ व Al₂(SO₄)₃ पूर्णतः रंगहीन होते हैं!',
+      },
+      checkRule: {
+        en: 'Cu, Ag, Au are below [H] → ZERO reaction with dilute HCl! ZnSO₄ & Al₂(SO₄)₃ = Colourless!',
+        hi: 'Cu, Ag, Au हाइड्रोजन [H] से नीचे हैं → तनु HCl के साथ कोई अभिक्रिया नहीं! ZnSO₄ = रंगहीन!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Metallurgy & Oxide Chemistry: Thermite Welding Reaction & Amphoteric Aluminium Oxide',
+        hi: 'उच्च स्तरीय धातुकर्म: थर्मिट अभिक्रिया (रेलवे ट्रैक जोड़ना) एवं उभयधर्मी ऑक्साइड',
+      },
+      prompt: {
+        en: '(a) Which highly exothermic displacement reaction is used to join cracked railway tracks or machine parts (the Thermite process)? Write its balanced equation. (b) Why is aluminium oxide (Al₂O₃) called an amphoteric oxide?',
+        hi: '(a) रेल की पटरियों एवं मशीनी पुर्जों की दरारों को जोड़ने के लिए किस अत्यंत ऊष्माक्षेपी विस्थापन अभिक्रिया (थर्मिट अभिक्रिया) का उपयोग किया जाता है? संतुलित समीकरण लिखिए। (b) ऐलुमिनियम ऑक्साइड (Al₂O₃) को उभयधर्मी ऑक्साइड क्यों कहते हैं?',
+      },
+      claimOptions: [
+        {
+          en: '(a) In the Thermite reaction, more reactive Aluminium powder reduces Iron(III) oxide to molten iron: Fe₂O₃(s) + 2Al(s) → 2Fe(l) + Al₂O₃(s) + Heat. (b) Al₂O₃ is amphoteric because it reacts with both acids (HCl) and bases (NaOH) to form salt and water.',
+          hi: '(a) थर्मिट अभिक्रिया में अधिक अभिक्रियाशील ऐलुमिनियम चूर्ण आयरन(III) ऑक्साइड को गलित लोहे में अपचयित करता है: Fe₂O₃(s) + 2Al(s) → 2Fe(l) + Al₂O₃(s) + ऊष्मा। (b) Al₂O₃ अम्ल (HCl) तथा क्षारक (NaOH) दोनों से अभिक्रिया कर लवण तथा जल बनाता है, इसलिए उभयधर्मी है।',
+        },
+        {
+          en: 'Copper reduces aluminium oxide in the thermite reaction, and Al₂O₃ reacts only with water.',
+          hi: 'थर्मिट अभिक्रिया में तांबा ऐलुमिनियम ऑक्साइड को अपचयित करता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Because Al > Fe in the reactivity series, Al displaces Fe from Fe₂O₃ with so much heat that the produced iron emerges in the molten state (2Fe(l)), welding the cracked rail tracks. Al₂O₃ and ZnO show both acidic and basic behaviour (amphoteric).',
+        hi: 'चूँकि सक्रियता श्रेणी में Al > Fe है, इसलिए Al, Fe₂O₃ से लोहे को विस्थापित करता है और इतनी अधिक ऊष्मा निकलती है कि लोहा गलित अवस्था (2Fe(l)) में प्राप्त होता है। Al₂O₃ तथा ZnO अम्ल और क्षारक दोनों से क्रिया करते हैं।',
+      },
+      rubricPoints: [
+        {
+          en: 'Writes the balanced Thermite equation: Fe₂O₃(s) + 2Al(s) → 2Fe(l) + Al₂O₃(s) + Heat, noting that molten iron fills the rail crack.',
+          hi: 'संतुलित थर्मिट समीकरण Fe₂O₃(s) + 2Al(s) → 2Fe(l) + Al₂O₃(s) + ऊष्मा लिखता है तथा गलित लोहे का उल्लेख करता है।',
+        },
+        {
+          en: 'Defines amphoteric oxides as metal oxides (such as Al₂O₃ and ZnO) that react with both acids and bases to produce salt and water.',
+          hi: 'उभयधर्मी ऑक्साइड (जैसे Al₂O₃ व ZnO) को परिभाषित करता है जो अम्ल और क्षारक दोनों से अभिक्रिया कर लवण तथा जल बनाते हैं।',
+        },
+        {
+          en: 'Supports with reaction examples: Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O and Al₂O₃ + 2NaOH → 2NaAlO₂ + H₂O.',
+          hi: 'अम्ल (HCl) तथा क्षार (NaOH से सोडियम ऐलुमिनेट NaAlO₂) के साथ अभिक्रिया का उल्लेख करता है।',
+        },
+      ],
+    },
+  },
+
+  'carbon-homologous-series': {
+    ncertSection: 'NCERT Class 10 Chapter 4: Carbon and its Compounds (Sec 4.2.2–4.2.4 — Chains, Functional Groups & Homologous Series)',
+    openingQuestion: {
+      en: '“Why do Methane, Ethane, Propane, and Butane all undergo the exact same type of chemical reactions, even though their boiling points climb higher with every carbon added?”',
+      hi: '“मेथेन, एथेन, प्रोपेन और ब्यूटेन के क्वथनांक प्रत्येक कार्बन बढ़ने के साथ बढ़ते जाते हैं, फिर भी उनके रासायनिक गुणधर्म बिल्कुल एक जैसे क्यों रहते हैं?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Build carbon chains from n = 1 to n = 6 across Alkanes (CₙH₂ₙ₊₂), Alkenes (CₙH₂ₙ), Alkynes (CₙH₂ₙ₋₂), and Alcohols (CₙH₂ₙ₊₁OH) to verify the invariant +CH₂ (+14 u) homologous step and compare saturated vs unsaturated bonding.',
+        hi: 'n = 1 से n = 6 तक ऐल्केन, ऐल्कीन, ऐल्काइन तथा ऐल्कोहॉल श्रृंखलाओं का निर्माण कर नियत +CH₂ (+14 u) समजातीय अंतर सत्यापित करें और संतृप्त बनाम असंतृप्त आबंधों की तुलना करें।',
+      },
+      steps: [
+        {
+          en: 'Select “Alkanes (CₙH₂ₙ₊₂)” and step Carbon Count n from 1 (Methane CH₄, 16 u) to 2 (Ethane C₂H₆, 30 u) to 3 (Propane C₃H₈, 44 u). Observe that every step adds +CH₂ and increases mass by exactly +14 u!',
+          hi: '“Alkanes (CₙH₂ₙ₊₂)” चुनें और कार्बन संख्या n को 1 (मेथेन CH₄, 16 u) से 2 (एथेन C₂H₆, 30 u) तथा 3 (प्रोपेन C₃H₈, 44 u) तक बढ़ाएं। देखें कि प्रत्येक चरण में +CH₂ और ठीक +14 u जुड़ता है!',
+        },
+        {
+          en: 'Switch to “Alkenes (CₙH₂ₙ · Double C=C)” at n = 3 (Propene C₃H₆, 42 u) and “Alkynes (CₙH₂ₙ₋₂ · Triple C≡C)” (Propyne C₃H₄, 40 u). Notice that each extra pi-bond removes 2 H atoms (−2 u) and triggers the “Decolourises Br₂ Water!” badge.',
+          hi: 'अब n = 3 पर “Alkenes (प्रोपीन C₃H₆, 42 u)” तथा “Alkynes (प्रोपाइन C₃H₄, 40 u)” चुनें। देखें कि प्रत्येक अतिरिक्त आबंध 2 H परमाणु (−2 u) कम करता है और असंतृप्तता (ब्रोमीन जल परीक्षण) दर्शाता है।',
+        },
+        {
+          en: 'Switch to “Alcohols (CₙH₂ₙ₊₁OH)” and vary n from 1 (Methanol CH₃OH, 32 u) to 2 (Ethanol C₂H₅OH, 46 u). Confirm that even with the −OH functional group attached, the step to the next homologue is still +CH₂ (+14 u)!',
+          hi: 'अब “Alcohols (CₙH₂ₙ₊₁OH)” चुनकर n = 1 (मेथेनॉल CH₃OH, 32 u) से n = 2 (एथेनॉल C₂H₅OH, 46 u) करें। पुष्टि करें कि −OH समूह होने पर भी क्रमागत अंतर +CH₂ (+14 u) ही रहता है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the Carbon Homologous Series bench, compare Propane (alkane, n = 3), Propene (alkene, n = 3), and Propyne (alkyne, n = 3). What are their molecular formulas and which of them decolourise bromine water?',
+          hi: 'n = 3 कार्बन के लिए प्रोपेन (ऐल्केन), प्रोपीन (ऐल्कीन) और प्रोपाइन (ऐल्काइन) के आणविक सूत्र क्या हैं और इनमें से कौन ब्रोमीन जल को रंगहीन करते हैं?',
+        },
+        options: [
+          {
+            en: 'Propane = C₃H₈ (saturated, does NOT decolourise Br₂); Propene = C₃H₆ and Propyne = C₃H₄ (both unsaturated, both decolourise Br₂ water).',
+            hi: 'प्रोपेन = C₃H₈ (संतृप्त, ब्रोमीन जल को रंगहीन नहीं करता); प्रोपीन = C₃H₆ तथा प्रोपाइन = C₃H₄ (दोनों असंतृप्त हैं और ब्रोमीन जल को रंगहीन करते हैं)।',
+          },
+          {
+            en: 'All three have the formula C₃H₈ and all three decolourise bromine water.',
+            hi: 'तीनों का सूत्र C₃H₈ है और तीनों ब्रोमीन जल को रंगहीन करते हैं।',
+          },
+          {
+            en: 'Only Propane C₃H₈ decolourises bromine water.',
+            hi: 'केवल प्रोपेन C₃H₈ ब्रोमीन जल को रंगहीन करता है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'At n = 3: Alkane CₙH₂ₙ₊₂ = C₃H₈ (only single bonds); Alkene CₙH₂ₙ = C₃H₆ (one C=C double bond); Alkyne CₙH₂ₙ₋₂ = C₃H₄ (one C≡C triple bond). Unsaturated hydrocarbons add bromine across their multiple bond, decolourising reddish-brown Br₂ water.',
+          hi: 'n = 3 पर: ऐल्केन C₃H₈ (संतृप्त एकल आबंध); ऐल्कीन C₃H₆ (द्वि-आबंध); ऐल्काइन C₃H₄ (त्रि-आबंध)। असंतृप्त हाइड्रोकार्बन संकलन अभिक्रिया द्वारा ब्रोमीन जल का रंग उड़ा देते हैं।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Carbon’s unique ability to form strong covalent bonds with other carbon atoms (catenation) and its tetravalency (valency = 4) allow it to build long chains. The functional group (e.g., −OH, −CHO, −COOH, C=C) dictates the chemical properties, while chain length n dictates physical properties like boiling point.',
+        hi: 'कार्बन में श्रृंखलन (Catenation) तथा चतुःसंयोजकता (संयोजकता = 4) का अद्वितीय गुण होता है। किसी यौगिक के रासायनिक गुण उसके प्रकार्यात्मक समूह (जैसे −OH, −COOH) द्वारा तय होते हैं, जबकि भौतिक गुण (जैसे क्वथनांक) श्रृंखला के द्रव्यमान पर निर्भर करते हैं।',
+      },
+      scalingRule: {
+        en: '1. Successive Homologues: ΔFormula = +CH₂, ΔMass = +14 u.  2. Hydrogen count at carbon n: Alkane = 2n + 2; Alkene = 2n; Alkyne = 2n − 2.  3. Single covalent bonds in an Alkane CₙH₂ₙ₊₂ = 3n + 1.',
+        hi: '1. क्रमागत समजात अंतर: +CH₂ तथा +14 u।  2. n कार्बन पर हाइड्रोजन संख्या: ऐल्केन = 2n + 2; ऐल्कीन = 2n; ऐल्काइन = 2n − 2।  3. ऐल्केन CₙH₂ₙ₊₂ में कुल सहसंयोजी आबंध = 3n + 1।',
+      },
+      siUnitRule: {
+        en: 'Unified atomic mass unit (u): C = 12 u, H = 1 u, O = 16 u. Molar mass in g/mol has the exact same numerical value as molecular mass in u.',
+        hi: 'परमाणु द्रव्यमान मात्रक (u): C = 12 u, H = 1 u, O = 16 u।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 4 Q2–Q3 · Covalent Bond Counting in Ethane (C₂H₆) & Propane (C₃H₈)',
+        hi: 'NCERT कक्षा 10 अध्याय 4 · एथेन (C₂H₆) एवं प्रोपेन (C₃H₈) में सहसंयोजी आबंधों की गणना',
+      },
+      problem: {
+        en: 'Calculate the total number of covalent single bonds in a molecule of (a) Ethane (C₂H₆) and (b) Propane (C₃H₈), and verify the formula Total Bonds = (n − 1) C–C bonds + (2n + 2) C–H bonds = 3n + 1.',
+        hi: '(a) एथेन (C₂H₆) तथा (b) प्रोपेन (C₃H₈) के एक अणु में कुल कितने सहसंयोजी एकल आबंध होते हैं? सूत्र कुल आबंध = (n − 1) C–C आबंध + (2n + 2) C–H आबंध = 3n + 1 से सत्यापित कीजिए।',
+      },
+      given: [
+        { en: 'Ethane: C₂H₆ (n = 2 carbons, 6 hydrogens)', hi: 'एथेन: C₂H₆ (n = 2 कार्बन, 6 हाइड्रोजन)' },
+        { en: 'Propane: C₃H₈ (n = 3 carbons, 8 hydrogens)', hi: 'प्रोपेन: C₃H₈ (n = 3 कार्बन, 8 हाइड्रोजन)' },
+      ],
+      formula: 'Total Covalent Bonds in Alkane CₙH₂ₙ₊₂ = (n − 1) + (2n + 2) = 3n + 1',
+      substitution: 'Ethane (n=2): 1 (C–C) + 6 (C–H) = 7 covalent bonds  |  Propane (n=3): 2 (C–C) + 8 (C–H) = 10 covalent bonds',
+      answer: {
+        en: 'Ethane (C₂H₆) has 7 covalent bonds; Propane (C₃H₈) has 10 covalent bonds.',
+        hi: 'एथेन (C₂H₆) में 7 सहसंयोजी आबंध तथा प्रोपेन (C₃H₈) में 10 सहसंयोजी आबंध हैं।',
+      },
+      unitTrapNote: {
+        en: 'Never forget to count the C–C backbone bonds along with the C–H peripheral bonds! In Propane (C₃H₈), 8 C–H bonds + 2 C–C bonds = 10 bonds (not 8!).',
+        hi: 'केवल C–H आबंध गिनकर उत्तर न दें—कार्बन परमाणुओं के बीच के C–C आबंधों को जोड़ना कभी न भूलें (प्रोपेन में 8 C–H + 2 C–C = 10 आबंध)!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Writing “Methene (CH₂)” as the First Member of the Alkene Series (Forgetting That C=C Requires n ≥ 2)',
+        hi: 'ऐल्कीन श्रेणी का प्रथम सदस्य “मेथीन (CH₂)” लिख देना (यह भूलकर कि C=C के लिए n ≥ 2 अनिवार्य है)',
+      },
+      commonMistake: {
+        en: 'When asked for the first member of the alkene series (CₙH₂ₙ), plugging in n = 1 and writing “CH₂ (Methene)”.',
+        hi: 'परीक्षा में ऐल्कीन श्रेणी (CₙH₂ₙ) का प्रथम सदस्य पूछे जाने पर n = 1 रखकर “CH₂ (मेथीन)” लिख देना।',
+      },
+      correctPhysics: {
+        en: 'An alkene is defined by a carbon–carbon double bond (C=C), which physically requires AT LEAST TWO carbon atoms (n ≥ 2)! Therefore the 1st member of the alkene series is Ethene (n = 2, C₂H₄), the 2nd member is Propene (n = 3, C₃H₆), and the 3rd member is Butene (n = 4, C₄H₈). Likewise, the 1st alkyne is Ethyne (n = 2, C₂H₂)!',
+        hi: 'ऐल्कीन में कार्बन–कार्बन के बीच द्वि-आबंध (C=C) होना अनिवार्य है, जिसके लिए कम से कम 2 कार्बन परमाणु (n ≥ 2) चाहिए! अतः ऐल्कीन श्रेणी का प्रथम सदस्य एथीन (n = 2, C₂H₄) और दूसरा सदस्य प्रोपीन (n = 3, C₃H₆) होता है!',
+      },
+      checkRule: {
+        en: 'Alkanes & Alcohols start at n = 1 (Methane, Methanol). Alkenes & Alkynes ALWAYS start at n = 2 (Ethene, Ethyne)!',
+        hi: 'ऐल्केन व ऐल्कोहॉल n = 1 से शुरू होते हैं, परंतु ऐल्कीन व ऐल्काइन सदैव n = 2 (एथीन C₂H₄, एथाइन C₂H₂) से शुरू होते हैं!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Organic Chemistry: Distinguishing Saturated Butter vs Unsaturated Vegetable Oil & Hydrogenation',
+        hi: 'उच्च स्तरीय कार्बनिक रसायन: संतृप्त बनाम असंतृप्त हाइड्रोकार्बन की पहचान एवं हाइड्रोजनीकरण',
+      },
+      prompt: {
+        en: 'Give a chemical test to distinguish between saturated hydrocarbons (like propane/butter) and unsaturated hydrocarbons (like ethene/vegetable oil). Also write the chemical reaction and catalyst used in the industrial hydrogenation of vegetable oils.',
+        hi: 'संतृप्त हाइड्रोकार्बन (जैसे मक्खन/प्रोपेन) तथा असंतृप्त हाइड्रोकार्बन (जैसे वनस्पति तेल/एथीन) में अंतर करने के लिए एक रासायनिक परीक्षण लिखिए। वनस्पति तेलों के औद्योगिक हाइड्रोजनीकरण की अभिक्रिया तथा प्रयुक्त उत्प्रेरक भी लिखिए।',
+      },
+      claimOptions: [
+        {
+          en: 'Unsaturated hydrocarbons decolourise reddish-brown bromine water via an addition reaction across C=C (and burn with a yellow sooty flame), whereas saturated hydrocarbons do not decolourise Br₂ water (and burn with a clean blue flame). Vegetable oils (unsaturated) are hydrogenated using H₂ in the presence of a Nickel (Ni) or Palladium (Pd) catalyst to form saturated fats.',
+          hi: 'असंतृप्त हाइड्रोकार्बन संकलन अभिक्रिया द्वारा ब्रोमीन जल का रंग उड़ा देते हैं (तथा कज्जली पीली ज्वाला से जलते हैं), जबकि संतृप्त हाइड्रोकार्बन ब्रोमीन जल को रंगहीन नहीं करते (स्वच्छ नीली ज्वाला देते हैं)। निकेल (Ni) या पैलेडियम (Pd) उत्प्रेरक की उपस्थिति में H₂ जोड़कर वनस्पति तेलों का हाइड्रोजनीकरण किया जाता है।',
+        },
+        {
+          en: 'Saturated hydrocarbons decolourise bromine water and use copper catalyst for hydrogenation.',
+          hi: 'संतृप्त हाइड्रोकार्बन ब्रोमीन जल को रंगहीन करते हैं और हाइड्रोजनीकरण में तांबा उत्प्रेरक प्रयुक्त होता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Unsaturated carbon chains contain reactive pi-bonds (C=C) that undergo addition reactions with Br₂ (decolourising bromine water) and H₂ in the presence of Ni/Pd catalyst (converting liquid unsaturated vegetable oil into solid saturated vanaspati ghee).',
+        hi: 'असंतृप्त कार्बन श्रृंखलाओं में द्वि-आबंध (C=C) होता है जो ब्रोमीन (Br₂) के साथ संकलन अभिक्रिया कर उसका रंग उड़ा देता है तथा निकेल (Ni) उत्प्रेरक की उपस्थिति में हाइड्रोजन (H₂) जोड़कर संतृप्त वसा बनाता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Describes the Bromine Water Test (or Alkaline KMnO₄ test): unsaturated hydrocarbons decolourise bromine water via addition reaction, while saturated hydrocarbons do not.',
+          hi: 'ब्रोमीन जल परीक्षण लिखता है: असंतृप्त हाइड्रोकार्बन ब्रोमीन जल को रंगहीन कर देते हैं जबकि संतृप्त नहीं करते।',
+        },
+        {
+          en: 'Contrasts combustion flame: saturated hydrocarbons burn with a clean blue flame, whereas unsaturated hydrocarbons give a yellow flame with black soot.',
+          hi: 'दहन ज्वाला की तुलना करता है: संतृप्त स्वच्छ नीली ज्वाला देते हैं जबकि असंतृप्त कज्जली (धुएँदार) पीली ज्वाला देते हैं।',
+        },
+        {
+          en: 'Explains hydrogenation of unsaturated vegetable oils with H₂ gas in the presence of Nickel (Ni) or Palladium (Pd) catalyst.',
+          hi: 'निकेल (Ni) या पैलेडियम (Pd) उत्प्रेरक की उपस्थिति में H₂ द्वारा वनस्पति तेलों के हाइड्रोजनीकरण (संकलन अभिक्रिया) को स्पष्ट करता है।',
+        },
+      ],
+    },
+  },
 }

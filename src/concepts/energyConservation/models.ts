@@ -200,3 +200,65 @@ export function calculateArchimedesBuoyancy(
     floats,
   }
 }
+
+export interface SteamIronMassBalanceState {
+  coeffFe: number
+  coeffH2O: number
+  coeffFe3O4: number
+  coeffH2: number
+  lhsFe: number
+  rhsFe: number
+  lhsH: number
+  rhsH: number
+  lhsO: number
+  rhsO: number
+  lhsTotalMassG: number
+  rhsTotalMassG: number
+  isBalanced: boolean
+}
+
+/**
+ * Class 10 Chemistry Ch 1 (NCERT Sec 1.1.2):
+ * Balancing c1 Fe + c2 H2O -> c3 Fe3O4 + c4 H2
+ * Atomic masses: Fe = 56 u, H = 1 u, O = 16 u
+ * Molar masses: Fe = 56 g/mol, H2O = 18 g/mol, Fe3O4 = 232 g/mol, H2 = 2 g/mol.
+ * Balanced stoichiometry: 3 Fe + 4 H2O -> 1 Fe3O4 + 4 H2 (240 g LHS = 240 g RHS).
+ */
+export function calculateSteamIronMassBalance(
+  coeffFe: number,
+  coeffH2O: number,
+  coeffFe3O4: number,
+  coeffH2: number
+): SteamIronMassBalanceState {
+  const cFe = Math.max(1, Math.min(8, Math.round(coeffFe)))
+  const cH2O = Math.max(1, Math.min(8, Math.round(coeffH2O)))
+  const cFe3O4 = Math.max(1, Math.min(4, Math.round(coeffFe3O4)))
+  const cH2 = Math.max(1, Math.min(8, Math.round(coeffH2)))
+
+  const lhsFe = cFe
+  const rhsFe = cFe3O4 * 3
+  const lhsH = cH2O * 2
+  const rhsH = cH2 * 2
+  const lhsO = cH2O
+  const rhsO = cFe3O4 * 4
+
+  const lhsTotalMassG = cFe * 56 + cH2O * 18
+  const rhsTotalMassG = cFe3O4 * 232 + cH2 * 2
+  const isBalanced = lhsFe === rhsFe && lhsH === rhsH && lhsO === rhsO
+
+  return {
+    coeffFe: cFe,
+    coeffH2O: cH2O,
+    coeffFe3O4: cFe3O4,
+    coeffH2: cH2,
+    lhsFe,
+    rhsFe,
+    lhsH,
+    rhsH,
+    lhsO,
+    rhsO,
+    lhsTotalMassG,
+    rhsTotalMassG,
+    isBalanced,
+  }
+}

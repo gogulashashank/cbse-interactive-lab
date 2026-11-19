@@ -290,3 +290,92 @@ export function calculateMotorForceFlemingsRule(
     forceDirectionLabel,
   }
 }
+
+export type ReactivityMetalSymbol = 'Mg' | 'Zn' | 'Fe' | 'Cu' | 'Ag'
+
+export interface MetalDisplacementResult {
+  dippedMetal: ReactivityMetalSymbol
+  solutionCationMetal: ReactivityMetalSymbol
+  dippedRank: number
+  solutionRank: number
+  reactionOccurs: boolean
+  initialSolutionColor: string
+  finalSolutionColor: string
+  depositOnStrip: string
+  equationText: string
+}
+
+const METAL_REACTIVITY_RANK: Record<ReactivityMetalSymbol, number> = {
+  Mg: 5,
+  Zn: 4,
+  Fe: 3,
+  Cu: 2,
+  Ag: 1,
+}
+
+const SALT_SOLUTION_COLOR: Record<ReactivityMetalSymbol, string> = {
+  Mg: 'Colourless (MgSO₄)',
+  Zn: 'Colourless (ZnSO₄)',
+  Fe: 'Pale Green (FeSO₄)',
+  Cu: 'Deep Blue (CuSO₄)',
+  Ag: 'Colourless (AgNO₃)',
+}
+
+const DEPOSIT_DESCRIPTION: Record<ReactivityMetalSymbol, string> = {
+  Mg: 'Silvery Mg',
+  Zn: 'Greyish Zn',
+  Fe: 'Dark Grey Fe',
+  Cu: 'Reddish-Brown Cu coating',
+  Ag: 'Shiny Silver Ag crystals',
+}
+
+/**
+ * Class 10 Chemistry Ch 3 (NCERT Sec 3.2.5 — Reactivity Series):
+ * Single-displacement reaction A(s) + BSO4(aq) -> ASO4(aq) + B(s)
+ * occurs IF AND ONLY IF Reactivity(A) > Reactivity(B).
+ */
+export function calculateMetalDisplacement(
+  dippedMetal: ReactivityMetalSymbol,
+  solutionCationMetal: ReactivityMetalSymbol
+): MetalDisplacementResult {
+  const dippedRank = METAL_REACTIVITY_RANK[dippedMetal]
+  const solutionRank = METAL_REACTIVITY_RANK[solutionCationMetal]
+  const reactionOccurs = dippedRank > solutionRank
+
+  const initialSolutionColor = SALT_SOLUTION_COLOR[solutionCationMetal]
+  const finalSolutionColor = reactionOccurs
+    ? SALT_SOLUTION_COLOR[dippedMetal]
+    : initialSolutionColor
+
+  const depositOnStrip = reactionOccurs
+    ? DEPOSIT_DESCRIPTION[solutionCationMetal]
+    : 'None (Strip unchanged)'
+
+  const saltFormula = (m: ReactivityMetalSymbol) => (m === 'Ag' ? '2AgNO₃' : `${m}SO₄`)
+  const productSalt = (m: ReactivityMetalSymbol) =>
+    solutionCationMetal === 'Ag'
+      ? m === 'Ag'
+        ? '2AgNO₃'
+        : `${m}(NO₃)₂`
+      : `${m}SO₄`
+  const displacedAtom = solutionCationMetal === 'Ag' ? '2Ag↓' : `${solutionCationMetal}↓`
+
+  const equationText =
+    dippedMetal === solutionCationMetal
+      ? `${dippedMetal}(s) + ${saltFormula(solutionCationMetal)}(aq) → No Net Change (Same Metal)`
+      : reactionOccurs
+        ? `${dippedMetal}(s) + ${saltFormula(solutionCationMetal)}(aq) → ${productSalt(dippedMetal)}(aq) + ${displacedAtom}`
+        : `${dippedMetal}(s) + ${saltFormula(solutionCationMetal)}(aq) → No Reaction (${dippedMetal} is less reactive than ${solutionCationMetal})`
+
+  return {
+    dippedMetal,
+    solutionCationMetal,
+    dippedRank,
+    solutionRank,
+    reactionOccurs,
+    initialSolutionColor,
+    finalSolutionColor,
+    depositOnStrip,
+    equationText,
+  }
+}

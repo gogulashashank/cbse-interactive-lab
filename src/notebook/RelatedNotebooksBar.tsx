@@ -49,7 +49,7 @@ export function RelatedNotebooksBar({ routeId, onOpenConcept }: RelatedNotebooks
           style={{ background: '#efe4ce' }}
           onClick={() => onOpenConcept('/learn')}
         >
-          ← All 28 Concept Notebooks
+          ← All 32 Concept Notebooks
         </button>
       </div>
     </aside>

@@ -377,4 +377,92 @@ export const CONTROLLED_EXPERIMENTS_CONTENT: Record<string, ConceptCardContent> 
       },
     ],
   },
+
+  'metal-reactivity-displacement': {
+    hook: {
+      en: 'Dip an iron nail into blue copper sulphate solution and it turns pale green with a reddish copper coat—yet dip a copper strip into pale green iron sulphate and nothing happens at all! Why is this a one-way street?',
+      hi: 'नीले कॉपर सल्फेट विलयन में लोहे की कील डुबोने पर विलयन हल्का हरा हो जाता है और कील पर भूरा तांबा जम जाता है—किंतु आयरन सल्फेट में तांबे की पट्टी डुबोने पर कुछ भी नहीं होता! यह अभिक्रिया एकतरफा क्यों है?',
+    },
+    predictQuestion: {
+      en: 'Using the NCERT Reactivity Series (Mg > Zn > Fe > Cu > Ag), predict which of the following metal-in-solution combinations will undergo a single-displacement reaction:',
+      hi: 'NCERT सक्रियता श्रेणी (Mg > Zn > Fe > Cu > Ag) के आधार पर बताइए कि निम्नलिखित में से किस युग्म में विस्थापन अभिक्रिया संपन्न होगी:',
+    },
+    predictOptions: [
+      {
+        en: 'Zinc strip dipped in Blue CuSO₄(aq) → colourless ZnSO₄(aq) + reddish-brown Cu(s) deposit (because Zn is higher than Cu).',
+        hi: 'नीले CuSO₄(aq) में जिंक (Zn) की पट्टी → रंगहीन ZnSO₄(aq) + लाल-भूरा Cu निक्षेप (क्योंकि Zn, Cu से अधिक अभिक्रियाशील है)।',
+      },
+      {
+        en: 'Copper strip dipped in ZnSO₄(aq) → CuSO₄ + Zn.',
+        hi: 'ZnSO₄(aq) में तांबे (Cu) की पट्टी → CuSO₄ + Zn।',
+      },
+      {
+        en: 'Silver strip dipped in FeSO₄(aq) → Ag₂SO₄ + Fe.',
+        hi: 'FeSO₄(aq) में चाँदी (Ag) की पट्टी → Ag₂SO₄ + Fe।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'A single-displacement reaction A(s) + BC(aq) → AC(aq) + B(s) occurs IF AND ONLY IF metal A stands HIGHER in the reactivity series than metal B. Since Zn > Fe > Cu > Ag, Zinc easily displaces Cu²⁺ from CuSO₄, whereas Cu cannot displace Zn²⁺ and Ag cannot displace Fe²⁺!',
+      hi: 'विस्थापन अभिक्रिया A + BC → AC + B तभी होती है जब धातु A सक्रियता श्रेणी में धातु B से ऊपर स्थित हो। चूँकि Zn > Fe > Cu > Ag है, इसलिए जिंक CuSO₄ से कॉपर को विस्थापित कर देता है!',
+    },
+    insightFormula: 'A(s) + BSO₄(aq) → ASO₄(aq) + B(s)↓  ⇔  Reactivity(A) > Reactivity(B)',
+    insightTerm: {
+      en: 'The Reactivity Series & Single Displacement (NCERT Ch 3.2.5)',
+      hi: 'सक्रियता श्रेणी एवं एकल विस्थापन अभिक्रिया (NCERT 3.2.5)',
+    },
+    insightSummary: {
+      en: 'Reactivity order: K > Na > Ca > Mg > Al > Zn > Fe > Pb > [H] > Cu > Hg > Ag > Au. Any metal higher in the list loses electrons more readily and displaces any metal below it from its aqueous salt solution.',
+      hi: 'सक्रियता क्रम: K > Na > Ca > Mg > Al > Zn > Fe > Pb > [H] > Cu > Hg > Ag > Au। श्रेणी में ऊपर स्थित अधिक अभिक्रियाशील धातु अपने से नीचे स्थित कम अभिक्रियाशील धातु को उसके लवण विलयन से विस्थापित कर देती है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 3 · Iron Nail in Copper Sulphate Colour Change',
+          hi: 'NCERT कक्षा 10 अध्याय 3 · कॉपर सल्फेट में लोहे की कील डालने पर रंग परिवर्तन',
+        },
+        prompt: {
+          en: 'Why does the deep blue colour of aqueous copper sulphate (CuSO₄) solution fade to pale green when an iron nail is immersed in it for 20 minutes?',
+          hi: 'जब लोहे की कील को कॉपर सल्फेट (CuSO₄) के नीले जलीय विलयन में 20 मिनट तक डुबोया जाता है, तो विलयन का नीला रंग मलीन (हल्का हरा) क्यों पड़ जाता है?',
+        },
+        options: [
+          {
+            en: 'Iron is more reactive than copper (Fe > Cu), so it displaces Cu²⁺ ions to form pale-green aqueous iron(II) sulphate (FeSO₄) and deposits reddish-brown Cu metal.',
+            hi: 'लोहा तांबे से अधिक अभिक्रियाशील है (Fe > Cu), इसलिए वह CuSO₄ से कॉपर को विस्थापित कर हल्के हरे रंग का आयरन सल्फेट (FeSO₄) बनाता है।',
+          },
+          {
+            en: 'Copper is more reactive than iron and dissolves the nail.',
+            hi: 'तांबा लोहे से अधिक अभिक्रियाशील है और कील को घोल लेता है।',
+          },
+          {
+            en: 'Iron absorbs blue light without any chemical reaction.',
+            hi: 'बिना किसी रासायनिक अभिक्रिया के लोहा नीला रंग सोख लेता है।',
+          },
+          {
+            en: 'Water evaporates leaving green copper oxide.',
+            hi: 'पानी वाष्पित होकर हरा कॉपर ऑक्साइड छोड़ता है।',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Compare the positions of Fe and Cu in the Reactivity Series and recall the colour of aqueous FeSO₄.',
+          hi: 'सक्रियता श्रेणी में Fe तथा Cu की स्थिति की तुलना करें और FeSO₄(aq) का रंग याद करें।',
+        },
+        steps: [
+          {
+            label: { en: 'Reactivity Comparison', hi: 'सक्रियता की तुलना' },
+            content: { en: 'Iron lies above Copper in the reactivity series (Fe > Cu).', hi: 'सक्रियता श्रेणी में आयरन (Fe), कॉपर (Cu) से ऊपर स्थित है।' },
+          },
+          {
+            label: { en: 'Displacement Equation', hi: 'विस्थापन समीकरण' },
+            content: { en: 'Fe(s) + CuSO₄(aq, Blue) → FeSO₄(aq, Pale Green) + Cu(s, Red-Brown)↓', hi: 'Fe(s) + CuSO₄(aq, नीला) → FeSO₄(aq, हल्का हरा) + Cu(s, लाल-भूरा)↓' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Fe displaces Cu from blue CuSO₄ to form pale-green FeSO₄(aq).',
+          hi: 'Fe नीले CuSO₄ से Cu को विस्थापित कर हल्का हरा FeSO₄(aq) बनाता है।',
+        },
+      },
+    ],
+  },
 }

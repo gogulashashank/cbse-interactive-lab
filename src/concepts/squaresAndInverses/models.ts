@@ -206,3 +206,47 @@ export function calculateMagneticFieldSolenoid(
     solenoidRightPole: isUp ? 'South' : 'North',
   }
 }
+
+export interface PhIonScalingResult {
+  phValue: number
+  referencePh: number
+  hPlusExponent: number
+  ohMinusExponent: number
+  tenFoldHPlusRatioVsReference: number
+  nature: 'strongly-acidic' | 'weakly-acidic' | 'neutral' | 'weakly-basic' | 'strongly-basic'
+  causesToothEnamelDecay: boolean
+  isAcidRain: boolean
+}
+
+/**
+ * Class 10 Chemistry Ch 2 (NCERT Sec 2.3):
+ * pH = -log10([H+]) => [H+] = 10^(-pH) mol/L, [OH-] = 10^(-(14 - pH)) mol/L.
+ * A decrease of ΔpH units multiplies [H+] by 10^(ΔpH).
+ * Tooth enamel (calcium hydroxyapatite) corrodes when mouth pH < 5.5; acid rain is pH < 5.6.
+ */
+export function calculatePhIonScaling(phValue: number, referencePh = 7): PhIonScalingResult {
+  const safePh = tidyNumber(Math.max(0, Math.min(14, phValue)), 1)
+  const safeRef = tidyNumber(Math.max(0, Math.min(14, referencePh)), 1)
+
+  const hPlusExponent = tidyNumber(-safePh, 1)
+  const ohMinusExponent = tidyNumber(-(14 - safePh), 1)
+  const tenFoldHPlusRatioVsReference = Number(Math.pow(10, safeRef - safePh).toPrecision(4))
+
+  let nature: PhIonScalingResult['nature'] = 'neutral'
+  if (safePh < 3.5) nature = 'strongly-acidic'
+  else if (safePh < 6.95) nature = 'weakly-acidic'
+  else if (safePh <= 7.05) nature = 'neutral'
+  else if (safePh <= 10.5) nature = 'weakly-basic'
+  else nature = 'strongly-basic'
+
+  return {
+    phValue: safePh,
+    referencePh: safeRef,
+    hPlusExponent,
+    ohMinusExponent,
+    tenFoldHPlusRatioVsReference,
+    nature,
+    causesToothEnamelDecay: safePh < 5.5,
+    isAcidRain: safePh < 5.6,
+  }
+}

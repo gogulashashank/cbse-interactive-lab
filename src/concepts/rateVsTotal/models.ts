@@ -147,3 +147,119 @@ export function calculateVelocityTimeGraph(
     averageVelocityMps,
   }
 }
+
+export type HomologousFamilyId = 'alkane' | 'alkene' | 'alkyne' | 'alcohol'
+
+export interface HomologousMemberResult {
+  family: HomologousFamilyId
+  generalFormula: string
+  carbonCountN: number
+  hydrogenCount: number
+  oxygenCount: number
+  molecularFormula: string
+  iupacName: string
+  molecularMassU: number
+  nextHomologueFormula: string
+  nextHomologueMassU: number
+  massStepToNextU: 14
+  saturationKind: 'saturated' | 'unsaturated-double' | 'unsaturated-triple'
+  decolourisesBromineWater: boolean
+}
+
+const IUPAC_PREFIXES: Record<number, string> = {
+  1: 'Meth',
+  2: 'Eth',
+  3: 'Prop',
+  4: 'But',
+  5: 'Pent',
+  6: 'Hex',
+}
+
+function toSubscript(n: number): string {
+  if (n <= 1) return ''
+  const map: Record<string, string> = {
+    '0': '₀',
+    '1': '₁',
+    '2': '₂',
+    '3': '₃',
+    '4': '₄',
+    '5': '₅',
+    '6': '₆',
+    '7': '₇',
+    '8': '₈',
+    '9': '₉',
+  }
+  return String(n)
+    .split('')
+    .map((d) => map[d] ?? d)
+    .join('')
+}
+
+/**
+ * Class 10 Chemistry Ch 4 (NCERT Sec 4.2.4 — Homologous Series):
+ * - Alkanes: CnH(2n+2) (saturated, single bonds)
+ * - Alkenes: CnH(2n) for n >= 2 (unsaturated, 1 C=C double bond)
+ * - Alkynes: CnH(2n-2) for n >= 2 (unsaturated, 1 C≡C triple bond)
+ * - Alcohols: CnH(2n+1)OH (saturated chain + -OH functional group)
+ * Every successive member in a homologous series differs by +CH₂ (+14 u).
+ */
+export function calculateHomologousMember(
+  family: HomologousFamilyId,
+  carbonCountN: number
+): HomologousMemberResult {
+  const minN = family === 'alkene' || family === 'alkyne' ? 2 : 1
+  const n = Math.max(minN, Math.min(6, Math.round(carbonCountN)))
+  const prefix = IUPAC_PREFIXES[n] ?? `C${n}`
+
+  let hydrogenCount = 2 * n + 2
+  let oxygenCount = 0
+  let generalFormula = 'CₙH₂ₙ₊₂'
+  let iupacName = `${prefix}ane`
+  let molecularFormula = `C${toSubscript(n)}H${toSubscript(hydrogenCount)}`
+  let nextHomologueFormula = `C${toSubscript(n + 1)}H${toSubscript(hydrogenCount + 2)}`
+  let saturationKind: HomologousMemberResult['saturationKind'] = 'saturated'
+
+  if (family === 'alkene') {
+    hydrogenCount = 2 * n
+    generalFormula = 'CₙH₂ₙ'
+    iupacName = `${prefix}ene`
+    molecularFormula = `C${toSubscript(n)}H${toSubscript(hydrogenCount)}`
+    nextHomologueFormula = `C${toSubscript(n + 1)}H${toSubscript(hydrogenCount + 2)}`
+    saturationKind = 'unsaturated-double'
+  } else if (family === 'alkyne') {
+    hydrogenCount = 2 * n - 2
+    generalFormula = 'CₙH₂ₙ₋₂'
+    iupacName = `${prefix}yne`
+    molecularFormula = `C${toSubscript(n)}H${toSubscript(hydrogenCount)}`
+    nextHomologueFormula = `C${toSubscript(n + 1)}H${toSubscript(hydrogenCount + 2)}`
+    saturationKind = 'unsaturated-triple'
+  } else if (family === 'alcohol') {
+    hydrogenCount = 2 * n + 2
+    oxygenCount = 1
+    generalFormula = 'CₙH₂ₙ₊₁OH'
+    iupacName = `${prefix}anol`
+    const alkylH = 2 * n + 1
+    molecularFormula = `C${toSubscript(n)}H${toSubscript(alkylH)}OH`
+    nextHomologueFormula = `C${toSubscript(n + 1)}H${toSubscript(alkylH + 2)}OH`
+    saturationKind = 'saturated'
+  }
+
+  const molecularMassU = n * 12 + hydrogenCount * 1 + oxygenCount * 16
+  const nextHomologueMassU = molecularMassU + 14
+
+  return {
+    family,
+    generalFormula,
+    carbonCountN: n,
+    hydrogenCount,
+    oxygenCount,
+    molecularFormula,
+    iupacName,
+    molecularMassU,
+    nextHomologueFormula,
+    nextHomologueMassU,
+    massStepToNextU: 14,
+    saturationKind,
+    decolourisesBromineWater: saturationKind !== 'saturated',
+  }
+}
