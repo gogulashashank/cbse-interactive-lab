@@ -6,6 +6,7 @@ import {
   type StandaloneRouteId,
 } from './platform/routeRegistry'
 import { RelatedNotebooksBar } from './notebook/RelatedNotebooksBar'
+import { WorkbenchLabRecordSection } from './notebook/WorkbenchLabRecordSheet'
 
 /*
  * Every lesson is lazy-loaded into its own chunk (Phase 0 performance budget).
@@ -200,6 +201,7 @@ function App() {
                 routeId={standalone.id}
                 onOpenConcept={(conceptPath) => navigateTo(conceptPath)}
               />
+              <WorkbenchLabRecordSection routeId={standalone.id} />
               <StandaloneComponent />
             </>
           ) : activeLesson === 'convex-lens' ? (
