@@ -465,4 +465,92 @@ export const CONTROLLED_EXPERIMENTS_CONTENT: Record<string, ConceptCardContent> 
       },
     ],
   },
+
+  'reflex-arc-hormone-feedback': {
+    hook: {
+      en: 'When your fingers accidentally touch a scorching pan, why does your arm jerk back BEFORE your brain even feels the pain—and how does your pancreas automatically keep blood sugar steady after a sweet meal?',
+      hi: 'गर्म तवे को छूते ही मस्तिष्क को दर्द का अहसास होने से पहले ही आपका हाथ पीछे क्यों हट जाता है—और मिठाई खाने के बाद अग्नाशय (Pancreas) रक्त शर्करा को स्वतः संतुलित कैसे रखता है?',
+    },
+    predictQuestion: {
+      en: 'Why are reflex arcs wired directly through the Spinal Cord (Receptor → Sensory Neuron → Spinal Relay Neuron → Motor Neuron → Effector Muscle) rather than routing the emergency decision through the thinking fore-brain?',
+      hi: 'आपातकालीन प्रतिवर्ती चाप (Reflex Arc) को सोचने वाले अग्र-मस्तिष्क से गुजारने के बजाय सीधे मेरुरज्जु (Spinal Cord) के माध्यम से क्यों जोड़ा गया है?',
+    },
+    predictOptions: [
+      {
+        en: 'Conscious thinking in the brain’s dense neural network is too slow (+120 ms delay); the spinal reflex arc shortcuts the path to pull the hand back in ~26 ms before tissue burns, while also sending a message to the brain!',
+        hi: 'मस्तिष्क की जटिल विचार प्रक्रिया में अधिक समय (+120 ms) लगता है; मेरुरज्जु प्रतिवर्ती चाप ~26 ms में तुरंत हाथ पीछे खींचकर जलने से बचाता है और साथ ही मस्तिष्क को सूचना भी भेजता है!',
+      },
+      {
+        en: 'The spinal cord has no connection to the brain.',
+        hi: 'मेरुरज्जु का मस्तिष्क से कोई संबंध नहीं होता।',
+      },
+      {
+        en: 'Hormones from the pancreas travel faster than electrical nerve impulses.',
+        hi: 'अग्नाशय के हार्मोन तंत्रिका के विद्युत आवेगों से अधिक तेज़ चलते हैं।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Thinking requires complex interaction of many neuron impulses in the fore-brain. For urgent survival threats (like touching a flame), the input sensory nerve and output motor nerve meet at their first junction—the Spinal Cord—triggering immediate withdrawal while informing the brain in parallel.',
+      hi: 'सोचने की प्रक्रिया में मस्तिष्क के अनेक न्यूरॉनों की जटिल क्रिया शामिल होती है। जलने जैसी आपात स्थिति में संवेदी तंत्रिका और प्रेरक तंत्रिका सीधे मेरुरज्जु (Spinal Cord) में जुड़कर तुरंत प्रतिक्रिया कराती हैं।',
+    },
+    insightFormula: 'Reflex Arc: Receptor → Sensory → Spinal Relay → Motor → Effector  |  Feedback: ΔGlucose ↔ Insulin/Glucagon',
+    insightTerm: {
+      en: 'Spinal Reflex Arc & Hormone Negative-Feedback Loop (NCERT Ch 6.1 & 6.3)',
+      hi: 'प्रतिवर्ती चाप एवं हार्मोन पुनर्भरण क्रियाविधि (NCERT 6.1 व 6.3)',
+    },
+    insightSummary: {
+      en: 'Electrical nerve impulses deliver ultra-fast, point-to-point emergency responses (Spinal Reflex Arc), while chemical hormones secreted into blood regulate body-wide homeostasis via Negative Feedback (e.g., high blood sugar triggers pancreatic Insulin; falling sugar switches off Insulin).',
+      hi: 'विद्युत तंत्रिका आवेग अति-तीव्र आपातकालीन प्रतिक्रिया (प्रतिवर्ती चाप) देते हैं, जबकि रक्त में स्रावित रासायनिक हार्मोन पुनर्भरण क्रियाविधि (Feedback mechanism) द्वारा पूरे शरीर का संतुलन बनाए रखते हैं (जैसे रक्त शर्करा बढ़ने पर इंसुलिन का स्राव)।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 6 · Synapse & Pancreatic Insulin Regulation',
+          hi: 'NCERT कक्षा 10 अध्याय 6 · सिनेप्स एवं मधुमेह में इंसुलिन की भूमिका',
+        },
+        prompt: {
+          en: 'Why are some patients of diabetes treated by giving injections of insulin, and what regulates the timing and amount of insulin secreted in a healthy person?',
+          hi: 'मधुमेह (Diabetes) के कुछ रोगियों की चिकित्सा इंसुलिन का इंजेक्शन देकर क्यों की जाती है, तथा स्वस्थ व्यक्ति में स्रावित इंसुलिन की मात्रा और समय का नियंत्रण किस क्रियाविधि से होता है?',
+        },
+        options: [
+          {
+            en: 'Insulin (from the pancreas) regulates blood sugar levels by promoting glucose uptake; a negative-feedback mechanism senses rising blood glucose to increase insulin secretion and inhibits it when sugar falls.',
+            hi: 'अग्नाशय से स्रावित इंसुलिन रक्त शर्करा स्तर का नियमन करता है; पुनर्भरण क्रियाविधि (Feedback mechanism) रक्त में शर्करा बढ़ने पर इंसुलिन स्राव बढ़ाती है और शर्करा सामान्य होने पर स्राव घटा देती है।',
+          },
+          {
+            en: 'Insulin is secreted by the thyroid gland and increases blood sugar.',
+            hi: 'इंसुलिन अवटु (थायरॉइड) ग्रंथि से निकलता है और रक्त शर्करा बढ़ाता है।',
+          },
+          {
+            en: 'Insulin is an electrical impulse produced by the spinal cord.',
+            hi: 'इंसुलिन मेरुरज्जु द्वारा उत्पन्न एक विद्युत आवेग है।',
+          },
+          {
+            en: 'Insulin is secreted at a constant high rate even during fasting.',
+            hi: 'उपवास के दौरान भी इंसुलिन निरंतर उच्च दर से स्रावित होता रहता है।',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Recall NCERT Section 6.3: the pancreas detects blood sugar rises and responds via a feedback mechanism.',
+          hi: 'NCERT अनुभाग 6.3 याद करें: अग्नाशय की कोशिकाएं रक्त शर्करा स्तर को पहचानकर पुनर्भरण क्रियाविधि द्वारा इंसुलिन स्रावित करती हैं।',
+        },
+        steps: [
+          {
+            label: { en: 'Role of Insulin', hi: 'इंसुलिन का कार्य' },
+            content: { en: 'Insulin hormone secreted by the pancreas lowers high blood glucose by helping cells absorb and store glucose.', hi: 'अग्नाशय द्वारा स्रावित इंसुलिन रक्त में शर्करा के स्तर को नियंत्रित (कम) करता है।' },
+          },
+          {
+            label: { en: 'Feedback Mechanism', hi: 'पुनर्भरण क्रियाविधि (Feedback)' },
+            content: { en: 'When blood sugar rises, pancreatic cells detect it and secrete more insulin; as blood sugar falls back to normal, insulin secretion is automatically reduced.', hi: 'रक्त में शर्करा बढ़ने पर अधिक इंसुलिन स्रावित होता है और स्तर सामान्य होने पर स्राव घट जाता है।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Pancreatic insulin lowers blood glucose and is regulated by a negative-feedback mechanism.',
+          hi: 'अग्नाशय का इंसुलिन रक्त शर्करा नियंत्रित करता है और पुनर्भरण क्रियाविधि द्वारा नियमित होता है।',
+        },
+      },
+    ],
+  },
 }

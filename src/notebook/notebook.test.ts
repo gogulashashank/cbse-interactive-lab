@@ -26,7 +26,7 @@ describe('Notebook Cross-Navigation & Route Mapping', () => {
     expect(resolveStandaloneRoute('/book')).toBeNull()
   })
 
-  it('provides a complete 6-stage Story-Driven Notebook curriculum (Predict → Experiment → Discover → Calculate → Contrast → Apply) for all 32 pilot lessons', () => {
+  it('provides a complete 6-stage Story-Driven Notebook curriculum (Predict → Experiment → Discover → Calculate → Contrast → Apply) for all 36 pilot lessons', () => {
     expect(STORY_NOTEBOOK_STAGES).toHaveLength(6)
     expect(STORY_NOTEBOOK_STAGES.map((s) => s.id)).toEqual([
       'predict',
@@ -38,7 +38,7 @@ describe('Notebook Cross-Navigation & Route Mapping', () => {
     ])
 
     const pilots = getPilotConcepts()
-    expect(pilots).toHaveLength(32)
+    expect(pilots).toHaveLength(36)
 
     for (const pilot of pilots) {
       if (pilot.id === 'lens-power-dioptre') continue

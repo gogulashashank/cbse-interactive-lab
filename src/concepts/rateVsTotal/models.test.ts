@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   calculateBillComparison,
   calculateBucket,
+  calculateCellularRespirationATP,
   calculateCharge,
   calculateEnergy,
   calculateHomologousMember,
@@ -72,5 +73,19 @@ describe('Rate vs Total Models', () => {
     expect(ethene.molecularFormula).toBe('C₂H₄')
     expect(ethene.molecularMassU).toBe(28)
     expect(ethene.decolourisesBromineWater).toBe(true)
+  })
+
+  it('compares aerobic (38 ATP) vs yeast anaerobic and muscle lactic-acid (2 ATP) pathways', () => {
+    const aerobic = calculateCellularRespirationATP('aerobic-mitochondria', 2)
+    expect(aerobic.atpRatePerGlucose).toBe(38)
+    expect(aerobic.totalAtpMoles).toBe(76)
+    expect(aerobic.co2MolesReleased).toBe(12)
+    expect(aerobic.causesMuscleCramps).toBe(false)
+
+    const muscle = calculateCellularRespirationATP('muscle-oxygen-debt', 2)
+    expect(muscle.atpRatePerGlucose).toBe(2)
+    expect(muscle.totalAtpMoles).toBe(4)
+    expect(muscle.co2MolesReleased).toBe(0)
+    expect(muscle.causesMuscleCramps).toBe(true)
   })
 })

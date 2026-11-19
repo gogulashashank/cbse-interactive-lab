@@ -263,3 +263,85 @@ export function calculateHomologousMember(
     decolourisesBromineWater: saturationKind !== 'saturated',
   }
 }
+
+export type RespirationPathwayId =
+  | 'aerobic-mitochondria'
+  | 'yeast-anaerobic'
+  | 'muscle-oxygen-debt'
+
+export interface CellularRespirationATPResult {
+  pathway: RespirationPathwayId
+  glucoseMoles: number
+  pyruvateIntermediateMoles: number
+  atpRatePerGlucose: number
+  totalAtpMoles: number
+  aerobicBenchmarkAtpMoles: number
+  yieldRatioVsAnaerobic: number
+  cellularSite: string
+  endProductsText: string
+  co2MolesReleased: number
+  causesMuscleCramps: boolean
+}
+
+/**
+ * Class 10 Biology Ch 5 (NCERT Sec 5.3, Fig 5.8 — Breakdown of Glucose by Various Pathways):
+ * Step 1 (in Cytoplasm): 1 Glucose (6-carbon) -> 2 Pyruvate (3-carbon).
+ * Step 2:
+ * - Aerobic (in Mitochondria, presence of O2): -> 6 CO2 + 6 H2O + 38 ATP per glucose.
+ * - Anaerobic fermentation (in Yeast, absence of O2): -> 2 Ethanol (2C) + 2 CO2 + 2 ATP per glucose.
+ * - Muscle oxygen lack (in Human Muscle Cells): -> 2 Lactic Acid (3C) + 2 ATP per glucose (no CO2; causes cramps).
+ */
+export function calculateCellularRespirationATP(
+  pathway: RespirationPathwayId,
+  glucoseMoles: number
+): CellularRespirationATPResult {
+  const safeG = Math.max(1, Math.min(10, Math.round(glucoseMoles)))
+  const pyruvateIntermediateMoles = safeG * 2
+  const aerobicBenchmarkAtpMoles = safeG * 38
+
+  if (pathway === 'aerobic-mitochondria') {
+    return {
+      pathway,
+      glucoseMoles: safeG,
+      pyruvateIntermediateMoles,
+      atpRatePerGlucose: 38,
+      totalAtpMoles: safeG * 38,
+      aerobicBenchmarkAtpMoles,
+      yieldRatioVsAnaerobic: 19,
+      cellularSite: 'Cytoplasm → Mitochondria (+O₂)',
+      endProductsText: `${safeG * 6} CO₂ + ${safeG * 6} H₂O`,
+      co2MolesReleased: safeG * 6,
+      causesMuscleCramps: false,
+    }
+  }
+
+  if (pathway === 'yeast-anaerobic') {
+    return {
+      pathway,
+      glucoseMoles: safeG,
+      pyruvateIntermediateMoles,
+      atpRatePerGlucose: 2,
+      totalAtpMoles: safeG * 2,
+      aerobicBenchmarkAtpMoles,
+      yieldRatioVsAnaerobic: 1,
+      cellularSite: 'Cytoplasm → Yeast Cell (No O₂)',
+      endProductsText: `${safeG * 2} Ethanol (C₂H₅OH) + ${safeG * 2} CO₂`,
+      co2MolesReleased: safeG * 2,
+      causesMuscleCramps: false,
+    }
+  }
+
+  return {
+    pathway,
+    glucoseMoles: safeG,
+    pyruvateIntermediateMoles,
+    atpRatePerGlucose: 2,
+    totalAtpMoles: safeG * 2,
+    aerobicBenchmarkAtpMoles,
+    yieldRatioVsAnaerobic: 1,
+    cellularSite: 'Cytoplasm → Muscle Cell (Lack of O₂)',
+    endProductsText: `${safeG * 2} Lactic Acid (C₃H₆O₃, 3-Carbon)`,
+    co2MolesReleased: 0,
+    causesMuscleCramps: true,
+  }
+}

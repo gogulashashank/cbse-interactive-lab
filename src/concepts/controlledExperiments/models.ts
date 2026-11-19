@@ -379,3 +379,68 @@ export function calculateMetalDisplacement(
     equationText,
   }
 }
+
+export interface ReflexAndHomeostasisResult {
+  routingMode: 'spinal-reflex-arc' | 'conscious-brain-detour'
+  armPathLengthM: number
+  spinalReflexLatencyMs: number
+  brainDetourLatencyMs: number
+  activeLatencyMs: number
+  timeSavedByReflexMs: number
+  bloodGlucoseMgDl: number
+  glucoseStatus: 'hypoglycemia-low' | 'normal-homeostasis' | 'hyperglycemia-high'
+  activePancreaticHormone: 'Insulin Secreted (β-cells ↑)' | 'Basal Homeostasis (Balanced)' | 'Glucagon Secreted (α-cells ↑)'
+  feedbackMechanismText: string
+}
+
+/**
+ * Class 10 Biology Ch 6 (NCERT Sec 6.1.1 Reflex Actions & Sec 6.3 Hormones in Animals):
+ * 1. Spinal Reflex Arc: round-trip distance 2 * L at 100 m/s nerve impulse speed + 5 ms spinal synapse.
+ *    Conscious Brain Detour adds cranial path + cortical thinking delay (+120 ms).
+ * 2. Negative-Feedback Homeostasis: Pancreas regulates blood glucose around 70–110 mg/dL.
+ *    If glucose > 110 mg/dL, Insulin increases to store glucose as glycogen.
+ *    If glucose < 70 mg/dL, Insulin secretion falls and Glucagon releases glucose.
+ */
+export function calculateReflexAndHomeostasis(
+  routingMode: 'spinal-reflex-arc' | 'conscious-brain-detour',
+  armPathLengthM: number,
+  bloodGlucoseMgDl: number
+): ReflexAndHomeostasisResult {
+  const safeL = tidyNumber(Math.max(0.4, Math.min(1.2, armPathLengthM)), 2)
+  const safeG = Math.max(40, Math.min(240, Math.round(bloodGlucoseMgDl)))
+
+  // Conduction at 100 m/s => (2 * L / 100) * 1000 ms + 10 ms spinal relay synapse
+  const spinalReflexLatencyMs = tidyNumber(20 * safeL + 10, 1)
+  const brainDetourLatencyMs = tidyNumber(spinalReflexLatencyMs + 120, 1)
+  const activeLatencyMs =
+    routingMode === 'spinal-reflex-arc' ? spinalReflexLatencyMs : brainDetourLatencyMs
+  const timeSavedByReflexMs = tidyNumber(brainDetourLatencyMs - spinalReflexLatencyMs, 1)
+
+  let glucoseStatus: ReflexAndHomeostasisResult['glucoseStatus'] = 'normal-homeostasis'
+  let activePancreaticHormone: ReflexAndHomeostasisResult['activePancreaticHormone'] =
+    'Basal Homeostasis (Balanced)'
+  let feedbackMechanismText = 'Normal 70–110 mg/dL → Negative feedback inhibits excess insulin.'
+
+  if (safeG > 110) {
+    glucoseStatus = 'hyperglycemia-high'
+    activePancreaticHormone = 'Insulin Secreted (β-cells ↑)'
+    feedbackMechanismText = 'High sugar → Pancreas secretes INSULIN → Cells store glycogen.'
+  } else if (safeG < 70) {
+    glucoseStatus = 'hypoglycemia-low'
+    activePancreaticHormone = 'Glucagon Secreted (α-cells ↑)'
+    feedbackMechanismText = 'Low sugar → Insulin stops & GLUCAGON releases liver glucose.'
+  }
+
+  return {
+    routingMode,
+    armPathLengthM: safeL,
+    spinalReflexLatencyMs,
+    brainDetourLatencyMs,
+    activeLatencyMs,
+    timeSavedByReflexMs,
+    bloodGlucoseMgDl: safeG,
+    glucoseStatus,
+    activePancreaticHormone,
+    feedbackMechanismText,
+  }
+}

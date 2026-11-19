@@ -6,6 +6,7 @@ import {
   calculateParallelPowerBalance,
   calculateMechanicalEnergyAtHeight,
   calculateSteamIronMassBalance,
+  calculateTrophicChainEnergy,
 } from './models'
 
 describe('Thread 4: Energy Conservation Models', () => {
@@ -91,5 +92,16 @@ describe('Thread 4: Energy Conservation Models', () => {
     expect(balanced.rhsO).toBe(4)
     expect(balanced.lhsTotalMassG).toBe(240)
     expect(balanced.rhsTotalMassG).toBe(240)
+  })
+
+  it('calculates 1% solar capture, Lindeman 10% trophic energy decay, and 10x biological magnification', () => {
+    // 1,000,000 J sunlight => T1 (1%) = 10,000 J => T2 = 1,000 J => T3 = 100 J => T4 = 10 J
+    const chain = calculateTrophicChainEnergy(1000000, 0.02)
+    expect(chain.t1ProducerJoules).toBe(10000)
+    expect(chain.t2HerbivoreJoules).toBe(1000)
+    expect(chain.t3CarnivoreJoules).toBe(100)
+    expect(chain.t4TopPredatorJoules).toBe(10)
+    expect(chain.heatLostT1ToT2Joules).toBe(9000)
+    expect(chain.t4TopPredatorPpm).toBe(20)
   })
 })

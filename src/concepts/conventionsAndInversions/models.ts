@@ -419,3 +419,96 @@ export function calculatePrismDispersionScattering(
       : 'dispersed-spectrum',
   }
 }
+
+export type PeaHeightGenotype = 'TT' | 'Tt' | 'tt'
+
+export interface MendelianPunnettResult {
+  parent1Genotype: PeaHeightGenotype
+  parent2Genotype: PeaHeightGenotype
+  parent1Gametes: readonly ['T' | 't', 'T' | 't']
+  parent2Gametes: readonly ['T' | 't', 'T' | 't']
+  gridCells: readonly [PeaHeightGenotype, PeaHeightGenotype, PeaHeightGenotype, PeaHeightGenotype]
+  countTT: number
+  countTt: number
+  counttt: number
+  tallPhenotypePercent: number
+  dwarfPhenotypePercent: number
+  totalOffspringCount: number
+  expectedTallPlants: number
+  expectedDwarfPlants: number
+  genotypeRatioText: string
+  phenotypeRatioText: string
+}
+
+function splitGametes(g: PeaHeightGenotype): readonly ['T' | 't', 'T' | 't'] {
+  if (g === 'TT') return ['T', 'T']
+  if (g === 'Tt') return ['T', 't']
+  return ['t', 't']
+}
+
+function combineGametes(a: 'T' | 't', b: 'T' | 't'): PeaHeightGenotype {
+  if (a === 'T' && b === 'T') return 'TT'
+  if (a === 't' && b === 't') return 'tt'
+  return 'Tt'
+}
+
+/**
+ * Class 10 Biology Ch 8 (NCERT Sec 8.2 — Rules for the Inheritance of Traits: Mendel's Contributions):
+ * Monohybrid pea height cross where 'T' (Tall) is dominant over 't' (Dwarf).
+ * Phenotype 'Tall' is expressed for both 'TT' and 'Tt'; 'Dwarf' requires 'tt'.
+ */
+export function calculateMendelianPunnett(
+  parent1Genotype: PeaHeightGenotype,
+  parent2Genotype: PeaHeightGenotype,
+  totalOffspringCount = 400
+): MendelianPunnettResult {
+  const safeN = Math.max(40, Math.min(2000, Math.round(totalOffspringCount)))
+  const g1 = splitGametes(parent1Genotype)
+  const g2 = splitGametes(parent2Genotype)
+
+  const gridCells: [PeaHeightGenotype, PeaHeightGenotype, PeaHeightGenotype, PeaHeightGenotype] = [
+    combineGametes(g1[0], g2[0]),
+    combineGametes(g1[0], g2[1]),
+    combineGametes(g1[1], g2[0]),
+    combineGametes(g1[1], g2[1]),
+  ]
+
+  const countTT = gridCells.filter((c) => c === 'TT').length
+  const countTt = gridCells.filter((c) => c === 'Tt').length
+  const counttt = gridCells.filter((c) => c === 'tt').length
+
+  const tallCount = countTT + countTt
+  const tallPhenotypePercent = (tallCount / 4) * 100
+  const dwarfPhenotypePercent = (counttt / 4) * 100
+
+  const expectedTallPlants = Math.round((safeN * tallCount) / 4)
+  const expectedDwarfPlants = safeN - expectedTallPlants
+
+  const genotypeRatioText = `${countTT} TT : ${countTt} Tt : ${counttt} tt`
+  const phenotypeRatioText =
+    tallCount === 4
+      ? '4 Tall : 0 Dwarf (100% Tall)'
+      : counttt === 4
+        ? '0 Tall : 4 Dwarf (100% Dwarf)'
+        : tallCount === 3
+          ? '3 Tall : 1 Dwarf (75% : 25%)'
+          : '2 Tall : 2 Dwarf (1 : 1 Test Cross)'
+
+  return {
+    parent1Genotype,
+    parent2Genotype,
+    parent1Gametes: g1,
+    parent2Gametes: g2,
+    gridCells,
+    countTT,
+    countTt,
+    counttt,
+    tallPhenotypePercent,
+    dwarfPhenotypePercent,
+    totalOffspringCount: safeN,
+    expectedTallPlants,
+    expectedDwarfPlants,
+    genotypeRatioText,
+    phenotypeRatioText,
+  }
+}

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   calculateEyeDefectCorrection,
+  calculateMendelianPunnett,
   calculateOpticalState,
   calculateLensPower,
   calculatePrismDispersionScattering,
@@ -117,5 +118,21 @@ describe('Thread 5: Conventions & Inversions Optics Models', () => {
     expect(red.rayleighScatteringRelativeToRed).toBe(1)
     expect(violet.emergentBeamState).toBe('dispersed-spectrum')
     expect(red.emergentBeamState).toBe('recombined-white-light')
+  })
+
+  it('calculates Mendelian monohybrid Punnett square F1 (100% Tt) and F2 (3:1 phenotype, 1:2:1 genotype) ratios', () => {
+    const f1 = calculateMendelianPunnett('TT', 'tt', 400)
+    expect(f1.countTt).toBe(4)
+    expect(f1.tallPhenotypePercent).toBe(100)
+    expect(f1.expectedTallPlants).toBe(400)
+
+    const f2 = calculateMendelianPunnett('Tt', 'Tt', 400)
+    expect(f2.countTT).toBe(1)
+    expect(f2.countTt).toBe(2)
+    expect(f2.counttt).toBe(1)
+    expect(f2.tallPhenotypePercent).toBe(75)
+    expect(f2.dwarfPhenotypePercent).toBe(25)
+    expect(f2.expectedTallPlants).toBe(300)
+    expect(f2.expectedDwarfPlants).toBe(100)
   })
 })

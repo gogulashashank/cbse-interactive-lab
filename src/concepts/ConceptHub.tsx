@@ -166,6 +166,26 @@ const CarbonHomologousInteractive = lazy(() =>
     default: m.CarbonHomologousInteractive,
   }))
 )
+const RespirationPathwaysInteractive = lazy(() =>
+  import('./rateVsTotal/RespirationPathwaysInteractive').then((m) => ({
+    default: m.RespirationPathwaysInteractive,
+  }))
+)
+const ReflexHormoneInteractive = lazy(() =>
+  import('./controlledExperiments/ReflexHormoneInteractive').then((m) => ({
+    default: m.ReflexHormoneInteractive,
+  }))
+)
+const MendelianPunnettInteractive = lazy(() =>
+  import('./conventionsAndInversions/MendelianPunnettInteractive').then((m) => ({
+    default: m.MendelianPunnettInteractive,
+  }))
+)
+const TrophicEnergyPyramidInteractive = lazy(() =>
+  import('./energyConservation/TrophicEnergyPyramidInteractive').then((m) => ({
+    default: m.TrophicEnergyPyramidInteractive,
+  }))
+)
 
 const PROGRESS_KEY = 'cil.progress'
 
@@ -178,7 +198,12 @@ const ALL_CONTENT = {
 }
 
 export type BrowseMode = 'threads' | 'chapters'
-export type ChapterFilterId = 'light-10' | 'electricity-10' | 'chemistry-10' | 'mechanics-9'
+export type ChapterFilterId =
+  | 'light-10'
+  | 'electricity-10'
+  | 'chemistry-10'
+  | 'biology-10'
+  | 'mechanics-9'
 
 const SYLLABUS_CHAPTERS: readonly {
   id: ChapterFilterId
@@ -233,6 +258,26 @@ const SYLLABUS_CHAPTERS: readonly {
         lower.includes('acids') ||
         lower.includes('metals') ||
         lower.includes('carbon')
+      )
+    },
+  },
+  {
+    id: 'biology-10',
+    title: {
+      en: 'Class 10 Ch 5–8 & 13: Biology & Environment — Life, Control, Heredity & Food Chains',
+      hi: 'कक्षा 10 अध्याय 5–8 व 13: जीवविज्ञान एवं पर्यावरण — जैव प्रक्रम, नियंत्रण, आनुवंशिकता व पर्यावरण',
+    },
+    tagline: {
+      en: 'Glucose breakdown pathways (38 ATP vs 2 ATP), spinal reflex arcs & pancreatic hormone negative feedback, Mendelian Punnett squares (3:1 vs 1:2:1), and Lindeman’s 10% trophic energy law.',
+      hi: 'ग्लूकोज़ विखंडन पथ (38 ATP बनाम 2 ATP), प्रतिवर्ती चाप एवं इंसुलिन पुनर्भरण, मेंडल के पनेट वर्ग (3:1 बनाम 1:2:1) तथा 10% पोषी स्तर ऊर्जा नियम।',
+    },
+    matchChapter: (ref) => {
+      const lower = ref.toLowerCase()
+      return (
+        lower.includes('life processes') ||
+        lower.includes('control') ||
+        lower.includes('heredity') ||
+        lower.includes('environment')
       )
     },
   },
@@ -428,6 +473,10 @@ export function ConceptHub() {
                 {activeConcept.id === 'ph-scale-exponential-acid' && <PhScaleExponentialInteractive lang={lang} />}
                 {activeConcept.id === 'metal-reactivity-displacement' && <MetalReactivityInteractive lang={lang} />}
                 {activeConcept.id === 'carbon-homologous-series' && <CarbonHomologousInteractive lang={lang} />}
+                {activeConcept.id === 'respiration-atp-pathways' && <RespirationPathwaysInteractive lang={lang} />}
+                {activeConcept.id === 'reflex-arc-hormone-feedback' && <ReflexHormoneInteractive lang={lang} />}
+                {activeConcept.id === 'mendelian-punnett-heredity' && <MendelianPunnettInteractive lang={lang} />}
+                {activeConcept.id === 'trophic-energy-magnification' && <TrophicEnergyPyramidInteractive lang={lang} />}
               </Suspense>
             }
           />

@@ -466,4 +466,80 @@ export const ENERGY_CONSERVATION_CONTENT: Record<string, ConceptContentItem> = {
       },
     ],
   },
+
+  'trophic-energy-magnification': {
+    hook: {
+      en: 'Why do terrestrial food chains almost never have more than 4 trophic levels—and why does a fish-eating hawk at the very top end up with 1,000 times more toxic DDT pesticide per gram of tissue than the plants at the bottom?',
+      hi: 'आहार श्रृंखला में सामान्यतः 3 या 4 से अधिक पोषी स्तर क्यों नहीं होते—और सबसे ऊपर स्थित बाज या मनुष्य के शरीर में नीचे के पौधों की तुलना में 1,000 गुना अधिक विषैला DDT कीटनाशक कैसे जमा हो जाता है?',
+    },
+    predictQuestion: {
+      en: 'In a terrestrial ecosystem, 1,000,000 J (10⁶ J) of sunlight falls on green leaves. Given that green plants capture 1% of incident sunlight and consumers transfer 10% of energy to the next trophic level, how much energy reaches (a) T₁ Producers, (b) T₂ Herbivores, and (c) T₄ Top Carnivores?',
+      hi: 'किसी स्थलीय पारितंत्र में हरी पत्तियों पर 10,00,000 J (10⁶ J) सौर ऊर्जा आपतित होती है। यदि हरे पौधे सूर्य की ऊर्जा का 1% खाद्य ऊर्जा में बदलते हैं और आगे प्रत्येक पोषी स्तर पर 10% नियम लागू होता है, तो (a) T₁ उत्पादक, (b) T₂ शाकाहारी, तथा (c) T₄ शीर्ष मांसाहारी को कितनी ऊर्जा मिलेगी?',
+    },
+    predictOptions: [
+      {
+        en: '(a) T₁ Producers = 10,000 J (1% of 10⁶ J); (b) T₂ Herbivores = 1,000 J (10% of T₁); (c) T₄ Top Carnivores = 10 J (after T₃ = 100 J).',
+        hi: '(a) T₁ उत्पादक = 10,000 J (10⁶ J का 1%); (b) T₂ शाकाहारी = 1,000 J (T₁ का 10%); (c) T₄ शीर्ष मांसाहारी = 10 J (T₃ = 100 J का 10%)।',
+      },
+      {
+        en: '(a) T₁ = 100,000 J (applying 10% to sunlight instead of 1%); (b) T₂ = 10,000 J; (c) T₄ = 100 J.',
+        hi: '(a) T₁ = 1,00,000 J (सूर्य की ऊर्जा पर 1% के बजाय 10% लगाने की भूल); (b) T₂ = 10,000 J।',
+      },
+      {
+        en: 'All trophic levels receive the full 10,000 J because energy is conserved.',
+        hi: 'सभी पोषी स्तरों को पूरे 10,000 J मिलते हैं।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Crucial NCERT distinction: Green plants capture only 1% of incident sunlight (1% of 1,000,000 J = 10,000 J at T₁)! Thereafter, Lindeman’s 10% Law applies between trophic levels: T₂ gets 10% of 10,000 = 1,000 J; T₃ gets 100 J; and T₄ gets just 10 J (with 90% dissipated as metabolic heat at every step)!',
+      hi: 'महत्वपूर्ण NCERT नियम: हरे पौधे पत्तियों पर पड़ने वाली सौर ऊर्जा का केवल 1% भाग (10,00,000 J का 1% = 10,000 J) ग्रहण करते हैं! उसके बाद पोषी स्तरों के बीच 10% नियम लगता है: T₂ = 1,000 J, T₃ = 100 J तथा T₄ = केवल 10 J (प्रत्येक चरण में 90% ऊष्मा के रूप में व्यय हो जाती है)!',
+    },
+    insightSummary: {
+      en: 'Energy flow in an ecosystem is UNIDIRECTIONAL and diminishes 10-fold at each consumer step (10% Law, 90% lost as metabolic heat), limiting food chains to 3–4 trophic levels. Conversely, non-biodegradable chemicals (DDT, mercury) cannot be digested and accumulate progressively up the chain (Biological Magnification).',
+      hi: 'पारितंत्र में ऊर्जा का प्रवाह एकदिशिक होता है और प्रत्येक पोषी स्तर पर केवल 10% ऊर्जा आगे जाती है (90% ऊष्मा के रूप में पर्यावरण में चली जाती है), जिससे आहार श्रृंखला 3–4 स्तरों तक सीमित रहती है। इसके विपरीत अजैव-निम्निकरणीय रसायन (DDT) ऊपर के स्तरों में संचित होते जाते हैं (जैव-आवर्धन)।',
+    },
+    insightFormula: 'T₁ = 1% × E_sun  |  T_n = 10% × T_(n−1)  |  Biomagnification: [Toxin] increases ↑',
+    insightTerm: {
+      en: 'Lindeman’s 10% Energy Law & Biological Magnification (NCERT Ch 13.1)',
+      hi: '10% ऊर्जा स्थानांतरण नियम एवं जैव-आवर्धन (NCERT 13.1)',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'CBSE Class 10 Board Numerical · 4-Level Food Chain Energy Transfer',
+          hi: 'सीबीएसई कक्षा 10 बोर्ड संख्यात्मक प्रश्न · आहार श्रृंखला में ऊर्जा गणना',
+        },
+        prompt: {
+          en: 'In the food chain Grass (T₁) → Grasshopper (T₂) → Frog (T₃) → Snake (T₄), if 5 J of energy is available to the Snake (T₄), how much energy was originally available in the Grass (T₁)?',
+          hi: 'आहार श्रृंखला घास (T₁) → टिड्डा (T₂) → मेंढक (T₃) → साँप (T₄) में यदि चौथे पोषी स्तर के साँप (T₄) को 5 J ऊर्जा उपलब्ध है, तो उत्पादक घास (T₁) के पास कुल कितनी ऊर्जा उपलब्ध थी?',
+        },
+        options: [
+          { en: '5,000 J (Multiply by 10 for each step backward: 5 → 50 → 500 → 5,000 J)', hi: '5,000 J (पीछे जाने पर प्रत्येक चरण में 10 से गुणा: 5 → 50 → 500 → 5,000 J)' },
+          { en: '500 J', hi: '500 J' },
+          { en: '50,000 J', hi: '50,000 J' },
+          { en: '0.005 J', hi: '0.005 J' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Moving UP the chain divides energy by 10 per step (×0.1), so moving DOWN from T₄ to T₁ multiplies energy by 10 three times (×10³ = ×1,000)!',
+          hi: 'ऊपर जाने पर ऊर्जा 10 से भाग होती है, इसलिए T₄ से T₁ तक 3 कदम नीचे आने पर 10³ = 1,000 से गुणा करें!',
+        },
+        steps: [
+          {
+            label: { en: 'Step 1: Energy at T₃ (Frog)', hi: 'चरण 1: मेंढक (T₃) पर ऊर्जा' },
+            content: { en: 'T₃ = 10 × T₄ = 10 × 5 J = 50 J.', hi: 'T₃ = 10 × 5 J = 50 J।' },
+          },
+          {
+            label: { en: 'Step 2: Energy at T₂ (Grasshopper) and T₁ (Grass)', hi: 'चरण 2: टिड्डा (T₂) तथा घास (T₁) पर ऊर्जा' },
+            content: { en: 'T₂ = 10 × 50 J = 500 J ⇒ T₁ (Grass) = 10 × 500 J = 5,000 J.', hi: 'T₂ = 500 J ⇒ T₁ (घास) = 10 × 500 J = 5,000 J।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Energy available in Grass (T₁) = 5,000 J.',
+          hi: 'उत्पादक घास (T₁) में उपलब्ध ऊर्जा = 5,000 J।',
+        },
+      },
+    ],
+  },
 }

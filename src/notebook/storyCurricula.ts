@@ -4086,4 +4086,596 @@ export const STORY_STAGE_SUPPLEMENTS: Record<
       ],
     },
   },
+
+  'respiration-atp-pathways': {
+    ncertSection: 'NCERT Class 10 Chapter 5: Life Processes (Sec 5.3 — Respiration & Fig 5.8 Breakdown of Glucose by Various Pathways)',
+    openingQuestion: {
+      en: '“Why do both yeast cells in a closed fermentation vat and your leg muscles during a hard sprint start with the exact same pyruvate step in the cytoplasm, yet end up with completely different molecules?”',
+      hi: '“बंद पात्र में किण्वन करती यीस्ट कोशिका और तेज़ दौड़ के दौरान आपकी पैर की पेशी कोशिका दोनों कोशिकाद्रव्य में पायरुवेट के एक ही चरण से शुरू करती हैं, फिर भी उनके अंतिम उत्पाद बिल्कुल अलग क्यों होते हैं?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Compare the 3 NCERT Figure 5.8 glucose breakdown pathways (Mitochondria +O₂, Yeast No O₂, and Muscle Cell Lack of O₂) to verify the 19-fold ATP yield difference (38 ATP vs 2 ATP per glucose) and end-product carbon counts.',
+        hi: 'NCERT चित्र 5.8 के तीनों ग्लूकोज़ विखंडन पथों (माइटोकॉन्ड्रिया +O₂, यीस्ट O₂ अनुपस्थित, तथा पेशी कोशिका O₂ अभाव) की तुलना कर 19-गुना ATP अंतर (38 ATP बनाम 2 ATP) और अंतिम उत्पादों के कार्बन परमाणुओं का सत्यापन करें।',
+      },
+      steps: [
+        {
+          en: 'Select “1. Mitochondria: Aerobic (+O₂ · 38 ATP/glucose)” with 2 moles of Glucose. Observe that 2 Glucose (6C) split into 4 Pyruvate (3C) in the cytoplasm and then oxidise in mitochondria to yield 76 ATP + 12 CO₂ + 12 H₂O.',
+          hi: '2 मोल ग्लूकोज़ के साथ “1. माइटोकॉन्ड्रिया: वायवीय श्वसन (+O₂)” चुनें। देखें कि कोशिकाद्रव्य में 4 पायरुवेट (3C) बनकर माइटोकॉन्ड्रिया में 76 ATP + 12 CO₂ + 12 H₂O बनते हैं।',
+        },
+        {
+          en: 'Switch to “2. Yeast: Anaerobic Fermentation (No O₂ · 2 ATP)”. Notice that total ATP drops 19-fold from 76 ATP down to just 4 ATP, while pyruvate converts into 2-carbon Ethanol (C₂H₅OH) + CO₂ gas!',
+          hi: '“2. यीस्ट: अवायवीय किण्वन” चुनें। देखें कि कुल ATP 76 से घटकर केवल 4 ATP रह जाता है और पायरुवेट 2-कार्बन एथेनॉल (C₂H₅OH) + CO₂ में बदलता है!',
+        },
+        {
+          en: 'Switch to “3. Muscle Sprint: Lack of O₂ (Lactic Acid · 2 ATP)”. Observe that pyruvate converts into 3-carbon Lactic Acid (C₃H₆O₃) with ZERO CO₂ released, triggering the muscle cramp warning!',
+          hi: '“3. पेशी कोशिका: O₂ का अभाव” चुनें। देखें कि पायरुवेट बिना कोई CO₂ निकाले 3-कार्बन लैक्टिक अम्ल में बदलता है, जिससे पेशी ऐंठन (क्रैम्प) होती है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'According to NCERT Figure 5.8 on the respiration bench, what is the key chemical difference between anaerobic fermentation in Yeast versus anaerobic breakdown in Human Muscle Cells?',
+          hi: 'NCERT चित्र 5.8 के अनुसार यीस्ट में अवायवीय किण्वन तथा मानव पेशी कोशिकाओं में ऑक्सीजन के अभाव में होने वाले विखंडन के अंतिम उत्पादों में मुख्य अंतर क्या है?',
+        },
+        options: [
+          {
+            en: 'Yeast converts 3C Pyruvate into 2-carbon Ethanol + CO₂ gas (+2 ATP), whereas human muscle cells convert 3C Pyruvate into 3-carbon Lactic Acid with NO CO₂ gas (+2 ATP).',
+            hi: 'यीस्ट 3C पायरुवेट को 2-कार्बन एथेनॉल + CO₂ (+2 ATP) में बदलता है, जबकि मानव पेशी कोशिकाएं 3C पायरुवेट को बिना CO₂ के 3-कार्बन लैक्टिक अम्ल (+2 ATP) में बदलती हैं।',
+          },
+          {
+            en: 'Human muscle cells produce Ethanol and CO₂ gas during a sprint.',
+            hi: 'दौड़ते समय मानव पेशी कोशिकाओं में एथेनॉल और CO₂ गैस बनती है।',
+          },
+          {
+            en: 'Yeast produces 38 ATP per glucose while muscle cells produce 2 ATP.',
+            hi: 'यीस्ट प्रति ग्लूकोज़ 38 ATP बनाता है जबकि पेशी कोशिका 2 ATP।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Because Pyruvate has 3 carbons, splitting off 1 carbon as CO₂ in yeast leaves a 2-carbon molecule (Ethanol, C₂H₅OH). In human muscle cells, all 3 carbons stay together as 3-carbon Lactic Acid (C₃H₆O₃), so zero CO₂ is produced in that step!',
+          hi: 'पायरुवेट में 3 कार्बन होते हैं: यीस्ट में 1 कार्बन CO₂ के रूप में निकलकर 2-कार्बन एथेनॉल बचता है, जबकि मानव पेशी में तीनों कार्बन 3-कार्बन लैक्टिक अम्ल के रूप में रहते हैं (कोई CO₂ नहीं निकलती)!',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'ATP (Adenosine Triphosphate) is the universal energy currency of the cell: energy released during glucose oxidation is used to attach an inorganic phosphate (Pᵢ) onto ADP to form ATP (releasing ~30.5 kJ/mol when its terminal phosphate bond is hydrolysed).',
+        hi: 'ATP (ऐडिनोसिन ट्राइफॉस्फेट) कोशिका की ऊर्जा मुद्रा है: श्वसन में मुक्त ऊर्जा का उपयोग ADP और अकार्बनिक फॉस्फेट (Pᵢ) से ATP बनाने में होता है (जिसके अंतस्थ फॉस्फेट आबंध के टूटने पर ~30.5 kJ/mol ऊर्जा मिलती है)।',
+      },
+      scalingRule: {
+        en: '1. Universal Step 1 (Cytoplasm): 1 Glucose (6C) → 2 Pyruvate (3C).  2. Aerobic Rate: 38 ATP/glucose.  3. Anaerobic Rate: 2 ATP/glucose (Total ATP = Rate × Moles of Glucose).',
+        hi: '1. सार्वत्रिक प्रथम चरण (कोशिकाद्रव्य): 1 ग्लूकोज़ (6C) → 2 पायरुवेट (3C)।  2. वायवीय दर: 38 ATP/ग्लूकोज़।  3. अवायवीय दर: 2 ATP/ग्लूकोज़।',
+      },
+      siUnitRule: {
+        en: 'Hydrolysis of 1 mole of ATP releases 30.5 kJ/mol of usable biological energy for muscle contraction, protein synthesis, and nerve conduction.',
+        hi: '1 मोल ATP के जल-अपघटन से 30.5 kJ/mol ऊर्जा मुक्त होती है जो पेशी संकुचन व तंत्रिका आवेग चालन में प्रयुक्त होती है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 5 · Comparing Aerobic vs Anaerobic Glucose Consumption for Equal ATP Demand',
+        hi: 'NCERT कक्षा 10 अध्याय 5 · समान ATP ऊर्जा के लिए वायवीय बनाम अवायवीय ग्लूकोज़ खपत',
+      },
+      problem: {
+        en: 'A contracting muscle fibre requires 190 moles of ATP during an intense workout. (a) How many moles of glucose are needed if supplied completely by aerobic respiration in mitochondria (38 ATP/glucose)? (b) How many moles of glucose are consumed if supplied by anaerobic lactic-acid breakdown (2 ATP/glucose)?',
+        hi: 'व्यायाम के दौरान किसी पेशी तंतु को 190 मोल ATP ऊर्जा की आवश्यकता है। (a) माइटोकॉन्ड्रिया में वायवीय श्वसन (38 ATP/ग्लूकोज़) द्वारा यह ऊर्जा प्राप्त करने के लिए कितने मोल ग्लूकोज़ चाहिए? (b) अवायवीय लैक्टिक अम्ल पथ (2 ATP/ग्लूकोज़) से यही ऊर्जा पाने के लिए कितने मोल ग्लूकोज़ खर्च होंगे?',
+      },
+      given: [
+        { en: 'Target Total Energy = 190 mol ATP', hi: 'आवश्यक कुल ऊर्जा = 190 मोल ATP' },
+        { en: 'Aerobic rate = 38 ATP/mol glucose; Anaerobic rate = 2 ATP/mol glucose', hi: 'वायवीय दर = 38 ATP/मोल; अवायवीय दर = 2 ATP/मोल' },
+      ],
+      formula: 'Glucose Moles = Total ATP Required / (ATP per Glucose)',
+      substitution: '(a) Aerobic: 190 / 38 = 5 mol Glucose  |  (b) Anaerobic: 190 / 2 = 95 mol Glucose (19× more glucose burned!)',
+      answer: {
+        en: 'Aerobic requires only 5 mol Glucose; Anaerobic requires 95 mol Glucose (19× higher fuel consumption).',
+        hi: 'वायवीय श्वसन में केवल 5 मोल ग्लूकोज़ लगता है; अवायवीय पथ में 95 मोल ग्लूकोज़ (19 गुना अधिक) खर्च होता है।',
+      },
+      unitTrapNote: {
+        en: 'Keep track of carbon atoms per molecule: Glucose = 6C, Pyruvate = 3C, Lactic Acid = 3C, Ethanol = 2C, CO₂ = 1C!',
+        hi: 'प्रत्येक अणु में कार्बन संख्या याद रखें: ग्लूकोज़ = 6C, पायरुवेट = 3C, लैक्टिक अम्ल = 3C, एथेनॉल = 2C, तथा CO₂ = 1C!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Writing That Lactic Acid Fermentation in Human Muscles Releases CO₂ Gas or Occurs in Mitochondria',
+        hi: 'मानव पेशी कोशिकाओं में लैक्टिक अम्ल के साथ CO₂ गैस निकाल देना या इसे माइटोकॉन्ड्रिया में बताना',
+      },
+      commonMistake: {
+        en: 'Writing in board exams: “In human muscle cells under lack of oxygen, pyruvate breaks down into lactic acid + CO₂ inside the mitochondria.”',
+        hi: 'परीक्षा में यह लिखना कि “पेशी कोशिकाओं में ऑक्सीजन के अभाव में माइटोकॉन्ड्रिया के भीतर लैक्टिक अम्ल तथा CO₂ बनती है।”',
+      },
+      correctPhysics: {
+        en: '1. Pyruvate (3-carbon) → Lactic Acid (3-carbon) conserves all 3 carbon atoms inside the lactic acid molecule, so ZERO CO₂ is released in muscle cells (unlike 2-carbon ethanol + 1-carbon CO₂ in yeast)! 2. Only aerobic oxidation occurs in the mitochondria; lactic acid formation occurs in the muscle cell cytoplasm.',
+        hi: '1. पायरुवेट (3-कार्बन) से लैक्टिक अम्ल (3-कार्बन) बनने में तीनों कार्बन परमाणु लैक्टिक अम्ल में ही रहते हैं, इसलिए पेशी कोशिका में CO₂ गैस बिल्कुल नहीं बनती! 2. केवल वायवीय श्वसन ही माइटोकॉन्ड्रिया में होता है।',
+      },
+      checkRule: {
+        en: 'Count carbons! 3C Pyruvate → 2C Ethanol + 1C CO₂ (Yeast) vs 3C Pyruvate → 3C Lactic Acid + 0 CO₂ (Muscle)!',
+        hi: 'कार्बन गिनें! 3C पायरुवेट → 2C एथेनॉल + 1C CO₂ (यीस्ट) बनाम 3C पायरुवेट → 3C लैक्टिक अम्ल + 0 CO₂ (पेशी)!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Comparative Physiology: Terrestrial vs Aquatic Breathing Rate & Alveolar Gas Exchange Design',
+        hi: 'उच्च स्तरीय शरीर क्रिया विज्ञान: जलीय जीवों की तेज़ श्वसन दर एवं कूपिकाओं (Alveoli) की संरचना',
+      },
+      prompt: {
+        en: 'Explain scientifically: (a) Why the rate of breathing in aquatic organisms (like fishes) is much faster than that seen in terrestrial organisms; (b) How the lungs are designed in human beings to maximize the area for exchange of gases.',
+        hi: 'वैज्ञानिक कारण स्पष्ट कीजिए: (a) जलीय जीवों (जैसे मछली) में श्वसन की दर स्थलीय जीवों की अपेक्षा बहुत तेज़ क्यों होती है? (b) मनुष्यों में गैसों के अधिकतम विनिमय के लिए फुफ्फुस (फेफड़े) किस प्रकार अभिकल्पित हैं?',
+      },
+      claimOptions: [
+        {
+          en: '(a) The amount of dissolved oxygen in water is fairly low compared to the ~21% oxygen in air, forcing aquatic organisms to breathe much faster. (b) Inside human lungs, tubes divide into millions of balloon-like Alveoli (~80 m² surface area) richly supplied with blood capillaries and ultra-thin walls.',
+          hi: '(a) जल में घुली हुई ऑक्सीजन की मात्रा वायु में उपलब्ध ऑक्सीजन (~21%) की तुलना में बहुत कम होती है, इसलिए जलीय जीवों की श्वसन दर तेज़ होती है। (b) मानव फुफ्फुस में श्वसनिकाएं लाखों गुब्बारे जैसी कूपिकाओं (Alveoli, ~80 m² क्षेत्रफल) में खुलती हैं जिनकी भित्ति पर रुधिर वाहिकाओं का घना जाल होता है।',
+        },
+        {
+          en: 'Water contains more oxygen than air, and human lungs are hollow smooth bags without alveoli.',
+          hi: 'जल में वायु से अधिक ऑक्सीजन होती है और फेफड़ों में कूपिकाएं नहीं होतीं।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Dissolved O₂ in water is < 1% by volume vs 21% O₂ in atmospheric air. In human lungs, millions of alveoli unfold to ~80 m² (the size of a tennis court!) with one-cell-thick moist membranes and dense capillary networks for rapid diffusion.',
+        hi: 'जल में विलेय ऑक्सीजन अत्यंत कम होती है। मानव फेफड़ों में लाखों कूपिकाएं (Alveoli) सतह क्षेत्रफल को ~80 m² तक बढ़ा देती हैं तथा उनकी पतली भित्ति व रुधिर केशिकाओं का जाल तीव्र विसरण सुनिश्चित करता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Explains faster aquatic breathing: the concentration of dissolved oxygen in water is much lower than the oxygen concentration in air.',
+          hi: 'स्पष्ट करता है कि जल में घुली ऑक्सीजन की मात्रा वायु की तुलना में बहुत कम होने के कारण जलीय जीवों की श्वसन दर तेज़ होती है।',
+        },
+        {
+          en: 'Describes alveolar structure: bronchioles terminate in millions of balloon-like alveoli that provide a huge surface area (~80 m²).',
+          hi: 'कूपिकाओं (Alveoli) की गुब्बारे जैसी संरचना तथा विशाल सतह क्षेत्रफल (~80 m²) का उल्लेख करता है।',
+        },
+        {
+          en: 'Mentions the extensive network of blood capillaries in alveolar walls and residual volume of air for continuous gas exchange.',
+          hi: 'कूपिकाओं की भित्ति में रुधिर वाहिकाओं के विस्तृत जाल तथा गैसों के निरंतर विनिमय का उल्लेख करता है।',
+        },
+      ],
+    },
+  },
+
+  'reflex-arc-hormone-feedback': {
+    ncertSection: 'NCERT Class 10 Chapter 6: Control and Coordination (Sec 6.1.1 — What happens in Reflex Actions? & Sec 6.3 — Hormones in Animals)',
+    openingQuestion: {
+      en: '“If the human brain is the master command center of the body, why did evolution wire the emergency hot-plate withdrawal reflex directly through the spinal cord instead of waiting for the brain to decide?”',
+      hi: '“यदि मानव मस्तिष्क शरीर का सर्वोच्च नियंत्रण केंद्र है, तो गर्म वस्तु छूने पर हाथ हटाने का आपातकालीन प्रतिवर्ती चाप मस्तिष्क के निर्णय की प्रतीक्षा किए बिना सीधे मेरुरज्जु (Spinal Cord) से क्यों जुड़ा है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Compare impulse travel time along the 5-step Spinal Reflex Arc versus a Conscious Brain Detour, and test how the Pancreatic Negative-Feedback Loop regulates blood glucose around its 70–110 mg/dL setpoint.',
+        hi: '5-चरणीय मेरुरज्जु प्रतिवर्ती चाप बनाम मस्तिष्क विचार मार्ग के प्रतिक्रिया समय की तुलना करें, तथा परीक्षण करें कि अग्नाशय की पुनर्भरण क्रियाविधि रक्त शर्करा को 70–110 mg/dL पर कैसे नियंत्रित करती है।',
+      },
+      steps: [
+        {
+          en: 'Select “1. Spinal Cord Reflex Arc” at Arm Path Length L = 0.8 m. Trace the 5 steps in Panel 1 (Receptor → Sensory → Spinal Relay → Motor → Effector Muscle) completing in just 26 ms.',
+          hi: 'L = 0.8 m पर “1. मेरुरज्जु प्रतिवर्ती चाप” चुनें। पैनल 1 में 5 चरणों (ग्राही → संवेदी → मेरुरज्जु रिले → प्रेरक → पेशी) को केवल 26 ms में पूर्ण होते देखें।',
+        },
+        {
+          en: 'Switch to “2. Conscious Brain Detour (+120 ms Thinking Delay)”. Notice total latency jumps to 146 ms—saving 120 ms via the spinal cord prevents severe skin burns!',
+          hi: '“2. मस्तिष्क विचार मार्ग” चुनें। देखें कि कुल समय बढ़कर 146 ms हो जाता है—मेरुरज्जु द्वारा बचाया गया 120 ms त्वचा को जलने से बचाता है!',
+        },
+        {
+          en: 'In Panel 2, slide Blood Glucose from 180 mg/dL (Hyperglycemia → Pancreas secretes INSULIN) down to 90 mg/dL (Basal Homeostasis) and 55 mg/dL (Hypoglycemia → Insulin inhibited & GLUCAGON released).',
+          hi: 'पैनल 2 में रक्त शर्करा को 180 mg/dL (इंसुलिन स्राव ↑) से घटाकर 90 mg/dL (सामान्य संतुलन) और फिर 55 mg/dL (इंसुलिन बंद व ग्लूकागॉन स्राव ↑) पर ले जाकर पुनर्भरण नियंत्रण देखें।',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'Trace the exact sequence of a spinal reflex arc (NCERT Fig 6.2) when your hand touches a hot object, and identify what happens to pancreatic insulin secretion when blood glucose returns from 180 mg/dL back down to 90 mg/dL:',
+          hi: 'गर्म वस्तु छूने पर प्रतिवर्ती चाप (NCERT चित्र 6.2) का सही क्रम क्या है, तथा रक्त शर्करा 180 mg/dL से घटकर सामान्य 90 mg/dL पर आने पर इंसुलिन स्राव में क्या परिवर्तन होता है?',
+        },
+        options: [
+          {
+            en: 'Reflex sequence: Heat Receptor in Skin → Sensory Neuron → Spinal Cord (Relay Neuron) → Motor Neuron → Effector Muscle; as blood sugar falls back to 90 mg/dL, negative feedback reduces insulin secretion.',
+            hi: 'प्रतिवर्ती चाप क्रम: त्वचा में ऊष्मा ग्राही → संवेदी तंत्रिका → मेरुरज्जु (रिले न्यूरॉन) → प्रेरक तंत्रिका → कार्यकर पेशी; शर्करा 90 mg/dL पर सामान्य होते ही पुनर्भरण क्रियाविधि इंसुलिन स्राव को घटा देती है।',
+          },
+          {
+            en: 'Reflex sequence: Effector Muscle → Motor Neuron → Brain → Sensory Neuron → Receptor; insulin secretion increases when blood sugar falls.',
+            hi: 'क्रम: पेशी → प्रेरक तंत्रिका → मस्तिष्क → संवेदी तंत्रिका; शर्करा घटने पर इंसुलिन स्राव और अधिक बढ़ जाता है।',
+          },
+          {
+            en: 'Reflex arcs do not involve the spinal cord at all.',
+            hi: 'प्रतिवर्ती चाप में मेरुरज्जु की कोई भूमिका नहीं होती।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Sensory neurons carry impulses from receptors TO the spinal cord; relay neurons pass them to motor neurons, which command the effector muscle. In hormonal negative feedback, once the response restores normal blood glucose, the stimulus stops and hormone secretion is turned down.',
+          hi: 'संवेदी न्यूरॉन ग्राही से मेरुरज्जु तक आवेग ले जाते हैं और प्रेरक न्यूरॉन मेरुरज्जु से पेशी तक आदेश लाते हैं। पुनर्भरण क्रियाविधि में शर्करा सामान्य होते ही इंसुलिन का अतिरिक्त स्राव बंद हो जाता है।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Animals use two complementary coordination systems: (1) Electrical nerve impulses travel rapidly along axons and cross chemical synapses via neurotransmitters, ideal for split-second localized actions; (2) Endocrine hormones travel via blood to reach every cell in the body for sustained growth, metabolism, and homeostasis.',
+        hi: 'जंतुओं में समन्वय की दो पूरक प्रणालियाँ हैं: (1) तंत्रिका तंत्र विद्युत आवेगों और सिनेप्स के रसायनों द्वारा अति-तीव्र एवं स्थानीय प्रतिक्रिया देता है; (2) अंतःस्रावी हार्मोन रक्त द्वारा शरीर की प्रत्येक कोशिका तक पहुँचकर दीर्घकालिक वृद्धि, उपापचय और समस्थापन नियंत्रित करते हैं।',
+      },
+      scalingRule: {
+        en: '1. One-Way Synapse Rule: Dendrite receives → Cell body → Axon → Nerve ending releases chemical neurotransmitter across synapse → Next dendrite.  2. Negative Feedback Rule: Change in variable X triggers hormone H that opposes ΔX.',
+        hi: '1. एकदिशिक सिनेप्स नियम: द्रुमिका (Dendrite) → कोशिका काय → तंत्रिकाक्ष (Axon) → सिनेप्स में रसायन मुक्त होना → अगला न्यूरॉन।  2. ऋणात्मक पुनर्भरण: शर्करा बढ़ने पर इंसुलिन उसे घटाता है।',
+      },
+      siUnitRule: {
+        en: 'Nerve impulse latencies are measured in milliseconds (1 ms = 10⁻³ s). Fasting human blood glucose is normally maintained around 70–110 mg/dL.',
+        hi: 'तंत्रिका प्रतिक्रिया समय मिलीसेकंड (1 ms = 10⁻³ s) में तथा रक्त शर्करा स्तर mg/dL में मापा जाता है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 6 · Comparing Reflex Arc vs Fore-Brain Conduction & Processing Time',
+        hi: 'NCERT कक्षा 10 अध्याय 6 · मेरुरज्जु प्रतिवर्ती चाप बनाम मस्तिष्क प्रतिक्रिया समय की गणना',
+      },
+      problem: {
+        en: 'A sensory receptor in the hand is 0.80 m from the spinal cord. Assume nerve impulses travel at 100 m/s along both sensory and motor neurons and crossing the spinal relay synapse takes 10 ms. (a) Calculate the total time taken for the spinal reflex arc to trigger the arm muscle. (b) If routing through the fore-brain adds 120 ms of cortical thinking time, how many times faster is the spinal reflex?',
+        hi: 'हाथ के ग्राही से मेरुरज्जु की दूरी 0.80 m है। मान लीजिए संवेदी व प्रेरक तंत्रिकाओं में आवेग की चाल 100 m/s है और मेरुरज्जु सिनेप्स पार करने में 10 ms लगते हैं। (a) मेरुरज्जु प्रतिवर्ती चाप का कुल समय ज्ञात कीजिए। (b) यदि मस्तिष्क से सोचने में 120 ms अतिरिक्त लगते हैं, तो प्रतिवर्ती चाप कितने गुना तेज़ है?',
+      },
+      given: [
+        { en: 'One-way arm nerve length L = 0.80 m (Round-trip 2L = 1.60 m)', hi: 'एकतरफा दूरी L = 0.80 m (आने-जाने की दूरी 2L = 1.60 m)' },
+        { en: 'Impulse speed v = 100 m/s, Spinal synapse delay = 10 ms, Brain thinking delay = +120 ms', hi: 'चाल v = 100 m/s, सिनेप्स समय = 10 ms, मस्तिष्क विचार समय = +120 ms' },
+      ],
+      formula: 't_reflex = (2L / v) × 1000 ms + t_synapse  |  t_brain = t_reflex + 120 ms',
+      substitution: 't_reflex = (1.60 / 100) × 1000 + 10 = 16 ms + 10 ms = 26 ms  |  t_brain = 26 + 120 = 146 ms (146 / 26 = 5.6× faster!)',
+      answer: {
+        en: 'Spinal reflex takes only 26 ms vs 146 ms via the thinking brain (5.6× faster response!).',
+        hi: 'प्रतिवर्ती चाप में केवल 26 ms लगते हैं जबकि मस्तिष्क मार्ग में 146 ms (5.6 गुना अधिक तेज़ सुरक्षा!)।',
+      },
+      unitTrapNote: {
+        en: 'Remember that a reflex arc is a round-trip from receptor to spinal cord (+L) AND from spinal cord back to the effector muscle (+L)!',
+        hi: 'ध्यान रखें कि प्रतिवर्ती चाप में आवेग ग्राही से मेरुरज्जु तक जाता है (+L) और मेरुरज्जु से वापस पेशी तक आता है (+L)!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Swapping Sensory vs Motor Neurons or Confusing Dendrite (Input) With Axon Terminal (Output)',
+        hi: 'संवेदी व प्रेरक तंत्रिका की दिशा उलट देना या द्रुमिका (इनपुट) व एक्सॉन सिरे (आउटपुट) में भ्रम करना',
+      },
+      commonMistake: {
+        en: 'Drawing the arrow in a reflex arc from the Spinal Cord to the Receptor via the Sensory Neuron, or saying electrical impulses jump directly across the synaptic cleft without chemicals.',
+        hi: 'प्रतिवर्ती चाप में मेरुरज्जु से संवेदी तंत्रिका द्वारा ग्राही की ओर तीर बना देना, या यह लिखना कि सिनेप्स में विद्युत आवेग बिना रसायनों के सीधे कूद जाता है।',
+      },
+      correctPhysics: {
+        en: '1. SENSORY neurons always carry signals FROM sense organs/receptors TO the CNS (spinal cord/brain); MOTOR neurons always carry commands FROM the CNS TO effector muscles/glands! 2. At the synapse gap between two neurons, the electrical impulse is converted into CHEMICAL neurotransmitters released from the axon ending to trigger the next neuron’s dendrite.',
+        hi: '1. संवेदी न्यूरॉन सदैव ग्राही (त्वचा) से मेरुरज्जु की ओर संदेश ले जाते हैं, जबकि प्रेरक न्यूरॉन मेरुरज्जु से पेशी (Effector) तक आदेश लाते हैं! 2. दो न्यूरॉनों के बीच सिनेप्स (दरार) में विद्युत आवेग रासायनिक संकेतों में बदलकर अगले न्यूरॉन की द्रुमिका तक पहुँचता है।',
+      },
+      checkRule: {
+        en: 'S-R-M Mnemonic: Sensory (In) → Relay (Spinal Cord) → Motor (Out to Muscle)!',
+        hi: 'S-R-M सूत्र याद रखें: संवेदी (अंदर) → रिले (मेरुरज्जु) → प्रेरक (पेशी की ओर बाहर)!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Endocrine & Plant Coordination: Adrenaline Fight-or-Flight Cascade vs Auxin Phototropism',
+        hi: 'उच्च स्तरीय समन्वय विश्लेषण: एड्रीनेलिन (लड़ो या भागो हार्मोन) एवं पादपों में ऑक्सिन द्वारा प्रकाशानुवर्तन',
+      },
+      prompt: {
+        en: 'Explain scientifically: (a) How the secretion of Adrenaline into the blood prepares the human body for an emergency “fight or flight” situation; (b) How Auxin hormone causes a plant shoot tip to bend towards unilateral light (positive phototropism).',
+        hi: 'वैज्ञानिक कारण स्पष्ट कीजिए: (a) रुधिर में एड्रीनेलिन हार्मोन का स्राव होने पर हमारे शरीर में आपातकालीन स्थिति का सामना करने के लिए क्या अनुक्रिया होती है? (b) ऑक्सिन हार्मोन पादप प्ररोह (तनाव) को एकदिशिक प्रकाश की ओर कैसे झुकाता है?',
+      },
+      claimOptions: [
+        {
+          en: '(a) Adrenaline increases heart beat, breathing rate (rib/diaphragm contraction), and diverts blood from skin/digestive system to skeletal muscles to supply more O₂. (b) When light falls from one side, Auxin diffuses to the SHADED side of the shoot, stimulating cells on the shaded side to grow longer so the shoot bends towards light.',
+          hi: '(a) एड्रीनेलिन हृदय की धड़कन व श्वसन दर बढ़ाता है तथा पाचन तंत्र/त्वचा से रुधिर को कंकाल पेशियों की ओर मोड़कर अधिक ऑक्सीजन पहुँचाता है। (b) एक ओर से प्रकाश पड़ने पर ऑक्सिन प्ररोह के छाया वाले (अंधेरे) भाग में विसरित हो जाता है और वहाँ की कोशिकाओं की लंबाई में वृद्धि कर तने को प्रकाश की ओर मोड़ देता है।',
+        },
+        {
+          en: 'Adrenaline slows down the heart beat, and Auxin concentrates on the sunny side of the shoot to shrink cells.',
+          hi: 'एड्रीनेलिन हृदय की धड़कन धीमी करता है और ऑक्सिन धूप वाले हिस्से में जमा होकर कोशिकाओं को सिकोड़ता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'Adrenaline acts directly on the heart, arterioles, and diaphragm to maximize oxygen delivery to skeletal muscles. In plant shoots, Auxin accumulates on the shaded side away from light, elongating shaded cells faster than lit cells and curving the stem towards the light source.',
+        hi: 'एड्रीनेलिन हृदय, श्वसन और रुधिर प्रवाह को नियंत्रित कर पेशियों को तुरंत अधिक ऑक्सीजन उपलब्ध कराता है। पादप प्ररोह में ऑक्सिन छाया वाले भाग में एकत्र होकर वहाँ की कोशिकाओं को अधिक लंबा करता है जिससे प्ररोह प्रकाश की ओर झुक जाता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Explains Adrenaline cardiovascular effect: heart beats faster and blood is diverted from digestive system/skin to skeletal muscles.',
+          hi: 'एड्रीनेलिन का प्रभाव लिखता है: हृदय की धड़कन तेज़ होती है और रुधिर पाचन तंत्र/त्वचा से कंकाल पेशियों की ओर मुड़ जाता है।',
+        },
+        {
+          en: 'Explains Adrenaline respiratory effect: breathing rate increases due to faster contraction of diaphragm and rib muscles, supplying more O₂.',
+          hi: 'श्वसन प्रभाव बताता है: डायाफ्राम तथा पसलियों की पेशियों के संकुचन से श्वसन दर बढ़कर अधिक ऑक्सीजन मिलती है।',
+        },
+        {
+          en: 'Explains Auxin phototropism mechanism: Auxin diffuses to the SHADED side of the shoot tip and stimulates those cells to grow longer, bending the shoot towards light.',
+          hi: 'ऑक्सिन प्रकाशानुवर्तन स्पष्ट करता है: ऑक्सिन प्ररोह के छाया वाले भाग में विसरित होकर वहाँ की कोशिकाओं की लंबाई बढ़ाता है जिससे तना प्रकाश की ओर मुड़ता है।',
+        },
+      ],
+    },
+  },
+
+  'mendelian-punnett-heredity': {
+    ncertSection: 'NCERT Class 10 Chapter 8: Heredity (Sec 8.2 — Rules for the Inheritance of Traits: Mendel’s Contributions & Sex Determination)',
+    openingQuestion: {
+      en: '“Why did crossing a pure tall pea plant (TT) with a pure dwarf pea plant (tt) never produce a medium-sized plant—and how did the dwarf trait reappear intact in one-fourth of the grandchildren (F₂)?”',
+      hi: '“शुद्ध लंबे मटर के पौधे (TT) और शुद्ध बौने पौधे (tt) के संकरण से कभी भी मध्यम ऊँचाई का पौधा क्यों नहीं बना—और F₂ पीढ़ी के एक-चौथाई पौधों में वही बौना लक्षण बिल्कुल सुरक्षित कैसे वापस आ गया?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Use the 2×2 Punnett Square generator to compare Mendel’s F₁ cross (TT × tt), F₂ self-cross (Tt × Tt), and Test cross (Tt × tt), distinguishing Phenotype ratios from underlying Genotype ratios.',
+        hi: '2×2 पनेट वर्ग की सहायता से मेंडल के F₁ संकरण (TT × tt), F₂ स्वपरागण (Tt × Tt) तथा परीक्षार्थ संकरण (Tt × tt) की तुलना करें और लक्षणप्ररूप (Phenotype) तथा जीनप्ररूप (Genotype) अनुपात में अंतर समझें।',
+      },
+      steps: [
+        {
+          en: 'Click “1. F₁ Cross (TT × tt → 100% Tt Tall)”. Observe in the 2×2 Punnett Square that every cell receives T from Parent 1 and t from Parent 2, producing 100% Tt plants that all look Tall!',
+          hi: '“1. F₁ संकरण (TT × tt)” पर क्लिक करें। पनेट वर्ग में देखें कि प्रत्येक खाने में एक T और एक t आने से 100% Tt (सभी लंबे) पौधे बनते हैं!',
+        },
+        {
+          en: 'Click “2. F₂ Self-Cross (Tt × Tt)” with Sample Size N = 400 plants. Observe that the 4 Punnett cells split into 1 TT : 2 Tt : 1 tt (Genotype 1:2:1), while TT and Tt both look Tall giving 300 Tall : 100 Dwarf (Phenotype 3:1)!',
+          hi: 'N = 400 पौधों के साथ “2. F₂ स्वपरागण (Tt × Tt)” चुनें। देखें कि पनेट वर्ग में 1 TT : 2 Tt : 1 tt (जीनप्ररूप 1:2:1) बनता है, जबकि TT व Tt दोनों लंबे होने से 300 लंबे : 100 बौने (लक्षणप्ररूप 3:1) मिलते हैं!',
+        },
+        {
+          en: 'Click “3. Test Cross (Tt × tt → 1:1)”. Notice that crossing a heterozygous Tt plant with a recessive tt plant yields 50% Tt (Tall) and 50% tt (Dwarf) — the standard test to prove an unknown tall plant is Tt rather than TT!',
+          hi: '“3. परीक्षार्थ संकरण (Tt × tt)” चुनें। देखें कि 50% लंबे (Tt) और 50% बौने (tt) पौधे (1:1 अनुपात) मिलते हैं, जिससे सिद्ध होता है कि लंबा जनक विषमयुग्मजी (Tt) है!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'In Mendel’s F₂ generation (Tt × Tt) on the Punnett Square bench, what fraction of the TALL F₂ plants are actually heterozygous (Tt) carriers of the hidden recessive dwarf allele?',
+          hi: 'पनेट वर्ग बेंच पर मेंडल की F₂ पीढ़ी (Tt × Tt) में प्राप्त कुल लंबे (Tall) पौधों में से कितने भाग पौधे वास्तव में विषमयुग्मजी (Tt) होते हैं जिनमें बौनेपन का अप्रभावी जीन छिपा रहता है?',
+        },
+        options: [
+          {
+            en: '2/3 of the tall plants (Out of 3 tall cells—1 TT and 2 Tt—two are Tt; or 2/4 = 50% of all F₂ plants).',
+            hi: 'लंबे पौधों का 2/3 भाग (3 लंबे खानों—1 TT तथा 2 Tt—में से 2 खाने Tt हैं; अर्थात कुल F₂ पौधों का 50%)।',
+          },
+          {
+            en: '0% of the tall plants (all tall plants are pure TT).',
+            hi: '0% (सभी लंबे पौधे शुद्ध TT होते हैं)।',
+          },
+          {
+            en: '100% of the tall plants are Tt.',
+            hi: '100% लंबे पौधे Tt होते हैं।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'In the 1 TT : 2 Tt : 1 tt F₂ grid, 3 out of 4 squares produce Tall plants (1 TT + 2 Tt). Therefore 1/3 of the tall plants are pure homozygous (TT) and 2/3 of the tall plants are heterozygous (Tt)!',
+          hi: '1 TT : 2 Tt : 1 tt में से 3 खाने लंबे पौधे देते हैं (1 TT + 2 Tt)। अतः लंबे पौधों में से 1/3 शुद्ध (TT) और 2/3 विषमयुग्मजी (Tt) होते हैं!',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'Cellular DNA is the information source for making proteins (enzymes). The dominant allele T codes for an active enzyme that synthesizes plenty of plant growth hormone (leading to Tall height even with one copy in Tt). The mutated recessive allele t codes for a non-functional/less-efficient enzyme, so a plant is Dwarf only when it lacks T completely (tt).',
+        hi: 'कोशिका का DNA प्रोटीन (एंजाइम) संश्लेषण की सूचना देता है। प्रभावी विकल्पी T दक्ष एंजाइम बनाता है जो पर्याप्त वृद्धि हार्मोन उत्पन्न कर पौधे को लंबा बनाता है (Tt में एक प्रति भी पर्याप्त है)। अप्रभावी विकल्पी t कम दक्ष एंजाइम बनाता है, इसलिए केवल tt अवस्था में ही पौधा बौना रहता है।',
+      },
+      scalingRule: {
+        en: '1. Monohybrid F₂ (Tt × Tt): Phenotype = 3 : 1; Genotype = 1 : 2 : 1.  2. Dihybrid F₂ (RrYy × RrYy, Independent Assortment): Phenotype = 9 : 3 : 3 : 1.  3. Human Sex Determination (XX × XY): 1 XX (Girl) : 1 XY (Boy) = 50% : 50%.',
+        hi: '1. एकसंकर F₂ (Tt × Tt): लक्षणप्ररूप = 3 : 1; जीनप्ररूप = 1 : 2 : 1।  2. द्विसंकर F₂ (RrYy × RrYy, स्वतंत्र अपव्यूहन): लक्षणप्ररूप = 9 : 3 : 3 : 1।  3. मानव लिंग निर्धारण (XX × XY): 50% लड़की (XX) : 50% लड़का (XY)।',
+      },
+      siUnitRule: {
+        en: 'Each diploid somatic cell carries 2 copies of each chromosome (2n = 46 in humans); gametes (sperm/egg) are haploid (n = 23) carrying exactly 1 allele per gene.',
+        hi: 'मानव की कायिक कोशिका में 23 जोड़े (46) गुणसूत्र होते हैं, जबकि युग्मक (शुक्राणु/अंडाणु) में आधी संख्या (23 गुणसूत्र, प्रत्येक जीन का 1 विकल्पी) होती है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 8 · Dihybrid Independent Assortment Count in 1600 Pea Seeds',
+        hi: 'NCERT कक्षा 10 अध्याय 8 · द्विसंकर संकरण (9:3:3:1) में 1600 बीजों का वितरण',
+      },
+      problem: {
+        en: 'Mendel crossed pea plants having Round Yellow seeds (RRYY) with Wrinkled Green seeds (rryy). All F₁ seeds were Round Yellow (RrYy). When F₁ plants were self-pollinated, 1,600 F₂ seeds were collected. Using the 9 : 3 : 3 : 1 Law of Independent Assortment, calculate how many seeds of each of the 4 phenotypes were obtained.',
+        hi: 'मेंडल ने गोल-पीले बीजों (RRYY) वाले मटर के पौधे का झुर्रीदार-हरे बीजों (rryy) वाले पौधे से संकरण कराया। F₁ के सभी बीज गोल-पीले (RrYy) थे। F₁ के स्वपरागण से कुल 1,600 F₂ बीज प्राप्त हुए। 9 : 3 : 3 : 1 स्वतंत्र अपव्यूहन नियम से चारों प्रकार के बीजों की संख्या ज्ञात कीजिए।',
+      },
+      given: [
+        { en: 'Total F₂ seeds N = 1,600', hi: 'कुल F₂ बीज N = 1,600' },
+        { en: 'Dihybrid phenotypic ratio = 9 : 3 : 3 : 1 (Total parts = 9 + 3 + 3 + 1 = 16 parts)', hi: 'द्विसंकर अनुपात = 9 : 3 : 3 : 1 (कुल भाग = 16)' },
+      ],
+      formula: 'Count of phenotype = (Ratio Part / 16) × Total Seeds N',
+      substitution: '1 part = 1600 / 16 = 100 seeds ⇒ Round Yellow (9) = 900; Round Green (3) = 300; Wrinkled Yellow (3) = 300; Wrinkled Green (1) = 100',
+      answer: {
+        en: '900 Round Yellow : 300 Round Green : 300 Wrinkled Yellow : 100 Wrinkled Green.',
+        hi: '900 गोल-पीले : 300 गोल-हरे : 300 झुर्रीदार-पीले : 100 झुर्रीदार-हरे बीज।',
+      },
+      unitTrapNote: {
+        en: 'Notice that the two new recombinant combinations (Round Green 3/16 and Wrinkled Yellow 3/16) prove that seed shape (R/r) and seed colour (Y/y) are inherited INDEPENDENTLY of each other!',
+        hi: 'दो नए संयोजनों (गोल-हरे 3/16 तथा झुर्रीदार-पीले 3/16) का बनना सिद्ध करता है कि बीज के आकार और रंग के लक्षण एक-दूसरे से स्वतंत्र रूप से वंशानुगत होते हैं!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Confusing the 3:1 Phenotypic Ratio With the 1:2:1 Genotypic Ratio or Thinking Acquired Traits Are Inherited',
+        hi: '3:1 लक्षणप्ररूप अनुपात और 1:2:1 जीनप्ररूप अनुपात में भ्रम करना या उपार्जित लक्षणों को वंशानुगत मान लेना',
+      },
+      commonMistake: {
+        en: 'Writing “1:2:1” when asked for the F₂ phenotypic ratio (Tall : Dwarf), or claiming that cutting the tails of mice for several generations will produce tail-less baby mice.',
+        hi: 'F₂ का लक्षणप्ररूप (Phenotypic) अनुपात पूछे जाने पर “1:2:1” लिख देना, या यह सोचना कि चूहों की पूँछ काटने से अगली पीढ़ी में बिना पूँछ वाले चूहे पैदा होंगे।',
+      },
+      correctPhysics: {
+        en: '1. Phenotype is external observable appearance (3 Tall : 1 Dwarf = 3:1); Genotype is the internal allele code (1 TT : 2 Tt : 1 tt = 1:2:1). 2. Acquired traits during an individual’s lifetime (like a cut tail or muscle size) only affect non-reproductive somatic tissues and do NOT alter the DNA of germ cells (gametes), so they cannot be passed to offspring!',
+        hi: '1. लक्षणप्ररूप बाह्य दिखाई देने वाला गुण है (3 लंबे : 1 बौना = 3:1), जबकि जीनप्ररूप आंतरिक जीन संरचना है (1 TT : 2 Tt : 1 tt = 1:2:1)। 2. जीवनकाल में उपार्जित लक्षण कायिक ऊतकों तक सीमित रहते हैं और जनन कोशिकाओं के DNA में परिवर्तन नहीं करते, इसलिए वंशानुगत नहीं होते!',
+      },
+      checkRule: {
+        en: 'Phenotype = Physical appearance (3 : 1). Genotype = Genetic letters (1 TT : 2 Tt : 1 tt)!',
+        hi: 'लक्षणप्ररूप (Phenotype) = बाह्य रूप (3 : 1)। जीनप्ररूप (Genotype) = जीन अक्षर (1 TT : 2 Tt : 1 tt)!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Human Genetics: How Sex of a Child is Determined in Human Beings (XX vs XY)',
+        hi: 'उच्च स्तरीय मानव आनुवंशिकी: मानव में बच्चे का लिंग निर्धारण कैसे होता है? (XX बनाम XY)',
+      },
+      prompt: {
+        en: 'In human beings, the statistical probability of a baby being a boy or a girl is 50% : 50%. Explain scientifically using a Punnett cross of human sex chromosomes (Mother XX × Father XY) why the sex of a child is determined solely by the chromosome inherited from the father.',
+        hi: 'मानव में लड़का या लड़की होने की सांख्यिकीय प्रायिकता 50% : 50% होती है। लिंग गुणसूत्रों (माता XX × पिता XY) के आरेख द्वारा वैज्ञानिक रूप से स्पष्ट कीजिए कि बच्चे का लिंग इस बात पर क्यों निर्भर करता है कि उसे पिता से किस प्रकार का गुणसूत्र प्राप्त हुआ है।',
+      },
+      claimOptions: [
+        {
+          en: 'Women have a perfect pair of sex chromosomes (XX), so all eggs carry an X chromosome. Men have a mismatched pair (XY), producing 50% X-sperm and 50% Y-sperm. Fertilization by an X-sperm yields a girl (XX, 50%), while fertilization by a Y-sperm yields a boy (XY, 50%).',
+          hi: 'स्त्रियों में लिंग गुणसूत्रों का पूर्ण युग्म (XX) होता है इसलिए सभी अंडाणुओं में X गुणसूत्र होता है। पुरुषों में (XY) होने से 50% शुक्राणु X तथा 50% शुक्राणु Y वाले होते हैं। पिता से X मिलने पर लड़की (XX, 50%) तथा Y मिलने पर लड़का (XY, 50%) होता है।',
+        },
+        {
+          en: 'Mother produces both X and Y eggs while father produces only X sperm.',
+          hi: 'माता X और Y दोनों अंडाणु बनाती है जबकि पिता केवल X शुक्राणु बनाता है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'All children inherit an X chromosome from their mother regardless of whether they are boys or girls. Thus, the sex of the child is determined by whether the father’s sperm contributes an X chromosome (forming XX, female) or a Y chromosome (forming XY, male).',
+        hi: 'सभी बच्चे अपनी माता से सदैव X गुणसूत्र ही प्राप्त करते हैं। अतः बच्चे का लिंग पिता से मिलने वाले शुक्राणु के गुणसूत्र (X मिलने पर XX लड़की, Y मिलने पर XY लड़का) द्वारा निर्धारित होता है।',
+      },
+      rubricPoints: [
+        {
+          en: 'States human sex chromosome pairs: Mother is homogametic (XX, all ova carry X) and Father is heterogametic (XY, 50% X-sperm and 50% Y-sperm).',
+          hi: 'माता के लिंग गुणसूत्र (XX, सभी अंडाणुओं में X) तथा पिता के गुणसूत्र (XY, 50% X-शुक्राणु व 50% Y-शुक्राणु) का उल्लेख करता है।',
+        },
+        {
+          en: 'Shows the zygote combinations: Egg (X) + Sperm (X) → XX (Female/Girl, 50%); Egg (X) + Sperm (Y) → XY (Male/Boy, 50%).',
+          hi: 'युग्मनज संयोजन दर्शाता है: X + X → XX (लड़की, 50%) तथा X + Y → XY (लड़का, 50%)।',
+        },
+        {
+          en: 'Concludes that since the mother always contributes an X chromosome, the child’s sex depends on whether it inherits an X or Y chromosome from the father.',
+          hi: 'निष्कर्ष निकालता है कि माता सदैव X देती है, अतः लिंग निर्धारण पिता से प्राप्त होने वाले गुणसूत्र (X या Y) पर निर्भर करता है।',
+        },
+      ],
+    },
+  },
+
+  'trophic-energy-magnification': {
+    ncertSection: 'NCERT Class 10 Chapter 13: Our Environment (Sec 13.1 — Eco-systems, Food Chains, 10% Energy Law & Biological Magnification)',
+    openingQuestion: {
+      en: '“Why does usable energy shrink by 10 times at every step up a food chain, while non-biodegradable pesticides like DDT multiply in concentration up the exact same food chain?”',
+      hi: '“आहार श्रृंखला में ऊपर जाते समय प्रत्येक चरण में उपयोगी ऊर्जा 10 गुना घटती जाती है, जबकि उसी आहार श्रृंखला में DDT जैसे अजैव-निम्निकरणीय कीटनाशकों की सांद्रता ऊपर की ओर क्यों बढ़ती जाती है?”',
+    },
+    experimentProtocol: {
+      goal: {
+        en: 'Trace energy flow from Incident Sunlight (1% capture by leaves) through T₁ → T₂ → T₃ → T₄ (Lindeman’s 10% Law) alongside the inverted Biological Magnification pyramid of persistent pesticides.',
+        hi: 'आपतित सौर ऊर्जा (पत्तियों द्वारा 1% ग्रहण) से T₁ → T₂ → T₃ → T₄ तक 10% ऊर्जा स्थानांतरण नियम तथा अजैव-निम्निकरणीय कीटनाशकों के उल्टे जैव-आवर्धन पिरामिड का तुलनात्मक परीक्षण करें।',
+      },
+      steps: [
+        {
+          en: 'Set Incident Solar Energy on Leaves = 1,000,000 J (10⁶ J). Observe in Panel 1 that T₁ Green Plants capture 1% of sunlight = 10,000 J.',
+          hi: 'पत्तियों पर आपतित सौर ऊर्जा = 10,00,000 J (10⁶ J) रखें। पैनल 1 में देखें कि T₁ हरे पौधे सौर ऊर्जा का 1% भाग = 10,000 J खाद्य ऊर्जा में बदलते हैं।',
+        },
+        {
+          en: 'Follow the 10% consumer steps upward: T₂ Grasshopper gets 1,000 J (9,000 J lost as heat!), T₃ Snake gets 100 J, and T₄ Hawk gets only 10 J—leaving too little energy to support a 5th or 6th trophic level!',
+          hi: '10% नियम के अनुसार ऊपर देखें: T₂ टिड्डे को 1,000 J (9,000 J ऊष्मा हानि!), T₃ साँप को 100 J और T₄ बाज को केवल 10 J ऊर्जा मिलती है—इसीलिए चौथे स्तर के बाद पर्याप्त ऊर्जा नहीं बचती!',
+        },
+        {
+          en: 'In Panel 2, set Persistent Pesticide at T₁ = 0.02 ppm. Observe how DDT concentrates 10-fold at each step up to 20.0 ppm in the T₄ Top Predator (Biological Magnification)!',
+          hi: 'पैनल 2 में T₁ पर कीटनाशक सांद्रता 0.02 ppm रखें। देखें कि प्रत्येक स्तर पर DDT संचित होते हुए T₄ शीर्ष उपभोक्ता में बढ़कर 20.0 ppm हो जाता है (जैव-आवर्धन)!',
+        },
+      ],
+      observationCheck: {
+        prompt: {
+          en: 'On the Trophic Energy Pyramid bench, when 500,000 J of solar energy falls on green plant leaves, how much energy is captured by T₁ Producers and how much reaches T₃ Secondary Consumers?',
+          hi: 'जब हरे पौधों की पत्तियों पर 5,00,000 J सौर ऊर्जा पड़ती है, तो T₁ उत्पादकों द्वारा कितनी ऊर्जा संचित की जाती है और T₃ द्वितीयक उपभोक्ताओं तक कितनी ऊर्जा पहुँचती है?',
+        },
+        options: [
+          {
+            en: 'T₁ Producers capture 1% of 500,000 J = 5,000 J; T₂ gets 10% = 500 J; and T₃ Secondary Consumers receive 10% of 500 J = 50 J.',
+            hi: 'T₁ उत्पादक 5,00,000 J का 1% = 5,000 J पकड़ते हैं; T₂ को 10% = 500 J तथा T₃ द्वितीयक उपभोक्ता को 10% = 50 J ऊर्जा मिलती है।',
+          },
+          {
+            en: 'T₁ captures 50,000 J (10% of sunlight) and T₃ gets 500 J.',
+            hi: 'T₁ 50,000 J पकड़ता है और T₃ को 500 J मिलता है।',
+          },
+          {
+            en: 'T₃ receives more energy than T₁ due to biological magnification.',
+            hi: 'जैव-आवर्धन के कारण T₃ को T₁ से अधिक ऊर्जा मिलती है।',
+          },
+        ],
+        correctIndex: 0,
+        explanation: {
+          en: 'Sun → T₁ uses the 1% rule (0.01 × 500,000 = 5,000 J). T₁ → T₂ → T₃ uses the 10% rule twice (5,000 × 0.1 × 0.1 = 50 J).',
+          hi: 'सूर्य → T₁ पर 1% नियम (5,00,000 का 1% = 5,000 J) तथा T₁ → T₂ → T₃ पर दो बार 10% नियम (5,000 → 500 → 50 J) लागू होता है।',
+        },
+      },
+    },
+    discoveryNotes: {
+      physicalMeaning: {
+        en: 'At every trophic level, organisms spend ~90% of their ingested food energy on respiration, movement, digestion, and heat loss to the environment. Only ~10% is converted into new body biomass available to be eaten by the next trophic level. Non-biodegradable toxins, however, dissolve in body fat and cannot be broken down, so a predator eating 10 herbivores ingests all 10 doses of toxin!',
+        hi: 'प्रत्येक पोषी स्तर पर जीव अपनी ऊर्जा का ~90% भाग श्वसन, गति व ऊष्मा में खर्च कर देते हैं और केवल ~10% ऊर्जा ही जैव-मात्रा के रूप में अगले स्तर को मिलती है। परंतु अजैव-निम्निकरणीय विष (DDT) विघटित न होने के कारण प्रत्येक उच्च स्तर के जीवों के वसा ऊतकों में जमा होते जाते हैं!',
+      },
+      scalingRule: {
+        en: '1. Solar Capture (Sun → T₁): E₁ = 0.01 × E_sun (1%).  2. Consumer Transfer (T₁ → T₂ → T₃ → T₄): E_n = 0.10 × E_(n−1) (10% Law).  3. Direction: Energy flow is strictly UNIDIRECTIONAL (never returns to Sun or lower levels).',
+        hi: '1. सौर ग्रहण (सूर्य → T₁): E₁ = 1% × E_सूर्य।  2. उपभोक्ता स्थानांतरण (T₁ → T₂ → T₃ → T₄): E_n = 10% × E_(n−1)।  3. ऊर्जा प्रवाह सदैव एकदिशिक (Unidirectional) होता है।',
+      },
+      siUnitRule: {
+        en: 'Energy across trophic levels is measured in Joules (J) or kilojoules (kJ). Pesticide/toxin concentration in biological magnification is measured in parts per million (ppm).',
+        hi: 'पोषी स्तरों की ऊर्जा जूल (J) या किलोजूल (kJ) में तथा जैव-आवर्धन में रसायनों की सांद्रता ppm (parts per million) में मापी जाती है।',
+      },
+    },
+    workedNumerical: {
+      title: {
+        en: 'NCERT Class 10 Ch 13 · Comparing Direct Vegetarian Diet vs 4-Step Carnivore Chain Efficiency',
+        hi: 'NCERT कक्षा 10 अध्याय 13 · 2-स्तरीय बनाम 4-स्तरीय आहार श्रृंखला में मानव को प्राप्त ऊर्जा',
+      },
+      problem: {
+        en: 'Suppose green crop plants in a field store 20,000 J of food energy at T₁. Compare how much energy reaches Human Beings in Chain A (Plants T₁ → Humans T₂) versus Chain B (Plants T₁ → Insects T₂ → Fish T₃ → Humans T₄).',
+        hi: 'मान लीजिए खेत के हरे पौधों (T₁) में 20,000 J खाद्य ऊर्जा संचित है। तुलना कीजिए कि श्रृंखला A (पौधे T₁ → मनुष्य T₂) बनाम श्रृंखला B (पौधे T₁ → कीट T₂ → मछली T₃ → मनुष्य T₄) में मनुष्य को कितनी ऊर्जा प्राप्त होगी?',
+      },
+      given: [
+        { en: 'Energy at Producer level T₁ = 20,000 J', hi: 'उत्पादक स्तर T₁ पर ऊर्जा = 20,000 J' },
+        { en: 'Chain A places Humans at T₂ (1 step); Chain B places Humans at T₄ (3 steps)', hi: 'श्रृंखला A में मनुष्य T₂ पर है; श्रृंखला B में मनुष्य T₄ पर है' },
+      ],
+      formula: 'E_n = E₁ × (0.1)^(n − 1)',
+      substitution: 'Chain A (Humans at T₂): 20,000 × 0.1 = 2,000 J  |  Chain B (Humans at T₄): 20,000 × (0.1)³ = 20 J (100× less energy and 100× more DDT!)',
+      answer: {
+        en: 'Humans receive 2,000 J in Chain A vs only 20 J in Chain B (100× more energy in the shorter food chain!).',
+        hi: 'श्रृंखला A में मनुष्य को 2,000 J ऊर्जा मिलती है जबकि श्रृंखला B में केवल 20 J (छोटी श्रृंखला से 100 गुना अधिक ऊर्जा मिलती है!)।',
+      },
+      unitTrapNote: {
+        en: 'Read carefully whether the given energy is “incident sunlight on leaves” (apply 1% first to get T₁!) or “energy already present at producer T₁” (apply 10% directly to get T₂)!',
+        hi: 'प्रश्न में ध्यान से पढ़ें कि दी गई ऊर्जा “पत्तियों पर पड़ने वाली सौर ऊर्जा” है (तब T₁ के लिए पहले 1% लगाएं!) या “उत्पादक पौधों T₁ में संचित ऊर्जा” है (तब T₂ के लिए सीधे 10% लगाएं)!',
+      },
+    },
+    contrastTrap: {
+      trapTitle: {
+        en: 'Applying the 10% Rule to Incident Sunlight (Instead of 1%) or Thinking Decomposers Recycle Energy Back to Plants',
+        hi: 'आपतित सौर ऊर्जा पर 1% के बजाय 10% नियम लगा देना या यह सोचना कि अपघटक ऊर्जा को वापस पौधों में चक्रित करते हैं',
+      },
+      commonMistake: {
+        en: 'When given 100,000 J of sunlight falling on leaves, taking 10% (10,000 J) as producer energy instead of 1% (1,000 J), or stating that energy is cyclically recycled in an ecosystem like carbon and nitrogen.',
+        hi: 'पत्तियों पर पड़ने वाली 1,00,000 J सौर ऊर्जा का 10% (10,000 J) उत्पादक ऊर्जा ले लेना (जबकि पौधे केवल 1% = 1,000 J पकड़ते हैं), या यह लिखना कि पारितंत्र में ऊर्जा का चक्रीय प्रवाह होता है।',
+      },
+      correctPhysics: {
+        en: '1. Green plants capture only 1% of incident solar energy (NCERT Sec 13.1.1); the 10% rule applies ONLY from T₁ Producers to T₂ Consumers and upward! 2. Matter/nutrients (C, N, P) are recycled by decomposers, but ENERGY flow is strictly UNIDIRECTIONAL—lost heat can never be reused by plants for photosynthesis!',
+        hi: '1. हरे पौधे पत्तियों पर पड़ने वाली सौर ऊर्जा का केवल 1% भाग पकड़ते हैं; 10% नियम केवल एक पोषी स्तर से अगले उपभोक्ता स्तर (T₁ → T₂ → T₃) के बीच लगता है! 2. पोषक तत्वों का पुनर्चक्रण होता है, परंतु ऊर्जा का प्रवाह सदैव एकदिशिक (Unidirectional) होता है!',
+      },
+      checkRule: {
+        en: 'Sun → Green Plant T₁ = 1% (÷100).  T₁ → T₂ → T₃ → T₄ = 10% (÷10 each step)!',
+        hi: 'सूर्य → हरे पौधे (T₁) = 1% (÷100)।  T₁ → T₂ → T₃ → T₄ = 10% (प्रत्येक चरण में ÷10)!',
+      },
+    },
+    hotsReasoningTask: {
+      title: {
+        en: 'HOTS Environmental Science: Stratospheric Ozone (O₃) Formation, CFC Depletion & Why Food Chains Have Only 3–4 Levels',
+        hi: 'उच्च स्तरीय पर्यावरण विज्ञान: ओज़ोन परत (O₃) का निर्माण व क्षय तथा आहार श्रृंखला में सीमित पोषी स्तर',
+      },
+      prompt: {
+        en: 'Explain scientifically: (a) Why food chains generally consist of only three or four steps (trophic levels); (b) How ozone (O₃) is formed in the upper atmosphere by UV radiation and why CFCs (chlorofluorocarbons) cause ozone depletion.',
+        hi: 'वैज्ञानिक कारण स्पष्ट कीजिए: (a) किसी आहार श्रृंखला में सामान्यतः केवल तीन या चार चरण (पोषी स्तर) ही क्यों होते हैं? (b) वायुमंडल के उच्चतर स्तर पर पराबैंगनी (UV) विकिरण से ओज़ोन (O₃) कैसे बनती है और CFC इसका क्षय क्यों करते हैं?',
+      },
+      claimOptions: [
+        {
+          en: '(a) Because 90% of energy is lost at each step and only 10% reaches the next level, the usable energy left after 4 levels is too small to support another population. (b) High-energy UV splits O₂ into free O atoms (O₂ → O + O), which combine with O₂ to form Ozone (O + O₂ → O₃); chlorine from CFC refrigerants catalytically destroys O₃, letting harmful UV cause skin cancer.',
+          hi: '(a) प्रत्येक चरण में 90% ऊर्जा की हानि होने और केवल 10% आगे जाने के कारण चौथे पोषी स्तर के बाद इतनी कम ऊर्जा बचती है कि अगले स्तर का पोषण संभव नहीं होता। (b) UV विकिरण O₂ को स्वतंत्र O परमाणुओं में तोड़ता है (O₂ → O + O) जो O₂ से जुड़कर ओज़ोन (O + O₂ → O₃) बनाते हैं; CFC ओज़ोन परत को नष्ट करते हैं।',
+        },
+        {
+          en: 'Food chains stop at 4 levels because animals run out of space, and ozone is formed by green plants.',
+          hi: 'स्थान की कमी से आहार श्रृंखला 4 स्तरों पर रुकती है और ओज़ोन हरे पौधों द्वारा बनती है।',
+        },
+      ],
+      correctClaimIndex: 0,
+      claimExplanation: {
+        en: 'A 10³ reduction from T₁ to T₄ leaves only 0.1% of T₁’s energy at T₄. In the stratosphere, UV splits O₂ into atomic oxygen O, forming O₃ (O + O₂ → O₃), which shields Earth from UV radiation.',
+        hi: 'T₁ से T₄ तक पहुँचते-पहुँचते केवल 0.1% ऊर्जा बचती है। समतापमंडल में UV किरणें O₂ को तोड़कर O₃ बनाती हैं जो पृथ्वी की UV विकिरण से रक्षा करती है।',
+      },
+      rubricPoints: [
+        {
+          en: 'Explains the 3–4 trophic level limit using the 10% Law: 90% energy loss at each step leaves negligible usable energy after 4 levels.',
+          hi: '10% नियम के आधार पर स्पष्ट करता है कि प्रत्येक चरण में 90% ऊर्जा हानि के कारण चौथे स्तर के बाद अत्यंत कम उपयोगी ऊर्जा बचती है।',
+        },
+        {
+          en: 'Writes the 2-step photochemical formation of Ozone: (1) O₂ + UV → O + O; (2) O + O₂ → O₃ (Ozone).',
+          hi: 'ओज़ोन निर्माण के दोनों समीकरण लिखता है: (1) O₂ + UV → O + O; (2) O + O₂ → O₃ (ओज़ोन)।',
+        },
+        {
+          en: 'Explains the role of the ozone shield (absorbs harmful UV that causes skin cancer) and notes that synthetic CFCs deplete stratospheric O₃.',
+          hi: 'ओज़ोन परत द्वारा हानिकारक UV विकिरण (त्वचा कैंसर का कारण) से सुरक्षा तथा CFC द्वारा ओज़ोन क्षय का उल्लेख करता है।',
+        },
+      ],
+    },
+  },
 }

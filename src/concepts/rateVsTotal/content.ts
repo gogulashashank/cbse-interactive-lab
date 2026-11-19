@@ -396,4 +396,80 @@ export const RATE_VS_TOTAL_CONTENT: Record<string, ConceptCardContent> = {
       },
     ],
   },
+
+  'respiration-atp-pathways': {
+    hook: {
+      en: 'Why do your calf muscles suddenly cramp after an all-out 100 m sprint, and why does yeast make bread dough rise with bubbles while producing 19 times less ATP per glucose molecule than your mitochondria?',
+      hi: '100 मीटर की तेज़ दौड़ के बाद अचानक पैर की मांसपेशियों में ऐंठन (क्रैम्प) क्यों होने लगती है, और यीस्ट माइटोकॉन्ड्रिया की तुलना में प्रति ग्लूकोज़ 19 गुना कम ATP बनाते हुए ब्रेड के आटे को कैसे फुला देता है?',
+    },
+    predictQuestion: {
+      en: 'In NCERT Figure 5.8, the first step of breaking down 1 Glucose (6-carbon) into 2 Pyruvate (3-carbon) always happens in the cytoplasm. What happens next when 2 moles of glucose are broken down in (a) Mitochondria (+O₂) vs (b) Human Muscle Cells (lack of O₂)?',
+      hi: 'NCERT चित्र 5.8 के अनुसार 1 ग्लूकोज़ (6-कार्बन) का 2 पायरुवेट (3-कार्बन) में विखंडन सदैव कोशिकाद्रव्य में होता है। जब 2 मोल ग्लूकोज़ का विखंडन (a) माइटोकॉन्ड्रिया (+O₂) बनाम (b) मानव पेशी कोशिका (O₂ के अभाव) में होता है, तो कुल कितने ATP और कौन-से उत्पाद बनते हैं?',
+    },
+    predictOptions: [
+      {
+        en: '(a) Mitochondria produce 76 mol ATP (38 × 2) + 12 CO₂ + 12 H₂O; (b) Muscle cells produce only 4 mol ATP (2 × 2) + 4 mol Lactic Acid (3-carbon, zero CO₂), causing cramps!',
+        hi: '(a) माइटोकॉन्ड्रिया में 76 मोल ATP (38 × 2) + 12 CO₂ + 12 H₂O बनते हैं; (b) पेशी कोशिका में केवल 4 मोल ATP (2 × 2) + 4 मोल लैक्टिक अम्ल (3-कार्बन, शून्य CO₂) बनता है जिससे ऐंठन होती है!',
+      },
+      {
+        en: 'Both pathways produce 76 mol ATP, and muscle cells release Ethanol + CO₂.',
+        hi: 'दोनों पथों में 76 मोल ATP बनते हैं और पेशी कोशिकाओं में एथेनॉल + CO₂ निकलती है।',
+      },
+      {
+        en: 'Glycolysis happens inside the nucleus and requires oxygen.',
+        hi: 'ग्लाइकोलिसिस केंद्रक के भीतर होता है और इसके लिए ऑक्सीजन आवश्यक है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Aerobic respiration in mitochondria completely oxidises glucose to 6 CO₂ + 6 H₂O at a rate of 38 ATP/glucose (2 × 38 = 76 ATP). Under oxygen lack in sprinting muscles, pyruvate converts into 3-carbon Lactic Acid at only 2 ATP/glucose (2 × 2 = 4 ATP) with NO CO₂ gas!',
+      hi: 'माइटोकॉन्ड्रिया में वायवीय श्वसन से प्रति ग्लूकोज़ 38 ATP (2 × 38 = 76 ATP) तथा 6 CO₂ + 6 H₂O बनते हैं। ऑक्सीजन के अभाव में पेशी कोशिकाओं में पायरुवेट 3-कार्बन वाले लैक्टिक अम्ल में बदलता है (बिना CO₂ के) और प्रति ग्लूकोज़ केवल 2 ATP (2 × 2 = 4 ATP) मिलते हैं!',
+    },
+    insightFormula: 'Aerobic (+O₂): 38 ATP/Glucose  |  Anaerobic (Yeast/Muscle): 2 ATP/Glucose',
+    insightTerm: {
+      en: 'Glucose Breakdown Pathways & ATP Currency (NCERT Ch 5.3 · Fig 5.8)',
+      hi: 'विभिन्न पथों द्वारा ग्लूकोज़ का विखंडन एवं ATP ऊर्जा मुद्रा (NCERT 5.3)',
+    },
+    insightSummary: {
+      en: 'All 3 pathways start with Glucose (6C) → Pyruvate (3C) in the Cytoplasm. From there: (1) Mitochondria (+O₂) → CO₂ + H₂O + 38 ATP; (2) Yeast (No O₂) → Ethanol (2C) + CO₂ + 2 ATP; (3) Muscle (Lack of O₂) → Lactic Acid (3C) + 2 ATP.',
+      hi: 'तीनों पथ कोशिकाद्रव्य में ग्लूकोज़ (6C) → पायरुवेट (3C) से प्रारंभ होते हैं: (1) माइटोकॉन्ड्रिया (+O₂) → CO₂ + H₂O + 38 ATP; (2) यीस्ट (O₂ अनुपस्थित) → एथेनॉल (2C) + CO₂ + 2 ATP; (3) पेशी कोशिका (O₂ का अभाव) → लैक्टिक अम्ल (3C) + 2 ATP।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 5 Q8 · Aerobic vs Anaerobic Glucose Breakdown',
+          hi: 'NCERT कक्षा 10 अध्याय 5 · वायवीय तथा अवायवीय श्वसन में अंतर',
+        },
+        prompt: {
+          en: 'The breakdown of pyruvate to give carbon dioxide, water, and large amounts of energy (38 ATP per glucose) takes place in which cellular organelle?',
+          hi: 'पायरुवेट के विखंडन से यह कार्बन डाइऑक्साइड, जल तथा ऊर्जा (प्रति ग्लूकोज़ 38 ATP) देता है और यह क्रिया किस कोशिकांग में होती है?',
+        },
+        options: [
+          { en: 'Mitochondria (in the presence of oxygen)', hi: 'माइटोकॉन्ड्रिया (ऑक्सीजन की उपस्थिति में)' },
+          { en: 'Cytoplasm (in the absence of oxygen)', hi: 'कोशिकाद्रव्य (ऑक्सीजन की अनुपस्थिति में)' },
+          { en: 'Chloroplast', hi: 'हरितलवक (क्लोरोप्लास्ट)' },
+          { en: 'Nucleus', hi: 'केंद्रक' },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Glucose → Pyruvate occurs in the cytoplasm, while complete aerobic oxidation of Pyruvate → CO₂ + H₂O + 38 ATP occurs in the powerhouse organelle.',
+          hi: 'ग्लूकोज़ → पायरुवेट कोशिकाद्रव्य में होता है, जबकि पायरुवेट → CO₂ + H₂O + ऊर्जा की क्रिया माइटोकॉन्ड्रिया में होती है।',
+        },
+        steps: [
+          {
+            label: { en: 'Step 1: Cytoplasmic Stage', hi: 'चरण 1: कोशिकाद्रव्य चरण' },
+            content: { en: '6-carbon Glucose splits into two 3-carbon Pyruvate molecules in the cytoplasm.', hi: 'कोशिकाद्रव्य में 6-कार्बन ग्लूकोज़ विखंडित होकर 3-कार्बन पायरुवेट बनाता है।' },
+          },
+          {
+            label: { en: 'Step 2: Mitochondrial Stage (+O₂)', hi: 'चरण 2: माइटोकॉन्ड्रिया चरण (+O₂)' },
+            content: { en: 'In the presence of O₂, pyruvate enters the mitochondria and breaks down completely into CO₂, H₂O, and ~38 ATP.', hi: 'ऑक्सीजन की उपस्थिति में माइटोकॉन्ड्रिया के भीतर पायरुवेट टूटकर CO₂, जल तथा ~38 ATP ऊर्जा देता है।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Mitochondria (Aerobic Respiration).',
+          hi: 'माइटोकॉन्ड्रिया (वायवीय श्वसन)।',
+        },
+      },
+    ],
+  },
 }

@@ -445,4 +445,92 @@ export const CONVENTIONS_AND_INVERSIONS_CONTENT: Record<string, ConceptContentIt
       },
     ],
   },
+
+  'mendelian-punnett-heredity': {
+    hook: {
+      en: 'When Mendel crossed pure tall pea plants (TT) with pure dwarf pea plants (tt), 100% of the F₁ offspring were tall (Tt)—not a single medium-height plant! Yet when those F₁ plants self-pollinated, the dwarf trait magically reappeared in 25% of the F₂ generation! Where was it hiding?',
+      hi: 'जब मेंडल ने शुद्ध लंबे मटर के पौधों (TT) का शुद्ध बौने पौधों (tt) से संकरण कराया, तो F₁ पीढ़ी के 100% पौधे लंबे (Tt) हुए—एक भी मध्यम ऊँचाई का नहीं! किंतु F₁ पौधों के स्वपरागण से F₂ पीढ़ी में 25% पौधे पुनः बौने निकले! यह बौना लक्षण कहाँ छिपा था?',
+    },
+    predictQuestion: {
+      en: 'When two heterozygous F₁ tall pea plants (Tt × Tt) are self-crossed to produce 400 F₂ offspring, what are the expected Genotypic Ratio (TT : Tt : tt), Phenotypic Ratio (Tall : Dwarf), and expected number of tall vs dwarf plants?',
+      hi: 'जब दो विषमयुग्मजी F₁ लंबे मटर के पौधों (Tt × Tt) के स्वपरागण से 400 F₂ पौधे प्राप्त होते हैं, तो उनका जीनप्ररूप अनुपात (TT : Tt : tt), लक्षणप्ररूप अनुपात (लंबे : बौने) तथा लंबे व बौने पौधों की अपेक्षित संख्या क्या होगी?',
+    },
+    predictOptions: [
+      {
+        en: 'Genotype = 1 TT : 2 Tt : 1 tt (1:2:1); Phenotype = 3 Tall : 1 Dwarf (3:1), giving 300 Tall plants and 100 Dwarf plants.',
+        hi: 'जीनप्ररूप = 1 TT : 2 Tt : 1 tt (1:2:1); लक्षणप्ररूप = 3 लंबे : 1 बौना (3:1), अर्थात 300 लंबे और 100 बौने पौधे।',
+      },
+      {
+        en: 'Genotype = 3:1 and Phenotype = 1:1 (200 Tall and 200 Dwarf).',
+        hi: 'जीनप्ररूप = 3:1 तथा लक्षणप्ररूप = 1:1 (200 लंबे और 200 बौने)।',
+      },
+      {
+        en: 'All 400 F₂ plants remain tall because T permanently destroys the t allele.',
+        hi: 'सभी 400 पौधे लंबे होंगे क्योंकि T विकल्पी t को नष्ट कर देता है।',
+      },
+    ],
+    predictCorrectIndex: 0,
+    predictExplanation: {
+      en: 'Each Tt parent produces gametes (50% T, 50% t). The 2×2 Punnett square yields 1 TT (Tall), 2 Tt (Tall, because dominant T masks recessive t), and 1 tt (Dwarf). Thus Genotype is 1:2:1 and Phenotype is 3 Tall (75% = 300) : 1 Dwarf (25% = 100)!',
+      hi: 'प्रत्येक Tt जनक से (50% T, 50% t) युग्मक बनते हैं। पनेट वर्ग से 1 TT (लंबा), 2 Tt (लंबा) और 1 tt (बौना) प्राप्त होता है। अतः जीनप्ररूप 1:2:1 तथा लक्षणप्ररूप 3 लंबे (300) : 1 बौना (100) होता है!',
+    },
+    insightFormula: 'F₁ (TT × tt) → 100% Tt (Tall)  |  F₂ (Tt × Tt) → 1 TT : 2 Tt : 1 tt (3 Tall : 1 Dwarf)',
+    insightTerm: {
+      en: 'Mendelian Dominance & Punnett Square Ratios (NCERT Ch 8.2)',
+      hi: 'मेंडल के प्रभाविता एवं पृथक्करण नियम (NCERT 8.2)',
+    },
+    insightSummary: {
+      en: 'Sexually reproducing organisms carry two copies (alleles) of each gene. A dominant allele (T) expresses its trait even in a single copy (TT or Tt) by coding for a functional enzyme, while a recessive allele (t) is expressed only when homozygous (tt).',
+      hi: 'लैंगिक जनन करने वाले जीवों में प्रत्येक लक्षण के दो विकल्पी (Alleles) होते हैं। प्रभावी विकल्पी (T) एकल प्रति (TT या Tt) में भी सक्रिय एंजाइम बनाकर अपना लक्षण प्रकट करता है, जबकि अप्रभावी लक्षण (t) केवल समयुग्मजी अवस्था (tt) में प्रकट होता है।',
+    },
+    examQuestions: [
+      {
+        title: {
+          en: 'NCERT Class 10 Ch 8 · Test Cross to Identify an Unknown Tall Pea Plant',
+          hi: 'NCERT कक्षा 10 अध्याय 8 · अज्ञात लंबे मटर के पौधे के जीनप्ररूप की पहचान',
+        },
+        prompt: {
+          en: 'A tall pea plant is crossed with a pure dwarf pea plant (tt). Out of 200 seeds produced, 100 grow into tall plants and 100 grow into dwarf plants (1 : 1 ratio). What were the genotypes of the two parent plants?',
+          hi: 'एक लंबे मटर के पौधे का संकरण शुद्ध बौने पौधे (tt) से कराया गया। प्राप्त 200 पौधों में से 100 लंबे तथा 100 बौने (1 : 1 अनुपात) निकले। दोनों जनक पौधों का जीनप्ररूप (Genotype) क्या था?',
+        },
+        options: [
+          {
+            en: 'Tt (heterozygous tall) × tt (homozygous dwarf) → 50% Tt (Tall) : 50% tt (Dwarf)',
+            hi: 'Tt (विषमयुग्मजी लंबा) × tt (समयुग्मजी बौना) → 50% Tt (लंबे) : 50% tt (बौने)',
+          },
+          {
+            en: 'TT (homozygous tall) × tt (homozygous dwarf) → 100% Tt',
+            hi: 'TT (समयुग्मजी लंबा) × tt (समयुग्मजी बौना)',
+          },
+          {
+            en: 'Tt × Tt → 3:1 ratio',
+            hi: 'Tt × Tt → 3:1 अनुपात',
+          },
+          {
+            en: 'tt × tt → 100% dwarf',
+            hi: 'tt × tt → 100% बौने',
+          },
+        ],
+        correctIndex: 0,
+        hint: {
+          en: 'Click “3. Test Cross (Tt × tt)” on the Punnett Square bench and check the offspring ratio!',
+          hi: 'पनेट वर्ग बेंच पर “3. परीक्षार्थ संकरण (Tt × tt)” दबाकर संतति अनुपात देखें!',
+        },
+        steps: [
+          {
+            label: { en: 'Dwarf Offspring Clue', hi: 'बौनी संतति से संकेत' },
+            content: { en: 'Every dwarf offspring (tt) must inherit one recessive “t” allele from each parent.', hi: 'प्रत्येक बौने पौधे (tt) को दोनों जनकों से एक-एक “t” विकल्पी मिलना आवश्यक है।' },
+          },
+          {
+            label: { en: 'Deduce Tall Parent Genotype', hi: 'लंबे जनक का जीनप्ररूप' },
+            content: { en: 'Since the tall parent expresses T and passes t to half its gametes, it must be heterozygous (Tt). Crossing Tt × tt gives 1 Tt : 1 tt (100 Tall : 100 Dwarf).', hi: 'अतः लंबा जनक विषमयुग्मजी (Tt) है। Tt × tt से 1 Tt : 1 tt (1 : 1 अनुपात) प्राप्त होता है।' },
+          },
+        ],
+        finalAnswer: {
+          en: 'Parent genotypes are Tt and tt (Test Cross yielding 1 : 1 ratio).',
+          hi: 'जनकों के जीनप्ररूप Tt तथा tt हैं (1 : 1 परीक्षार्थ संकरण)।',
+        },
+      },
+    ],
+  },
 }

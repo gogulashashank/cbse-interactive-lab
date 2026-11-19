@@ -7,13 +7,13 @@ import {
 } from './revisionModel'
 
 describe('CBSE Board Exam Simulator & Revision Workbook Model', () => {
-  it('aggregates all 32 pilot notebooks (25 Class 10 + 7 Class 9) with complete en/hi translations', () => {
+  it('aggregates all 36 pilot notebooks (29 Class 10 + 7 Class 9) with complete en/hi translations', () => {
     const entries = getAllRevisionEntries()
-    expect(entries).toHaveLength(32)
+    expect(entries).toHaveLength(36)
 
     const class10 = entries.filter((e) => e.classLevel === 10)
     const class9 = entries.filter((e) => e.classLevel === 9)
-    expect(class10).toHaveLength(25)
+    expect(class10).toHaveLength(29)
     expect(class9).toHaveLength(7)
 
     for (const entry of entries) {
@@ -38,7 +38,7 @@ describe('CBSE Board Exam Simulator & Revision Workbook Model', () => {
       threadId: 'conventions-and-inversions',
       searchQuery: '',
     })
-    expect(onlyOptics).toHaveLength(6)
+    expect(onlyOptics).toHaveLength(7)
 
     const searchSolenoid = filterRevisionEntries(entries, {
       classLevel: 'all',

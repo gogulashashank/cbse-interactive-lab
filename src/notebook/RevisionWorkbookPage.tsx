@@ -97,8 +97,8 @@ export function RevisionWorkbookPage() {
       <NotebookHeader
         eyebrow={
           lang === 'hi'
-            ? 'सीबीएसई बोर्ड परीक्षा सिम्युलेटर एवं पुनरावृत्ति कार्यपुस्तिका (32 अध्याय)'
-            : 'CBSE Board Exam Simulator & Printable Revision Workbook · All 32 Notebooks'
+            ? 'सीबीएसई बोर्ड परीक्षा सिम्युलेटर एवं पुनरावृत्ति कार्यपुस्तिका (36 अध्याय)'
+            : 'CBSE Board Exam Simulator & Printable Revision Workbook · All 36 Notebooks'
         }
         title={
           lang === 'hi'
@@ -110,9 +110,9 @@ export function RevisionWorkbookPage() {
             ? 'स्वतः मूल्यांकित संख्यात्मक प्रश्नों (Auto-Graded) और स्व-मूल्यांकित लिखित तर्क (Self-Assessed 3-Point Rubric) के साथ संपूर्ण अभ्यास।'
             : 'Practice mixed-chapter board numericals, HOTS scientific claims with transparent 3-point self-check rubrics, and print-ready revision sheets.'
         }
-        chapterBadge="CBSE Class 9 & 10 Complete Syllabus (32 Labs)"
+        chapterBadge="CBSE Class 9 & 10 Complete Science Syllabus (36 Labs)"
         onBack={() => navigateToPath('/learn')}
-        backLabel={lang === 'hi' ? '← नोटबुक शेल्फ (32 लैब्स)' : '← Notebook Shelf (32 Labs)'}
+        backLabel={lang === 'hi' ? '← नोटबुक शेल्फ (36 लैब्स)' : '← Notebook Shelf (36 Labs)'}
         utilities={
           <div className="no-print" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', alignItems: 'center' }}>
             <LanguageToggle />
@@ -205,7 +205,7 @@ export function RevisionWorkbookPage() {
                 aria-pressed={classFilter === 'all'}
                 onClick={() => setClassFilter('all')}
               >
-                {lang === 'hi' ? 'सभी कक्षाएं (32)' : 'All Classes (32)'}
+                {lang === 'hi' ? 'सभी कक्षाएं (36)' : 'All Classes (36)'}
               </button>
               <button
                 type="button"
@@ -213,7 +213,7 @@ export function RevisionWorkbookPage() {
                 aria-pressed={classFilter === 10}
                 onClick={() => setClassFilter(10)}
               >
-                {lang === 'hi' ? 'कक्षा 10 बोर्ड (25)' : 'Class 10 Board (25)'}
+                {lang === 'hi' ? 'कक्षा 10 बोर्ड (29)' : 'Class 10 Board (29)'}
               </button>
               <button
                 type="button"

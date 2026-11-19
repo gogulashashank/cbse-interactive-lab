@@ -6,6 +6,7 @@ import {
   calculateMetalDisplacement,
   calculateMomentumImpulse,
   calculateMotorForceFlemingsRule,
+  calculateReflexAndHomeostasis,
   calculateStretchingVsComparing,
 } from './models'
 
@@ -102,5 +103,18 @@ describe('Controlled Experiments Physics Models', () => {
     const cuInFe = calculateMetalDisplacement('Cu', 'Fe')
     expect(cuInFe.reactionOccurs).toBe(false)
     expect(cuInFe.equationText).toContain('No Reaction')
+  })
+
+  it('calculates spinal reflex arc latency savings and insulin/glucagon negative-feedback homeostasis', () => {
+    const highSugar = calculateReflexAndHomeostasis('spinal-reflex-arc', 0.8, 180)
+    expect(highSugar.spinalReflexLatencyMs).toBe(26)
+    expect(highSugar.brainDetourLatencyMs).toBe(146)
+    expect(highSugar.timeSavedByReflexMs).toBe(120)
+    expect(highSugar.glucoseStatus).toBe('hyperglycemia-high')
+    expect(highSugar.activePancreaticHormone).toContain('Insulin')
+
+    const lowSugar = calculateReflexAndHomeostasis('conscious-brain-detour', 0.8, 55)
+    expect(lowSugar.glucoseStatus).toBe('hypoglycemia-low')
+    expect(lowSugar.activePancreaticHormone).toContain('Glucagon')
   })
 })

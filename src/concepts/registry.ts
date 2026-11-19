@@ -46,6 +46,10 @@ export type ConceptId =
   | 'ph-scale-exponential-acid'
   | 'metal-reactivity-displacement'
   | 'carbon-homologous-series'
+  | 'respiration-atp-pathways'
+  | 'reflex-arc-hormone-feedback'
+  | 'mendelian-punnett-heredity'
+  | 'trophic-energy-magnification'
   | 'mapped-ohms-law'
   | 'mapped-series-parallel'
   | 'mapped-resistivity'
@@ -637,6 +641,76 @@ export const CONCEPTS: readonly ConceptRecord[] = [
     misconceptionIds: ['alkene-starts-at-n-equals-1', 'homologous-members-have-different-chemical-properties'],
     contexts: [{ en: 'LPG fuel alkanes, unsaturated alkenes & alcohol functional groups', hi: 'ईंधन ऐल्केन, असंतृप्त ऐल्कीन और ऐल्कोहॉल प्रकार्यात्मक समूह' }],
     boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 4: Carbon and its Compounds (4.2.4)' }],
+    status: 'pilot',
+  },
+
+  // Class 10 Biology & Environment Completion (Chapters 5–8 & 13): Life Processes, Control, Heredity & Food Chains
+  {
+    id: 'respiration-atp-pathways',
+    thread: 'rate-vs-total',
+    title: {
+      en: 'Cellular Respiration Pathways: Aerobic (38 ATP) vs Anaerobic & Lactic Acid Debt (2 ATP)',
+      hi: 'ग्लूकोज़ का विखंडन: वायवीय (38 ATP) बनाम अवायवीय श्वसन एवं पेशी ऐंठन (2 ATP)',
+    },
+    oneLine: {
+      en: 'All cells split 6C Glucose into 3C Pyruvate in the cytoplasm; mitochondria (+O₂) yield 38 ATP/glucose, while yeast and oxygen-starved muscles yield only 2 ATP.',
+      hi: 'कोशिकाद्रव्य में 6C ग्लूकोज़ 3C पायरुवेट में टूटता है; माइटोकॉन्ड्रिया (+O₂) में 38 ATP मिलते हैं, जबकि यीस्ट और पेशी कोशिका (O₂ अभाव) में केवल 2 ATP मिलते हैं।',
+    },
+    prerequisites: ['rate-vs-total-intro'],
+    misconceptionIds: ['glycolysis-occurs-in-mitochondria', 'human-muscles-produce-ethanol-and-co2'],
+    contexts: [{ en: '100m sprinter muscle cramps, yeast fermentation & mitochondrial ATP', hi: 'धावक की पेशी ऐंठन, यीस्ट किण्वन और माइटोकॉन्ड्रिया ऊर्जा' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 5: Life Processes (5.3 · Fig 5.8)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'reflex-arc-hormone-feedback',
+    thread: 'controlled-experiments',
+    title: {
+      en: 'Spinal Reflex Arc Latency vs Negative-Feedback Hormone Regulation (Insulin–Glucagon)',
+      hi: 'प्रतिवर्ती चाप (Reflex Arc) की तीव्रता बनाम हार्मोन पुनर्भरण नियंत्रण',
+    },
+    oneLine: {
+      en: 'Spinal reflex arcs shortcut conscious brain delay for fast emergency withdrawal, while pancreatic negative feedback holds blood glucose around its setpoint.',
+      hi: 'मेरुरज्जु प्रतिवर्ती चाप मस्तिष्क के विचार विलंब को बचाकर तुरंत रक्षा करता है, जबकि अग्नाशय की पुनर्भरण क्रियाविधि रक्त शर्करा को संतुलित रखती है।',
+    },
+    prerequisites: ['fixed-voltage-vs-current'],
+    misconceptionIds: ['reflex-arc-originates-in-forebrain', 'hormones-act-faster-than-nerve-impulses'],
+    contexts: [{ en: 'Touching a hot pan & pancreatic insulin regulation in diabetes', hi: 'गर्म वस्तु छूने पर हाथ हटना और मधुमेह में इंसुलिन नियंत्रण' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 6: Control and Coordination (6.1 & 6.3)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'mendelian-punnett-heredity',
+    thread: 'conventions-and-inversions',
+    title: {
+      en: 'Mendel’s Pea Crosses: Decoding Dominant Masks (3:1 Phenotype vs 1:2:1 Genotype)',
+      hi: 'मेंडल के वंशागति नियम: प्रभावी लक्षण (3:1) बनाम जीनप्ररूप (1:2:1)',
+    },
+    oneLine: {
+      en: 'Dominant allele T masks recessive t in F₁ (100% Tt Tall), while F₂ self-crossing (Tt × Tt) reveals 1 TT : 2 Tt : 1 tt (3 Tall : 1 Dwarf).',
+      hi: 'F₁ पीढ़ी (TT × tt) में प्रभावी T के कारण 100% पौधे लंबे (Tt) होते हैं, जबकि F₂ (Tt × Tt) में 1 TT : 2 Tt : 1 tt (3 लंबे : 1 बौना) अनुपात मिलता है।',
+    },
+    prerequisites: ['magnification-code'],
+    misconceptionIds: ['f1-tall-plants-are-homozygous-tt', 'acquired-traits-are-inherited-in-dna'],
+    contexts: [{ en: 'Garden pea monohybrid F₁/F₂ crosses & human XX/XY sex determination', hi: 'मटर का एकसंकर संकरण और मानव में लिंग निर्धारण (XX/XY)' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 8: Heredity (8.2)' }],
+    status: 'pilot',
+  },
+  {
+    id: 'trophic-energy-magnification',
+    thread: 'energy-conservation',
+    title: {
+      en: 'Lindeman’s 10% Energy Law vs Biological Magnification in Food Chains',
+      hi: '10% ऊर्जा स्थानांतरण नियम बनाम जैव-आवर्धन: आहार श्रृंखला में विपरीत प्रवाह',
+    },
+    oneLine: {
+      en: 'Leaves capture 1% of sunlight and transfer only 10% of energy up each trophic step (90% heat loss), whereas non-biodegradable toxins concentrate upward.',
+      hi: 'पत्तियाँ सौर ऊर्जा का 1% पकड़ती हैं और आगे प्रत्येक पोषी स्तर पर केवल 10% ऊर्जा जाती है, जबकि अजैव-निम्निकरणीय विष (DDT) ऊपर की ओर आवर्धित होते हैं।',
+    },
+    prerequisites: ['electrical-energy-transfer'],
+    misconceptionIds: ['plants-capture-10-percent-of-sunlight', 'toxins-decrease-up-the-food-chain'],
+    contexts: [{ en: '4-level terrestrial/aquatic food chain & DDT biomagnification in birds/humans', hi: '4-स्तरीय आहार श्रृंखला और शीर्ष उपभोक्ताओं में DDT जैव-आवर्धन' }],
+    boardMapping: [{ board: 'CBSE', classLevel: 10, chapterRef: 'Chapter 13: Our Environment (13.1)' }],
     status: 'pilot',
   },
 

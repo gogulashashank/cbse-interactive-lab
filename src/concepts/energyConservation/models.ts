@@ -262,3 +262,50 @@ export function calculateSteamIronMassBalance(
     isBalanced,
   }
 }
+
+export interface TrophicChainEnergyState {
+  incidentSunlightJoules: number
+  t1ProducerJoules: number
+  t2HerbivoreJoules: number
+  t3CarnivoreJoules: number
+  t4TopPredatorJoules: number
+  heatLostT1ToT2Joules: number
+  t1PesticidePpm: number
+  t2PesticidePpm: number
+  t3PesticidePpm: number
+  t4TopPredatorPpm: number
+}
+
+/**
+ * Class 10 Environment Ch 13 (NCERT Sec 13.1 — Food Chains and Webs):
+ * 1. Green plants capture ~1% of incident solar energy falling on their leaves (T1 = 0.01 * E_sun).
+ * 2. Lindeman's 10% Law: Only 10% of energy at any trophic level is transferred to the next level
+ *    (T2 = 0.1 * T1, T3 = 0.1 * T2, T4 = 0.1 * T3); 90% is lost as metabolic heat to the environment.
+ * 3. Biological Magnification: Non-biodegradable pesticides (like DDT) concentrate ~10× per trophic step.
+ */
+export function calculateTrophicChainEnergy(
+  incidentSunlightJoules: number,
+  t1PesticidePpm = 0.02
+): TrophicChainEnergyState {
+  const safeSun = Math.max(10000, Math.min(10000000, Math.round(incidentSunlightJoules)))
+  const safePpm = Math.max(0.01, Math.min(1.0, t1PesticidePpm))
+
+  const t1ProducerJoules = Number((safeSun * 0.01).toFixed(1))
+  const t2HerbivoreJoules = Number((t1ProducerJoules * 0.1).toFixed(2))
+  const t3CarnivoreJoules = Number((t2HerbivoreJoules * 0.1).toFixed(2))
+  const t4TopPredatorJoules = Number((t3CarnivoreJoules * 0.1).toFixed(3))
+  const heatLostT1ToT2Joules = Number((t1ProducerJoules - t2HerbivoreJoules).toFixed(2))
+
+  return {
+    incidentSunlightJoules: safeSun,
+    t1ProducerJoules,
+    t2HerbivoreJoules,
+    t3CarnivoreJoules,
+    t4TopPredatorJoules,
+    heatLostT1ToT2Joules,
+    t1PesticidePpm: Number(safePpm.toFixed(2)),
+    t2PesticidePpm: Number((safePpm * 10).toFixed(2)),
+    t3PesticidePpm: Number((safePpm * 100).toFixed(1)),
+    t4TopPredatorPpm: Number((safePpm * 1000).toFixed(1)),
+  }
+}
