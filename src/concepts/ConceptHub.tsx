@@ -421,6 +421,20 @@ export function ConceptHub() {
         }
         utilities={
           <>
+            <button
+              type="button"
+              className="nb-QuickChip is-active"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.history.pushState({}, '', '/revision')
+                  window.dispatchEvent(new PopStateEvent('popstate'))
+                }
+              }}
+            >
+              {lang === 'hi'
+                ? '📝 बोर्ड परीक्षा एवं पुनरावृत्ति कार्यपुस्तिका'
+                : '📝 Board Exam & Revision Workbook'}
+            </button>
             <LanguageToggle />
             <ProjectorToggle />
           </>

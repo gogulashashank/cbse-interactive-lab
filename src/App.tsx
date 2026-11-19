@@ -20,6 +20,11 @@ const RampExperiment = lazy(() =>
 
 const STANDALONE_COMPONENTS: Record<StandaloneRouteId, ComponentType> = {
   learn: lazy(() => import('./concepts/ConceptHub').then((m) => ({ default: m.ConceptHub }))),
+  revision: lazy(() =>
+    import('./notebook/RevisionWorkbookPage').then((m) => ({
+      default: m.RevisionWorkbookPage,
+    }))
+  ),
   alternative: lazy(() =>
     import('./features/lens/AlternativeConvexLensLesson').then((m) => ({
       default: m.AlternativeConvexLensLesson,

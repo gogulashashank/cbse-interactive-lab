@@ -6,6 +6,9 @@ import type { StandaloneRouteId } from '../platform/routeRegistry'
  * that pair directly with a standalone chapter workbench route.
  */
 export function getRelatedNotebooksForRoute(routeId: StandaloneRouteId): readonly ConceptRecord[] {
+  if (routeId === 'revision') {
+    return []
+  }
   if (routeId === 'safety') {
     const safetyIds = new Set([
       'series-parallel-failure',

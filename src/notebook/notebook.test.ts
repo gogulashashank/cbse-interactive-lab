@@ -7,7 +7,7 @@ import { STORY_NOTEBOOK_STAGES, STORY_STAGE_SUPPLEMENTS } from './storyCurricula
 
 describe('Notebook Cross-Navigation & Route Mapping', () => {
   it('maps every standalone chapter workbench to its related mental-model concept notebooks', () => {
-    const workbenches = STANDALONE_ROUTES.filter((r) => r.id !== 'learn')
+    const workbenches = STANDALONE_ROUTES.filter((r) => r.id !== 'learn' && r.id !== 'revision')
     expect(workbenches.length).toBe(7)
 
     for (const wb of workbenches) {

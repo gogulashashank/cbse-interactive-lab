@@ -9,6 +9,7 @@
 
 export type StandaloneRouteId =
   | 'learn'
+  | 'revision'
   | 'alternative'
   | 'electricity'
   | 'series-parallel'
@@ -33,6 +34,13 @@ export const STANDALONE_ROUTES: readonly StandaloneRoute[] = [
     path: '/learn',
     aliases: ['/', '/concepts'],
     navLabel: 'Notebook Shelf (28 Labs)',
+    group: 'hub',
+  },
+  {
+    id: 'revision',
+    path: '/revision',
+    aliases: ['/exam', '/workbook'],
+    navLabel: 'Board Exam & Revision',
     group: 'hub',
   },
   {

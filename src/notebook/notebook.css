@@ -770,3 +770,24 @@
 .nb-next-stage-btn:hover {
   opacity: 0.94;
 }
+
+@media print {
+  .no-print,
+  .platform-topbar {
+    display: none !important;
+  }
+
+  .nb-page {
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .nb-revision-card,
+  .nb-sheet {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    border: 1px solid #94a3b8 !important;
+  }
+}
